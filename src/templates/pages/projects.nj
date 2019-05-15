@@ -1,5 +1,5 @@
-<!-- projects.njk -->
-{% extends "layout.njk" %}
+<!-- projects.nj -->
+{% extends "layout.nj" %}
 
 {% block content %}
   <h1>This is the projects page</h1>

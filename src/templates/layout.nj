@@ -13,14 +13,17 @@
     </head>
     <body id="barba-wrapper">
         <div class="barba-container">
-            <!-- Adds the navigation partial -->
-            {% include "partials/header.njk" %}
+            <!-- Adds the header macro -->
+            {% import "macros/header.nj" as nav %}
             
             <!-- The code for this content block are in another file -->
             {% block content %} {% endblock %}
             
+            <!-- Creating the navigation with activePage = 'home' -->
+            {{nav.active('home')}}
+            
             <!-- Adds the footer partial -->
-            {% include "partials/footer.njk" %}
+            {% include "partials/footer.nj" %}
         </div>
         
         <script src="./js/transitions.min.js"></script>

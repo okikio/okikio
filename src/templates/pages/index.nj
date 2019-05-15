@@ -1,0 +1,6 @@
+<!-- index.nj -->
+{% extends "layout.nj" %}
+
+{% block content %}
+  <h1>Homepage Express</h1>
+{% endblock %}

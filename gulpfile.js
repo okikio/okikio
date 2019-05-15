@@ -1,5 +1,8 @@
+var fs = require('fs');
+var path = require('path');
 var gulp = require('gulp');
 var csso = require('gulp-csso');
+var data = require('gulp-data');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var htmlmin = require('gulp-htmlmin');
@@ -47,10 +50,13 @@ gulp.task("js", function() {
 
 // Gulp task to compile .njk (nunjucks) files and partials into minified HTML files
 gulp.task('html', function() {
-  // Gets the .njk files in the src/templates/pages folder
-    return gulp.src('src/templates/pages/*.njk') // Renders template with nunjucks
-       .pipe(nunjucksRender({
-            path: ['src/templates/']
+    // Gets the .njk files in the src/templates/pages folder
+    return gulp.src('src/templates/pages/*.nj') // Renders template with nunjucks
+        .pipe(data(function(file) {
+            return JSON.parse(fs.readFileSync('./src/data.json'));
+        }))
+        .pipe(nunjucksRender({
+            path: ['src/templates']
         }))
         .pipe(htmlmin({
             collapseWhitespace: true,
@@ -60,5 +66,4 @@ gulp.task('html', function() {
 });
 
 // Gulp task to minify all files
-gulp.task('default', gulp.series('css', 'js', 'html', function (done) 
-    { done(); }));
+gulp.task('default', gulp.series('css', 'js', 'html', function(done) { done(); }));

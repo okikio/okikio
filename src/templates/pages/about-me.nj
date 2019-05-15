@@ -1,5 +1,5 @@
-<!-- about-me.njk -->
-{% extends "layout.njk" %}
+<!-- about-me.nj -->
+{% extends "layout.nj" %}
 
 {% block content %}
   <h1>This is the about me page</h1>

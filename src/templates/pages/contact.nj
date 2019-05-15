@@ -1,5 +1,5 @@
-<!-- contact.njk -->
-{% extends "layout.njk" %}
+<!-- contact.nj -->
+{% extends "layout.nj" %}
 
 {% block content %}
   <h1>This is the contact page</h1>

@@ -1,5 +1,5 @@
-<!-- project-select.njk -->
-{% extends "layout.njk" %}
+<!-- project-select.nj -->
+{% extends "layout.nj" %}
 
 {% block content %}
   <h1>This is the project select page</h1>
