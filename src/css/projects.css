@@ -1,0 +1,99 @@
+.bkg {
+	background: black;
+	height: 0;
+}
+.header:not(.mobile-on):hover .bkg {
+	height: 55px;
+}
+.navbar-title, li.navbar-link a, li.navbar-link:hover a, .navbar-menu, .social-sidebar li a {
+	color: black;
+}
+.navbar-select {
+	background: yellow;
+}
+.mobile-on .bkg, .navbar-foot:after {
+	background: black;
+}
+.mobile-on .navbar-title, .mobile-on .navbar-menu, .mobile-on li.navbar-link a, .mobile-on~.copyright-bar a, .mobile-on~.copyright-bar a:hover, .header:hover .navbar-title, .header:hover .navbar-menu, .header:hover li.navbar-link a, .copyright-bar a, .nav-bright a {
+	color: yellow !important;
+}
+.header:hover .navbar-foot:after, .mobile-on .navbar-foot:after, .nav-bright .navbar-foot:after, .nav-bright .navbar-select {
+	background: yellow !important;
+}
+.layer-projects {
+	padding-top: 25px;
+}
+@media (min-width: 500px) {
+	.layer-projects {
+		position: relative;
+		padding-top: 0;
+		top: -50px;
+	}
+}
+@media (min-width: 650px) {
+	.layer-intro .layout-contain-large {
+		padding-bottom: 100px !important;
+		padding-top: 0 !important;
+	}
+	.layer-projects {
+		position: relative;
+		top: -100px;
+	}
+}
+.layer-tile {
+	cursor: pointer;
+}
+.layer-tile .layout-image-contain {
+	position: relative;
+	border-radius: 8px;
+	max-height: 400px;
+	background: black;
+	overflow: hidden;
+}
+.layer-tile img {
+	transition: transform 0.55s ease;
+	will-change: transform;
+	transform: scale(1);
+}
+.layer-tile:hover img {
+	transform: scale(1.5);
+}
+@media (min-width: 500px) {
+	.layer-tile img {
+		transition: transform 0.55s ease, filter 0.15s linear;
+		will-change: transform, filter;
+	}
+	.layer-tile:hover img {
+		filter: url(#blur);
+		filter: blur(3px);
+	}
+}
+.layer-tile .layer-content {
+	transition: bottom 0.45s ease;
+	will-change: bottom;
+	letter-spacing: 1px;
+	padding-left: 40px;
+	position: absolute;
+	display: block;
+	bottom: 30px;
+	width: 100%;
+}
+.layer-tile:hover .layer-content {
+	bottom: 45px;
+}
+.layer-tile .layer-details {
+	transition: opacity 0.45s ease, height 0.45s ease;
+	will-change: opacity, height;
+	opacity: 0;
+	padding: 0;
+	height: 0;
+	margin: 0;
+}
+.layer-tile:hover .layer-details {
+	height: 25px;
+	opacity: 1;
+}
+.copyright-bar {
+	position: relative;
+	background: black;
+}
