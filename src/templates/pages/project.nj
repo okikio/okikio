@@ -1,0 +1,9 @@
+<!-- project-select.nj -->
+{% extends "layout.nj" %}
+
+{% block content %}
+    <!-- Set activePage = 'project' -->
+    {{nav.active('project')}}
+    
+    <h1>This is the project select page</h1>
+{% endblock %}

@@ -4,10 +4,6 @@ var express = require('express');
 var logger = require('morgan');
 var path = require('path');
 var fs = require("fs");
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 
 // Compress/GZIP Server
@@ -31,8 +27,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
 app.get('/', function(req, res, next) {
     res.render('index');
 });

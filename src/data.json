@@ -1,9 +1,49 @@
 {
-  "images": [{
-    "src": "image-one.png",
-    "alt": "Image one alt text"
-  }, {
-    "src": "image-two.png",
-    "alt": "Image two alt text"
-  }]
+  "social_links": [
+    {
+      "name": ["Twitter", "Tw"],
+      "href": "https://twitter.com/okikio_dev"
+    },
+    {
+      "name": ["Instagram", "In"],
+      "href": "https://www.instagram.com/okikio.dev/"
+    },
+    {
+      "name": ["Github", "Git"],
+      "href": "https://github.com/okikio"
+    }, {
+      "name": ["LinkedIn", "Lk"],
+      "href": "https://www.linkedin.com/in/okiki-o-a5287213b"
+    },
+    {
+      "name": ["Mail", "@"],
+      "href": "mailto:okikio.dev@gmail.com"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Project",
+      "detail": "Lorem itpsim",
+      "href": "https://twitter.com/okikio_dev",
+      "img": {
+        "src": "",
+        "alt": ""
+      }
+    },
+    {
+      "name": ["Instagram", "In"],
+      "href": "https://www.instagram.com/okikio.dev/"
+    },
+    {
+      "name": ["Github", "Git"],
+      "href": "https://github.com/okikio"
+    }, {
+      "name": ["LinkedIn", "Lk"],
+      "href": "https://www.linkedin.com/in/okiki-o-a5287213b"
+    },
+    {
+      "name": ["Mail", "@"],
+      "href": "mailto:okikio.dev@gmail.com"
+    }
+  ]
 }

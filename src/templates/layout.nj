@@ -7,27 +7,25 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Montserrat:500,600,800">
         <link rel="preconnect" href="https://res.cloudinary.com/okikio-assets/image/upload/">
         <link rel="stylesheet" href="./css/style.min.css">
-        <script src="./js/anime.min.js"></script>
-        <script src="./js/barba.min.js"></script>
         <title>Okiki</title>
     </head>
     <body id="barba-wrapper">
         <div class="barba-container">
+            <!-- The code for this style block, are the unique style some pages have -->
+            {% block style %} {% endblock %}
+            
             <!-- Adds the header macro -->
             {% import "macros/header.nj" as nav %}
             
             <!-- The code for this content block are in another file -->
             {% block content %} {% endblock %}
             
-            <!-- Creating the navigation with activePage = 'home' -->
-            {{nav.active('home')}}
-            
             <!-- Adds the footer partial -->
             {% include "partials/footer.nj" %}
         </div>
         
+        <script src="./js/build.min.js"></script>
         <script src="./js/transitions.min.js"></script>
-        <script src='./js/jquery.min.js'></script>
         <script src="./js/script.min.js"></script>
     </body>
 </html>

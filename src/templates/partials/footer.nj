@@ -4,8 +4,8 @@
 <footer class="copyright-bar">
     <article class="layout-contain">
         <section class="layout-spacer">
-            <ul class="navbar-list link-foot">
-                <li class="navbar-link link-foot style-uppercase style-yellow">
+            <ul class="navbar-list">
+                <li class="link-foot style-uppercase style-spaceout-small style-yellow">
                     <a>©2019 Okiki Ojo</a>
                 </li>
             </ul>

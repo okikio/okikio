@@ -186,43 +186,6 @@ img.load-img {
     }
 }
 
-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-fieldset {
-    padding: 0.35em 0 0.75em;
-    position: relative;
-    border: none;
-}
-
-label {
-    font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
-    letter-spacing: 1px;
-    font-weight: 900;
-    font-size: 14px;
-    display: block;
-}
-
-input,
-textarea {
-    border: 1px solid grey;
-    font-size: 16px;
-    outline: none;
-    resize: none;
-}
-
-textarea {
-    padding: 0.8em 1.34em;
-    height: 10em;
-}
-
-input:focus,
-textarea:focus {
-    border: 2px solid #f36;
-}
-
 a {
     background-color: transparent;
     transition: color 0.25s ease;
@@ -239,27 +202,16 @@ a:focus {
     text-decoration: line-through;
 }
 
-ul,
-ol,
-menu,
-dir {
+ul {
     list-style-type: disc;
     margin: 20px 2em;
     display: block;
 }
 
-ol {
-    list-style-type: decimal;
-}
-
-ul ul,
-ol ul {
+ul ul {
     list-style-type: circle;
 }
 
-ol ol ul,
-ol ul ul,
-ul ol ul,
 ul ul ul {
     list-style-type: square;
 }
@@ -279,11 +231,7 @@ li {
     font-family: "Source Sans Pro", "Montserrat", sans-serif;
 }
 
-.style-fancy {
-    font-family: "Montserrat", sans-serif;
-}
-
-.style-content {
+.style-fancy, .style-content {
     font-family: "Montserrat", "Helvetica", "Helvetica Neue", "Arial",
         sans-serif;
 }
@@ -418,61 +366,6 @@ li {
 
 .style-lowercase {
     text-transform: lowercase;
-}
-
-/* -- Icons & Font -- */
-.material-icons, .mi, .icon {
-    -webkit-font-feature-settings: "liga" off, "dlig"; /* Ch 16-26, BB 10, And 18.0 */ /* Fx 4-21 */
-    font-feature-settings: "liga", "dlig"; /* IE 10, Saf 4.0-6.0 */
-    text-rendering: optimizeLegibility;
-    font-family: "Material Icons";
-    vertical-align: middle;
-    letter-spacing: normal;
-    display: inline-block;
-    text-decoration: none;
-    text-transform: none;
-    white-space: nowrap;
-    font-weight: normal;
-    position: relative;
-    font-size: inherit;
-    font-style: normal;
-    word-wrap: normal;
-    line-height: 1;
-    direction: ltr;
-    height: 1em;
-    width: 1em;
-}
-
-.icon-btn {
-    background: transparent;
-    letter-spacing: normal;
-    justify-content: center;
-    display: -webkit-flex;
-    align-content: center;
-    text-decoration: none;
-    display: -ms-flexbox;
-    text-transform: none;
-    white-space: nowrap;
-    align-items: center;
-    border-radius: 20em;
-    text-align: center;
-    line-height: 24px;
-    font-weight: 500;
-    display: flex;
-    z-index: 425;
-    height: 40px;
-    width: 40px;
-}
-
-.icon-btn .icon,
-.icon-btn:hover {
-    text-transform: none !important;
-    text-decoration: none;
-    font-size: 24px;
-}
-
-.icon-btn:hover {
-    background: rgba(0, 0, 0, 0.3);
 }
 
 /* -- Buttons --  */

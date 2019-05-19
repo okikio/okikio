@@ -1,6 +1,105 @@
 <!-- projects.nj -->
 {% extends "layout.nj" %}
 
+{% block style %}
+    <link rel="stylesheet" href="./css/projects.min.css">
+{% endblock %}
+
 {% block content %}
-  <h1>This is the projects page</h1>
+    <!-- Set activePage = 'projects' -->
+    {{nav.active('projects')}}
+    
+    <!-- main -->
+    <main class="main">
+        <!-- layer -->
+        <section class="layer layer-intro layer-yellow scroll-snap bright-layer">
+            <article class="layout-contain-large layer-overflow-hide layout-padding-vert-top-large">
+                <section class="layout layout-flex layout-align-items-center layout-justify-content-center layout-margin-vert-top-large">
+                    <h1 class="style-black style-bold layer-title">
+                        <span class="style-black style-bolder style-center style-uppercase">Projects</span>.
+                    </h1>
+                </section>
+            </article>
+        </section>
+        <!-- /layer -->
+        
+        <!-- Adds the blur partial -->
+        {% include "./partials/blur.nj" %}
+
+        <!-- layer -->
+        <section class="layer layer-black scroll-snap">
+            <article class="layout-contain layout-contain-large">
+                <section class="layout-shorten-horz layer-projects">
+                    <section class="layout-row">
+                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
+                            <section class="layout-image-contain">
+                                <load-img src="https://images.unsplash.com/photo-1554728108-77f82515dc82?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
+                                <section class="layer-content style-yellow">
+                                    <h5 class="style-uppercase style-bolder">Project</h5>
+                                    <p class="layer-details">Lorem itpsim</p>
+                                </section>
+                            </section>
+                        </section>
+                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
+                            <section class="layout-image-contain">
+                                <load-img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
+                                <section class="layer-content style-yellow">
+                                    <h5 class="style-uppercase style-bolder">Project</h5>
+                                    <p class="layer-details">Lorem itpsim</p>
+                                </section>
+                            </section>
+                        </section>
+                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
+                            <section class="layout-image-contain">
+                                <load-img src="https://images.unsplash.com/photo-1548268770-66184a21657e?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
+                                <section class="layer-content style-yellow">
+                                    <h5 class="style-uppercase style-bolder">Project</h5>
+                                    <p class="layer-details">Lorem itpsim</p>
+                                </section>
+                            </section>
+                        </section>
+                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
+                            <section class="layout-image-contain">
+                                <load-img src="https://images.unsplash.com/photo-1554728108-77f82515dc82?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
+                                <section class="layer-content style-yellow">
+                                    <h5 class="style-uppercase style-bolder">Project</h5>
+                                    <p class="layer-details">Lorem itpsim</p>
+                                </section>
+                            </section>
+                        </section>
+                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
+                            <section class="layout-image-contain">
+                                <load-img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
+                                <section class="layer-content style-yellow">
+                                    <h5 class="style-uppercase style-bolder">Project</h5>
+                                    <p class="layer-details">Lorem itpsim</p>
+                                </section>
+                            </section>
+                        </section>
+                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
+                            <section class="layout-image-contain">
+                                <load-img src="https://images.unsplash.com/photo-1548268770-66184a21657e?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
+                                <section class="layer-content style-yellow">
+                                    <h5 class="style-uppercase style-bolder">Project</h5>
+                                    <p class="layer-details">Lorem itpsim</p>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </article>
+        </section>
+        <!-- /layer -->
+
+        <!-- layer -->
+        <section class="layer layer-black layout-center">
+            <!-- Adds the back-to-top partial -->
+            {% include "./partials/back-to-top.nj" %}
+        </section>
+        <!-- /layer -->
+        
+        <!-- Adds the social-sidebar partial -->
+        {% include "./partials/social-sidebar.nj" %}
+    </main>
+    <!-- /main -->
 {% endblock %}

@@ -1,3 +1,5 @@
-var $ = window.Jquery;
-var particlesJS = window.particlesJS;
+var $ = window.jQuery; // JQuery
+class perspective {
+    
+}
 console.log("She runs.");
