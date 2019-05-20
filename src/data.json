@@ -24,26 +24,29 @@
     {
       "name": "Project",
       "detail": "Lorem itpsim",
-      "href": "https://twitter.com/okikio_dev",
+      "href": "/project",
       "img": {
-        "src": "",
+        "src": "https://res.cloudinary.com/okikio-assets/image/upload/white-flower.jpg",
         "alt": ""
       }
     },
     {
-      "name": ["Instagram", "In"],
-      "href": "https://www.instagram.com/okikio.dev/"
+      "name": "Project",
+      "detail": "Lorem itpsim",
+      "href": "/project",
+      "img": {
+        "src": "https://res.cloudinary.com/okikio-assets/image/upload/city.jpg",
+        "alt": ""
+      }
     },
     {
-      "name": ["Github", "Git"],
-      "href": "https://github.com/okikio"
-    }, {
-      "name": ["LinkedIn", "Lk"],
-      "href": "https://www.linkedin.com/in/okiki-o-a5287213b"
-    },
-    {
-      "name": ["Mail", "@"],
-      "href": "mailto:okikio.dev@gmail.com"
+      "name": "Project",
+      "detail": "Lorem itpsim",
+      "href": "/project",
+      "img": {
+        "src": "https://res.cloudinary.com/okikio-assets/image/upload/blue-sky.jpg",
+        "alt": ""
+      }
     }
   ]
 }

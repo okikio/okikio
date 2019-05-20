@@ -31,60 +31,17 @@
             <article class="layout-contain layout-contain-large">
                 <section class="layout-shorten-horz layer-projects">
                     <section class="layout-row">
-                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
-                            <section class="layout-image-contain">
-                                <load-img src="https://images.unsplash.com/photo-1554728108-77f82515dc82?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
-                                <section class="layer-content style-yellow">
-                                    <h5 class="style-uppercase style-bolder">Project</h5>
-                                    <p class="layer-details">Lorem itpsim</p>
+                        {% for project in projects %}
+                            <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
+                                <section class="layout-image-contain">
+                                    <load-img src="{{ project.img.src }}" alt="{{ project.img.alt }}"></load-img>
+                                    <section class="layer-content style-yellow">
+                                        <h5 class="style-uppercase style-bolder">{{ project.name }}</h5>
+                                        <p class="layer-details">{{ project.detail }}</p>
+                                    </section>
                                 </section>
                             </section>
-                        </section>
-                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
-                            <section class="layout-image-contain">
-                                <load-img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
-                                <section class="layer-content style-yellow">
-                                    <h5 class="style-uppercase style-bolder">Project</h5>
-                                    <p class="layer-details">Lorem itpsim</p>
-                                </section>
-                            </section>
-                        </section>
-                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
-                            <section class="layout-image-contain">
-                                <load-img src="https://images.unsplash.com/photo-1548268770-66184a21657e?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
-                                <section class="layer-content style-yellow">
-                                    <h5 class="style-uppercase style-bolder">Project</h5>
-                                    <p class="layer-details">Lorem itpsim</p>
-                                </section>
-                            </section>
-                        </section>
-                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
-                            <section class="layout-image-contain">
-                                <load-img src="https://images.unsplash.com/photo-1554728108-77f82515dc82?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
-                                <section class="layer-content style-yellow">
-                                    <h5 class="style-uppercase style-bolder">Project</h5>
-                                    <p class="layer-details">Lorem itpsim</p>
-                                </section>
-                            </section>
-                        </section>
-                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
-                            <section class="layout-image-contain">
-                                <load-img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
-                                <section class="layer-content style-yellow">
-                                    <h5 class="style-uppercase style-bolder">Project</h5>
-                                    <p class="layer-details">Lorem itpsim</p>
-                                </section>
-                            </section>
-                        </section>
-                        <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
-                            <section class="layout-image-contain">
-                                <load-img src="https://images.unsplash.com/photo-1548268770-66184a21657e?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt=""></load-img>
-                                <section class="layer-content style-yellow">
-                                    <h5 class="style-uppercase style-bolder">Project</h5>
-                                    <p class="layer-details">Lorem itpsim</p>
-                                </section>
-                            </section>
-                        </section>
+                        {% endfor %}
                     </section>
                 </section>
             </article>

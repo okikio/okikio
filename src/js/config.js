@@ -1,7 +1,6 @@
 /* ---- particles.js config ---- */
 var particlesJS = window.particlesJS; // ParticleJS
-var $ = window.jQuery; // JqueryS
-if (particlesJS && $ && $("#particles-js").length) {
+if (particlesJS && document.querySelectorAll("#particles-js").length) {
     particlesJS("particles-js", {
         "particles": {
             "number": {
