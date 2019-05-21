@@ -7,7 +7,7 @@
 
 {% block content %}
     <!-- Set activePage = 'contact' -->
-    {{nav.active('contact')}}
+    {{ nav.active('contact', social_links) }}
     
     <!-- main -->
     <main class="main">

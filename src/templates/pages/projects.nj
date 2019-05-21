@@ -7,7 +7,7 @@
 
 {% block content %}
     <!-- Set activePage = 'projects' -->
-    {{nav.active('projects')}}
+    {{ nav.active('projects', social_links) }}
     
     <!-- main -->
     <main class="main">
@@ -47,9 +47,9 @@
             </article>
         </section>
         <!-- /layer -->
-
+        
         <!-- layer -->
-        <section class="layer layer-black layout-center">
+        <section class="layer layer-black">
             <!-- Adds the back-to-top partial -->
             {% include "./partials/back-to-top.nj" %}
         </section>

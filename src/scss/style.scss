@@ -397,6 +397,11 @@ li {
     margin-left: 8px;
 }
 
+.btn.scroll-btn {
+    position: relative;
+    bottom: 0;
+}
+
 /* -- Header -- */
 /* -- Navigation -- */
 .navbar {
@@ -1351,8 +1356,7 @@ ul.navbar-list:not(.link-foot):hover + .navbar-select {
 .social-sidebar {
     position: absolute;
     height: 100vh;
-    width: 90px;
-    right: 60px;
+    right: 0;
     top: 0;
 }
 

@@ -1,6 +1,6 @@
 <!-- header.nj -->
 
-{% macro active(activePage='home') %}
+{% macro active(activePage, social_links) %}
 <!-- header -->
 <header class="header">
     <div class="bkg"></div>
