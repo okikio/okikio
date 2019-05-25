@@ -23,7 +23,7 @@ app.engine("html", function (filePath, options, callback) {
 });
 app.set('views', path.join(__dirname, './public'));
 app.set('view engine', 'html');
-// app.set('view cache', true);
+app.set('view cache', true);
 
 app.use(logger('dev'));
 app.use(express.json());
