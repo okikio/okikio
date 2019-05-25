@@ -27,7 +27,8 @@ var AUTOPREFIXER_BROWSERS = [
 ];
 
 var BABEL_POLYFILL = 'node_modules/@babel/polyfill/dist/polyfill.js'; // Include polyfills
-var JS_LIBRARIES = 'src/js/{anime,barba,particles,config}*.js'; // All .js libraries and the config.js file
+var JS_LIBRARIES = 'src/js/{anime,barba,transitions}*.js'; // All .js libraries and the transitions.js file
+var PARTICLE_JS = "src/js/{particles,config}*.js"; // Particle.js library and the config.js file
 
 var html, css, js;
 var CLIENT_BABEL_OPTS = { 'presets': ['@babel/env'] };
@@ -70,8 +71,21 @@ gulp.task("js", js = function js() {
         // Output
         .pipe(gulp.dest('public/js')),
 
+        // Gets the files required for particles.js files in src/js folder
+        gulp.src(PARTICLE_JS)
+        // Create source maps 
+        .pipe(sourcemaps.init())
+        // Put all the code into on build file
+        .pipe(concat('particles.min.js'))
+        // Minify the file
+        .pipe(uglify())
+        // Place sourcemaps in the same folder
+        .pipe(sourcemaps.write('.'))
+        // Output
+        .pipe(gulp.dest('public/js')),
+
         // Gets the custom .js files in src/js folder
-        gulp.src(["src/js/*.js", "!" + JS_LIBRARIES])
+        gulp.src(["src/js/*.js", `!${JS_LIBRARIES}`, `!${PARTICLE_JS}`])
         // Create source maps 
         .pipe(sourcemaps.init())
         // Add babel ES7 support

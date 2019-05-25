@@ -1,10 +1,13 @@
-var cookieParser = require('cookie-parser');
-var compress = require('compression');
-var express = require('express');
-var logger = require('morgan');
-var path = require('path');
-var fs = require("fs");
-var app = express();
+let cookieParser = require('cookie-parser');
+let compress = require('compression');
+let express = require('express');
+let logger = require('morgan');
+let path = require('path');
+let fs = require("fs");
+let app = express();
+
+// List of Projects
+let projects = require("./src/data.json").projects;
 
 // Compress/GZIP Server
 app.use(compress());
@@ -15,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'src'), { maxAge: '2592000' }));
 app.engine("html", function (filePath, options, callback) {
     fs.readFile(filePath, function (err, content) {
         if (err) return callback(err);
-        return callback(null, content.toString())
+        return callback(null, content.toString());
     });
 });
 app.set('views', path.join(__dirname, './public'));
@@ -33,6 +36,24 @@ app.get('/', function(req, res, next) {
 
 app.get('/about-me', function(req, res, next) {
     res.render('about-me');
+});
+
+app.get('/projects', function(req, res, next) {
+    res.render('projects');
+});
+
+app.get('/project', function(req, res, next) {
+    res.render('project');
+});
+
+projects.forEach((v, i) => {
+    app.get(`/project/${i}`, function(req, res, next) {
+        res.render('project');
+    });
+});
+
+app.get('/contact', function(req, res, next) {
+    res.render('contact');
 });
 
 module.exports = app;

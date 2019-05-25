@@ -2,7 +2,10 @@
 {% extends "layout.nj" %}
 
 {% block style %}
-    <link rel="stylesheet" href="./css/projects.min.css">
+    {% for project in projects %}
+        <link rel="prerender" href="/project/{{ loop.index0 }}" as="html" crossorigin="anonymous">
+    {% endfor %}
+    <link rel="stylesheet" href="../css/projects.min.css">
 {% endblock %}
 
 {% block content %}
@@ -33,13 +36,15 @@
                     <section class="layout-row">
                         {% for project in projects %}
                             <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
-                                <section class="layout-image-contain">
-                                    <load-img src="{{ project.img.src }}" alt="{{ project.img.alt }}"></load-img>
-                                    <section class="layer-content style-yellow">
-                                        <h5 class="style-uppercase style-bolder">{{ project.name }}</h5>
-                                        <p class="layer-details">{{ project.detail }}</p>
+                                <a href="/project/{{ loop.index0 }}" class="layout-block"> 
+                                    <section class="layout-image-contain">
+                                        <load-img src="{{ project.img.src }}" alt="{{ project.img.alt }}"></load-img>
+                                        <section class="layer-content style-yellow">
+                                            <h5 class="style-uppercase style-bolder">{{ project.name }}</h5>
+                                            <p class="layer-details">{{ project.detail }}</p>
+                                        </section>
                                     </section>
-                                </section>
+                                </a>
                             </section>
                         {% endfor %}
                     </section>
@@ -49,7 +54,7 @@
         <!-- /layer -->
         
         <!-- layer -->
-        <section class="layer layer-black">
+        <section class="layer layout-padding-vert-bottom-large layer-black scroll-snap">
             <!-- Adds the back-to-top partial -->
             {% include "./partials/back-to-top.nj" %}
         </section>

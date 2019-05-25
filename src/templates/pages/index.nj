@@ -30,3 +30,7 @@
     </main>
     <!-- /main -->
 {% endblock %}
+
+{% block script %} 
+    <script src="../js/particles.min.js"></script>
+{% endblock %}

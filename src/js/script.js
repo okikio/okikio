@@ -36,7 +36,7 @@ class Ele {
             return elems;
         });
     }
-    animate(opt) {
+    animate(opt = {}) {
         anime({
             targets: this.sel,
             ...opt
@@ -170,7 +170,7 @@ class Navbar extends Ele {
     }
     select(offset = 100) {
         this.link.hover(e => {
-            let wid = this.width(e.target) - offset;
+            let wid = e.target.offsetWidth - offset;
             let pos = e.target.offsetLeft + (offset / 2);
             this.focus.each(function (ele) {
                 this.style(ele, { 
@@ -232,49 +232,54 @@ class Img extends Ele {
         this.promise = [];
     }
     init(resolve, reject, el) {
-        let img = new Image();
         let src = el.getAttribute(this.src);
         let alt = el.getAttribute(this.alt);
         let _class = el.className;
+        
+        let img = new Image();
         img.src = this.path + src;
-        img.onload = function () {
+        img.onload = () => {
             resolve([el, img, src, alt, _class]);
         };
 
-        img.onerror = (e) => { reject(e); };
+        img.onerror = e => { reject(e); };
         return this;
     }
     start() { 
         if (this.ele.length) {
             this.each((el, i) => {
-                this.promise[i] = new Promise(function (resolve, reject) {
+                let src = el.getAttribute(this.src);
+                this.promise[i] = src.includes("<%") ? {} : new Promise(function (resolve, reject) {
                     this.init.call(this, resolve, reject, el);
                 }.bind(this));
             });
+            
             this.load(args => {
                 let [el, img, src, alt, _class] = args;
                 img.setAttribute("alt", alt);
                 img.classList.add(this.sel);
                 _class && img.classList.add(_class);
                 el.insertAdjacentElement('beforebegin', img);
-                el.parentNode.removeChild(el);
+                el.remove();
             });
 
             this.err(e => {
-                console.log("One of the images didn't load: " + e);
+                console.log(`One of the images didn't load: ${e.message}`);
             });
         }
         return this; 
     }
     load(fn = () => {}) { 
         this.each((el, i) => {
-            this.promise[i].then(fn.bind(this));
+            let promise = this.promise[i];
+            promise.then && promise.then(fn.bind(this));
         });
         return this; 
     }
     err(fn = () => {}) { 
         this.each((el, i) => {
-            this.promise[i].catch(fn.bind(this)); 
+            let promise = this.promise[i];
+            promise.catch && promise.catch(fn.bind(this)); 
         });
         return this; 
     }
@@ -362,13 +367,11 @@ view.resize()
     .ready(() => {
         if (downBtn.ele.length) {
             // When clicked goes down to the next layer that scrolling can snap too (".scroll-snap" class)
-            // let top = view.y(view.ele[0]); 
             downBtn.each((el, i) => {
                 el.addEventListener("click", e => {
                     e.preventDefault();
                     let limit = Math.min(i + 1, scrollSnap.ele.length - 1);
                     let next = scrollSnap.ele[limit];
-                    console.log(scrollSnap.y(next));
                     view.animate({ 
                         scrollTop: scrollSnap.y(next),
                         easing: "easeInOutQuad",

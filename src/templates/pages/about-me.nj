@@ -63,7 +63,7 @@
         <!-- /layer -->
         
         <!-- layer -->
-        <section class="layer layer-black">
+        <section class="layer layout-padding-vert-bottom-large layer-black scroll-snap">
             <!-- Adds the back-to-top partial -->
             {% include "./partials/back-to-top.nj" %}
         </section>
