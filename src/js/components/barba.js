@@ -1,11 +1,11 @@
 import barba from '@barba/core';
-import Registry from "./registry";
+import barbaPrefetch from '@barba/prefetch';
 import Transition from "./transition";
 
 for (let [i, v] of Object.entries(Transition.base)) {
     barba.hooks[i](v);
 }
 
-barba.init({
-    transitions: Registry.values("transition-list")
-});
+// Tell Barba to use the prefetch module
+barba.use(barbaPrefetch);
+barba.init();

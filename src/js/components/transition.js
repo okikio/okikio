@@ -2,7 +2,8 @@ import anime from 'animejs';
 import Util from "./util";
 import Registry from "./registry";
 import Page from '../components/page';
-
+        
+const doc = window.document;
 class Transition {
     constructor(opt = {}) {
         this.opt = opt; // Options
@@ -24,12 +25,10 @@ class Transition {
 Transition.all({
     leave({ current, next, trigger }) {
         const done = this.async();
-        const doc = window.document;
         let url = next.url.path;
-        if (current.url.path == url) return done();
+        // if (current.url.path == trigger.href) return done();
         
         let page = Registry.load("page-list", Util.routeName(url));
-
         anime.timeline()
             .add({
                 targets: doc.scrollingElement || doc.body || doc.documentElement,
@@ -38,20 +37,20 @@ Transition.all({
                 duration: 400
             })
             .add({
-                targets: ".header #yellow-banner",
+                targets: "#yellow-banner",
                 height: "100vh",
                 easing: "easeOutSine",
-                duration: 800,
-                complete() {
-                    done();
-                }
-            })
+                duration: 400
+            }, 0)
             .add({
-                targets: ".header #yellow-banner",
+                targets: "#yellow-banner",
                 easing: "easeOutSine",
                 delay: 500,
                 height: "0",
                 duration: 800,
+                begin() {
+                    done();
+                },
                 complete() {
                     Util.pageSetup(url);
                     Page.prototype.init.call(page || {}, url);

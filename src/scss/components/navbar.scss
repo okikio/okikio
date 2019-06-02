@@ -1,6 +1,12 @@
 /* -- Header -- */
+.header {
+    z-index: 1800;
+    color: #000;
+    width: 100%;
+}
+
 /* -- Navigation -- */
-.header, .navbar {
+.navbar {
     justify-content: flex-start;
     flex-direction: column;
     position: relative;
@@ -8,7 +14,7 @@
     overflow: hidden;
     background: none;
     flex-shrink: 0;
-    z-index: 1800;
+    z-index: 1400;
     height: 55px;
     color: #000;
     width: 100%;
