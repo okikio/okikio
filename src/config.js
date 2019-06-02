@@ -1,4 +1,4 @@
-{
+module.exports = {
   "social_links": [
     {
       "name": ["Twitter", "Tw"],
@@ -52,4 +52,4 @@
       }
     }
   ]
-}
+};

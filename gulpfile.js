@@ -51,7 +51,7 @@ gulp.task('watch', done => {
 
     gulp.watch(['src/**/*.js', 'src/**/*.scss', 'src/**/*.njk', 'src/config.json'], { delay: 500 },
         cb => {
-            exec('parcel build src/njk/pages/*.njk -d public', (err, stdout, stderr) => {
+            exec('npm run build', (err, stdout, stderr) => {
                 if (err) { return; }
 
                 // the *entire* stdout and stderr (buffered)

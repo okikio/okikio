@@ -16,10 +16,12 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "jsdom": "^15.1.1",
     "lodash.template": "^4.4.0",
     "lodash.unescape": "^4.0.1",
     "morgan": "~1.9.1",
-    "particles.js": "^2.0.0"
+    "particles.js": "^2.0.0",
+    "underscore": "^1.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -32,7 +34,6 @@
     "nodemon": "^1.19.0",
     "nunjucks": "^3.2.0",
     "parcel-bundler": "^1.12.3",
-    "parcel-plugin-json-url-loader": "^0.1.2",
     "parcel-plugin-nunjucks": "^1.1.0",
     "parcel-plugin-sw-cache": "^0.2.7",
     "postcss-modules": "^1.4.1",

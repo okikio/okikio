@@ -7,7 +7,7 @@
         <section class="layer layer-intro layer-max-height layer-black scroll-snap">
             <article class="layer-max-height layer-overflow-hide">
                 <section class="layer-image layer-max-height">
-                    <load-img src="<%= img.src %>" alt="<%= img.alt %>"></load-img>
+                    <load-img src="%= img.src %" alt="%= img.alt %"></load-img>
                 </section>
             </article>
         </section>
@@ -18,7 +18,7 @@
             <article class="layout-contain-large layer-overflow-hide layout-padding-vert-top-large">
                 <section class="layout layout-flex layout-align-items-center layout-justify-content-center">
                     <h1 class="style-yellow style-bold layer-title">
-                        <span class="style-yellow style-bolder style-center style-uppercase"><%= name %></span>.
+                        <span class="style-yellow style-bolder style-center style-uppercase">%= name %</span>.
                     </h1>
                 </section>
             </article>
@@ -31,14 +31,14 @@
                 <section class="layout style-white">
                     <section class="layer-image layer-tile">
                         <section class="layout-image-contain">
-                            <load-img src="<%= img.src %>" alt="<%= img.alt %>"></load-img>
+                            <load-img src="%= img.src %" alt="%= img.alt %"></load-img>
                             <section class="layer-content style-yellow">
-                                <h5 class="style-uppercase style-bolder"><%= name %></h5>
-                                <p class="layer-details"><%= detail %></p>
+                                <h5 class="style-uppercase style-bolder">%= name %</h5>
+                                <p class="layer-details">%= detail %</p>
                             </section>
                         </section>
                     </section>
-                    <section class="layout-contain-small"><%= info %></section>
+                    <section class="layout-contain-small">%= info %</section>
                 </section>
             </article>
         </section>
@@ -51,7 +51,7 @@
         <section class="layer scroll-snap">
             <article class="layout-shorten layout-contain layer-overflow-hide">
                 <section class="layout-flex layout-flex-wrap">
-                    <a href="/project/<%= prevNum %>" class="btn btn-round layer-yellow scroll-btn style-black">
+                    <a href="/project/%= prevNum %" class="btn btn-round layer-yellow scroll-btn style-black">
                         <span class="btn-text style-regular style-uppercase style-spaceout-small style-black">Previous</span>
                     </a>
                     <section class="layout-spacer layout-flex layout-justify-content-center">
@@ -59,7 +59,7 @@
                             <span class="btn-text style-regular style-uppercase style-spaceout-small style-yellow">Go to the Top</span>
                         </a>
                     </section>
-                    <a href="/project/<%= nextNum %>" class="btn btn-round layer-yellow scroll-btn style-black">
+                    <a href="/project/%= nextNum %" class="btn btn-round layer-yellow scroll-btn style-black">
                         <span class="btn-text style-regular style-uppercase style-spaceout-small style-black">Next</span>
                     </a>
                 </section>

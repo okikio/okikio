@@ -9,9 +9,15 @@ let fs = require("fs");
 let app = express();
 let server, port;
 
+// For faster more efficient page switching
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
 // A quick function for webpage get requests
 let render = (page = "index") => {
-    return (req, res, next) => { res.render(page); };
+    return (req, res, next) => {
+        res.render(page, { barba: req.header("x-barba") });
+    };
 };
 
 // Normalize a port into a number, string, or false.
@@ -32,9 +38,15 @@ app.use(express.static(path.join(__dirname, 'src'), { maxAge: '2592000' }));
 
 // view engine setup
 app.engine("html", function(filePath, options, callback) {
+    let barba = options.barba, val, dom;
     fs.readFile(filePath, function(err, content) {
         if (err) return callback(err);
-        return callback(null, content.toString());
+        val = content.toString();
+        if (barba) {
+            dom = new JSDOM(val).window.document;
+            val = dom.querySelector('[data-barba="container"]').outerHTML;
+        }
+        return callback(null, val);
     });
 });
 
