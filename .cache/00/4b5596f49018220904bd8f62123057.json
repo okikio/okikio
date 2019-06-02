@@ -1,1 +1,0 @@
-{"id":"project/{{ loop.index0 }}","dependencies":[{"name":"/home/ubuntu/workspace/package.json","includedInParent":true,"mtime":1559262863789},{"name":"/home/ubuntu/workspace/.browserslistrc","includedInParent":true,"mtime":1559078682406}],"generated":{"js":"module.exports = {};"},"sourceMaps":null,"error":null,"hash":"a7cc9d502c81b0871aec00b7dee3903c","cacheData":{"env":{}}}
