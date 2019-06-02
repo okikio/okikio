@@ -1,0 +1,140 @@
+/* -- Mobile -- */
+.mobile-only-show {
+    display: none;
+}
+
+.mobile-on .mobile-only-show {
+    display: block;
+}
+
+.mobile-on .bkg,
+.mobile-on .navbar {
+    height: 100%;
+}
+
+.mobile-on .navbar-head,
+.mobile-on .navbar-foot {
+    position: absolute;
+    height: 60px;
+}
+
+.mobile-on .navbar-title,
+.mobile-on .navbar-menu,
+.mobile-on ~ .copyright-bar a,
+.mobile-on ~ .copyright-bar a:hover,
+.header:hover .navbar-title,
+.header:hover .navbar-menu,
+.header:hover li.navbar-link a {
+    color: black;
+}
+
+.mobile-on .navbar-head {
+    left: 0;
+}
+
+.mobile-on .navbar-main { /* OLD - iOS 6-, Safari 3.1-6 */ /* Safari 6.1+. iOS 7.1+, BB10 */ /* IE 10 */
+    flex: 1;
+}
+
+.header:hover .navbar-foot:after,
+.mobile-on .navbar-foot:after {
+    background: black !important;
+}
+
+@media (max-width: 650px) {
+    .not-mobile {
+        display: none;
+    }
+}
+
+.mobile-on ul.navbar-list {
+    flex-direction: column; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */ /* TWEENER - IE 10 */
+    display: flex;
+    height: 100vh;
+}
+
+.mobile-on li.navbar-link {
+    -webkit-animation: fadeIn 1s ease forwards;
+            animation: fadeIn 1s ease forwards;
+    -webkit-animation-delay: 0.35s;
+            animation-delay: 0.35s;
+    opacity: 0;
+}
+
+.mobile-on li.navbar-link:nth-of-type(2) {
+    -webkit-animation-delay: 0.55s;
+            animation-delay: 0.55s;
+}
+
+.mobile-on li.navbar-link:nth-of-type(3) {
+    -webkit-animation-delay: 0.75s;
+            animation-delay: 0.75s;
+}
+
+.mobile-on li.navbar-link a {
+    line-height: 80px;
+    font-size: 38px;
+    color: black;
+    padding: 0;
+}
+
+.mobile-on li.navbar-link a:hover {
+    text-decoration: line-through;
+}
+
+.mobile-on ul.navbar-list:hover + .navbar-select {
+    opacity: 0;
+}
+
+@-webkit-keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.mobile-on .social-sidebar {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+}
+
+.mobile-on ~ .main .social-sidebar {
+    display: none;
+}
+
+.mobile-on .social-sidebar ul,
+.mobile-on .social-sidebar li { /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.mobile-on .social-sidebar li a {
+    -webkit-animation: fadeIn 1s ease forwards;
+            animation: fadeIn 1s ease forwards;
+    -webkit-animation-delay: 0.95s;
+            animation-delay: 0.95s;
+    text-align: center;
+    line-height: 30px;
+    padding: 0 12px;
+    font-size: 15px;
+    color: black;
+    width: 100%;
+    opacity: 0;
+}
+
+.mobile-on .navbar-foot {
+    right: 0;
+}
+
+.mobile-on .navbar-foot:after {
+    background: black;
+}

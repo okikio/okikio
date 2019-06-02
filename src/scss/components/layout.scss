@@ -1,0 +1,625 @@
+/* 
+    -- Layout (margin, padding, postion, shape, etc...) --
+     * vert = vertical 
+     * horz = horizontal
+*/
+/* 
+    -- Base Layouts (these tamper with all the layout setting and provide a great start for a layer) -- 
+*/
+.layout {
+    padding-bottom: 100px;
+    padding-right: 80px;
+    padding-top: 100px;
+    padding-left: 80px;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.layout-enlarge,
+.layout-enlarge-vert {
+    padding-bottom: 180px;
+    padding-top: 180px;
+}
+
+.layout-enlarge,
+.layout-enlarge-horz {
+    padding-right: 120px;
+    padding-left: 120px;
+}
+
+.layout-shorten,
+.layout-shorten-vert {
+    padding-bottom: 50px;
+    padding-top: 50px;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.layout-shorten,
+.layout-shorten-horz {
+    padding-right: 50px;
+    padding-left: 50px;
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@media (max-width: 500px) {
+    .layout {
+        padding-bottom: 50px;
+        padding-right: 40px;
+        padding-top: 50px;
+        padding-left: 40px;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .layout-enlarge,
+    .layout-enlarge-vert {
+        padding-bottom: 90px;
+        padding-top: 90px;
+    }
+
+    .layout-enlarge,
+    .layout-enlarge-horz {
+        padding-right: 60px;
+        padding-left: 60px;
+    }
+
+    .layout-shorten,
+    .layout-shorten-vert {
+        padding-bottom: 25px;
+        padding-top: 25px;
+        position: relative;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .layout-shorten,
+    .layout-shorten-horz {
+        padding-right: 25px;
+        padding-left: 25px;
+        position: relative;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .layout-shrink,
+    .layout-shrink-vert {
+        padding-bottom: 50px !important;
+        padding-top: 50px !important;
+    }
+
+    .layout-shrink,
+    .layout-shrink-horz {
+        padding-right: 40px !important;
+        padding-left: 40px !important;
+    }
+
+    .layout-shrink-shorten,
+    .layout-shrink-shorten-vert {
+        padding-bottom: 25px !important;
+        padding-top: 25px !important;
+    }
+
+    .layout-shrink-shorten,
+    .layout-shrink-shorten-horz {
+        padding-right: 25px !important;
+        padding-left: 25px !important;
+    }
+
+    .layout-shrink-mini,
+    .layout-shrink-mini-vert {
+        padding-bottom: 15px !important;
+        padding-top: 15px !important;
+    }
+
+    .layout-shrink-mini,
+    .layout-shrink-mini-horz {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+}
+
+/* -- Layout Type (block, inline-block, inline, flex) -- */
+.layout-block {
+    display: block;
+}
+
+.layout-flex {
+    display: flex;
+}
+
+.layout-flex-center {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.layout-align-items-start {
+    align-items: flex-start;
+}
+
+.layout-align-items-center {
+    align-items: center;
+}
+
+.layout-align-items-stretch {
+    align-items: stretch;
+}
+
+.layout-align-items-end {
+    align-items: flex-end;
+}
+
+.layout-justify-content-start {
+    justify-content: start;
+}
+
+.layout-justify-content-center {
+    justify-content: center;
+}
+
+.layout-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.layout-flex-row {
+    flex-direction: row;
+}
+
+.layout-flex-col {
+    flex-direction: column;
+}
+
+.layout-spacer { /* OLD - iOS 6-, Safari 3.1-6 */ /* Safari 6.1+. iOS 7.1+, BB10 */ /* IE 10 */
+    flex: 1;
+}
+
+.layout-inline {
+    display: inline;
+}
+
+.layout-inline-block {
+    display: inline-block;
+}
+
+/* -- Position (horizontal - left, center, right) -- */
+.layout-left {
+    position: relative;
+    float: left;
+}
+
+.layout-center {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.layout-right {
+    position: relative;
+    float: right;
+}
+
+/* -- Container (keep the page focused and content central) -- */
+.layout-contain,
+.layout-contain-large {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.layout-contain-small {
+    max-width: 550px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@media (min-width: 300px) {
+    .layout-slim {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (min-width: 800px) {
+    .layout-contain,
+    .layout-contain-large {
+        max-width: 800px;
+    }
+}
+
+@media (min-width: 900px) {
+    .layout-contain-small {
+        max-width: 700px;
+    }
+
+    .layout-contain,
+    .layout-contain-large {
+        max-width: 1000px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .layout-contain-large {
+        max-width: 1200px;
+    }
+}
+
+/* 
+    -- Margins (create margin defaults for left, top, right, bottom) -- 
+     * dull = value is 0
+*/
+/* -- Horizontal Margin -- */
+.layout-margin-dull,
+.layout-margin-horz-dull,
+.layout-margin-horz-left-dull {
+    margin-left: 0 !important;
+}
+
+.layout-margin-dull,
+.layout-margin-horz-dull,
+.layout-margin-horz-right-dull {
+    margin-right: 0 !important;
+}
+
+.layout-margin-horz {
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+.layout-margin-horz-small {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.layout-margin-horz-mid {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.layout-margin-horz-large {
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.layout-margin-horz-left {
+    margin-left: 25px;
+}
+
+.layout-margin-horz-right {
+    margin-right: 25px;
+}
+
+.layout-margin-horz-left-small {
+    margin-left: 15px;
+}
+
+.layout-margin-horz-right-small {
+    margin-right: 15px;
+}
+
+.layout-margin-horz-left-mid {
+    margin-left: 20px;
+}
+
+.layout-margin-horz-right-mid {
+    margin-right: 20px;
+}
+
+.layout-margin-horz-left-large {
+    margin-left: 50px;
+}
+
+.layout-margin-horz-right-large {
+    margin-right: 50px;
+}
+
+/* -- Vertical Margin -- */
+.layout-margin-dull,
+.layout-margin-vert-dull,
+.layout-margin-vert-top-dull {
+    margin-top: 0 !important;
+}
+
+.layout-margin-dull,
+.layout-margin-vert-dull,
+.layout-margin-vert-bottom-dull {
+    margin-bottom: 0 !important;
+}
+
+.layout-margin-vert {
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.layout-margin-vert-small {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.layout-margin-vert-mid {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.layout-margin-vert-large {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.layout-margin-vert-top {
+    margin-top: 25px;
+}
+
+.layout-margin-vert-bottom {
+    margin-bottom: 25px;
+}
+
+.layout-margin-vert-top-small {
+    margin-top: 15px;
+}
+
+.layout-margin-vert-bottom-small {
+    margin-bottom: 15px;
+}
+
+.layout-margin-vert-top-mid {
+    margin-top: 20px;
+}
+
+.layout-margin-vert-bottom-mid {
+    margin-bottom: 20px;
+}
+
+.layout-margin-vert-top-large {
+    margin-top: 50px;
+}
+
+.layout-margin-vert-bottom-large {
+    margin-bottom: 50px;
+}
+
+/* 
+    -- Paddings (create padding defaults for left, top, right, bottom) -- 
+     * dull = the value is 0 
+*/
+/* -- Horizontal Padding -- */
+.layout-padding-dull,
+.layout-padding-horz-dull,
+.layout-padding-horz-dull-left {
+    padding-left: 0 !important;
+}
+
+.layout-padding-dull,
+.layout-padding-horz-dull,
+.layout-padding-horz-dull-right {
+    padding-right: 0 !important;
+}
+
+.layout-padding-horz {
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.layout-padding-horz-small {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.layout-padding-horz-mid {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.layout-padding-horz-large {
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.layout-padding-horz-left {
+    padding-left: 25px;
+}
+
+.layout-padding-horz-right {
+    padding-right: 25px;
+}
+
+.layout-padding-horz-left-small {
+    padding-left: 15px;
+}
+
+.layout-padding-horz-right-small {
+    padding-right: 15px;
+}
+
+.layout-padding-horz-left-mid {
+    padding-left: 20px;
+}
+
+.layout-padding-horz-right-mid {
+    padding-right: 20px;
+}
+
+.layout-padding-horz-left-large {
+    padding-left: 50px;
+}
+
+.layout-padding-horz-right-large {
+    padding-right: 50px;
+}
+
+/* -- Vertical Padding -- */
+.layout-padding-dull,
+.layout-padding-vert-dull,
+.layout-padding-vert-dull-top {
+    padding-top: 0 !important;
+}
+
+.layout-padding-dull,
+.layout-padding-vert-dull,
+.layout-padding-vert-dull-bottom {
+    padding-bottom: 0 !important;
+}
+
+.layout-padding-vert {
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+.layout-padding-vert-small {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.layout-padding-vert-mid {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.layout-padding-vert-large {
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+.layout-padding-vert-top {
+    padding-top: 25px;
+}
+
+.layout-padding-vert-bottom {
+    padding-bottom: 25px;
+}
+
+.layout-padding-vert-top-small {
+    padding-top: 15px;
+}
+
+.layout-padding-vert-bottom-small {
+    padding-bottom: 15px;
+}
+
+.layout-padding-vert-top-mid {
+    padding-top: 20px;
+}
+
+.layout-padding-vert-bottom-mid {
+    padding-bottom: 20px;
+}
+
+.layout-padding-vert-top-large {
+    padding-top: 50px;
+}
+
+.layout-padding-vert-bottom-large {
+    padding-bottom: 50px;
+}
+
+/* -- Clearfix (fix for using float) -- */
+.layout-clearfix::after,
+.layout-clearfix::before,
+.layout-contain::after,
+.layout-contain::before,
+.layout-contain-small::after,
+.layout-contain-small::before,
+.layout-row::after,
+.layout-row::before {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+/* -- Rows & Columns -- */
+.layout-row { /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    flex-flow: row wrap;
+    display: flex;
+}
+
+.layout-row [class*="layout-col"] {
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+}
+
+.layout-row .layout-col {
+    max-width: 100%;
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+@media (max-width: 950px) {
+    .layout-row [class*="layout-col-"]:not(.layout-col-12) {
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 650px) {
+    .layout-row [class*="layout-col-"] {
+        max-width: 100% !important;
+    }
+}
+
+@media (min-width: 650px) {
+    .layout-row [class*="layout-col"] {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .layout-contain .layout-row {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+}
+
+@media (min-width: 950px) {
+    .layout-col-1 {
+        max-width: 10.33333333333%;
+    }
+
+    .layout-col-2 {
+        max-width: 18.6666666667%;
+    }
+
+    .layout-col-3 {
+        max-width: 25%;
+    }
+
+    .layout-col-4 {
+        max-width: 33.33333333%;
+    }
+
+    .layout-col-5 {
+        max-width: 41.6666666667%;
+    }
+
+    .layout-col-6 {
+        max-width: 50%;
+    }
+
+    .layout-col-7 {
+        max-width: 58.3333333333%;
+    }
+
+    .layout-col-8 {
+        max-width: 66.66666667%;
+    }
+
+    .layout-col-9 {
+        max-width: 75%;
+    }
+
+    .layout-col-10 {
+        max-width: 83.3333333333%;
+    }
+
+    .layout-col-11 {
+        max-width: 91.6666666667%;
+    }
+
+    .layout-col-12 {
+        max-width: 100%;
+    }
+}

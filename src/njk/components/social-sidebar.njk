@@ -1,0 +1,13 @@
+<!-- social-sidebar.njk -->
+
+<!-- social-sidebar -->
+<section class="social-sidebar perspec-sidebar style-white layout-flex">
+    <article class="layout-flex layout-flex-center">
+        <ul class="list-none">
+            {% for link in social_links %}
+                <li title="{{ link.name[0] }}"><a href="{{ link.href }}">{{ link.name[1] }}</a></li>
+            {% endfor %}
+        </ul>
+    </article>
+</section>
+<!-- /social-sidebar -->

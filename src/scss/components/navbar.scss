@@ -1,0 +1,192 @@
+/* -- Header -- */
+/* -- Navigation -- */
+.header, .navbar {
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    background: none;
+    flex-shrink: 0;
+    z-index: 1800;
+    height: 55px;
+    color: #000;
+    width: 100%;
+}
+
+.navbar-fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.navbar-layout {
+    transition: width 0.35s ease; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    flex-direction: row;
+    will-change: width;
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.navbar-head { /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    left: 0;
+    top: 0;
+}
+
+.navbar-head,
+.navbar-foot {
+    transition: color 0.35s ease;
+    will-change: color;
+    height: 55px;
+}
+
+.navbar-title {
+    font-family: "Helvetica", "Arial", sans-serif !important;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    position: relative;
+    font-size: 17px;
+    flex-shrink: 0;
+    margin: 5px 0;
+    color: yellow;
+}
+
+.navbar-spacer { /* OLD - iOS 6-, Safari 3.1-6 */ /* Safari 6.1+. iOS 7.1+, BB10 */ /* IE 10 */
+    flex: 1;
+}
+
+ul.navbar-list {
+    justify-content: center; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    align-items: center;
+    white-space: nowrap;
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+li.navbar-link a {
+    font-family: "Montserrat", sans-serif;
+    -ms-word-break: keep-all !important;
+    word-break: keep-all !important;
+    text-decoration: none;
+    vertical-align: middle;
+    letter-spacing: 2px;
+    align-self: center;
+    line-height: 60px;
+    font-weight: 600;
+    padding: 0 28px;
+    cursor: pointer;
+    font-size: 12px;
+    display: block;
+    color: yellow;
+}
+
+li.navbar-link:hover a {
+    color: yellow;
+}
+
+li.navbar-link-focus a {
+    text-decoration: line-through;
+    color: yellow;
+}
+
+.navbar-select {
+    transition: left 0.35s ease, width 0.35s ease, opacity 0.35s ease;
+    will-change: left, width, opacity;
+    border-radius: 4px;
+    position: absolute;
+    background: black;
+    display: block;
+    height: 8px;
+    width: 35px;
+    opacity: 0;
+    top: -4px;
+    left: 0;
+}
+
+ul.navbar-list:not(.link-foot):hover + .navbar-select {
+    opacity: 1;
+}
+
+.navbar-foot {
+    justify-content: center; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    right: 0;
+}
+
+.navbar-menu {
+    transition: color 0.35s ease;
+    will-change: color;
+    display: none;
+}
+
+@media (max-width: 650px) {
+    .navbar-head,
+    .navbar-foot {
+        position: absolute;
+    }
+    
+    .navbar-main ul.navbar-list {
+        display: none;
+    }
+    
+    .navbar-foot {
+        padding-right: 20px;
+        cursor: pointer;
+    }
+    
+    .navbar-foot:hover {
+        text-decoration: line-through;
+    }
+    
+    .navbar-foot:after {
+        transition: background 0.35s ease, width 0.35s ease, height 0.35s ease;
+        will-change: background, width, height;
+        border-radius: 20em;
+        background: yellow;
+        cursor: pointer;
+        display: block;
+        height: 10px;
+        content: "";
+        width: 10px;
+    }
+    
+    .navbar-foot:hover:after {
+        height: 15px;
+        width: 15px;
+    }
+
+    .navbar-menu {
+        padding-right: 10px;
+        display: block;
+    }
+}
+
+.bkg {
+    transition: height 0.35s ease, background 0.5s ease;
+    will-change: height, background;
+    background: yellow;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    height: 0;
+}
+
+.header:not(.mobile-on):hover .bkg {
+    height: 55px;
+}

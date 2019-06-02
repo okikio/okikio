@@ -1,0 +1,43 @@
+<!-- header.njk -->
+
+<!-- header -->
+<header class="header navbar-fixed">
+    <div class="bkg" id="yellow-banner"></div>
+    <div class="bkg"></div>
+
+    <!-- navbar -->
+    <nav class="navbar">
+        <article class="navbar-layout layout-shorten-horz layout-contain-large">
+            <section class="navbar-head layout-padding-horz-small">
+                <a href="/" class="navbar-title style-title style-bolder style-yellow">Ok!k!.</a>
+            </section>
+            <span class="navbar-spacer not-mobile"></span>
+            <section class="navbar-main">
+                <ul class="navbar-list">
+                    <li class="navbar-link style-uppercase"><a href="/about">About</a></li>
+                    <li class="navbar-link style-uppercase"><a href="/project-list">Projects</a></li>
+                    <li class="navbar-link style-uppercase"><a href="/contact">Contact</a></li>
+                    <li class="navbar-link mobile-only-show">
+                        <!-- social-sidebar -->
+                        <section class="social-sidebar style-white layout-flex">
+                            <article class="layout-flex layout-flex-center">
+                                <ul class="list-none">
+                                    {% for link in social_links %}
+                                        <li title="{{ link.name[1] }}"><a href="{{ link.href }}">{{ link.name[1] }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </article>
+                        </section>
+                        <!-- /social-sidebar -->
+                    </li>
+                </ul>
+                <span class="navbar-select"></span>
+            </section>
+            <section class="navbar-foot">
+                <a class="navbar-menu">Menu</a>
+            </section>
+        </article>
+    </nav>
+    <!-- /navbar -->
+</header>
+<!-- /header -->

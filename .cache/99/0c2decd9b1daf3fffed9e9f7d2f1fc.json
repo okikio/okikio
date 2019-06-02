@@ -1,0 +1,1 @@
+{"id":"{{ link.href }}","dependencies":[{"name":"/home/ubuntu/workspace/package.json","includedInParent":true,"mtime":1559262863789},{"name":"/home/ubuntu/workspace/.browserslistrc","includedInParent":true,"mtime":1559078682406}],"generated":{"js":"module.exports = {};"},"sourceMaps":null,"error":null,"hash":"6abfde343b4c343a227032026be8ed10","cacheData":{"env":{}}}

@@ -1,0 +1,35 @@
+
+
+/* -- Buttons --  */
+.btn {
+    background: transparent;
+    letter-spacing: normal;
+    text-decoration: none;
+    text-transform: none;
+    white-space: nowrap;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 24px;
+    padding: 8px 12px;
+    font-weight: 500;
+    font-size: 13px;
+    z-index: 425;
+}
+
+.btn-round {
+    border-radius: 20em;
+}
+
+.btn-icon {
+    font-size: 21px;
+}
+
+.btn-text {
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.btn.scroll-btn {
+    position: relative;
+    bottom: 0;
+}

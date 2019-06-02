@@ -1,0 +1,141 @@
+/* -- Styles (only affect text) -- */
+.style-title {
+    font-family: "Source Sans Pro", "Montserrat", sans-serif;
+}
+
+.style-fancy, .style-content {
+    font-family: "Montserrat", "Helvetica", "Helvetica Neue", "Arial",
+        sans-serif;
+}
+
+.style-italic {
+    font-style: italic;
+}
+
+.style-spaceout-small {
+    letter-spacing: 1px;
+}
+
+.style-spaceout {
+    letter-spacing: 3px;
+}
+
+.style-spaceout-large {
+    letter-spacing: 7px;
+}
+
+.style-line-height-none {
+    line-height: 0;
+}
+
+.style-line-height-small {
+    line-height: 1;
+}
+
+.style-line-height {
+    line-height: 1.5em;
+}
+
+.style-line-height-large {
+    letter-spacing: 3em;
+}
+
+.style-underline {
+    text-decoration: underline;
+}
+
+.style-line-through {
+    text-decoration: line-through;
+}
+
+.style-larger {
+    font-size: 35px;
+}
+
+.style-large {
+    font-size: 18px;
+}
+
+.style-normal {
+    font-size: 15px;
+}
+
+.style-small {
+    font-size: 12px;
+}
+
+.style-bolder {
+    font-weight: 900;
+}
+
+.style-bold {
+    font-weight: 700;
+}
+
+.style-regular {
+    font-weight: 600;
+}
+
+.style-thin {
+    font-weight: 300;
+}
+
+.style-thiner {
+    font-weight: 100;
+}
+
+.style-red {
+    color: #d93939;
+}
+
+.style-pink {
+    color: #f36;
+}
+
+.style-yellow {
+    color: yellow;
+}
+
+.style-gold {
+    color: #ffbb33;
+}
+
+.style-white {
+    color: #fff;
+}
+
+.style-grey {
+    color: #bbb;
+}
+
+.style-darkgrey {
+    color: #595959;
+}
+
+.style-black {
+    color: #000;
+}
+
+.style-left {
+    text-align: left;
+}
+
+.style-center {
+    text-align: center;
+}
+
+.style-right {
+    text-align: right;
+}
+
+.style-capital {
+    text-transform: capitalize;
+}
+
+.style-uppercase {
+    text-transform: uppercase;
+}
+
+.style-lowercase {
+    text-transform: lowercase;
+}

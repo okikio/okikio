@@ -1,0 +1,193 @@
+/* -- Presets & Resets -- */
+/* -- Elements -- */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    font-size: 100%;
+    outline: none;
+    resize: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+@media (min-width: 300px) {
+    *,
+    *:before,
+    *:after {
+        word-wrap: break-word;
+    }
+}
+
+@media (max-width: 300px) {
+    *,
+    *:before,
+    *:after {
+        -ms-word-break: break-all;
+        word-break: break-all;
+    }
+}
+
+html,
+body {
+    font-family: "Montserrat", "Helvetica", "Helvetica Neue", "Arial", sans-serif;
+    background: white;
+    line-height: 1.15;
+    font-weight: 500;
+    min-height: 100%;
+    font-size: 15px;
+    // overflow: auto;
+    height: 100%;
+    color: #000;
+}
+
+html {
+    // overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    line-height: 1.15;
+    font-weight: 400;
+    color: inherit;
+    display: block;
+}
+
+h1 {
+    margin: 2.1rem 0 1.68rem 0;
+    font-size: 4.2rem;
+    font-weight: 900;
+}
+
+h2 {
+    margin: 1.78rem 0 1.424rem 0;
+    font-size: 3.56rem;
+    font-weight: 700;
+}
+
+h3 {
+    margin: 1.46rem 0 1.168rem 0;
+    font-size: 2.92rem;
+    font-weight: 600;
+}
+
+h4 {
+    margin: 1.14rem 0 0.912rem 0;
+    font-size: 2.28rem;
+}
+
+h5 {
+    margin: 0.82rem 0 0.656rem 0;
+    font-size: 1.64rem;
+}
+
+h6 {
+    margin: 0.5rem 0 0.4rem 0;
+    font-size: 1rem;
+}
+
+p {
+    margin: 0 2em 10px 2em;
+}
+
+hr {
+    box-sizing: content-box;
+    border-style: inset;
+    border-width: 1px;
+    overflow: visible;
+    display: block;
+    height: 0;
+}
+
+small {
+    font-size: 85%;
+}
+
+img,
+load-img {
+    vertical-align: middle;
+    min-height: 200px;
+    display: block;
+    width: 100%;
+}
+
+load-img {
+    -webkit-animation: load 0.5s ease infinite alternate;
+            animation: load 0.5s ease infinite alternate;
+    will-change: background;
+    background: black;
+    min-height: 300px;
+}
+
+img.load-img {
+    -webkit-animation: fade 0.5s ease;
+            animation: fade 0.5s ease;
+}
+
+@-webkit-keyframes fade {
+    from { opacity: 0 !important; }
+	to { opacity: 1 !important; }
+}
+
+@keyframes fade {
+    from { opacity: 0 !important; }
+	to { opacity: 1 !important; }
+}
+
+@-webkit-keyframes load {
+    to {
+        background: #222;
+    }
+}
+
+@keyframes load {
+    to {
+        background: #222;
+    }
+}
+
+a {
+    background-color: transparent;
+    transition: color 0.25s ease;
+    text-decoration: none;
+    display: inline-block;
+    will-change: color;
+    overflow: hidden;
+    cursor: pointer;
+    color: yellow;
+}
+
+a:hover,
+a:focus {
+    text-decoration: line-through;
+}
+
+ul {
+    list-style-type: disc;
+    margin: 20px 2em;
+    display: block;
+}
+
+ul ul {
+    list-style-type: circle;
+}
+
+ul ul ul {
+    list-style-type: square;
+}
+
+li {
+    text-align: inherit;
+    display: list-item;
+}
+
+/* -- Lists -- */
+.list-none {
+    list-style: none;
+}

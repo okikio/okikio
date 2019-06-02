@@ -1,0 +1,11 @@
+.copyright-bar {
+    transition: color 0.35s ease;
+    will-change: color;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1200;
+    height: 55px;
+    color: #000;
+    width: 100%;
+    bottom: 0;
+}

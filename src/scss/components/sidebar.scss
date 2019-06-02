@@ -1,0 +1,23 @@
+/* -- Social-Sidebar -- */
+.social-sidebar {
+    position: absolute;
+    cursor: pointer;
+    z-index: 1200;
+    height: 100vh;
+    right: 0;
+    top: 0;
+}
+
+@media (max-width: 650px) {
+    .main .social-sidebar {
+        display: none;
+    }
+}
+
+.social-sidebar li a {
+    transition: color 0.35s ease, opacity 0.35s ease;
+    will-change: color, opacity;
+    line-height: 30px;
+    text-align: right;
+    width: 80px;
+}

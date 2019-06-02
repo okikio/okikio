@@ -1,0 +1,16 @@
+/* -- Particles.js -- */
+#particles-js {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    // background-image: url("");
+    background-color: #000;
+    background-size: cover;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#particles-js canvas {
+    vertical-align: bottom;
+    display: block;
+}

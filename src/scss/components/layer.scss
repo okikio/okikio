@@ -1,0 +1,118 @@
+/* 
+    -- Layer (represents a section of code that displays content) -- 
+*/
+.layer {
+    font-family: "Montserrat", "Helvetica", "Helvetica Neue", "Arial", sans-serif;
+    position: relative;
+    line-height: 1.85;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+}
+
+.layer-max-height {
+    position: relative;
+    height: 100vh;
+}
+
+.layer-overflow-hide {
+    overflow: hidden;
+}
+
+.layer-title {
+    font-size: 33px;
+}
+
+@media (min-width: 300px) {
+    .layer-title {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 500px) {
+    .layer-title {
+        font-size: 70px;
+    }
+}
+
+@media (min-width: 600px) {
+    .layer-title {
+        font-size: 90px;
+    }
+}
+
+@media (min-width: 900px) {
+    .layer-title {
+        font-size: 95px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .layer-title {
+        font-size: 110px;
+    }
+}
+
+@media (max-width: 400px) {
+    .layer-content-detail {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 300px) {
+    .layer-content-detail {
+        font-size: 18px;
+    }
+}
+
+/* -- Layer Colors (basic layer background colors) -- */
+.layer-white {
+    background-color: #fff;
+}
+
+.layer-yellow {
+    background-color: yellow;
+}
+
+.layer-grey {
+    background-color: #eee;
+}
+
+.layer-darkgrey {
+    background-color: #222;
+}
+
+.layer-black {
+    background-color: #000;
+}
+
+.layer-arrow::before {
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    border-top: 15vmax solid #000;
+    position: absolute;
+    content: "";
+    width: 0;
+    top: 0;
+}
+
+.layer-arrow-small::before {
+    border-left: 10vw solid transparent;
+    border-right: 10vw solid transparent;
+    border-top: 8vmax solid #000;
+    position: absolute;
+    content: "";
+    width: 0;
+    top: 0;
+}
+
+.layer-arrow-center::before {
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+}
+
+.layer-arrow-yellow::before {
+    border-top-color: yellow;
+}
