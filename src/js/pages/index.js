@@ -1,4 +1,3 @@
-import 'particles.js';
 import Page from '../components/page';
 
 const particlesJS = window.particlesJS;
