@@ -1,22 +1,27 @@
 let debug = require('debug')('okikio:server');
 let cookieParser = require('cookie-parser');
+let template = require('lodash.template');
 let compress = require('compression');
 let express = require('express');
 let logger = require('morgan');
+let helmet = require('helmet');
 let http = require('http');
 let path = require('path');
 let fs = require("fs");
 let app = express();
 let server, port;
 
+// Config File
+let config = require("./src/config");
+
 // For faster more efficient page switching
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 // A quick function for webpage get requests
-let render = (page = "index") => {
+let render = (page = "index", data) => {
     return (req, res, next) => {
-        res.render(page, { barba: req.header("x-barba") });
+        res.render(page, { barba: req.header("x-barba"), data: data });
     };
 };
 
@@ -31,28 +36,43 @@ let normalizePort = val => {
 // Get port from environment and store in Express.
 port = normalizePort(process.env.PORT || '3000');
 
+// Protect server
+app.use(helmet());
+
 // Compress/GZIP Server
 app.use(compress());
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: '2592000' }));
-app.use(express.static(path.join(__dirname, 'src'), { maxAge: '2592000' }));
 
 // view engine setup
-app.engine("html", function(filePath, options, callback) {
-    let barba = options.barba, val, dom;
+app.engine("html", function(filePath, opts, callback) {
+    let barba = opts.barba, data = opts.data, val, dom;
     fs.readFile(filePath, function(err, content) {
         if (err) return callback(err);
         val = content.toString();
-        if (barba) {
-            dom = new JSDOM(val).window.document;
-            val = dom.querySelector('[data-barba="container"]').outerHTML;
+        dom = new JSDOM(val).window.document;
+        
+        if (data) {
+            let tempDOM;
+            val = template(dom.querySelector('[render]').outerHTML, { 
+                interpolate: /\%\=(.+?)\%/g
+            }) (data);
+            tempDOM = new JSDOM(val).window.document.documentElement;
+            dom.querySelector('[render]').replaceWith(tempDOM);
+            val = dom.documentElement.outerHTML;
         }
+        
+        if (barba) {
+            dom = dom.querySelector('[data-barba="container"]');
+            val = dom.outerHTML;
+        }
+        
         return callback(null, val);
     });
 });
 
 app.set('views', path.join(__dirname, './public'));
 app.set('view engine', 'html');
-// app.set('view cache', true);
+app.set('view cache', true);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -64,8 +84,19 @@ app.get('/', render());
 app.get('/about', render("about"));
 app.get('/contact', render("contact"));
 app.get('/project', render("project"));
-app.get('/project/:index', render("project"));
 app.get('/project-list', render("project-list"));
+
+config.projects.forEach((project, num) => {
+    let length = config.projects.length;
+    let prevNum = (num - 1) < 0 ? (length - 1) : num - 1;
+    let nextNum = (num + 1) > (length - 1) ? 0 : num + 1;
+    app.get(`/project/${num}`, render("project", {
+        nextNum: nextNum, prevNum: prevNum,
+        next: config.projects[nextNum],
+        prev: config.projects[prevNum],
+        ...project
+    }));
+});
 
 // Set port
 app.set('port', port);

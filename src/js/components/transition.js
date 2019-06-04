@@ -1,8 +1,8 @@
-import anime from 'animejs';
 import Util from "./util";
 import Registry from "./registry";
 import Page from '../components/page';
-        
+
+const anime = window.anime;
 const doc = window.document;
 class Transition {
     constructor(opt = { type: "" }) {
@@ -28,16 +28,31 @@ Transition.create({
         const done = this.async();
         anime.timeline()
             .add({
+                targets: "#yellow-banner",
+                height: "100vh",
+                easing: "easeOutSine",
+                duration: 400,
+            })
+            .add({
                 targets: doc.scrollingElement || doc.body || doc.documentElement,
                 scrollTop: 0,
                 easing: "easeOutSine",
                 duration: 400,
             })
             .add({
-                targets: "#yellow-banner",
-                height: "100vh",
+                targets: ".mobile-on",
+                height: "50px",
                 easing: "easeOutSine",
-                duration: 400,
+                duration: 600,
+                complete() {
+                    let mobileON = Page.ele(".mobile-on");
+                    mobileON.each(el => {
+                        mobileON.style(el,{
+                            height: "initial"
+                        });
+                        el.classList.remove("mobile-on");
+                    });
+                }
             }, 0)
             .add({
                 targets: "#yellow-banner",
@@ -49,10 +64,16 @@ Transition.create({
                 },
             });
     },
-    after({ current, next, trigger }) {
+    enter({ current, next, trigger }) {
         const done = this.async();
         let url = next.url.path;
         let page = Registry.load("page-list", Util.routeName(url));
+        Util.pageSetup(url);
+        Page.prototype.init.call(page || {}, url);
+        done();
+    },
+    after({ current, next, trigger }) {
+        const done = this.async();
         anime.timeline()
             .add({
                 targets: "#yellow-banner",
@@ -60,9 +81,7 @@ Transition.create({
                 delay: 500,
                 height: "0",
                 duration: 800,
-                complete() {
-                    Util.pageSetup(url);
-                    Page.prototype.init.call(page || {}, url);
+                begin() {
                     done();
                 }
             });

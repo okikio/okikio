@@ -1,4 +1,4 @@
-import anime from 'animejs';
+const anime = window.anime;
 
 // Element Object
 class Ele {
@@ -22,18 +22,6 @@ class Ele {
     style(ele, css = {}) {
         Object.assign(ele.style, css);
         return this;
-    }
-    parents(sel) {
-        var eleNode = window.Node.ELEMENT_NODE;
-        return this.map(function(el) {
-            var elems = [], parent = el;
-            while ((parent = parent.parentElement) !== null) {
-                if (parent.nodeType == eleNode && parent.matches(sel)) {
-                    elems.push(parent);
-                }
-            }
-            return elems;
-        });
     }
     animate(opt = {}) {
         anime({

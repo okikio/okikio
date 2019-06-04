@@ -1,6 +1,5 @@
 import data from '../../config.js';
 import _template from 'lodash.template';
-import _unescape from 'lodash.unescape';
 import Page from '../components/page';
 
 const Project = Page.create({
@@ -15,7 +14,6 @@ const Project = Page.create({
         let prevNum = (num - 1) < 0 ? (length - 1) : num - 1;
         let nextNum = (num + 1) > (length - 1) ? 0 : num + 1;
         this.renderEle.each(el => {
-            console.log(el.innerHTML);
             el.innerHTML = _template(el.innerHTML, { 
                 interpolate: /\%\=(.+?)\%/g
             })
