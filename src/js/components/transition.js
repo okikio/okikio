@@ -68,6 +68,7 @@ Transition.create({
         const done = this.async();
         let url = next.url.path;
         let page = Registry.load("page-list", Util.routeName(url));
+        document.title = next.container.getAttribute('title');
         Util.pageSetup(url);
         Page.prototype.init.call(page || {}, url);
         done();
