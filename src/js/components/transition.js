@@ -23,9 +23,18 @@ class Transition {
     }
 }
 
+let base = Page.create({
+    name: "index",
+    fn(...args) {
+        Page.base.call(this, ...args);
+    }
+});
+
 Transition.create({
     before({ current, next, trigger }) {
         const done = this.async();
+        let url = next.url.path;
+                    
         anime.timeline()
             .add({
                 targets: "#yellow-banner",
@@ -37,6 +46,7 @@ Transition.create({
                 targets: doc.scrollingElement || doc.body || doc.documentElement,
                 scrollTop: 0,
                 easing: "easeOutSine",
+                delay: 200,
                 duration: 400,
             })
             .add({
@@ -48,8 +58,9 @@ Transition.create({
                     let mobileON = Page.ele(".mobile-on");
                     mobileON.each(el => {
                         mobileON.style(el,{
-                            height: "initial"
+                            height: "0"
                         });
+                        mobileON
                         el.classList.remove("mobile-on");
                     });
                 }
@@ -60,29 +71,28 @@ Transition.create({
                 delay: 400,
                 duration: 400,
                 complete() {
+                    Util.pageSetup(url);
                     done();
                 },
             });
     },
     enter({ current, next, trigger }) {
         const done = this.async();
-        let url = next.url.path;
-        let page = Registry.load("page-list", Util.routeName(url));
-        document.title = next.container.getAttribute('title');
-        Util.pageSetup(url);
-        Page.prototype.init.call(page || {}, url);
-        done();
-    },
-    after({ current, next, trigger }) {
-        const done = this.async();
+        try {
+            document.title = next.container.getAttribute('title');
+            Page.base.call(base);
+        } catch (e) {
+            console.log(e.message);
+        }
+        
         anime.timeline()
             .add({
                 targets: "#yellow-banner",
+                height: "0vh",
+                delay: 200,
                 easing: "easeOutSine",
-                delay: 500,
-                height: "0",
-                duration: 800,
-                begin() {
+                duration: 400,
+                complete() {
                     done();
                 }
             });

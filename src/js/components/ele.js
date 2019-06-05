@@ -32,12 +32,12 @@ class Ele {
     }
     click(fn = () => {}) {
         return this.each(function(ele) {
-            ele.addEventListener("click", fn.bind(this));
+            ele.onclick = fn.bind(this);
         }, this);
     }
     hover(fn = () => {}) {
         return this.each(function(ele) {
-            ele.addEventListener("mouseover", fn.bind(this));
+            ele.onmouseover = fn.bind(this);
         }, this);
     }
     mousemove(fn = () => {}) {

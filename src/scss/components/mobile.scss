@@ -10,13 +10,13 @@
 .mobile-on,
 .mobile-on .bkg,
 .mobile-on .navbar {
-    height: 100%;
+    height: 100% !important;
 }
 
 .mobile-on .navbar-head,
 .mobile-on .navbar-foot {
     position: absolute;
-    height: 60px;
+    height: 60px !important;
 }
 
 .mobile-on .navbar-title,
@@ -51,7 +51,7 @@
 .mobile-on ul.navbar-list {
     flex-direction: column; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */ /* TWEENER - IE 10 */
     display: flex;
-    height: 100vh;
+    height: 100vh !important;
 }
 
 .mobile-on li.navbar-link {
