@@ -76,6 +76,7 @@ ul.navbar-list {
     align-items: center;
     white-space: nowrap;
     list-style: none;
+    cursor: pointer;
     display: flex;
     margin: 0;
 }
@@ -193,6 +194,36 @@ ul.navbar-list:not(.link-foot):hover + .navbar-select {
     height: 0;
 }
 
-.header:not(.mobile-on):hover .bkg {
+.header:not(.mobile-on):hover .bkg:not(#yellow-banner) {
     height: 55px;
+}
+
+#yellow-banner {
+    display: flex;
+}
+
+#yellow-banner.layer-max-height {
+    height: 100vh !important;
+}
+
+.loading {
+    animation: rotation 1s infinite linear;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-top-color: rgba(0, 0, 0, 0.7);
+    will-change: transform, opacity;
+    border-radius: 50%;
+    margin: auto;
+    height: 3em;
+    width: 3em;
+    opacity: 0;
+}
+
+@keyframes rotation {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#yellow-banner.layer-max-height .loading {
+    opacity: 1 !important;
 }

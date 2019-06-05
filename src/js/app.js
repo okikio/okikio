@@ -2,18 +2,17 @@ import Util from "./components/util";
 import Page from './components/page';
 
 let url = window.location.pathname;
-import Index from './pages/index';
+let base = Page.create({
+    name: "index",
+    fn(...args) {
+        Page.base.call(this, ...args);
+    }
+});
+
 Util.pageSetup(url);
-
-let route = {
-    "/": Index
-};
-
-let routeName = Util.routeName(url, true);
-let page = route[routeName];
-Page.prototype.init.call(page || {}, url);
+Page.init.call(base);
 
 import './components/barba';
-
-
-
+Page.ele("#yellow-banner.layer-max-height").each(el => {
+    el.classList.remove("layer-max-height");
+});

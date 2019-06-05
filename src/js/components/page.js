@@ -31,7 +31,7 @@ class Page {
     static sidebar(sel, opt) { return new Sidebar(sel, opt); }
     static perspective(sel, opt) { return new Perspective(sel, opt); }
 
-    init(...args) {
+    static init(...args) {
         (this.fn || Page.base).call(this, ...args);
         return this;
     }
