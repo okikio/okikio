@@ -2,6 +2,11 @@
 	.bkg {
 		background: black;
 	}
+	
+	.loading {
+	    border: 3px solid rgba(255, 255, 0, 0.2) !important;
+	    border-top-color: rgba(255, 255, 0, 0.7) !important;
+	}
 
 	.header:not(.mobile-on):hover .bkg {
 		height: 55px;

@@ -207,23 +207,18 @@ ul.navbar-list:not(.link-foot):hover + .navbar-select {
 }
 
 .loading {
+    will-change: transform, border, border-top-color;
     animation: rotation 1s infinite linear;
     border: 3px solid rgba(0, 0, 0, 0.2);
     border-top-color: rgba(0, 0, 0, 0.7);
-    will-change: transform, opacity;
     border-radius: 50%;
     margin: auto;
     height: 3em;
     width: 3em;
-    opacity: 0;
 }
 
 @keyframes rotation {
     to {
         transform: rotate(360deg);
     }
-}
-
-#yellow-banner.layer-max-height .loading {
-    opacity: 1 !important;
 }
