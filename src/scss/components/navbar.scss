@@ -207,7 +207,7 @@ ul.navbar-list:not(.link-foot):hover + .navbar-select {
 }
 
 .loading {
-    will-change: transform, border, border-top-color;
+    will-change: transform, border, border-top-color, opacity;
     animation: rotation 1s infinite linear;
     border: 3px solid rgba(0, 0, 0, 0.2);
     border-top-color: rgba(0, 0, 0, 0.7);
@@ -215,6 +215,13 @@ ul.navbar-list:not(.link-foot):hover + .navbar-select {
     margin: auto;
     height: 3em;
     width: 3em;
+    opacity: 0;
+}
+
+
+#yellow-banner.layer-max-height .loading {
+    height: 100vh !important;
+    opacity: 1 !important;
 }
 
 @keyframes rotation {
