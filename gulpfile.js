@@ -33,6 +33,7 @@ gulp.task("git", (cb) => {
     process.stdout.on('data', data => { console.log(data); });
     process.stderr.on('data', data => { console.log(data); });
     process.on('close', data => { console.log(data); });
+    cb();
 });
 
 gulp.task("js", () =>
