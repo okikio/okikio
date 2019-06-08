@@ -204,6 +204,18 @@ ul.navbar-list:not(.link-foot):hover + .navbar-select {
     height: 55px;
 }
 
+
+.navbar-select,
+.header:hover .navbar-foot:after,
+.header.focus:not(.mobile-on) .navbar-foot:after {
+	background: black;
+}
+
+.mobile-on .bkg,
+.navbar-foot:after {
+	background: yellow;
+}
+
 #yellow-banner {
     display: flex;
 }

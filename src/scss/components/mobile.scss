@@ -21,12 +21,20 @@
 
 .mobile-on .navbar-title,
 .mobile-on .navbar-menu,
-.mobile-on ~ .copyright-bar a,
-.mobile-on ~ .copyright-bar a:hover,
+.mobile-on li.navbar-link a,
+.mobile-on~.copyright-bar a,
+.mobile-on~.copyright-bar a:hover,
+.header.focus:not(.mobile-on) .navbar-title,
+.header.focus:not(.mobile-on) .navbar-menu,
+.header.focus:not(.mobile-on) li.navbar-link a,
 .header:hover .navbar-title,
 .header:hover .navbar-menu,
-.header:hover li.navbar-link a {
-    color: black;
+.header:hover li.navbar-link a,
+.mobile-on .navbar-foot:after,
+.nav-bright .navbar-foot:after,
+.nav-bright .navbar-select,
+.nav-bright a {
+	color: black;
 }
 
 .mobile-on .navbar-head {

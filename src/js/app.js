@@ -1,6 +1,7 @@
 import Util from "./components/util";
 import Page from './components/page';
 
+const sw = '/sw.js';
 const navigator = window.navigator;
 let url = window.location.pathname;
 let base = Page.create({
@@ -14,11 +15,6 @@ Util.pageSetup(url);
 Page.base.call(base);
 
 import './components/barba';
-Page.ele("#yellow-banner.layer-max-height").each(el => {
-    el.classList.remove("layer-max-height");
-});
-
-let sw = '/sw.js';
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register(sw).then(function(registration) {
@@ -30,3 +26,9 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+
+window.setTimeout(() => {
+    Page.ele("#yellow-banner.layer-max-height").each(el => {
+        el.classList.remove("layer-max-height");
+    });
+}, 3000);

@@ -11,16 +11,21 @@
     "node": "v12.3.1",
     "npm": "6.9.0"
   },
-	"_cache": {
-		"strategy": "default",
-		"swDest": "sw.js",
-		"inDev": false
-	},
+  "_cache": {
+    "strategy": "default",
+    "swDest": "sw.js",
+    "inDev": false
+  },
   "cache": {
-    "runtimeCaching": [{
-      "urlPattern": ["https:\/\/res.cloudinary.com\/okikio-assets\/", "g"],
-      "handler": "staleWhileRevalidate"
-    }]
+    "runtimeCaching": [
+      {
+        "urlPattern": [
+          "https://res.cloudinary.com/okikio-assets/",
+          "g"
+        ],
+        "handler": "staleWhileRevalidate"
+      }
+    ]
   },
   "dependencies": {
     "compression": "^1.7.4",
