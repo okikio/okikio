@@ -119,6 +119,12 @@
 
 .title-detail {
     max-width: 580px;
-    font-size: 25px;
+    font-size: 18px;
     width: 100%;
+}
+
+@media (min-width: 400px) {
+    .title-detail {
+        font-size: 25px;
+    }
 }
