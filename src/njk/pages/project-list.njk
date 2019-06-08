@@ -25,7 +25,7 @@
                     <section class="layout-row">
                         {% for project in projects %}
                             <section class="layout-col-4 layer-image layer-tile layout-padding-vert-bottom">
-                                <a href="/project/{{ loop.index0 }}" class="layout-block"> 
+                                <a href="/project/{{ project.url }}" class="layout-block"> 
                                     <section class="layout-image-contain">
                                         <load-img src="{{ project.img.src }}" alt="{{ project.img.alt }}"></load-img>
                                         <section class="layer-content style-yellow">

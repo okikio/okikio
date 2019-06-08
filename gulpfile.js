@@ -59,7 +59,7 @@ gulp.task('default', gulp.series('css', 'js', 'html', 'server', done => { done()
 
 // Gulp task to check to make sure a file has changed before minify that file files
 gulp.task('watch', done => {
-    gulp.watch(['src/**/*.js', 'src/**/*.scss', 'src/**/*.njk', 'src/config.js'], { delay: 500 },
+    gulp.watch(['src/**/*.js', 'src/**/*.scss', 'src/**/*.njk', 'config.js'], { delay: 500 },
         cb => {
             let process = exec('npm run build');
             process.stdout.on('data', data => { console.log(data); });

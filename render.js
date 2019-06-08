@@ -3,7 +3,7 @@ let path = require('path');
 let fs = require("fs");
 
 // Config File
-let config = require("./src/config");
+let config = require("./config");
 
 // For faster more efficient page switching
 const jsdom = require("jsdom");
@@ -43,15 +43,16 @@ config.projects.forEach((project, num) => {
     
     engine(path.join(__dirname, 'public') + "/project.html", {
         data: {
-            nextNum: nextNum, prevNum: prevNum,
+            nextUrl: config.projects[nextNum].url, 
+            prevUrl: config.projects[prevNum].url,
             next: config.projects[nextNum],
             prev: config.projects[prevNum],
             ...project
         }
     }, ($, val) => {
-        fs.writeFile(`public/project-${num}.html`, val, (err) => {
+        fs.writeFile(`public/project-${project.url}.html`, val, (err) => {
             if (err) throw err;
-            console.log(`Project ${num}: The file has been saved!`);
+            console.log(`Project ${project.url}: The file has been saved!`);
         });
     });
 });

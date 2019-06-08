@@ -54,8 +54,8 @@ app.get('/about', render("about"));
 app.get('/contact', render("contact"));
 app.get('/project', render("project"));
 app.get('/project-list', render("project-list"));
-app.get(`/project/:num`, (req, res, next) => {
-    res.render(`project-${req.params.num}`, { barba: req.header("x-barba") });
+app.get(`/project/:url`, (req, res, next) => {
+    res.render(`project-${req.params.url}`, { barba: req.header("x-barba") });
 });
 
 // Set port
