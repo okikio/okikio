@@ -32,7 +32,7 @@ gulp.task("git", (cb) => {
     let process = exec('git add -A && git commit -m "Upgrade" && git push origin master && git push heroku master');
     process.stdout.on('data', data => { console.log(data); });
     process.stderr.on('data', data => { console.log(data); });
-    process.on('close', data => { console.log(data); });
+    // process.on('close', data => { console.log(data); });
     cb();
 });
 
