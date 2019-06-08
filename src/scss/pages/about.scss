@@ -20,7 +20,9 @@
 		color: black;
 	}
 
-	.navbar-select {
+	.navbar-select,
+	.header:hover .navbar-foot:after,
+	.header.focus:not(.mobile-on) .navbar-foot:after {
 		background: yellow;
 	}
 
@@ -37,11 +39,9 @@
 	.header.focus:not(.mobile-on) .navbar-title,
 	.header.focus:not(.mobile-on) .navbar-menu,
 	.header.focus:not(.mobile-on) li.navbar-link a,
-	.header.focus:not(.mobile-on) .navbar-foot:after,
 	.header:hover .navbar-title,
 	.header:hover .navbar-menu,
 	.header:hover li.navbar-link a,
-	.header:hover .navbar-foot:after,
 	.mobile-on .navbar-foot:after,
 	.nav-bright .navbar-foot:after,
 	.nav-bright .navbar-select,
