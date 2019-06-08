@@ -28,13 +28,14 @@ gulp.task("server", () =>
     .pipe(gulp.dest('.'))
 );
 
-gulp.task("git", () =>
+gulp.task("git", (cb) =>
     exec('git add -A && git commit -m "Upgrade" && git push origin master && git push heroku master', (err, stdout, stderr) => {
         if (err) { return; }
 
         // the *entire* stdout and stderr (buffered)
         console.log(`${stdout}`);
         console.log(`${stderr}`);
+        cb();
     })
 );
 
