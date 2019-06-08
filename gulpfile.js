@@ -28,7 +28,7 @@ gulp.task("server", () =>
     .pipe(gulp.dest('.'))
 );
 
-gulp.task("git", (cb) =>
+gulp.task("git", (cb) => {
     exec('git add -A && git commit -m "Upgrade" && git push origin master && git push heroku master', (err, stdout, stderr) => {
         if (err) { return; }
 
@@ -36,8 +36,8 @@ gulp.task("git", (cb) =>
         console.log(`${stdout}`);
         console.log(`${stderr}`);
         cb();
-    })
-);
+    });
+});
 
 gulp.task("js", () =>
     gulp.src("public/**/*.js", { allowEmpty: true })
