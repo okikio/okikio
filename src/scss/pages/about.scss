@@ -20,15 +20,15 @@
 		color: black;
 	}
 
-	.navbar-select,
-	.header:hover .navbar-foot:after,
-	.header.focus:not(.mobile-on) .navbar-foot:after {
-		background: yellow;
-	}
-
 	.mobile-on .bkg,
 	.navbar-foot:after {
 		background: black;
+	}
+	
+	.navbar-select,
+	.header:hover .navbar-foot:after,
+	.header.focus .navbar-foot:after {
+		background: yellow !important;
 	}
 
 	.mobile-on .navbar-title,

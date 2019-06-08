@@ -1,14 +1,19 @@
 /* -- Header -- */
 .header {
+    transition: height 0.35s ease;
+    will-change: height;
     z-index: 1800;
+    height: 55px;
     color: #000;
     width: 100%;
 }
 
 /* -- Navigation -- */
 .navbar {
+    transition: height 0.35s ease;
     justify-content: flex-start;
     flex-direction: column;
+    will-change: height;
     position: relative;
     flex-wrap: nowrap;
     overflow: hidden;
