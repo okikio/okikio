@@ -29,7 +29,7 @@ gulp.task("server", () =>
 );
 
 gulp.task("git", (cb) => {
-    exec('git add -A && git commit -m "Upgrade" && git push origin master && git push heroku master', (err, stdout, stderr) => {
+    let process = exec('git add -A && git commit -m "Upgrade" && git push origin master && git push heroku master', (err, stdout, stderr) => {
         if (err) { return; }
 
         // the *entire* stdout and stderr (buffered)
@@ -37,6 +37,8 @@ gulp.task("git", (cb) => {
         console.log(`${stderr}`);
         cb();
     });
+    
+    process.stdout.on('data', data => { console.log(data); });
 });
 
 gulp.task("js", () =>
@@ -65,13 +67,14 @@ gulp.task('default', gulp.series('css', 'js', 'html', 'server', done => { done()
 gulp.task('watch', done => {
     gulp.watch(['src/**/*.js', 'src/**/*.scss', 'src/**/*.njk', 'src/config.js'], { delay: 500 },
         cb => {
-            exec('npm run build', (err, stdout, stderr) => {
+            let process = exec('npm run build', (err, stdout, stderr) => {
                 if (err) { return; }
 
                 // the *entire* stdout and stderr (buffered)
                 console.log(`${stdout}`);
                 console.log(`${stderr}`);
+                cb();
             });
-            cb();
+            process.stdout.on('data', data => { console.log(data); });
         });
 });
