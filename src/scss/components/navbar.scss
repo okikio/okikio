@@ -194,7 +194,8 @@ ul.navbar-list:not(.link-foot):hover + .navbar-select {
     height: 0;
 }
 
-.header:not(.mobile-on):hover .bkg:not(#yellow-banner) {
+.header:not(.mobile-on):hover .bkg:not(#yellow-banner),
+.header.focus:not(.mobile-on) .bkg:not(#yellow-banner) {
     height: 55px;
 }
 

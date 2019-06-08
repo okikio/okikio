@@ -8,7 +8,7 @@
 	    border-top-color: rgba(255, 255, 0, 0.7) !important;
 	}
 
-	.header:not(.mobile-on):hover .bkg {
+	.header:not(.mobile-on):hover .bkg:not(#yellow-banner) {
 		height: 55px;
 	}
 
@@ -34,18 +34,19 @@
 	.mobile-on li.navbar-link a,
 	.mobile-on~.copyright-bar a,
 	.mobile-on~.copyright-bar a:hover,
+	.header.focus:not(.mobile-on) .navbar-title,
+	.header.focus:not(.mobile-on) .navbar-menu,
+	.header.focus:not(.mobile-on) li.navbar-link a,
+	.header.focus:not(.mobile-on) .navbar-foot:after,
 	.header:hover .navbar-title,
 	.header:hover .navbar-menu,
 	.header:hover li.navbar-link a,
-	.nav-bright a {
-		color: yellow !important;
-	}
-
 	.header:hover .navbar-foot:after,
 	.mobile-on .navbar-foot:after,
 	.nav-bright .navbar-foot:after,
-	.nav-bright .navbar-select {
-		background: yellow !important;
+	.nav-bright .navbar-select,
+	.nav-bright a {
+		color: yellow !important;
 	}
 
 	.profile-image {

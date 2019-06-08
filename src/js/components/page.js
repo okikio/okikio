@@ -114,6 +114,9 @@ Page.all(function () {
     this.navbar.toggle(this.navbar.toggleClass);
     this.view.resize()
         .scroll(e => {
+            this.navbar.container.each(el => {
+                el.classList.toggle("focus", window.scrollY > 50);
+            });
             $this.layers.each(el => {
                 let type;
                 $this.scrollSnap.each(snap => {
