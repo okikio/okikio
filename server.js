@@ -9,7 +9,7 @@ let path = require('path');
 let app = express();
 let server, port;
 
-let { engine } = require("./render");
+let { engine } = require("./render.min");
 
 // A quick function for webpage get requests
 let render = (page = "index", data) => {
