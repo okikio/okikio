@@ -60,7 +60,6 @@ Transition.create({
                         mobileON.style(el,{
                             height: "0"
                         });
-                        mobileON
                         el.classList.remove("mobile-on");
                     });
                 }
@@ -84,7 +83,10 @@ Transition.create({
         } catch (e) {
             console.log(e.message);
         }
-        
+        done();
+    },
+    after({ current, next, trigger }) {
+        const done = this.async();
         anime.timeline()
             .add({
                 targets: "#yellow-banner",
