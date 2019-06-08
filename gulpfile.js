@@ -29,16 +29,10 @@ gulp.task("server", () =>
 );
 
 gulp.task("git", (cb) => {
-    let process = exec('git add -A && git commit -m "Upgrade" && git push origin master && git push heroku master', (err, stdout, stderr) => {
-        if (err) { return; }
-
-        // the *entire* stdout and stderr (buffered)
-        console.log(`${stdout}`);
-        console.log(`${stderr}`);
-        cb();
-    });
-    
+    let process = exec('git add -A && git commit -m "Upgrade" && git push origin master && git push heroku master');
     process.stdout.on('data', data => { console.log(data); });
+    process.stderr.on('data', data => { console.log(data); });
+    process.on('close', data => { console.log(data); });
 });
 
 gulp.task("js", () =>
@@ -67,14 +61,10 @@ gulp.task('default', gulp.series('css', 'js', 'html', 'server', done => { done()
 gulp.task('watch', done => {
     gulp.watch(['src/**/*.js', 'src/**/*.scss', 'src/**/*.njk', 'src/config.js'], { delay: 500 },
         cb => {
-            let process = exec('npm run build', (err, stdout, stderr) => {
-                if (err) { return; }
-
-                // the *entire* stdout and stderr (buffered)
-                console.log(`${stdout}`);
-                console.log(`${stderr}`);
-                cb();
-            });
+            let process = exec('npm run build');
             process.stdout.on('data', data => { console.log(data); });
+            process.stderr.on('data', data => { console.log(data); });
+            process.on('close', data => { console.log(data); });
+            cb();
         });
 });
