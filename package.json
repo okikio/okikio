@@ -5,7 +5,19 @@
   "scripts": {
     "dev": "nodemon ./server",
     "start": "NODE_ENV=production node ./server.min",
-    "build": "rm -rf public && parcel build src/njk/pages/*.njk -d public && gulp"
+    "build": "gulp server && rm -rf public && mkdir public && node ./render.min && parcel build src/njk/pages/*.njk -d public && gulp"
+  },
+  
+	"_cache": {
+		"strategy": "default",
+		"swDest": "sw.js",
+		"inDev": false
+	},
+  "cache": {
+    "runtimeCaching": [{
+      "urlPattern": ["https:\/\/res.cloudinary.com\/okikio-assets\/", "g"],
+      "handler": "staleWhileRevalidate"
+    }]
   },
   "dependencies": {
     "compression": "^1.7.4",

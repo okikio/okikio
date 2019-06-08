@@ -15,7 +15,7 @@ gulp.task("css", () =>
 );
 
 gulp.task("server", () =>
-    gulp.src("server.js", { allowEmpty: true })
+    gulp.src(["server.js", "render.js"], { allowEmpty: true })
     // ES5 server.js for uglifing
     .pipe(babel({
         presets: ['@babel/env']
