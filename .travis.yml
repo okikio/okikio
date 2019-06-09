@@ -5,5 +5,3 @@ script: npm run build
 cache: npm
 deploy:
   provider: heroku
-  api_key:
-    secure: "b816a5ff-409a-494c-a378-4cada0c0f9b1"
