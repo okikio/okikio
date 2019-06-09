@@ -1,6 +1,6 @@
+let shrinkRay = require('@magento/shrink-ray');
 let debug = require('debug')('okikio:server');
 let cookieParser = require('cookie-parser');
-let compress = require('compression');
 let express = require('express');
 let logger = require('morgan');
 let helmet = require('helmet');
@@ -32,8 +32,8 @@ port = normalizePort(process.env.PORT || '3000');
 // Protect server
 app.use(helmet());
 
-// Compress/GZIP Server
-app.use(compress());
+// Compress/GZIP/Brotil Server
+app.use(shrinkRay());
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: '2592000' }));
 
 // view engine setup

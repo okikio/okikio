@@ -28,6 +28,7 @@
     ]
   },
   "dependencies": {
+    "@magento/shrink-ray": "^3.0.4",
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -36,6 +37,10 @@
     "jsdom": "^15.1.1",
     "lodash.template": "^4.4.0",
     "morgan": "~1.9.1"
+  },
+  "optionalDependencies": {
+    "iltorb": "~2.0.0",
+    "node-zopfli-es": "~1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
