@@ -63,6 +63,18 @@ app.get(`/project/:url`, (req, res, next) => {
     res.render(`project-${req.params.url}`, { barba: req.header("x-barba") });
 });
 
+// Catch error and forward to error handler
+app.use(function(req, res, next) {
+    next(createError(Number(404)));
+});
+
+// Error handler
+app.use(function(err, req, res, next) {
+    // Render the error page
+    res.status(err.status || 500);
+    res.send("There was an error: " + (err.status || 500));
+});
+
 // Set port
 app.set('port', port);
 
