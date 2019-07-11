@@ -34,7 +34,7 @@
     "express": "~4.16.1",
     "helmet": "^3.18.0",
     "jsdom": "^15.1.1",
-    "lodash.template": "^4.4.0",
+    "lodash.template": "^4.5.0",
     "morgan": "~1.9.1"
   },
   "optionalDependencies": {
