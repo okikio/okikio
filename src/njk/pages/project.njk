@@ -2,7 +2,7 @@
 {% extends "base.njk" %}
 
 {% block content %}
-    <section class="page-project" data-barba="container" data-barba-namespace="project" title="%= name %" render>
+    <section class="page-project" compile data-barba="container" data-barba-namespace="project" title="%= name %" render>
         <!-- layer -->
         <section class="layer layer-intro layer-max-height layer-black scroll-snap">
             <article class="layer-max-height layer-overflow-hide">
@@ -12,7 +12,7 @@
             </article>
         </section>
         <!-- /layer -->
-        
+
         <!-- layer -->
         <section class="layer scroll-snap bright-layer">
             <article class="layout-contain-large layer-overflow-hide layout-padding-vert-top-large">
@@ -24,7 +24,7 @@
             </article>
         </section>
         <!-- /layer -->
-        
+
         <!-- layer -->
         <section class="layout-margin-vert-top-large layer layer-project scroll-snap">
             <article class="layout-contain layer-black">
@@ -43,10 +43,10 @@
             </article>
         </section>
         <!-- /layer -->
-        
+
         <!-- Adds the blur partial -->
         {% include "../components/blur.njk" %}
-    
+
         <!-- layer -->
         <section class="layer scroll-snap">
             <article class="layout-shorten layout-contain layer-overflow-hide">
@@ -66,7 +66,7 @@
             </article>
         </section>
         <!-- /layer -->
-        
+
         <!-- Adds the social-sidebar partial -->
         {% include "../components/social-sidebar.njk" %}
     </section>

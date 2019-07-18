@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon ./server",
-    "start": "NODE_ENV=production node ./server.min",
+    "start": "export NODE_ENV=production && node ./server.min",
     "build": "gulp server && rm -rf public && mkdir public && node ./render.min && parcel build src/njk/pages/*.njk -d public && gulp"
   },
   "engines": {
@@ -32,9 +32,9 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
-    "helmet": "^3.18.0",
+    "helmet": "^3.19.0",
     "jsdom": "^15.1.1",
-    "lodash.template": "^4.4.0",
+    "lodash.template": "^4.5.0",
     "morgan": "~1.9.1"
   },
   "optionalDependencies": {
@@ -42,22 +42,22 @@
     "node-zopfli-es": "~1.0.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "autoprefixer": "^9.5.1",
-    "fs-extra": "^8.0.1",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "autoprefixer": "^9.6.1",
+    "fs-extra": "^8.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-csso": "^3.0.1",
     "gulp-htmlmin": "^5.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-uglify": "^3.0.2",
-    "nodemon": "^1.19.0",
+    "nodemon": "^1.19.1",
     "nunjucks": "^3.2.0",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-nunjucks": "^1.1.0",
     "parcel-plugin-sw-cache": "^0.2.7",
     "postcss-modules": "^1.4.1",
-    "sass": "^1.20.1"
+    "sass": "^1.22.6"
   }
 }

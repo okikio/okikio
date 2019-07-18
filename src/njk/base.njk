@@ -11,19 +11,20 @@
         <script src="https://res.cloudinary.com/okikio-assets/raw/upload/anime.js"></script>
         <script src="https://res.cloudinary.com/okikio-assets/raw/upload/barba.js"></script>
         <script src="https://res.cloudinary.com/okikio-assets/raw/upload/barba-prefetch.js"></script>
-        <script src="../../js/app.js" async></script>
         <title>Okiki</title>
     </head>
     <body>
         <!-- Adds the header partial -->
         {% include "./components/header.njk" %}
-        
+
         <main data-barba="wrapper" class="main">
             <!-- The code for this content block are in another file -->
             {% block content %} {% endblock %}
         </main>
-            
+
         <!-- Adds the footer partial -->
         {% include "./components/footer.njk" %}
+
+        <script src="../../js/app.js"></script>
     </body>
 </html>

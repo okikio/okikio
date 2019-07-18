@@ -7,12 +7,12 @@ const Util = {
     },
     pageSetup(url) {
         let routeName = Util.routeName(url);
-        
+
         // Check Active Link
         links.each(link => {
             let a = link.children[0];
             let hrefName = `${a.href}`.replace(`${a.origin}`, "");
-            
+
             // Clean class
             link.classList.remove('navbar-link-focus');
 
@@ -21,8 +21,8 @@ const Util = {
                 link.classList.add('navbar-link-focus');
             }
         });
-        
-        document.body.className = `page-${routeName}`;
+
+        document.body.className = `page-${routeName.includes("project") ? (routeName.includes("project-list") ? "project-list" : "project") : routeName}`;
     }
 };
 
