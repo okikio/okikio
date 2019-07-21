@@ -36,10 +36,14 @@ app.use(helmet());
 app.use(shrinkRay());
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: '2592000' }));
 app.use((req, res, next) => {
-    if (req.originalUrl == '/favicon.ico') 
-        { res.status(204).json({nope: true}); } 
+    if (req.originalUrl == '/favicon.ico')
+        { res.status(204).json({nope: true}); }
     else { next(); }
 });
+
+setInterval(function() {
+    http.get("https://okikio.herokuapp.com");
+}, 1000 * 60 * 29);
 
 // view engine setup
 app.engine("html", engine);
