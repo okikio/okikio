@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon ./server",
     "start": "export NODE_ENV=production && node ./server.min",
-    "build": "gulp server && rm -rf public && mkdir public && node ./render.min && parcel build src/njk/pages/*.njk -d public && gulp"
+    "build": "gulp server && rm -rf public && mkdir public && node ./render.min && parcel build src/njk/pages/*.njk -d public && gulp && node ./render.min",
+    "build-win": "gulp server; rm -r public; mkdir public; node ./render.min; npx parcel build src/njk/pages/*.njk -d public; gulp; node ./render.min"
   },
   "engines": {
     "node": "v12.3.1",
@@ -20,8 +21,8 @@
     "runtimeCaching": [
       {
         "urlPattern": [
-          "https://res.cloudinary.com/okikio-assets/",
-          "g"
+          "[a-zA-Z0-9/-_+]+.(html|js|css|jpg|png|webp|gif|svg|eot|ttf|woff|woff2)",
+          "gi"
         ],
         "handler": "staleWhileRevalidate"
       }
@@ -30,9 +31,9 @@
   "dependencies": {
     "@magento/shrink-ray": "^3.0.4",
     "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "helmet": "^3.19.0",
+    "debug": "~4.1.1",
+    "express": "~4.17.1",
+    "helmet": "^3.20.0",
     "jsdom": "^15.1.1",
     "lodash.template": "^4.5.0",
     "morgan": "~1.9.1"
@@ -55,9 +56,9 @@
     "nodemon": "^1.19.1",
     "nunjucks": "^3.2.0",
     "parcel-bundler": "^1.12.3",
-    "parcel-plugin-nunjucks": "^1.1.0",
-    "parcel-plugin-sw-cache": "^0.2.7",
+    "parcel-plugin-nunjucks": "^2.0.0",
+    "parcel-plugin-sw-cache": "^0.3.1",
     "postcss-modules": "^1.4.1",
-    "sass": "^1.22.6"
+    "sass": "^1.22.9"
   }
 }

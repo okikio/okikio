@@ -27,7 +27,11 @@ module.exports = {
       "detail": "Lorem itpsim",
       "info": "The nature of leadership",
       "img": {
-        "src": "https://res.cloudinary.com/okikio-assets/image/upload/q_10,f_auto/white-flower.jpg",
+        "src": "https://res.cloudinary.com/okikio-assets/image/upload/q_10,f_auto/white-flower.webp",
+        "alt": ""
+      },
+      "img_blur": {
+        "src": "https://res.cloudinary.com/okikio-assets/image/upload/q_10,f_auto,e_blur:90000/white-flower.webp",
         "alt": ""
       }
     },
@@ -37,7 +41,11 @@ module.exports = {
       "detail": "Lorem itpsim",
       "info": "Info about Leukemia",
       "img": {
-        "src": "https://res.cloudinary.com/okikio-assets/image/upload/q_10,f_auto/city.jpg",
+        "src": "https://res.cloudinary.com/okikio-assets/image/upload/q_10,f_auto/city.webp",
+        "alt": ""
+      },
+      "img_blur": {
+        "src": "https://res.cloudinary.com/okikio-assets/image/upload/q_10,f_auto,e_blur:90000/city.webp",
         "alt": ""
       }
     },
@@ -47,7 +55,11 @@ module.exports = {
       "detail": "Lorem itpsim",
       "info": "A little about renewable sources of energy",
       "img": {
-        "src": "https://res.cloudinary.com/okikio-assets/image/upload/q_10,f_auto/blue-sky.jpg",
+        "src": "https://res.cloudinary.com/okikio-assets/image/upload/q_10,f_auto/blue-sky.webp",
+        "alt": ""
+      },
+      "img_blur": {
+        "src": "https://res.cloudinary.com/okikio-assets/image/upload/q_10,f_auto,e_blur:90000/blue-sky.webp",
         "alt": ""
       }
     }
