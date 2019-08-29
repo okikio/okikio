@@ -41,10 +41,6 @@ app.use((req, res, next) => {
     else { next(); }
 });
 
-setInterval(function() {
-    http.get("https://okikio.herokuapp.com");
-}, 1000 * 60 * 29);
-
 // view engine setup
 app.engine("html", engine);
 
