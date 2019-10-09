@@ -9,8 +9,8 @@
     "build-win": "gulp server; rm -r public; mkdir public; node ./render.min; npx parcel build src/njk/pages/*.njk -d public; gulp; node ./render.min"
   },
   "engines": {
-    "node": "v12.3.1",
-    "npm": "6.9.0"
+    "node": "v12.11.1",
+    "npm": "6.11.3"
   },
   "_cache": {
     "strategy": "default",
@@ -43,9 +43,9 @@
     "node-zopfli-es": "~1.0.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "autoprefixer": "^9.6.1",
+    "@babel/core": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "autoprefixer": "^9.6.4",
     "fs-extra": "^8.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
@@ -53,9 +53,9 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-uglify": "^3.0.2",
-    "nodemon": "^1.19.1",
+    "nodemon": "^1.19.3",
     "nunjucks": "^3.2.0",
-    "parcel-bundler": "^1.12.3",
+    "parcel-bundler": "^1.12.4",
     "parcel-plugin-nunjucks": "^2.0.0",
     "parcel-plugin-sw-cache": "^0.3.1",
     "postcss-modules": "^1.4.1",
