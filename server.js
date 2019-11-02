@@ -1,4 +1,4 @@
-let shrinkRay = require('@magento/shrink-ray');
+let shrinkRay = require('compression');
 let debug = require('debug')('okikio:server');
 let cookieParser = require('cookie-parser');
 let express = require('express');
