@@ -100,7 +100,7 @@
 
 	@media (min-width: 500px) {
 		.layer-tile img {
-			transition: transform 0.55s ease, filter 0.15s linear;
+			transition: transform 0.55s ease, filter 0.75s ease;
 			will-change: transform, filter;
 		}
 
