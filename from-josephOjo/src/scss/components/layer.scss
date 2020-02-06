@@ -1,0 +1,301 @@
+/*
+    -- Layer (represents a section of code that displays content) --
+     * ".more" = is for the learn more buttons
+*/
+.layer {
+    font-family: $regular-font;
+    line-height: 1.85;
+    position: static;
+    font-size: 17px;
+    display: block;
+    width: 100%;
+    z-index: 0;
+
+    @media #{$screen-size-lt-tablet} {
+        line-height: 1.15;
+        font-weight: 400;
+        font-size: 15px;
+    }
+
+    // /* &-title {
+    //    // overflow-wrap: break-word;
+    // } */
+
+    &-content {
+        position: relative;
+        z-index: 25;
+    }
+
+    &-image {
+        position: absolute;
+        overflow: hidden;
+        display: block;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+        left: 0;
+        top: 0;
+
+        & picture {
+            position: relative;
+            // // overflow: hidden;
+            display: block;
+            height: 100%;
+            z-index: 250;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        &-preview-img-card {
+            position: absolute;
+            background: $dark;
+            display: block;
+            height: 100%;
+            width: 100%;
+            z-index: 0;
+            opacity: 1;
+            left: 0;
+            top: 0;
+        }
+
+        &-overlay {
+            background: darken(#53507c, 20%);
+            position: absolute;
+            display: block;
+            opacity: 0.45;
+            z-index: 250;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+
+            @at-root {
+                .effect-parallax .layer-image-overlay {
+                    opacity: 0.55;
+                }
+            }
+        }
+
+        &-blur {
+            filter: blur(3px);
+        }
+    }
+
+    &-shadow,
+    %shadow {
+        box-shadow: 0 0px 35px 5px change-color($dark, $alpha: 0.53);// rgba(0, 0, 40, 0.23);
+
+        &--1 {
+            box-shadow: 0 5px 14px 6px rgba(0,0,0,.23);
+            // box-shadow: 0 5px 14px 6px rgba(19, 19, 19, 0.23);
+            // border: 2px solid rgba(255, 255, 255, 0.35);
+        }
+
+        &--2 {
+            box-shadow: 0 10px 85px rgba(0, 0, 0, 0.35);
+        }
+    }
+
+    &-overflow-hide {
+        overflow: hidden;
+    }
+
+    &-hero,
+    %hero {
+        // @extend %shadow;
+        // background: $surface;
+        position: relative;
+        z-index: 125;
+
+        &:not(.banner-mode) .layer-image {
+            border-radius: 15px;
+        }
+
+        .layer-image {
+            img {
+                transform: scale(1.2);
+                min-width: 500px;
+            }
+        }
+
+        &-scroll-down {
+            background: $white;
+            position: relative;
+            z-index: 250;
+
+            @media #{$screen-size-lt-tablet} {
+                margin-bottom: -176px;
+            }
+
+            @media #{$screen-size-laptop} {
+                margin-bottom: -276px;
+            }
+
+            @media #{$screen-size-desktop} {
+                margin-bottom: -270px;
+            }
+        }
+
+        .layer-title {
+            font-size: 64px;
+
+            @media (max-width: 500px) {
+                font-size: 34px;
+            }
+
+            @media (min-width: 500px) {
+                font-size: 44px;
+            }
+
+            @media (min-width: 700px) {
+                font-size: 7vw;
+            }
+
+            @media (min-width: 900px) {
+                font-size: 64px;
+            }
+
+            @media (min-width: 1600px) {
+                font-size: 100px;
+            }
+        }
+
+        .layer-main-text {
+            font-family: $regular-font;
+            line-height: 1.25;
+            font-weight: 400;
+            font-size: 4vw;
+
+            @media (max-width: 500px) {
+                line-height: 1.5;
+                font-size: 20px;
+            }
+
+            @media (min-width: 500px) {
+                font-size: 20px;
+            }
+
+            @media (min-width: 700px) {
+                font-size: 22px;
+            }
+
+            @media (min-width: 900px) {
+                font-size: 26px;
+            }
+        }
+    }
+
+    &,
+    &-bkg,
+    &-background {
+        @include colorList(background-color);
+    }
+
+    &-border {
+        $borderStyles: ("solid": solid,
+                "dotted": dotted,
+                "dashed": dashed,
+                "double": double,
+                "groove": groove,
+                "ridge": ridge,
+                "inset": inset,
+                "outset": outset,
+                "hidden": hidden,
+                "none": none);
+        border: 1px solid $mid;
+
+        @for $sz from 1 through 10 {
+            &-width-#{$sz} {
+                border-width: #{$sz}px;
+            }
+        }
+
+        @for $sz from 1 through 20 {
+            &-radius-#{$sz} {
+                border-radius: #{$sz}px;
+            }
+        }
+
+        @include colorList(border-color);
+        @include propertyList(border-width, "size", $sizes);
+        @include propertyList(border-radius, "radius", $sizes);
+        @include propertyList(border-style, "style", $borderStyles);
+    }
+
+    &-round {
+        border-radius: 20em;
+    }
+
+    &-tile {
+        position: relative;
+        min-height: 300px;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+
+        &,
+        .layer-image {
+            overflow: hidden;
+        }
+
+        &-footer {
+            position: absolute;
+            color: $white;
+            margin: 20px 25px;
+            bottom: 0;
+        }
+    }
+
+    &-box {
+        position: relative;
+        min-height: 400px;
+        // height: auto;
+        width: 100%;
+
+        &,
+        .layer-image {
+            border-radius: 8px;
+        }
+
+        &-flat {
+            &,
+            & .layer-image {
+                border-radius: 0 !important;
+            }
+        }
+
+        &-mid {
+            // max-height: 600px;
+        }
+
+        &-tall {
+            width: 100%;
+            height: auto;
+            // max-height: 1600px;
+        }
+    }
+
+    &-main {
+        line-height: 2em;
+        z-index: 25;
+    }
+
+    &-action-center {
+        transition: opacity .5s ease 0s;
+        font-size: 24px;
+        position: fixed;
+        bottom: 15px;
+        z-index: 250;
+        // width: 100%;
+        right: 0;
+
+        &-hide {
+            opacity: 0;
+        }
+
+        &-show {
+            opacity: 1;
+        }
+    }
+}

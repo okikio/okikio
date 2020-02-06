@@ -1,0 +1,23 @@
+mixin head(value = {})
+  - let _class = typeof value != "string" ? value.class : "";
+
+  .layer-header(class=_class)
+    if typeof value == "string"
+      h3.h4.style-font-30--device-phone.style-primary-dark.style-bold.style-center= value
+    block
+
+mixin main(value = {})
+  - let _class = typeof value != "string" ? value.class : "";
+
+  .layer-main(class=_class)
+    if typeof value == "string"
+      p= value
+    block
+
+mixin foot(value = {})
+  - let _class = typeof value != "string" ? value.class : "";
+
+  .layer-footer(class=_class)
+    if typeof value == "string"
+      span.style-bold= value
+    block

@@ -1,59 +1,92 @@
 {
-  "name": "okikio",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "nodemon ./server",
-    "start": "export NODE_ENV=production && node ./server.min",
-    "build": "gulp server && rm -rf public && mkdir public && node ./render.min && parcel build src/njk/pages/*.njk -d public && gulp && node ./render.min",
-    "build-win": "gulp server; rm -r public; mkdir public; node ./render.min; npx parcel build src/njk/pages/*.njk -d public; gulp; node ./render.min"
-  },
-  "engines": {
-    "node": "12",
-    "npm": "6"
-  },
-  "_cache": {
-    "strategy": "default",
-    "swDest": "sw.js",
-    "inDev": false
-  },
-  "cache": {
-    "runtimeCaching": [
-      {
-        "urlPattern": [
-          "[a-zA-Z0-9/-_+]+.(html|js|css|jpg|png|webp|gif|svg|eot|ttf|woff|woff2)",
-          "gi"
-        ],
-        "handler": "staleWhileRevalidate"
-      }
-    ]
-  },
-  "dependencies": {
-    "compression": "^1.7.4",
-    "cookie-parser": "~1.4.4",
-    "debug": "~4.1.1",
-    "express": "~4.17.1",
-    "helmet": "^3.21.2",
-    "jsdom": "^15.2.1",
-    "lodash.template": "^4.5.0",
-    "morgan": "~1.9.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.7.5",
-    "@babel/preset-env": "^7.7.5",
-    "autoprefixer": "^9.7.3",
-    "fs-extra": "^8.1.0",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-csso": "^3.0.1",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-uglify": "^3.0.2",
-    "nodemon": "^1.19.4",
-    "nunjucks": "^3.2.0",
-    "parcel-bundler": "^1.12.4",
-    "parcel-plugin-nunjucks": "^2.2.0",
-    "postcss-modules": "^1.4.1",
-    "sass": "^1.23.7"
+    "name": "okikio",
+    "version": "1.0.0",
+    "description": "The porfolio of Joseph, it contains all amazing projects etc...",
+    "scripts": {
+        "test": "gulp",
+        "watch": "gulp pre-watch && gulp watch",
+        "develop": "gulp dev",
+        "build": "gulp",
+        "publish": "gulp git:push",
+        "reload": "gulp git:pull"
+    },
+    "engines": {
+        "node": ">=12",
+        "npm": ">=6",
+        "yarn": ">=1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/okikio/okikio.git"
+    },
+    "keywords": [
+        "Okiki Ojo",
+        "okikiojo",
+        "okikio.co",
+        "okiki",
+        "ojo",
+        "portfolio",
+        "web",
+        "website",
+        "developer",
+        "dev",
+        "tech",
+        "website",
+        "netlify",
+        "pug",
+        "node",
+        "site",
+        "js"
+    ],
+    "author": "Okiki Ojo",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/okikio/okikio/issues"
+    },
+    "homepage": "https://github.com/okikio/okikio#readme",
+    "devDependencies": {
+      "@babel/core": "^7.8.4",
+      "@babel/preset-env": "^7.8.4",
+      "@fullhuman/postcss-purgecss": "^2.0.6",
+      "@rollup/plugin-commonjs": "^11.0.2",
+      "@rollup/plugin-json": "^4.0.2",
+      "@rollup/plugin-node-resolve": "^7.1.1",
+      "@swup/head-plugin": "^1.0.2",
+      "@swup/preload-plugin": "^1.0.3",
+      "@swup/scroll-plugin": "^1.0.6",
+      "autoprefixer": "^9.7.4",
+      "browser-sync": "^2.26.7",
+      "cloudinary": "^1.19.0",
+      "dotenv": "^8.2.0",
+      "eslint": "^6.8.0",
+      "gulp": "^4.0.2",
+      "gulp-beautify": "^3.0.0",
+      "gulp-better-rollup": "^4.0.1",
+      "gulp-htmlmin": "^5.0.1",
+      "gulp-imagemin": "^7.1.0",
+      "gulp-postcss": "^8.0.0",
+      "gulp-posthtml": "^3.0.4",
+      "gulp-pug": "^4.0.1",
+      "gulp-rename": "^2.0.0",
+      "gulp-sass": "^4.0.2",
+      "gulp-sourcemaps": "^2.6.5",
+      "gulp-terser": "^1.2.0",
+      "lazysizes": "^5.2.0",
+      "microicon": "^1.0.0-b.2",
+      "pnpm": "^4.9.3",
+      "postcss": "^7.0.26",
+      "postcss-csso": "^4.0.0",
+      "postcss-flexibility": "^2.0.0",
+      "posthtml-doctype": "^1.1.1",
+      "posthtml-inline-assets": "^3.0.0",
+      "posthtml-link-noreferrer": "^1.0.5",
+      "posthtml-lorem": "^1.0.0",
+      "posthtml-match-helper": "^1.0.1",
+      "posthtml-textr": "^1.0.5",
+      "rollup": "^1.31.0",
+      "rollup-plugin-babel": "^4.3.3",
+      "rollup-plugin-node-builtins": "^2.1.2",
+      "swup": "^2.0.8",
+      "typographic-single-spaces": "^1.0.2"
+    }
   }
-}

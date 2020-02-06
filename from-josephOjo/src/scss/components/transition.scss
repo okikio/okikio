@@ -1,0 +1,23 @@
+/*! purgecss start ignore */
+.transition {
+    &-fade {
+        transition: opacity 0.25s ease;
+        opacity: 1;
+
+        .is-animating & {
+            opacity: 0 !important;
+        }
+    }
+
+    &-in-view {
+        transition: opacity 0.25s ease 0s, transform 0.4s ease 0.1s;
+        transform: translateY(0px);
+        opacity: 1;
+
+        .is-animating & {
+            transform: translateY(-20px) !important;
+            opacity: 0 !important;
+        }
+    }
+}
+/*! purgecss end ignore */

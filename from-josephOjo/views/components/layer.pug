@@ -1,0 +1,5 @@
+mixin layer(value = {})
+  - let _class = value.class || "";
+
+  .layer(class=_class)
+    block

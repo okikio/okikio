@@ -1,0 +1,83 @@
+extends ../app.pug
+include ../components/sections.pug
+include ../components/layout.pug
+include ../components/footer.pug
+include ../components/layer.pug
+include ../components/text.pug
+
+block pageInfo
+	-
+		let page = {
+			url: "/sitemap",
+			name: "sitemap",
+			title: "Lets find you a destination, the destination of greatness!",
+			description: "A little lost, here is a map, now where do you want to go?"
+		};
+
+block content
+	//- Intro layer
+	+layer({
+		class: "layout-padding-horz"
+	})
+		+layout({
+			class: "layout-contain-small layout-vert-centered-box"
+		})
+			section
+				+head
+					h1.h4.style-font-30--device-phone.style-primary-dark.style-bold.style-center The sitemap!
+				+main
+					ul
+						//- Index
+						li
+							+link({
+								href: "/",
+								class: "style-italic style-underline layout-margin-right-mini",
+								content: "Home"
+							})
+							+p("- Homepage galor, its the begining of our little adventure. Do you want to go back?")
+							br
+
+						//- About
+						li
+							+link({
+								href: "/about-me",
+								class: "style-italic style-underline layout-margin-right-mini",
+								content: "About Me"
+							})
+							+p("- The story of me, myself and I. Shall we begin?")
+							br
+
+						//- Projects
+						li
+							+link({
+								href: "/my-projects",
+								class: "style-italic style-underline layout-margin-right-mini",
+								content: "My Projects"
+							})
+							+p("- Hardwork and perseverance, hear all about it.")
+							br
+
+						//- Contact
+						li
+							+link({
+								href: "/contact-me",
+								class: "style-italic style-underline layout-margin-right-mini",
+								content: "Contact Me"
+							})
+							+p("- Do you have a project that demands perservance and passion? Then, lets talk.")
+							br
+
+						//- Resume
+						li
+							+link({
+								href: "/my-resume",
+								class: "style-italic style-underline layout-margin-right-mini",
+								content: "My Resume"
+							})
+							+p("- All the qualifications I have aquired over my life time, in readable, bite sized, format.")
+							br
+
+block footer
+	+footer({
+		class: "footer-stuck layout-margin-vert-top"
+	})

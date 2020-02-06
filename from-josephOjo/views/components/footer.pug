@@ -1,0 +1,45 @@
+mixin footer(value = {})
+	- let _class = value.class;
+	footer.footer(data-container itemprop="author")
+		.layout-contain.transition-fade(class=_class)
+			.layout-padding.style-center.style-font-weight-bold.style-font-title.style-spaceout-small(itemprop="publisher" itemscope itemtype="https://schema.org/Organization" itemid="https://www.josephojo.com")
+				span Made with ❤ by
+				span= " "
+				+link({
+					href: "https://github.com/okikio",
+					class: "layout-margin-left-mini",
+					content: "Okiki Ojo"
+				})(target="_blank" rel="noreferrer")
+				span= " | "
+				span.action-btn.pointer-default
+					.action-btn-group
+						i.action-icon(inline) copyright
+						span.action-btn-section
+							span.action-btn-spacer
+							span(itemprop="copyrightYear") 2019
+							span(itemprop="copyrightHolder")  Joseph Ojo -
+							span.action-btn-spacer
+				+link({
+					href: "/sitemap",
+					class: "layout-inline-block layout-margin-left-mini",
+					content: "Sitemap"
+				})
+				span= " | "
+				+link({
+					href: "https://www.linkedin.com/in/o-josephojo/",
+					class: "layout-margin-left-mini",
+					content: "LinkedIn"
+				})(target="_blank" rel="noreferrer")
+				span= " - "
+				+link({
+					href: "https://github.com/laoluojo",
+					class: "layout-margin-left-mini",
+					content: "Github"
+				})(target="_blank" rel="noreferrer")
+				span= " - "
+				span(itemprop="email")
+					+link({
+						href: "mailto:laoluojo@gmail.com",
+						class: "layout-margin-left-mini",
+						content: "Email"
+					})(target="_blank" rel="noreferrer")

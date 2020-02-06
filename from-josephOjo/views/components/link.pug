@@ -1,0 +1,7 @@
+mixin link(value = {}, noFocus)
+	- let { content, href } = value;
+	- let _class = value.class || "layout-inline";
+	- let _href = dev && href[0] === "/" ? (href === "/" ? "/index.html" : `${href}.html`) : href;
+
+	a(href=_href class=`${_class} ${noFocus ? "" : "focus-box"}` title=content)&attributes(attributes)= content
+		block

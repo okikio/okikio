@@ -1,0 +1,19 @@
+mixin seo(value = {})
+	- let { title, url, description } = value;
+
+	title= title
+	meta(name='title' content=title)
+	meta(itemprop='name' content=title)
+	meta(property='og:title' content=title)
+	meta(name='twitter:title' content=title)
+	meta(name="apple-mobile-web-app-title", content=title)
+
+	meta(name="shortlink" content=`https://josephojo.com${url}`)
+	meta(itemprop='url' content=`https://www.josephojo.com${url}`)
+	meta(name="canonical" content=`https://www.josephojo.com${url}`)
+	meta(property='og:url' content=`https://www.josephojo.com${url}`)
+	meta(name='twitter:url' content=`https://www.josephojo.com${url}`)
+
+	meta(name='description' content=description)
+	meta(itemprop='description' content=description)
+	meta(property='og:description' content=description)
