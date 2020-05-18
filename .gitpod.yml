@@ -1,0 +1,34 @@
+image:
+  file: .gitpod.dockerfile
+
+# List the ports you want to expose and what to do when they are served. See https://www.gitpod.io/docs/43_config_ports/
+ports:
+  - port: 3000
+    onOpen: open-browser
+  - port: 3001
+    onOpen: ignore
+
+# List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
+tasks:
+  - command: >
+      npm install -g gulp &&
+      echo -e "dev=true" > .env &&
+      yarn &&
+      npm run watch
+
+vscode:
+  extensions:
+    - michelemelluso.code-beautifier@2.3.3:aRVPC/UxkGF1U5lMncPQNw==
+    - afractal.node-essentials@1.1.0:Jxchs8x551PYj7RQCMD/Tw==
+    - jasonnutter.search-node-modules@1.3.0:G786iJxLfc//erh6tQ8MWw==
+    - msjsdiag.debugger-for-chrome@4.12.1:xXSEoy8/LqF/SyOtQTqrQw==
+    - redhat.fabric8-analytics@0.0.13:k9RQ8fqmg2WmkP2sL4ccbA==
+    - shinnn.stylelint@0.51.0:Uy6xDb5psDPzfFra0dwP4w==
+    - dzannotti.vscode-babel-coloring@0.0.4:5Rlj2/kADFIl+crtoyiywQ==
+    - dbaeumer.vscode-eslint@1.9.1:YVcwmzKVVl+zZ+wMB02GjQ==
+    - mikestead.dotenv@1.0.1:SSXjr5hZcbqSF7nMIhTNnA==
+    - eamodio.gitlens@10.1.1:W/mM/phTCRJ9XghzvZRI4g==
+    - christian-kohler.path-intellisense@1.4.2:QnOrf5fk6KiVaQs4cNEP+w==
+    - VisualStudioExptTeam.vscodeintellicode@1.2.0:ZVy7XFOZUd4m0FZb3PUFbA==
+    - redhat.vscode-yaml@0.5.3:9PocMeslVen4COl7FQruRA==
+    - ritwickdey.LiveServer@5.6.1:wV4LBkq6Z5s1xwf2HrB+cw==

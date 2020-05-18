@@ -1,56 +1,306 @@
-/* 
+/*
     -- TABLE OF CONTENTS --
      * External Imports
          * Fonts
      * Presets & Resets
          * Elements
-     * Styles
-     * Icons & Font
+     * Styles & Font
+     * Icons & Buttons
      * Header
-         * Navigation
-             * Navbar
+         * Navbar
      * Main Content
      * Layout
          * Base Layouts
          * Position
          * Container
          * Margins
+             * Dull Margin
              * Horizontal Margin
              * Vertical Margin
          * Paddings
+             * Padding Margin
              * Horizontal Padding
              * Vertical Padding
          * Clearfix
          * Rows & Columns
      * Layer
-     * Mobile
-     
-     -----------
-     * Pages
-     
+     * ETC...
 */
 
 /* -- Fonts -- */
 /*
-    * font-family: 'Source Sans Pro', sans-serif;
+    * font-family: 'Roboto', sans-serif;
     * font-family: 'Montserrat', sans-serif;
+    * font-family: 'Frank Ruhl Libre', serif;
+    * font-family: 'Varela Round', sans-serif;
+    * font-family: 'Material Icons', sans-serif;
 */
 
+// Variables
+$primary-light: #4e41ff;
+$primary: #2d22ca;
+$primary-dark: #271daf; // #774bec
+$secondary-light: #ff4b78;
+$secondary: #ff3a6b;
+$secondary-dark: #ce0c3c;
+$tertiary-light: #ffe851;
+$tertiary: #ffde03;
+$tertiary-dark: #e5c702;
+$off-blue: #d7d4ff;
+
+$background: #eaeef1; // #e2ebf5
+$surface: #fff; //  #3b3c3e
+
+$white: #fff;
+$black: #000; // #bbb8b8
+// navbar-link:hover = #e6e6e6
+
+$very-light: #efefef;
+// navbar-head/navbar-main border-color = #3b3c3e
+// navbar-list = #292d33
+// navbar-menu background-color = #2b2a2a
+
+$light: #eee; // #525252
+$mid-light: #ddd;
+$mid: #ccc;
+$mid-dark: #bbb;
+$dark: #222; // #ddd
+
+$title-font: 'Frank Ruhl Libre', serif;
+$light-font: 'Varela Round', sans-serif;
+$icon-font: "Material Icons", sans-serif;
+$regular-font: "Roboto", sans-serif;
+$bold-font: 'Montserrat', sans-serif;
+
+$desktop: 1480;
+$laptop: 1080;
+$tablet: 680;
+$phone: 480;
+
+$transitionDuration: .4s;
+
+$screen-size-desktop: "(min-width: #{$laptop}px)";
+
+$screen-size-gt-laptop: "(min-width: #{$laptop}px)"; // Greater Than
+$screen-size-laptop: "(min-width: #{$tablet}px) and (max-width: #{$laptop}px)";
+$screen-size-lt-laptop: "(max-width: #{$laptop}px)"; // Less Than
+
+$screen-size-gt-tablet: "(min-width: #{$tablet}px)"; // Greater Than
+$screen-size-tablet: "(min-width: #{$phone}px) and (max-width: #{$tablet}px)";
+$screen-size-lt-tablet: "(max-width: #{$tablet}px)"; // Less Than
+
+$screen-size-gt-phone: "(min-width: #{$phone}px)"; // Greater Than
+$screen-size-phone: "(max-width: #{$phone}px)";
+
+$size-humungus-xl: 500px;
+$size-humungus: 420px;
+$size-gigantic-xl: 340px;
+$size-gigantic: 220px;
+$size-huge-xl: 180px;
+$size-huge: 120px;
+$size-extra-xl: 100px;
+$size-extra-large: 90px;
+$size-sub-extra-large: 80px;
+$size-larger: 60px;
+$size-large: 50px;
+$size-sub-large: 40px;
+$size: 25px;
+$size-mid: 20px;
+$size-small: 15px;
+$size-smaller: 10px;
+$size-smallest: 8px;
+$size-mini: 5px;
+$size-nano: 2px;
+
+$colors: (
+    "primary-light": $primary-light,
+    "primary": $primary,
+    "primary-dark": $primary-dark,
+    "secondary-light": $secondary-light,
+    "secondary": $secondary,
+    "secondary-dark": $secondary-dark,
+    "tertiary-light": $tertiary-light,
+    "tertiary": $tertiary,
+    "tertiary-dark": $tertiary-dark,
+
+    "off-blue": $off-blue,
+    "background": $background,
+    "surface": $surface,
+    "transparent": transparent,
+
+    "white": $white,
+    "black": $black,
+
+    "very-light": $very-light,
+    "light": $light,
+    "mid-light": $mid-light,
+    "mid": $mid,
+    "dim": #77709e,
+    "mid-dark": $mid-dark,
+    "dark": $dark
+);
+
+$dark-colors: (
+    "primary-light": lighten($primary-dark, 5%),
+    "primary": lighten($primary, 15%),
+    "primary-dark": lighten($primary-light, 15%),
+
+    "secondary-light": lighten($secondary-dark, 15%),
+    "secondary": lighten($secondary, 5%),
+    "secondary-dark": lighten($secondary-light, 15%),
+
+    "tertiary-light": $tertiary-light,
+    "tertiary": $tertiary,
+    "tertiary-dark": $tertiary-dark,
+
+    "background": #18181b, // #000000
+    "surface": #333435, // #2f2f35
+    "transparent": transparent,
+
+    "white": $white,
+    "black": $black,
+
+    "very-light": #1d2125,
+    "light": #525252,
+    "mid-light": $mid-light,
+    "mid": $mid,
+    "dim": #696873,
+    "mid-dark": #bbb8b8,
+    "dark": #ddd
+);
+
+$fonts: (
+    "title": $title-font,
+    "light": $light-font,
+    // "icon": $icon-font,
+    "regular": $regular-font,
+    "bold": $bold-font
+);
+
+$sizes: (
+    "dull": 0 !important,
+    // "humungus-xl": $size-humungus-xl,
+    // "humungus": $size-humungus,
+    // "gigantic-xl": $size-gigantic,
+    // "gigantic": $size-gigantic,
+    // "huge-xl": $size-huge-xl,
+    "huge": $size-huge,
+    // "extra-xl": $size-extra-xl,
+    "extra-large": $size-extra-large,
+    "sub-extra-large": $size-sub-extra-large,
+    "larger": $size-larger,
+    "large": $size-large,
+    "sub-large": $size-sub-large,
+    "default": $size,
+    "mid": $size-mid,
+    "small": $size-small,
+    "smaller": $size-smaller,
+    "smallest": $size-smallest,
+    "mini": $size-mini,
+    "nano": $size-nano,
+
+    "desktop": #{$desktop}px,
+    "laptop": #{$laptop}px,
+    "tablet": #{$tablet}px,
+    "phone": #{$phone}px
+);
+
+@mixin deviceList($property, $val: 0px) {
+    $screenSizes: (
+        "desktop": $screen-size-desktop,
+
+        "gt-laptop": $screen-size-gt-laptop, // Greater Than
+        "laptop": $screen-size-laptop,
+        "lt-laptop": $screen-size-lt-laptop, // Less Than
+
+        "gt-tablet": $screen-size-gt-tablet, // Greater Than
+        "tablet": $screen-size-tablet,
+        "lt-tablet": $screen-size-lt-tablet, // Less Than
+
+        "gt-phone": $screen-size-gt-phone, // Greater Than
+        "phone": $screen-size-phone
+    );
+
+    @each $device-type, $screen-size in $screenSizes {
+        @media #{$screen-size} {
+            &--device-#{$device-type} {
+                #{$property}: #{$val};
+            }
+        }
+    }
+}
+
+// :root,
+/*! purgecss start ignore */
+// :root[theme=dark] {
+//     @media (prefers-color-scheme: dark) {
+//         @each $name, $value in $dark-colors {
+//             --#{$name}: #{$value};
+//         }
+//     }
+// }
+html[theme=dark] {
+    // @media (prefers-color-scheme: dark) {
+        @each $name, $value in $dark-colors {
+            --#{$name}: #{$value};
+        }
+    // }
+}
+
+// html[theme=light] {
+//     // @media (prefers-color-scheme: light) {
+//         @each $name, $value in $colors {
+//             --#{$name}: #{$value};
+//         }
+//     // }
+// }
+/*! purgecss end ignore */
+
+@mixin applyTheme($property: color, $value: "primary") {
+    #{$property}: map-get($colors, $value);
+    #{$property}: var(--#{$value}, map-get($colors, $value));
+}
+
+@mixin propertyList($property, $prefix, $list, $themeable: false, $action: "") {
+    @each $name, $value in $list {
+        @if str-length($action) > 0 {
+            &-#{$action}-#{$name}:#{$action},
+            &-#{$name}-#{$action}:#{$action},
+            &-#{$action}-#{$prefix}-#{$name}:#{$action},
+            &-#{$prefix}-#{$action}-#{$name}:#{$action},
+            &-#{$prefix}-#{$name}-#{$action}:#{$action} {
+                @if ($themeable) {
+                    transition: #{$property} #{$transitionDuration} ease;
+                    @include applyTheme($property, $name);
+                } @else {
+                    #{$property}: $value;
+                }
+            }
+        } @else {
+            &-#{$name},
+            &-#{$prefix}-#{$name} {
+                @if ($themeable) {
+                    transition: #{$property} #{$transitionDuration} ease;
+                    @include applyTheme($property, $name);
+                } @else {
+                    #{$property}: $value;
+                }
+            }
+        }
+    }
+}
+
+@mixin colorList($property: color, $name: "color") {
+    @include propertyList($property, $name, $colors, true);
+    @include propertyList($property, $name, $colors, true, "hover");
+    @include propertyList($property, $name, $colors, true, "focus");
+}
+
+// @import "./components/fonts.scss";
 @import "./components/base.scss";
-@import "./components/style.scss";
-@import "./components/button.scss";
 @import "./components/navbar.scss";
+@import "./components/style.scss";
+@import "./components/action.scss";
 @import "./components/layout.scss";
 @import "./components/layer.scss";
-@import "./components/sidebar.scss";
-@import "./components/mobile.scss";
-@import "./components/footer.scss";
-
-// Pages (Style specific to pages seperate pages)
-@import "./pages/about.scss";
-@import "./pages/contact.scss";
-@import "./pages/project.scss";
-@import "./pages/project-list.scss";
-
-
-
+@import "./components/transition.scss";

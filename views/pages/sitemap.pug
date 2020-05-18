@@ -1,0 +1,98 @@
+extends /app.pug
+
+block pageInfo
+  -
+    let page = {
+      websiteURL,
+      url: "/sitemap",
+      name: "sitemap",
+      title: "Sitemap — Lets find you a destination, the destination of greatness!",
+      description: "A little lost, here is a map, now where do you want to go? The sitemap lists all pages and gives brief descriptions to help you find your way."
+    };
+
+
+    //- link(rel="preload" href="/fonts/roboto--regular_latin.woff2" as="font" crossorigin)
+    //- link(rel="preload" href="/fonts/montserrat--extrabold_latin.woff2" as="font" crossorigin)
+    //- link(rel="preload" href="/fonts/montserrat--bold_latin.woff2" as="font" crossorigin)
+block preload
+  link(rel="preload" href="/fonts/montserrat--bold_latin.woff2" as="font" type="font/woff2" crossorigin)
+
+block content
+  //- Intro layer
+  +layer({
+    class: "layout-padding-horz-default--device-gt-tablet header-top-spot"
+  })
+    +layout({
+      class: "layout-contain-small layout-shorten-vert"
+    })
+      section
+        +head
+          h1.h4.style-font-30--device-phone.style-primary-dark.style-bold.style-center The Sitemap — Lets find you a destination!
+        +main
+          ul(itemscope itemtype="https://schema.org/SiteNavigationElement")
+            //- Index
+            li
+              +link({
+                href: "/",
+                class: "style-italic style-underline layout-margin-right-mini"
+              })(itemprop="url")
+                span(itemprop="name") Home
+              +p("- Homepage galor, its the begining of our little adventure. Do you want to go back?")
+              br
+
+            //- About
+            li
+              +link({
+                href: "/about-me",
+                class: "style-italic style-underline layout-margin-right-mini"
+              })(itemprop="url")
+                span(itemprop="name") About Me
+              +p("- The story of me, myself and I. Shall we begin?")
+              ul
+                //- Resume
+                li
+                  +link({
+                    href: "/my-resume",
+                    class: "style-italic style-underline layout-margin-right-mini"
+                  })(itemprop="url")
+                    span(itemprop="name") My Resume
+                  +p("- All the qualifications I have aquired over my life time, in readable, bite sized, format.")
+
+            //- Projects
+            li
+              +link({
+                href: "/my-projects",
+                class: "style-italic style-underline layout-margin-right-mini"
+              })(itemprop="url")
+                span(itemprop="name") My Projects
+              +p("- Hardwork and perseverance, hear all about it.")
+              br
+              ul
+                //- Nasa
+                li
+                  +link({
+                    href: "/projects/nasa",
+                    class: "style-italic style-underline layout-margin-right-mini"
+                  })(itemprop="url")
+                    span(itemprop="name") Nasa
+                  +p("- Yes that Nasa, find out more.")
+                  br
+                //- Google Designs
+                li
+                  +link({
+                    href: "/projects/google-designs",
+                    class: "style-italic style-underline layout-margin-right-mini"
+                  })(itemprop="url")
+                    span(itemprop="name") Google Designs
+                  +p("- I Also worked with Google, specifically their Design team.")
+                  br
+
+            //- Contact
+            li
+              +link({
+                href: "/contact-me",
+                class: "style-italic style-underline layout-margin-right-mini"
+              })(itemprop="url")
+                span(itemprop="name") Contact Me
+              +p("- Do you have a project that demands perservance and passion? Then, lets talk.")
+              br

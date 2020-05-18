@@ -1,0 +1,40 @@
+extends /app.pug
+
+block pageInfo
+  -
+    let page = {
+      websiteURL,
+      url: "/404",
+      name: "404",
+      title: "Ooops!",
+      description: "Sorry, the page you are looking for doesn't exist. How about going back home."
+    };
+
+block preload
+  link(rel="preload" href="/fonts/montserrat--bold_latin.woff2" as="font" type="font/woff2" crossorigin)
+
+block content
+  //- Intro layer
+  +layer
+    +layout({
+      class: "layout-contain layer-overflow-hide"
+    })
+      section(class="layout-shorten layout-max-height-limited layout-flex layout-align-items-center layout-justify-content-center")
+        section.style-center.layout-margin-top-larger--device-phone
+          +head({
+            class: "layout-margin-bottom"
+          })
+            h1.style-font-35--device-phone.style-primary-dark.style-bold.layout-margin-dull 404, Page Not Found.
+          +main
+            +p("Sorry, the page you are looking for doesn't exist. How about going back")
+            +link({
+              href: "/",
+              class: "style-italic style-underline layout-margin-left-mini",
+              content: "home"
+            })
+            +p(".")
+
+block footer
+  +footer({
+    class: "footer-stuck layout-margin-vert-top"
+  })

@@ -54,7 +54,8 @@ profile-*
 .idea
 
 # vscode
-*code-workspace
+#.vscode
+#*code-workspace
 
 # clinic
 profile*
@@ -95,5 +96,7 @@ core.gitpod.*
 core.git.*
 core.node.*
 /public
+/docs
 pnpm-debug.log
 *debug.log
+/temp

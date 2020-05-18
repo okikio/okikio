@@ -1,6 +1,10 @@
 language: node_js
+dist: xenial
+os: linux
 node_js:
-  - "13"
-before_script:
-  - npm install
-cache: npm
+  - "14"
+cache: 
+  npm: true
+  yarn: true
+  directories:
+    - node_modules

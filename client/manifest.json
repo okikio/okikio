@@ -1,0 +1,33 @@
+{
+    "name": "Okikio",
+    "short_name": "Okikio",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#2d22ca",
+    "theme_color": "#2d22ca",
+    "description": "The portfolio of Okiki Ojo. It contains some of his amazing projects, etc....",
+    "icons": [
+        {
+            "src": "/favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicon/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicon/maskable-favicon.png",
+            "sizes": "538x538",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "lang": "en",
+    "screenshots": [],
+    "orientation": "any",
+    "scope": "/"
+}

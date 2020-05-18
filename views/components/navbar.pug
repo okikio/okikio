@@ -1,0 +1,55 @@
+include /components/link.pug
+include /components/image.pug
+
+mixin themeSwitcher()
+  .layout-inline-block
+    a.theme-switcher.navbar-btn.action-btn.layer-round.layout-padding-smaller.layer-transparent.layer-light-hover.layer-mid-dark-focus(title="Theme Switcher" name="Theme Switcher")
+      span.action-btn-group
+        //- brightness_medium
+        i.action-icon.style-font-family-bold.style-font-size-24(inline) theme switcher
+
+mixin navbar(value = {})
+  - let { name } = value;
+  - let _class = value.class;
+
+  - let tabs = ["about-me", "my-projects", "contact-me"];
+  - let focusIndex = tabs.indexOf(name.toLowerCase());
+
+  header.header
+    nav.navbar.navbar-fixed(class=_class itemscope itemtype="https://schema.org/SiteNavigationElement")
+      .layout-contain-large.navbar-layout
+        .navbar-head(itemscope itemtype="http://schema.org/Organization")
+          +link({
+            href: "/",
+            class: "navbar-title style-primary-dark-hover style-primary-dark-focus"
+          })(itemprop="url" data-swup-preload title="The Okiki Ojo Logo.")
+            img.navbar-logo(src="/favicon/favicon.svg" alt="Logo." itemprop="logo" inline)
+            span.navbar-title-line
+            span.name.layout-inline-block(itemprop="name") Okikio!
+          .layout-spacer
+          .navbar-foot.navbar-mobile
+            +themeSwitcher
+            if !debug
+              .layout-inline-block
+                a.navbar-menu.action-btn.layer-round.layout-padding-smaller.layer-transparent.layer-light-hover.layer-mid-dark-focus(title="Menu Button" name="Menu Button")
+                  span.action-btn-group
+                    i.action-icon.style-font-family-bold.style-font-size-24(inline) menu
+
+        .layout-spacer.navbar-desktop
+        .navbar-main
+          if !debug
+            ul.navbar-list(itemscope itemtype="http://schema.org/BreadcrumbList")
+              each tab, i in tabs
+                li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+                  +link({
+                    href: `/${tab}`,
+                    class: `navbar-link${i == focusIndex ? " navbar-link-focus" : ""}`
+                  })(itemprop="url" tabindex="-1" data-swup-preload title=`The ${tab[0].toUpperCase() + tab.slice(1).replace("-", " ")} navbar link.`)
+                    span.navbar-link-content(itemprop="name")= tab.replace("-", " ")
+                    meta(itemprop="position" content="1")
+              .navbar-desktop-display
+                +themeSwitcher
+          else
+            .navbar-list
+              .navbar-desktop-display
+                +themeSwitcher

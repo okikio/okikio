@@ -1,0 +1,149 @@
+/* -- Action (represents elements that request direct interaction) -- */
+.action {
+    &-btn {
+        justify-content: center;
+        vertical-align: middle;
+        contain: content;
+        text-decoration: none;
+        display: inline-flex;
+        word-break: initial;
+        align-items: center;
+        position: relative;
+        user-select: none;
+        cursor: pointer;
+        line-height: 1;
+
+        &-layout {
+            min-height: 20px;
+            width: auto;
+        }
+
+        &:focus,
+        &:hover {
+            text-decoration: none;
+        }
+
+        &-default {
+            padding: 8px 16px;
+            margin: 8px;
+        }
+
+        &-radial {
+            border-radius: 24px;
+        }
+
+        &-round {
+            @extend .layer-round;
+        }
+
+        &-smooth {
+            border-radius: 5px;
+        }
+
+        &-spacer {
+            margin-right: 8px;
+        }
+
+        &-strict {
+            min-width: 48px;
+            padding: 0 16px;
+            height: 48px;
+        }
+
+        &-group {
+            justify-content: center;
+            display: inline-flex;
+            width: 100%;
+
+            .action-icon {
+                vertical-align: middle;
+                display: inline-block;
+                user-select: none;
+                overflow: hidden;
+                flex-shrink: 0;
+            }
+        }
+
+        &-content {
+            text-transform: uppercase;
+            letter-spacing: 0.02857em;
+            font-family: $bold-font;
+            font-size: 0.875rem;
+            line-height: 24px;
+            font-weight: 500;
+        }
+
+        &-hover &-layout,
+        &-expand &-layout {
+            transition: width .6s ease 0s;
+
+            .action-btn-section {
+                transition: opacity .4s ease 0.1s;
+                overflow-wrap: normal;
+                word-break: keep-all;
+                white-space: nowrap;
+                word-wrap: normal;
+                overflow: hidden;
+                display: flex;
+                width: 100%;
+            }
+        }
+
+        &-hover &-layout {
+            width: 40px !important;
+            position: relative;
+            height: 40px;
+
+            .action-btn-section {
+                opacity: 0;
+            }
+        }
+
+        &-expand &-layout,
+        &-hover:hover &-layout {
+            width: 165px !important;
+
+            .action-btn-section {
+                opacity: 1;
+            }
+        }
+    }
+
+    &-pointer-default {
+        cursor: default;
+    }
+
+    &-icon,
+    &-material-icons {
+        -webkit-font-feature-settings: "liga"off, "dlig";
+        /* Ch 16-26, BB 10, And 18.0 */
+        -moz-font-feature-settings: "liga=0, dlig=1";
+        /* Fx 4-21 */
+        font-feature-settings: "liga", "dlig";
+        /* IE 10, Saf 4.0-6.0 */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        font-family: $icon-font;
+        vertical-align: middle;
+        letter-spacing: normal;
+        display: inline-block;
+        text-decoration: none;
+        text-transform: none;
+        white-space: nowrap;
+        font-weight: normal;
+        position: relative;
+        font-style: normal;
+        word-wrap: normal;
+        line-height: 1;
+        direction: ltr;
+        height: 1em;
+        width: 1em;
+
+        &-btn,
+        &-btn:hover {
+            border-radius: 20em;
+            text-decoration: none;
+        }
+    }
+}

@@ -1,0 +1,53 @@
+mixin footer(value = {})
+  - let _class = value.class;
+  footer.footer(data-container)
+    .layout-contain-large.layout-padding.style-font-weight-bold.style-font-bold.style-spaceout-small.transition-fade.footer-layout(class=_class)
+      div
+        span.action-btn.action-btn-pointer-default(title="Copyright")
+          .action-btn-group
+            span.action-btn-spacer
+            i.action-icon(inline) copyright
+            span.action-btn-section
+              span.action-btn-spacer
+              span 2019
+              span  Okiki Ojo
+              span.action-btn-spacer
+      div
+        if !debug
+          span(itemscope itemtype="https://schema.org/SiteNavigationElement")
+            +link({
+              href: "/sitemap",
+              class: "layout-margin-left-mini",
+            })(itemprop="url" title="The Okiki Ojo sitemap.")
+              span(itemprop="name") Sitemap
+          span= " - "
+        +link({
+          href: "https://www.linkedin.com/in/okikio",
+          class: "layout-margin-left-mini",
+          content: "LinkedIn"
+        })(target="_blank" rel="noreferrer noopener" title="My LinkedIn page.")
+        span= " - "
+        +link({
+          href: "https://github.com/okikio",
+          class: "layout-margin-left-mini",
+          content: "Github"
+        })(target="_blank" rel="noreferrer noopener" title="The official Okiki Ojo github link.")
+        span= " - "
+        span(itemprop="publisher" itemscope itemtype="https://schema.org/Organization" itemid="https://okikio.netlify.app")
+          +link({
+            href: "mailto:okikio.dev&#64;gmail&#46;com",
+            class: "layout-margin-left-mini",
+            content: "Email"
+          })(target="_blank" rel="noreferrer noopener" itemprop="email" title="An email you can contact me with.")
+      div
+        span
+          span Made with
+          span.action-btn-spacer
+          span.style-secondary ❤
+          span.action-btn-spacer
+          span by
+          span(itemprop="author")
+            +link({
+              href: "https://github.com/okikio",
+              content: "Okiki Ojo"
+            })(target="_blank" rel="noreferrer noopener" title="The github link to the Web Developer who designed this site, Okiki Ojo.")

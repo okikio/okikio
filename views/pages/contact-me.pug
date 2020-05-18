@@ -1,0 +1,53 @@
+extends /app.pug
+
+block pageInfo
+  -
+    let page = {
+      websiteURL,
+      url: "/contact-me",
+      name: "contact-me",
+      title: "Contact me — Let's talk. I'm ready to create something awesome, are you?",
+      description: "Do you have a project that requires passion and dedication, then let's talk. Let's create something extrodinary."
+    };
+
+block preload
+  link(rel="preload" href="/fonts/montserrat--bold_latin.woff2" as="font" type="font/woff2" crossorigin)
+
+block content
+  //- Intro layer
+  +layer({
+    class: "layout-padding-horz-default header-top-spot"
+  })
+    +layout({
+      class: "layout-contain-small layout-padding-vert"
+    })
+      section
+        +head
+          h1.style-font-30--device-phone.style-primary-dark.style-bold.style-uppercase Say Hello — Lets talk
+        +main({
+          class: "layout-padding-vert-small layout-clearfix"
+        })
+          span.style-font-title.style-letter-head.layout-padding-right-nano.layout-inline-block.layout-left H
+          +p("ey, I am ")
+            span(itemprop='author') Okiki Ojo
+            span , the man, the myth, the legend, let's talk.
+          span.layout-margin-vert-bottom(itemprop='description')
+            p.layout-inline.layout-margin-dull(lorem="1")
+          section(itemtype='https://schema.org/Person')
+            +p("You can find me at:")
+            ul
+              li
+                +link({
+                  href: "https://www.linkedin.com/in/okikio",
+                  content: "LinkedIn"
+                })(target="_blank" rel="noreferrer noopener")
+              li
+                +link({
+                  href: "https://github.com/okikio",
+                  content: "Github"
+                })(target="_blank" rel="noreferrer noopener")
+              li(itemprop="email")
+                +link({
+                  href: "mailto:okikio.dev&#64;gmail&#46;com",
+                  content: "Email"
+                })(target="_blank" rel="noreferrer noopener")

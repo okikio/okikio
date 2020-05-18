@@ -1,0 +1,298 @@
+doctype html
+html(lang="en")
+  head
+    include /components/sections.pug
+    include /components/layout.pug
+    include /components/banner.pug
+    include /components/column.pug
+    include /components/navbar.pug
+    include /components/footer.pug
+    include /components/image.pug
+    include /components/layer.pug
+    include /components/text.pug
+    include /components/tile.pug
+    include /components/hero.pug
+    include /components/link.pug
+    include /components/seo.pug
+    include /components/row.pug
+    - let websiteURL = self.websiteURL;
+    - let keywords = self.keywords;
+    - let netlify = self.netlify;
+    - let debug = self.debug;
+    - let dev = self.dev;
+    -
+      let defaults = {
+        url: "/",
+        websiteURL,
+        name: "index",
+        title: debug ? "Okiki Ojo — Coming Soon" : "Okiki Ojo — Website Developer / Portfolio",
+        description: "I am Okiki a skilled Website Developer based in Oshawa, Ontario. This is my portfolio site, it holds my resume and ways to contact me."
+      };
+
+    block pageInfo
+      -
+        let page = Object.assign({}, defaults);
+
+    link(rel="dns-prefetch" href='https://res.cloudinary.com' crossorigin)
+    link(rel="preconnect" href='https://res.cloudinary.com' crossorigin)
+
+    //- link(rel="dns-prefetch" href='https://d33wubrfki0l68.cloudfront.net' crossorigin)
+    //- link(rel="preconnect" href='https://d33wubrfki0l68.cloudfront.net' crossorigin)
+
+    link(rel="dns-prefetch" href=websiteURL crossorigin)
+    link(rel="preconnect" href=websiteURL crossorigin)
+
+    //- link(rel="preload" href="/fonts/roboto--regular_latin.woff2" as="font" crossorigin)
+    //- link(rel="preload" href="/fonts/montserrat--extrabold_latin.woff2" as="font" crossorigin)
+    //- link(rel="preload" href="/fonts/montserrat--bold_latin.woff2" as="font" crossorigin)
+    if !debug
+      block preload
+        link(rel="preload" href="/fonts/frank-ruhl-libre--black_latin.woff2" as="font" type="font/woff2" crossorigin)
+    else
+      link(rel="preload" href="/fonts/montserrat--bold_latin.woff2" as="font" type="font/woff2" crossorigin)
+
+    link(rel="stylesheet" href="/css/fonts.min.css" ph-inline)
+    link(rel="stylesheet" href="/css/app.min.css" ph-inline)
+
+    meta(charset="utf-8")
+    meta(name="color-scheme" content="dark light")
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    meta(http-equiv="Accept-CH" content="DPR, Viewport-Width, Width")
+    meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+
+    script(type="application/ld+json").
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "#{defaults.websiteURL}/#organization",
+            "name": "Okikio",
+            "url": "#{defaults.websiteURL}",
+            "sameAs": [
+              "https://dev.to/okikio",
+              "https://stackoverflow.com/users/12140185/okikio?tab=profile",
+              "https://codepen.io/okikio",
+              "https://www.linkedin.com/in/okikio/",
+              "https://www.instagram.com/okikio.dev/",
+              "https://github.com/okikio",
+              "https://github.com/okikio/okikio",
+              "https://twitter.com/okikio_dev"
+            ],
+            "description": "#{defaults.description}",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "#{defaults.websiteURL}/#logo",
+              "url": "#{defaults.websiteURL}/favicon/android-chrome-512x512.png",
+              "width": 512,
+              "height": 512,
+              "caption": "Okiki Ojo's Logo"
+            },
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "url": "#{defaults.websiteURL}",
+                "email": "mailto:okikio.dev&#64;gmail&#46;com",
+                "contactType": "customer service"
+              }
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "#{defaults.websiteURL}/about-me.html#person",
+            "name": "Okiki Ojo",
+            "url": "#{defaults.websiteURL}",
+            "sameAs": [
+              "https://dev.to/okikio",
+              "https://stackoverflow.com/users/12140185/okikio?tab=profile",
+              "https://codepen.io/okikio",
+              "https://www.linkedin.com/in/okikio/",
+              "https://www.instagram.com/okikio.dev/",
+              "https://github.com/okikio",
+              "https://github.com/okikio/okikio",
+              "https://twitter.com/okikio_dev"
+            ],
+            "description": "#{defaults.description}",
+            "jobTitle": "Web Developer",
+            "image": {
+              "@type": "ImageObject",
+              "@id": "#{defaults.websiteURL}/#image",
+              "url": "https://res.cloudinary.com/okikio-assets/image/upload/okikis_image.jpg",
+              "width": 410,
+              "height": 512,
+              "caption": "An image of Okiki Ojo."
+            },
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "url": "#{defaults.websiteURL}",
+                "email": "mailto:okikio.dev&#64;gmail&#46;com",
+                "contactType": "customer service"
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "#{defaults.websiteURL}/#website",
+            "url": "#{defaults.websiteURL}",
+            "description": "#{defaults.description}",
+            "sameAs": [
+              "https://dev.to/okikio",
+              "https://stackoverflow.com/users/12140185/okikio?tab=profile",
+              "https://codepen.io/okikio",
+              "https://www.linkedin.com/in/okikio/",
+              "https://www.instagram.com/okikio.dev/",
+              "https://github.com/okikio",
+              "https://github.com/okikio/okikio",
+              "https://twitter.com/okikio_dev"
+            ],
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "#{defaults.websiteURL}/my-projects.html#mainentity",
+              "lastReviewed": "Thu May 26 2020 15:35:01 GMT-0400"
+            },
+            "about": {
+              "@id": "#{defaults.websiteURL}/about-me.html#person"
+            },
+            "name": "Okiki Ojo",
+            "publisher": {
+              "@id": "#{defaults.websiteURL}/about-me.html#person"
+            },
+            "copyrightYear": "2020",
+            "copyrightHolder": [
+              {
+                "@id": "#{defaults.websiteURL}/about-me.html#person"
+              }
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "#{page.websiteURL + page.url}#webpage",
+            "url": "#{page.websiteURL + page.url}",
+            "description": "#{page.description}",
+            "inLanguage": "en",
+            "name": "#{page.title}",
+            "isPartOf": {
+              "@id": "#{defaults.websiteURL}/#website"
+            },
+            "about": {
+              "@id": "#{defaults.websiteURL}/about-me.html#person"
+            }
+          }
+        ]
+      }
+
+    //- if dev
+      meta(http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data: https:; style-src 'self' 'unsafe-inline'; img-src data: 'self' https://res.cloudinary.com/ https://okikio.netlify.app; script-src 'self' https://res.cloudinary.com/ https://polyfill.io/ 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; block-all-mixed-content; upgrade-insecure-requests; base-uri 'self'; object-src 'none'; worker-src 'self'; manifest-src 'self'; media-src 'self' https://res.cloudinary.com/; form-action 'self'; frame-ancestors 'self';")
+      meta(http-equiv="Feature-Policy" content="microphone 'none'; geolocation 'none'; usb 'none'; display-capture 'none'; sync-xhr 'self'; camera 'none'; battery 'none'")
+
+    meta(name="web-author" content="Okiki Ojo")
+    meta(name="robots" content="index, follow")
+    meta(name="copyright" content="Okiki Ojo")
+    meta(name="contact" content="okikio.dev&#64;gmail&#46;com")
+
+    meta(name="mobile-web-app-capable" content="yes")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes")
+    meta(name="keywords" content=keywords.join(" "))
+
+    meta(name="og:locale" content="en_Us")
+    meta(property="og:type" content="website")
+    meta(name="twitter:site", content="@okikio_dev")
+    meta(property="article:author" content="Okiki Ojo")
+    meta(property="og:site_name" content=websiteURL.replace("https://", ""))
+    meta(itemprop="image" content=`${websiteURL}/favicon/android-chrome-512x512.png`)
+    meta(property="og:image" content=`${websiteURL}/favicon/android-chrome-512x512.png`)
+    meta(property="og:image:secure_url" content=`${websiteURL}/favicon/android-chrome-512x512.png`)
+    meta(name="twitter:image" content=`${websiteURL}/favicon/android-chrome-512x512.png`)
+    meta(property="og:image:type" content="image/png")
+    meta(property="og:image:width" content="512")
+    meta(property="og:image:height" content="512")
+    meta(property="og:image:alt" content="Okiki Ojo's Logo")
+    meta(property="twitter:image:alt" content="Okiki Ojo's Logo")
+
+    block seo
+      +seo(page)
+
+    <!--[if IE]>
+    link(rel="shortcut icon", href="/favicon/favicon.ico", type="image/x-icon")
+    <![endif]-->
+
+    link(rel="manifest", href="/manifest.json")
+    link(type="text/plain" rel="author" href="/humans.txt")
+    link(rel="home", href=websiteURL)
+
+    meta(name="theme-color", content="#2d22ca")
+    meta(name="twitter:card", content="summary")
+    meta(name="application-name", content="Okikio")
+    meta(name="msapplication-tap-highlight" content="no")
+    meta(name="msapplication-TileColor", content="#2d22ca")
+    meta(name="apple-mobile-web-app-capable", content="yes")
+    meta(name="apple-mobile-web-app-title", content="Okikio")
+    meta(name="msapplication-config", content="/browserconfig.xml")
+    meta(name="apple-mobile-web-app-status-bar-style", content="#2d22ca")
+    meta(name="msapplication-TileImage", content="/favicon/mstile-144x144.png")
+    link(rel="mask-icon", href="/favicon/safari-pinned-tab.svg", color="#2d22ca")
+    link(rel="apple-touch-icon", sizes="180x180", href="/favicon/apple-touch-icon.png")
+    link(rel="icon", type="image/png", sizes="32x32", href="/favicon/favicon-32x32.png")
+    link(rel="icon", type="image/png", sizes="16x16", href="/favicon/favicon-16x16.png")
+
+    //- <!--[if lt IE 9]>
+    //- link(rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin)
+    //- link(rel="dns-prefetch" href="https://cdnjs.cloudflare.com/" crossorigin)
+    //- <![endif]-->
+    script(src="/js/ver-check.min.js" ph-inline ph-concat-start)
+    script(src="/js/theme.min.js" ph-inline ph-concat-end)
+  body(itemscope="" itemtype="https://schema.org/WebPage")
+    +link({
+      class: "skip-main",
+      href: "#content",
+      content: "Skip to main content"
+    })
+
+    block navbar
+      +navbar(page)
+
+    main.main.transition-in-view(data-container tabindex="-1")
+      if !debug
+        block hero
+        section(id="content" itemtype="http://schema.org/WebPageElement" itemscope itemprop="mainEntity")
+          block content
+      else
+        section(id="content" itemtype="http://schema.org/WebPageElement" itemscope itemprop="mainEntity")
+          //- Intro layer
+          +layer
+            +layout({
+              class: "layout-contain layer-overflow-hide"
+            })
+              section(class="layout-shorten layout-max-height-limited layout-flex layout-align-items-center layout-justify-content-center")
+                section.style-center.layout-margin-top-larger--device-phone
+                  +head({
+                    class: "layout-margin-bottom"
+                  })
+                    h1.style-font-45--device-phone.style-primary-dark.style-bold.style-uppercase.layout-margin-dull Coming Soon.
+                  +main
+                    +p("Sorry, the page you are looking for is currently under construction.")
+
+    .layer-action-center.layer-action-center-hide
+      article.layer-action-group
+        .layer-round.layout-align-self-end.layout-margin-horz-small
+          button.back-to-top.action-btn.action-btn-hover.layer-round.layer-primary.layer-primary-light-hover.layer-primary-light-focus.style-white.style-hover-white.style-focus-white(type="button")
+            section.action-btn-layout.layout-padding-smallest
+              span.action-btn-group
+                span.action-btn-section
+                  span.action-btn-spacer
+                  span.action-btn-spacer
+                  span.action-btn-content Back To Top
+                i.action-icon.style-font-size-24(inline) expand_less
+
+    if !debug
+      block footer
+        +footer
+    else
+      +footer({
+        class: "footer-stuck layout-margin-vert-top"
+      })
+
+    script(src="/js/vendor.min.js" ph-inline)
+    //- if !dev
+      script(src="/js/service.min.js" ph-inline)

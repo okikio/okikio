@@ -1,141 +1,169 @@
 /* -- Styles (only affect text) -- */
-.style-title {
-    font-family: "Source Sans Pro", "Montserrat", sans-serif;
-}
+.style {
+	$styleParent: &;
 
-.style-fancy, .style-content {
-    font-family: "Montserrat", "Helvetica", "Helvetica Neue", "Arial",
-        sans-serif;
-}
+	&, &-font {
+		@each $name, $family in $fonts {
 
-.style-italic {
-    font-style: italic;
-}
+			&-#{$name},
+			&-#{$name}-font,
+			&-family-#{$name} {
+				font-family: #{$family};
+			}
+		}
 
-.style-spaceout-small {
-    letter-spacing: 1px;
-}
+		&,
+		&-size {
+			font-size: 14px;
 
-.style-spaceout {
-    letter-spacing: 3px;
-}
+			@for $sz from 8 through 50 {
+				&-#{$sz} {
+					font-size: #{$sz}px;
 
-.style-spaceout-large {
-    letter-spacing: 7px;
-}
+					@include deviceList(font-size, #{$sz}px);
+				}
+			}
+		}
 
-.style-line-height-none {
-    line-height: 0;
-}
+		@each $name,
+		$value in $sizes {
 
-.style-line-height-small {
-    line-height: 1;
-}
+			&-#{$name},
+			&-size-#{$name} {
+				font-size: $value;
 
-.style-line-height {
-    line-height: 1.5em;
-}
+				@include deviceList(font-size, $value);
+			}
+		}
 
-.style-line-height-large {
-    letter-spacing: 3em;
-}
+		&,
+		&-weight {
+			font-weight: 400;
 
-.style-underline {
-    text-decoration: underline;
-}
+			@for $weight from 1 through 9 {
+				&-#{$weight}00 {
+					font-weight: #{$weight + "00"};
+				}
+			}
 
-.style-line-through {
-    text-decoration: line-through;
-}
+			&-bolder {
+				font-weight: 900;
+			}
 
-.style-larger {
-    font-size: 35px;
-}
+			&-bold {
+				font-weight: 700;
+			}
 
-.style-large {
-    font-size: 18px;
-}
+			&-regular {
+				font-weight: 600;
+			}
 
-.style-normal {
-    font-size: 15px;
-}
+			&-thin {
+				font-weight: 300;
+			}
 
-.style-small {
-    font-size: 12px;
-}
+			&-thiner {
+				font-weight: 100;
+			}
+		}
 
-.style-bolder {
-    font-weight: 900;
-}
+		&-italic {
+			font-style: italic;
+		}
 
-.style-bold {
-    font-weight: 700;
-}
+		&-underline {
+			text-decoration: underline;
+		}
+	}
 
-.style-regular {
-    font-weight: 600;
-}
+	&-spaceout,
+	&-letter-spacing {
+		letter-spacing: 3px;
 
-.style-thin {
-    font-weight: 300;
-}
+		&-none {
+			letter-spacing: 0;
+		}
 
-.style-thiner {
-    font-weight: 100;
-}
+		&-small {
+			letter-spacing: 1px;
+		}
 
-.style-red {
-    color: #d93939;
-}
+		&-double {
+			letter-spacing: 2px;
+		}
 
-.style-pink {
-    color: #f36;
-}
+		&-large {
+			letter-spacing: 7px;
+		}
+	}
 
-.style-yellow {
-    color: yellow;
-}
+	&-line-height {
+		line-height: 1.5em;
 
-.style-gold {
-    color: #ffbb33;
-}
+		&-none {
+			line-height: 0;
+		}
 
-.style-white {
-    color: #fff;
-}
+		&-small {
+			line-height: 1;
+		}
 
-.style-grey {
-    color: #bbb;
-}
+		&-double {
+			line-height: 2em;
+		}
 
-.style-darkgrey {
-    color: #595959;
-}
+		&-large {
+			line-height: 3em;
+		}
+	}
 
-.style-black {
-    color: #000;
-}
+	&,
+	&-align {
+		&-left {
+			text-align: left;
+		}
 
-.style-left {
-    text-align: left;
-}
+		&-center {
+			text-align: center;
+		}
 
-.style-center {
-    text-align: center;
-}
+		&-right {
+			text-align: right;
+		}
 
-.style-right {
-    text-align: right;
-}
+		&-justify {
+			text-align: justify;
+			text-justify: inter-word;
+		}
+	}
 
-.style-capital {
-    text-transform: capitalize;
-}
+	&,
+	&-transform {
+		&-capital {
+			text-transform: capitalize;
+		}
 
-.style-uppercase {
-    text-transform: uppercase;
-}
+		&-uppercase {
+			text-transform: uppercase;
+		}
 
-.style-lowercase {
-    text-transform: lowercase;
+		&-lowercase {
+			text-transform: lowercase;
+		}
+	}
+
+    &-letter-head {
+        letter-spacing: 2.54px;
+        line-height: 5.42rem;
+        font-size: 6.15rem;
+        font-weight: 900;
+        margin: 0;
+
+        @media #{$screen-size-phone} {
+            line-height: 3.80rem;
+            font-size: 4.85rem;
+        }
+    }
+
+	@include colorList;
 }

@@ -1,248 +1,344 @@
 /* -- Header -- */
 .header {
-    transition: height 0.35s ease;
-    will-change: height;
-    z-index: 1800;
-    height: 55px;
-    color: #000;
-    width: 100%;
-}
+    $height: 60px;
 
-/* -- Navigation -- */
-.navbar {
-    transition: height 0.35s ease;
-    justify-content: flex-start;
-    flex-direction: column;
-    will-change: height;
     position: relative;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    background: none;
-    flex-shrink: 0;
-    z-index: 1400;
-    height: 55px;
-    color: #000;
-    width: 100%;
-}
-
-.navbar-fixed {
-    position: fixed;
-    left: 0;
-    top: 0;
-}
-
-.navbar-layout {
-    transition: width 0.35s ease; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
-    flex-direction: row;
-    will-change: width;
-    margin: 0 auto;
-    display: flex;
-    height: 100%;
-    width: 100%;
-}
-
-.navbar-head { /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    display: flex;
-    left: 0;
-    top: 0;
-}
-
-.navbar-head,
-.navbar-foot {
-    transition: color 0.35s ease;
-    will-change: color;
-    height: 55px;
-}
-
-.navbar-title {
-    font-family: "Helvetica", "Arial", sans-serif !important;
-    letter-spacing: 0.02em;
-    text-decoration: none;
-    position: relative;
-    font-size: 17px;
-    flex-shrink: 0;
-    margin: 5px 0;
-    color: yellow;
-}
-
-.navbar-spacer { /* OLD - iOS 6-, Safari 3.1-6 */ /* Safari 6.1+. iOS 7.1+, BB10 */ /* IE 10 */
-    flex: 1;
-}
-
-ul.navbar-list {
-    justify-content: center; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
-    align-items: center;
-    white-space: nowrap;
-    list-style: none;
-    cursor: pointer;
-    display: flex;
-    margin: 0;
-}
-
-li.navbar-link a {
-    font-family: "Montserrat", sans-serif;
-    -ms-word-break: keep-all !important;
-    word-break: keep-all !important;
-    text-decoration: none;
-    vertical-align: middle;
-    letter-spacing: 2px;
-    align-self: center;
-    line-height: 60px;
-    font-weight: 600;
-    padding: 0 28px;
-    cursor: pointer;
-    font-size: 12px;
     display: block;
-    color: yellow;
-}
 
-li.navbar-link:hover a {
-    color: yellow;
-}
-
-li.navbar-link-focus a {
-    text-decoration: line-through;
-    color: yellow;
-}
-
-.navbar-select {
-    transition: left 0.35s ease, width 0.35s ease, opacity 0.35s ease;
-    will-change: left, width, opacity;
-    border-radius: 4px;
-    position: absolute;
-    background: black;
-    display: block;
-    height: 8px;
-    width: 35px;
-    opacity: 0;
-    top: -4px;
-    left: 0;
-}
-
-ul.navbar-list:not(.link-foot):hover + .navbar-select {
-    opacity: 1;
-}
-
-.navbar-foot {
-    justify-content: center; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */ /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-    display: -ms-flexbox; /* TWEENER - IE 10 */
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    display: flex;
-    right: 0;
-}
-
-.navbar-menu {
-    transition: color 0.35s ease;
-    will-change: color;
-    display: none;
-}
-
-@media (max-width: 650px) {
-    .navbar-head,
-    .navbar-foot {
-        position: absolute;
-    }
-    
-    .navbar-main ul.navbar-list {
-        display: none;
-    }
-    
-    .navbar-foot {
-        padding-right: 20px;
-        cursor: pointer;
-    }
-    
-    .navbar-foot:hover {
-        text-decoration: line-through;
-    }
-    
-    .navbar-foot:after {
-        transition: background 0.35s ease, width 0.35s ease, height 0.35s ease;
-        will-change: background, width, height;
-        border-radius: 20em;
-        background: yellow;
-        cursor: pointer;
-        display: block;
-        height: 10px;
-        content: "";
-        width: 10px;
-    }
-    
-    .navbar-foot:hover:after {
-        height: 15px;
-        width: 15px;
+    &-top-spot {
+        padding-top: $height + $size;
     }
 
-    .navbar-menu {
-        padding-right: 10px;
-        display: block;
-    }
-}
+    /* -- Navigation -- */
+    @at-root .navbar {
+        $radius: 18px;
 
-.bkg {
-    transition: height 0.35s ease, background 0.5s ease;
-    will-change: height, background;
-    background: yellow;
-    position: absolute;
-    z-index: 1000;
-    width: 100%;
-    height: 0;
-}
+        position: relative;
+        max-height: 1000px;
+        height: $height;
+        z-index: 1200;
+        width: 100%;
 
-.header:not(.mobile-on):hover .bkg:not(#yellow-banner),
-.header.focus:not(.mobile-on) .bkg:not(#yellow-banner) {
-    height: 55px;
-}
+        .navbar-layout {
+            transition: background-color #{$transitionDuration} ease;
+            @include applyTheme(background-color, "background");
+        }
 
+        &-focus,
+        &-show,
+        &:hover {
+            .navbar-layout:before {
+                opacity: 1;
+            }
 
-.navbar-select,
-.header:hover .navbar-foot:after,
-.header.focus:not(.mobile-on) .navbar-foot:after {
-	background: black;
-}
+            .navbar-title-line {
+                border-left-color: darken($background, 14%);
+            }
+        }
 
-.mobile-on .bkg,
-.navbar-foot:after {
-	background: yellow;
-}
+        &-fixed {
+            contain: layout size;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
 
-#yellow-banner {
-    display: flex;
-}
+        &-layout {
+            height: $height;
+            margin: 0 auto;
 
-#yellow-banner.layer-max-height {
-    height: 100vh !important;
-}
+            &, &:before {
+                border-radius: 0 0 $radius $radius;
+            }
 
-.loading {
-    will-change: transform, border, border-top-color, opacity;
-    animation: rotation 1s infinite linear;
-    border: 3px solid rgba(0, 0, 0, 0.2);
-    border-top-color: rgba(0, 0, 0, 0.7);
-    border-radius: 50%;
-    margin: auto;
-    height: 3em;
-    width: 3em;
-    opacity: 0;
-}
+            &:before {
+                @extend .layout-contain-large;
+                transition: background-color #{$transitionDuration} ease, opacity .25s ease-out;
+                box-shadow: 0 5px 15px rgba(0, 0, 50, .08);
+                @include applyTheme(background-color, "surface");
+                position: absolute;
+                display: block;
+                height: 100%;
+                width: 100%;
+                content: "";
+                opacity: 0;
+                right: 0;
+                left: 0;
+                top: 0;
+            }
+        }
 
+        &-head {
+            vertical-align: middle;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: nowrap;
+            display: flex;
+        }
 
-#yellow-banner.layer-max-height .loading {
-    opacity: 1 !important;
-}
+        &-logo {
+            // transform: translate3d(0, 4px, 0);
+            vertical-align: middle;
+            display: inline-block;
+            line-height: $height;
+            min-height: 20px;
+            height: 20px;
+            width: auto;
+        }
 
-@keyframes rotation {
-    to {
-        transform: rotate(360deg);
+        &-title {
+            transition: color #{$transitionDuration} ease;
+            letter-spacing: 0.03em;
+            line-height: $height;
+            padding-left: $size;
+            position: relative;
+            font-size: 17px;
+            color: $dark;
+            @include applyTheme(color, "dark");
+
+            & .name {
+                position: absolute;
+                font-family: $bold-font;
+                font-weight: 800;
+                top: 1.5px;
+            }
+
+            &,
+            &:focus {
+                text-decoration: none;
+            }
+
+            &-line {
+                // transition: border-left-color #{$transitionDuration} ease;
+
+                border-left: 1px solid transparent;
+                border-left-color: darken($mid-light, 2%);
+                border-left-color: var(--mid-light, darken($mid-light, 2%));
+
+                margin-right: $size-smaller;
+                margin-left: $size-smaller;
+                vertical-align: middle;
+                display: inline-block;
+                height: 14px;
+            }
+        }
+
+        &-main {
+            z-index: 10;
+        }
+
+        &-list {
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+            overflow-y: hidden;
+            list-style: none;
+            display: flex;
+            width: 100%;
+            margin: 0;
+        }
+
+        &-link {
+            transition: color #{$transitionDuration} ease;
+            text-transform: uppercase;
+            font-family: $bold-font;
+            text-decoration: none;
+            line-height: $height;
+            letter-spacing: 1px;
+            font-weight: 600;
+            padding: 0 28px;
+            font-size: 14px;
+            color: $black; // #bbb8b8
+            @include applyTheme(color, "dark");
+            width: 100%;
+
+            &-content {
+                display: inline-block;
+
+                &:before {
+                    transition: transform .25s cubic-bezier(.25, .46, .45, .94),
+                                background-color #{$transitionDuration} ease;
+                    transform: translate3d(0, $height - 14px, 0) scaleX(0);
+                    @include applyTheme(background-color, "primary-dark");
+                    border: 1.5px solid transparent;
+                    transform-origin: 100% 50%;
+                    transition-delay: 70ms;
+                    border-radius: 10px;
+                    display: block;
+                    height: 2.5px;
+                    width: 100%;
+                    content: "";
+                }
+            }
+
+            &:hover,
+            &:focus,
+            &-focus {
+                text-decoration: none;
+                @include applyTheme(color, "dark");
+
+                .navbar-link-content:before {
+                    transform: translate3d(0, $height - 14px, 0) scaleX(1);
+                    transform-origin: 0 50%;
+                }
+            }
+
+            &:active {
+                color: $primary;
+                @include applyTheme(color, "primary-dark");
+            }
+
+            &-focus {
+                &, &:focus {
+                    @include applyTheme(color, "primary-dark");
+                }
+            }
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        &-menu, &-btn {
+            & {
+                transition: color #{$transitionDuration} ease;
+            }
+
+            &:hover, &:focus {
+                cursor: pointer;
+            }
+
+            &, &:hover, &:focus {
+                color: $primary;
+                color: var(--dark, $primary);
+            }
+        }
+
+        &-mobile {
+            // display: none;
+            visibility: hidden;
+        }
+
+        &-desktop {
+            // display: block;
+            visibility: visible;
+        }
+
+        &-mobile-display {
+            display: none;
+        }
+
+        &-desktop-display {
+            display: block;
+        }
+
+        // Mobile navbar settings
+        @media (max-width: #{$tablet + 50}px) {
+            &-layout,
+            &-list {
+                flex-direction: column;
+            }
+
+            &-layout {
+                &, &:before {
+                    border-radius: 0;
+                }
+            }
+
+            &-layout:before, &-head {
+                z-index: 15;
+            }
+
+            &-layout:before, &-main {
+                box-shadow: 0 2px 15px rgba(0, 0, 50, .08);
+            }
+
+            &-head {
+                padding-right: $size-small;
+                position: relative;
+                width: 100%;
+            }
+
+            &-main {
+                transition: transform #{$transitionDuration} ease-out, opacity .3s ease .1s;
+                transform: translate3d(0, -100%, 0);
+                display: block;
+                width: 100%;
+                opacity: 0;
+                z-index: 0;
+            }
+
+            &-list {
+                transition: background-color #{$transitionDuration} ease;
+                background-color: lighten($very-light, 2%); // #292d33
+                @include applyTheme(background-color, "very-light");
+                position: relative;
+                overflow: hidden;
+                display: block;
+
+                li {
+                    display: block;
+                    width: 100%;
+                }
+            }
+
+            &-show {
+                .navbar-head {
+                    box-shadow: none;
+                }
+
+                .navbar-main {
+                    transform: translate3d(0, 0, 0);
+                    opacity: 1;
+                }
+            }
+
+            &-link {
+                line-height: $height - 12px;
+                padding: 0 24px;
+
+                &-content:before {
+                    transform: translate3d(0, $height - 18px, 0) scaleX(0);
+                }
+
+                &-focus,
+                &:focus,
+                &:hover {
+                    .navbar-link-content:before {
+                        transform: translate3d(0, $height - 18px, 0) scaleX(1);
+                    }
+                }
+            }
+
+            &-desktop {
+                visibility: hidden;
+                // display: none;
+            }
+
+            &-mobile {
+                // display: block;
+                visibility: visible;
+            }
+
+            &-desktop-display {
+                display: none;
+            }
+
+            &-mobile-display {
+                display: block;
+            }
+        }
+
+        // Desktop navbar settings
+        @media (min-width: #{$tablet + 50}px) {
+            &-layout {
+                padding: 0 $size;
+                display: flex;
+            }
+
+            &-list {
+                height: $height;
+            }
+        }
     }
 }

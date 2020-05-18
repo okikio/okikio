@@ -1,0 +1,27 @@
+mixin image(value = {})
+  - let _class = value.class;
+  - let src = value.src || "cloudinary/city";
+  - let alt = value.alt || "Alternate text";
+
+  - let cloudinaryTest = /^cloudinary\//.test(src);
+  - let basicURL = "https://res.cloudinary.com/okikio-assets/image/upload/dpr_auto,f_auto,fl_progressive:steep";
+  -
+    let urlParse = (url = "") => cloudinaryTest ? `${basicURL + url}/${src.replace(/^cloudinary\//, "")}` : src;
+
+  .layer-image(class=_class title=alt)
+    .layer-image-preview-img-card
+    figure.load-img(itemprop="image" itemscope itemtype="https://schema.org/ImageObject")
+      .img-contain
+        picture.plchldr-pic
+          //- figcaption(aria-hidden="true")= alt
+          img.placeholder-img(src!=`${urlParse(",w_50,q_100,e_blur:150")}.jpeg` sizes="100vw" width="100vw" alt=alt loading="lazy")
+        picture.core-img-pic
+          .webp(data-srcset!=`${urlParse(",w_600,q_100")}.webp`)
+          //- source.webp(media='(max-width: 900px)' srcset!=`${urlParse(",w_900,q_80")}.webp` sizes="100vw" width="100vw" type='image/webp')
+          //- source.webp(media='(min-width: 900px)' srcset!=`${urlParse(",w_950,q_90")}.webp` sizes="100vw" width="100vw" type='image/webp')
+          img.core-img(data-src!=`${urlParse(",w_1100,q_100")}.jpeg` sizes="(max-width: 500px) 500px,(max-width: 700px) 700px,(max-width: 900px) 900px, 100vw" alt=alt loading="lazy" width="100vw" itemprop="url")
+        noscript Javascript is necesscary for this sites awesome experience.
+          picture
+            source(srcset!=`${urlParse()}.webp` sizes="100vw" width="100vw" type='image/webp')
+            img.no-script-img(src!=`${urlParse()}.jpeg` alt=alt loading="lazy" sizes="(max-width: 500px) 500px,(max-width: 700px) 700px,(max-width: 900px) 900px, 100vw" width="100vw" itemprop="url")
+    .layer-image-overlay
