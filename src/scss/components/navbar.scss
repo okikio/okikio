@@ -12,6 +12,8 @@
     /* -- Navigation -- */
     @at-root .navbar {
         $radius: 18px;
+            transition: background-color #{$transitionDuration} ease;
+            @include applyTheme(background-color, "background");
 
         position: relative;
         max-height: 1000px;
@@ -19,15 +21,25 @@
         z-index: 1200;
         width: 100%;
 
-        .navbar-layout {
-            transition: background-color #{$transitionDuration} ease;
-            @include applyTheme(background-color, "background");
+        &:before {
+            transition: background-color #{$transitionDuration} ease, opacity .25s ease-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 50, .08);
+            @include applyTheme(background-color, "surface");
+            position: absolute;
+            display: block;
+            height: 100%;
+            width: 100%;
+            content: "";
+            opacity: 0;
+            right: 0;
+            left: 0;
+            top: 0;
         }
 
         &-focus,
         &-show,
         &:hover {
-            .navbar-layout:before {
+            &:before {
                 opacity: 1;
             }
 
@@ -41,31 +53,6 @@
             position: fixed;
             left: 0;
             top: 0;
-        }
-
-        &-layout {
-            height: $height;
-            margin: 0 auto;
-
-            &, &:before {
-                border-radius: 0 0 $radius $radius;
-            }
-
-            &:before {
-                @extend .layout-contain-large;
-                transition: background-color #{$transitionDuration} ease, opacity .25s ease-out;
-                box-shadow: 0 5px 15px rgba(0, 0, 50, .08);
-                @include applyTheme(background-color, "surface");
-                position: absolute;
-                display: block;
-                height: 100%;
-                width: 100%;
-                content: "";
-                opacity: 0;
-                right: 0;
-                left: 0;
-                top: 0;
-            }
         }
 
         &-head {
@@ -90,17 +77,16 @@
             transition: color #{$transitionDuration} ease;
             letter-spacing: 0.03em;
             line-height: $height;
-            padding-left: $size;
             position: relative;
             font-size: 17px;
             color: $dark;
-            @include applyTheme(color, "dark");
+            @include applyTheme(color, "primary-dark");
 
             & .name {
-                position: absolute;
+                // position: absolute;
                 font-family: $bold-font;
-                font-weight: 800;
-                top: 1.5px;
+                font-weight: 700;
+                // top: 1.5px;
             }
 
             &,
@@ -239,17 +225,11 @@
                 flex-direction: column;
             }
 
-            &-layout {
-                &, &:before {
-                    border-radius: 0;
-                }
-            }
-
-            &-layout:before, &-head {
+            &:before, &-head {
                 z-index: 15;
             }
 
-            &-layout:before, &-main {
+            &:before, &-main {
                 box-shadow: 0 2px 15px rgba(0, 0, 50, .08);
             }
 

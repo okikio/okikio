@@ -260,12 +260,12 @@
         }
     }
 
-    &-secondary-btn {
+    &-btn {
         transition: background-color #{$transitionDuration} ease;
-        @include applyTheme(background-color, "secondary-light");
+        @include applyTheme(background-color, "primary-light");
 
         &:hover, &:focus {
-            @include applyTheme(background-color, "secondary");
+            @include applyTheme(background-color, "primary");
         }
 
         &, &:hover, &:focus {
