@@ -17,14 +17,13 @@ html(lang="en")
     - let websiteURL = self.websiteURL;
     - let keywords = self.keywords;
     - let netlify = self.netlify;
-    - let debug = self.debug;
     - let dev = self.dev;
     -
       let defaults = {
         url: "/",
         websiteURL,
         name: "index",
-        title: debug ? "Okiki Ojo — Coming Soon" : "Okiki Ojo — Website Developer / Portfolio",
+        title: "Okiki Ojo — Website Developer / Portfolio",
         description: "I am Okiki a skilled Website Developer based in Oshawa, Ontario. This is my portfolio site, it holds my resume and ways to contact me."
       };
 
@@ -35,20 +34,11 @@ html(lang="en")
     link(rel="dns-prefetch" href='https://res.cloudinary.com' crossorigin)
     link(rel="preconnect" href='https://res.cloudinary.com' crossorigin)
 
-    //- link(rel="dns-prefetch" href='https://d33wubrfki0l68.cloudfront.net' crossorigin)
-    //- link(rel="preconnect" href='https://d33wubrfki0l68.cloudfront.net' crossorigin)
-
     link(rel="dns-prefetch" href=websiteURL crossorigin)
     link(rel="preconnect" href=websiteURL crossorigin)
 
-    //- link(rel="preload" href="/fonts/roboto--regular_latin.woff2" as="font" crossorigin)
-    //- link(rel="preload" href="/fonts/montserrat--extrabold_latin.woff2" as="font" crossorigin)
-    //- link(rel="preload" href="/fonts/montserrat--bold_latin.woff2" as="font" crossorigin)
-    if !debug
-      block preload
-        link(rel="preload" href="/fonts/frank-ruhl-libre--black_latin.woff2" as="font" type="font/woff2" crossorigin)
-    else
-      link(rel="preload" href="/fonts/montserrat--bold_latin.woff2" as="font" type="font/woff2" crossorigin)
+    block preload
+      link(rel="preload" href="/fonts/frank-ruhl-libre--black_latin.woff2" as="font" type="font/woff2" crossorigin)
 
     link(rel="stylesheet" href="/css/fonts.min.css" ph-inline)
     link(rel="stylesheet" href="/css/app.min.css" ph-inline)
@@ -252,25 +242,9 @@ html(lang="en")
       +navbar(page)
 
     main.main.transition-in-view(data-container tabindex="-1")
-      if !debug
-        block hero
-        section(id="content" itemtype="http://schema.org/WebPageElement" itemscope itemprop="mainEntity")
-          block content
-      else
-        section(id="content" itemtype="http://schema.org/WebPageElement" itemscope itemprop="mainEntity")
-          //- Intro layer
-          +layer
-            +layout({
-              class: "layout-contain layer-overflow-hide"
-            })
-              section(class="layout-shorten layout-max-height-limited layout-flex layout-align-items-center layout-justify-content-center")
-                section.style-center.layout-margin-top-larger--device-phone
-                  +head({
-                    class: "layout-margin-bottom"
-                  })
-                    h1.style-font-45--device-phone.style-primary-dark.style-bold.style-uppercase.layout-margin-dull Coming Soon.
-                  +main
-                    +p("Sorry, the page you are looking for is currently under construction.")
+      block hero
+      section(id="content" itemtype="http://schema.org/WebPageElement" itemscope itemprop="mainEntity")
+        block content
 
     .layer-action-center.layer-action-center-hide
       article.layer-action-group
@@ -284,14 +258,7 @@ html(lang="en")
                   span.action-btn-content Back To Top
                 i.action-icon.style-font-size-24(inline) expand_less
 
-    if !debug
-      block footer
-        +footer
-    else
-      +footer({
-        class: "footer-stuck layout-margin-vert-top"
-      })
+    block footer
+      +footer
 
     script(src="/js/vendor.min.js" ph-inline)
-    //- if !dev
-      script(src="/js/service.min.js" ph-inline)

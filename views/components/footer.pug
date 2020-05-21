@@ -13,13 +13,12 @@ mixin footer(value = {})
               span  Okiki Ojo
               span.action-btn-spacer
       div
-        if !debug
-          span(itemscope itemtype="https://schema.org/SiteNavigationElement")
-            +link({
-              href: "/sitemap",
-              class: "layout-margin-left-mini",
-            })(itemprop="url" title="The Okiki Ojo sitemap.")
-              span(itemprop="name") Sitemap
+        span(itemscope itemtype="https://schema.org/SiteNavigationElement")
+          +link({
+            href: "/sitemap",
+            class: "layout-margin-left-mini",
+          })(itemprop="url" title="The Okiki Ojo sitemap.")
+            span(itemprop="name") Sitemap
           span= " - "
         +link({
           href: "https://www.linkedin.com/in/okikio",

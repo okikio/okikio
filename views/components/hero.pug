@@ -5,12 +5,12 @@ mixin hero(value = {})
   - Object.assign(image, { class: "effect-parallax hero-img" });
 
   .layer.layer-hero-id.banner-mode
-    article.layout-padding-bottom.layout-padding-dull-top
+    article.layout-padding-bottom.layout-padding-dull-top.header-top-spot
       .layer-hero
         +image(image)
 
         .layout-padding-horz-default--device-lt-tablet.layout-padding-horz-sub-large--device-lt-laptop.layout-padding-vert-sub-extra-large--device-lt-tablet.layout-padding-vert-huge--device-gt-tablet.layout-enlarge-horz.layout-flex.layout-align-items-center.layout-justify-content-center
-          .layer-content.layout-contain.style-center
+          .layer-content.layout-contain
             .layer-header
               h1.style-font-title.layer-title.style-white.style-font-weight-bolder(itemprop="headline")!= title
             .layer-main

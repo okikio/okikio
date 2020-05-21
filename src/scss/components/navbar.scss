@@ -6,14 +6,14 @@
     display: block;
 
     &-top-spot {
-        padding-top: $height + $size;
+        padding-top: $height;
     }
 
     /* -- Navigation -- */
     @at-root .navbar {
         $radius: 18px;
-            transition: background-color #{$transitionDuration} ease;
-            @include applyTheme(background-color, "background");
+        transition: background-color #{$transitionDuration} ease;
+        @include applyTheme(background-color, "background");
 
         position: relative;
         max-height: 1000px;
@@ -22,8 +22,9 @@
         width: 100%;
 
         &:before {
-            transition: background-color #{$transitionDuration} ease, opacity .25s ease-out;
-            box-shadow: 0 5px 15px rgba(0, 0, 50, .08);
+            transition: background-color #{$transitionDuration} ease,
+                opacity 0.25s ease-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 50, 0.08);
             @include applyTheme(background-color, "surface");
             position: absolute;
             display: block;
@@ -142,8 +143,9 @@
                 display: inline-block;
 
                 &:before {
-                    transition: transform .25s cubic-bezier(.25, .46, .45, .94),
-                                background-color #{$transitionDuration} ease;
+                    transition: transform 0.25s
+                            cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        background-color #{$transitionDuration} ease;
                     transform: translate3d(0, $height - 14px, 0) scaleX(0);
                     @include applyTheme(background-color, "primary-dark");
                     border: 1.5px solid transparent;
@@ -175,7 +177,8 @@
             }
 
             &-focus {
-                &, &:focus {
+                &,
+                &:focus {
                     @include applyTheme(color, "primary-dark");
                 }
             }
@@ -185,16 +188,20 @@
             text-decoration: none;
         }
 
-        &-menu, &-btn {
+        &-menu,
+        &-btn {
             & {
                 transition: color #{$transitionDuration} ease;
             }
 
-            &:hover, &:focus {
+            &:hover,
+            &:focus {
                 cursor: pointer;
             }
 
-            &, &:hover, &:focus {
+            &,
+            &:hover,
+            &:focus {
                 color: $primary;
                 color: var(--dark, $primary);
             }
@@ -225,12 +232,14 @@
                 flex-direction: column;
             }
 
-            &:before, &-head {
+            &:before,
+            &-head {
                 z-index: 15;
             }
 
-            &:before, &-main {
-                box-shadow: 0 2px 15px rgba(0, 0, 50, .08);
+            &:before,
+            &-main {
+                box-shadow: 0 2px 15px rgba(0, 0, 50, 0.08);
             }
 
             &-head {
@@ -240,7 +249,8 @@
             }
 
             &-main {
-                transition: transform #{$transitionDuration} ease-out, opacity .3s ease .1s;
+                transition: transform #{$transitionDuration} ease-out,
+                    opacity 0.3s ease 0.1s;
                 transform: translate3d(0, -100%, 0);
                 display: block;
                 width: 100%;
