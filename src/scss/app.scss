@@ -51,7 +51,7 @@ $tertiary: #ffde03;
 $tertiary-dark: #e5c702;
 $off-blue: #d7d4ff;
 
-$background: #ffffff; // #e2ebf5
+$background: #f1ebeb; // #e2ebf5
 $surface: #fff; //  #3b3c3e
 
 $white: #fff;
@@ -69,18 +69,18 @@ $mid: #ccc;
 $mid-dark: #bbb;
 $dark: #222; // #ddd
 
-$title-font: 'Frank Ruhl Libre', serif;
-$light-font: 'Varela Round', sans-serif;
+$title-font: "Frank Ruhl Libre", serif;
+$light-font: "Varela Round", sans-serif;
 $icon-font: "Material Icons", sans-serif;
 $regular-font: "Roboto", sans-serif;
-$bold-font: 'Montserrat', sans-serif;
+$bold-font: "Montserrat", sans-serif;
 
 $desktop: 1480;
 $laptop: 1080;
 $tablet: 680;
 $phone: 480;
 
-$transitionDuration: .4s;
+$transitionDuration: 0.4s;
 
 $screen-size-desktop: "(min-width: #{$laptop}px)";
 
@@ -116,121 +116,116 @@ $size-mini: 5px;
 $size-nano: 2px;
 
 $colors: (
-    "primary-light": $primary-light,
-    "primary": $primary,
-    "primary-dark": $primary-dark,
-    "secondary-light": $secondary-light,
-    "secondary": $secondary,
-    "secondary-dark": $secondary-dark,
-    "tertiary-light": $tertiary-light,
-    "tertiary": $tertiary,
-    "tertiary-dark": $tertiary-dark,
-
-    "off-blue": $off-blue,
-    "background": $background,
-    "surface": $surface,
-    "transparent": transparent,
-
-    "white": $white,
-    "black": $black,
-
-    "very-light": $very-light,
-    "light": $light,
-    "mid-light": $mid-light,
-    "mid": $mid,
-    "dim": #77709e,
-    "mid-dark": $mid-dark,
-    "dark": $dark
+  "primary-light": $primary-light,
+  "primary": $primary,
+  "primary-dark": $primary-dark,
+  "secondary-light": $secondary-light,
+  "secondary": $secondary,
+  "secondary-dark": $secondary-dark,
+  "tertiary-light": $tertiary-light,
+  "tertiary": $tertiary,
+  "tertiary-dark": $tertiary-dark,
+  "off-blue": $off-blue,
+  "background": $background,
+  "surface": $surface,
+  "transparent": transparent,
+  "white": $white,
+  "black": $black,
+  "very-light": $very-light,
+  "light": $light,
+  "mid-light": $mid-light,
+  "mid": $mid,
+  "dim": #77709e,
+  "mid-dark": $mid-dark,
+  "dark": $dark,
 );
 
 $dark-colors: (
-    "primary-light": darken($primary-light, 5%),
-    "primary": lighten($primary, 15%),
-    "primary-dark": lighten($primary-dark, 20%),
-
-    "secondary-light": lighten($secondary-dark, 15%),
-    "secondary": lighten($secondary, 5%),
-    "secondary-dark": lighten($secondary-light, 15%),
-
-    "tertiary-light": $tertiary-light,
-    "tertiary": $tertiary,
-    "tertiary-dark": $tertiary-dark,
-
-    "background": #000000, // #000000
-    "surface": #333435, // #2f2f35
+  "primary-light": darken($primary-light, 5%),
+  "primary": lighten($primary, 15%),
+  "primary-dark": lighten($primary-dark, 20%),
+  "secondary-light": lighten($secondary-dark, 15%),
+  "secondary": lighten($secondary, 5%),
+  "secondary-dark": lighten($secondary-light, 15%),
+  "tertiary-light": $tertiary-light,
+  "tertiary": $tertiary,
+  "tertiary-dark": $tertiary-dark,
+  "background": #000000,
+  // #000000
+    "surface": #333435,
+  // #2f2f35
     "transparent": transparent,
-
-    "white": $white,
-    "black": $black,
-
-    "very-light": #1d2125,
-    "light": #525252,
-    "mid-light": $mid-light,
-    "mid": $mid,
-    "dim": #696873,
-    "mid-dark": #bbb8b8,
-    "dark": #ddd
+  "white": $white,
+  "black": $black,
+  "very-light": #1d2125,
+  "light": #525252,
+  "mid-light": $mid-light,
+  "mid": $mid,
+  "dim": #696873,
+  "mid-dark": #bbb8b8,
+  "dark": #ddd,
 );
 
 $fonts: (
-    "title": $title-font,
-    "light": $light-font,
-    // "icon": $icon-font,
+  "title": $title-font,
+  "light": $light-font,
+  // "icon": $icon-font,
     "regular": $regular-font,
-    "bold": $bold-font
+  "bold": $bold-font,
 );
 
 $sizes: (
-    "dull": 0 !important,
-    // "humungus-xl": $size-humungus-xl,
+  "dull": 0 !important,
+  // "humungus-xl": $size-humungus-xl,
     // "humungus": $size-humungus,
     // "gigantic-xl": $size-gigantic,
     // "gigantic": $size-gigantic,
     // "huge-xl": $size-huge-xl,
     "huge": $size-huge,
-    // "extra-xl": $size-extra-xl,
+  // "extra-xl": $size-extra-xl,
     "extra-large": $size-extra-large,
-    "sub-extra-large": $size-sub-extra-large,
-    "larger": $size-larger,
-    "large": $size-large,
-    "sub-large": $size-sub-large,
-    "default": $size,
-    "mid": $size-mid,
-    "small": $size-small,
-    "smaller": $size-smaller,
-    "smallest": $size-smallest,
-    "mini": $size-mini,
-    "nano": $size-nano,
-
-    "desktop": #{$desktop}px,
-    "laptop": #{$laptop}px,
-    "tablet": #{$tablet}px,
-    "phone": #{$phone}px
+  "sub-extra-large": $size-sub-extra-large,
+  "larger": $size-larger,
+  "large": $size-large,
+  "sub-large": $size-sub-large,
+  "default": $size,
+  "mid": $size-mid,
+  "small": $size-small,
+  "smaller": $size-smaller,
+  "smallest": $size-smallest,
+  "mini": $size-mini,
+  "nano": $size-nano,
+  "desktop": #{$desktop}px,
+  "laptop": #{$laptop}px,
+  "tablet": #{$tablet}px,
+  "phone": #{$phone}px,
 );
 
 @mixin deviceList($property, $val: 0px) {
-    $screenSizes: (
-        "desktop": $screen-size-desktop,
+  $screenSizes: (
+    "desktop": $screen-size-desktop,
+    "gt-laptop": $screen-size-gt-laptop,
+    // Greater Than
+      "laptop": $screen-size-laptop,
+    "lt-laptop": $screen-size-lt-laptop,
+    // Less Than
+      "gt-tablet": $screen-size-gt-tablet,
+    // Greater Than
+      "tablet": $screen-size-tablet,
+    "lt-tablet": $screen-size-lt-tablet,
+    // Less Than
+      "gt-phone": $screen-size-gt-phone,
+    // Greater Than
+      "phone": $screen-size-phone,
+  );
 
-        "gt-laptop": $screen-size-gt-laptop, // Greater Than
-        "laptop": $screen-size-laptop,
-        "lt-laptop": $screen-size-lt-laptop, // Less Than
-
-        "gt-tablet": $screen-size-gt-tablet, // Greater Than
-        "tablet": $screen-size-tablet,
-        "lt-tablet": $screen-size-lt-tablet, // Less Than
-
-        "gt-phone": $screen-size-gt-phone, // Greater Than
-        "phone": $screen-size-phone
-    );
-
-    @each $device-type, $screen-size in $screenSizes {
-        @media #{$screen-size} {
-            &--device-#{$device-type} {
-                #{$property}: #{$val};
-            }
-        }
+  @each $device-type, $screen-size in $screenSizes {
+    @media #{$screen-size} {
+      &--device-#{$device-type} {
+        #{$property}: #{$val};
+      }
     }
+  }
 }
 
 // :root,
@@ -242,61 +237,61 @@ $sizes: (
 //         }
 //     }
 // }
-html[theme=dark] {
-    // @media (prefers-color-scheme: dark) {
-        @each $name, $value in $dark-colors {
-            --#{$name}: #{$value};
-        }
-    // }
+html[theme="dark"] {
+  // @media (prefers-color-scheme: dark) {
+  @each $name, $value in $dark-colors {
+    --#{$name}: #{$value};
+  }
+  // }
 }
 
-// html[theme=light] {
+// html[theme="light"] {
 //     // @media (prefers-color-scheme: light) {
-//         @each $name, $value in $colors {
-//             --#{$name}: #{$value};
-//         }
+//   @each $name, $value in $colors {
+//     --#{$name}: #{$value};
+//   }
 //     // }
 // }
 /*! purgecss end ignore */
 
 @mixin applyTheme($property: color, $value: "primary") {
-    #{$property}: map-get($colors, $value);
-    #{$property}: var(--#{$value}, map-get($colors, $value));
+  #{$property}: map-get($colors, $value);
+  #{$property}: var(--#{$value}, map-get($colors, $value));
 }
 
 @mixin propertyList($property, $prefix, $list, $themeable: false, $action: "") {
-    @each $name, $value in $list {
-        @if str-length($action) > 0 {
-            &-#{$action}-#{$name}:#{$action},
-            &-#{$name}-#{$action}:#{$action},
-            &-#{$action}-#{$prefix}-#{$name}:#{$action},
-            &-#{$prefix}-#{$action}-#{$name}:#{$action},
-            &-#{$prefix}-#{$name}-#{$action}:#{$action} {
-                @if ($themeable) {
-                    transition: #{$property} #{$transitionDuration} ease;
-                    @include applyTheme($property, $name);
-                } @else {
-                    #{$property}: $value;
-                }
-            }
+  @each $name, $value in $list {
+    @if str-length($action) > 0 {
+      &-#{$action}-#{$name}:#{$action},
+      &-#{$name}-#{$action}:#{$action},
+      &-#{$action}-#{$prefix}-#{$name}:#{$action},
+      &-#{$prefix}-#{$action}-#{$name}:#{$action},
+      &-#{$prefix}-#{$name}-#{$action}:#{$action} {
+        @if ($themeable) {
+          transition: #{$property} #{$transitionDuration} ease;
+          @include applyTheme($property, $name);
         } @else {
-            &-#{$name},
-            &-#{$prefix}-#{$name} {
-                @if ($themeable) {
-                    transition: #{$property} #{$transitionDuration} ease;
-                    @include applyTheme($property, $name);
-                } @else {
-                    #{$property}: $value;
-                }
-            }
+          #{$property}: $value;
         }
+      }
+    } @else {
+      &-#{$name},
+      &-#{$prefix}-#{$name} {
+        @if ($themeable) {
+          transition: #{$property} #{$transitionDuration} ease;
+          @include applyTheme($property, $name);
+        } @else {
+          #{$property}: $value;
+        }
+      }
     }
+  }
 }
 
 @mixin colorList($property: color, $name: "color") {
-    @include propertyList($property, $name, $colors, true);
-    @include propertyList($property, $name, $colors, true, "hover");
-    @include propertyList($property, $name, $colors, true, "focus");
+  @include propertyList($property, $name, $colors, true);
+  @include propertyList($property, $name, $colors, true, "hover");
+  @include propertyList($property, $name, $colors, true, "focus");
 }
 
 // @import "./components/fonts.scss";

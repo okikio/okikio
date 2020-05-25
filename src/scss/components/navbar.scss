@@ -69,8 +69,8 @@
       vertical-align: middle;
       display: inline-block;
       line-height: $height;
-      min-height: 30px;
-      height: 30px;
+      min-height: 25px;
+      height: 25px;
       width: auto;
       padding-left: $size;
     }
@@ -86,8 +86,8 @@
 
       & .name {
         // position: absolute;
+        vertical-align: middle;
         font-family: $bold-font;
-        vertical-align: sub;
         font-weight: 700;
         // top: 1.5px;
       }
