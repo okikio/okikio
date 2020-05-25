@@ -1,334 +1,335 @@
 /* -- Header -- */
 .header {
-    $height: 60px;
+  $height: 60px;
+
+  position: relative;
+  display: block;
+
+  &-top-spot {
+    padding-top: $height;
+  }
+
+  /* -- Navigation -- */
+  @at-root .navbar {
+    $radius: 18px;
+    transition: background-color #{$transitionDuration} ease;
+    @include applyTheme(background-color, "background");
 
     position: relative;
-    display: block;
+    max-height: 1000px;
+    height: $height;
+    z-index: 1200;
+    width: 100%;
 
-    &-top-spot {
-        padding-top: $height;
+    &:before {
+      transition: background-color #{$transitionDuration} ease,
+        opacity 0.25s ease-out;
+      box-shadow: 0 5px 15px rgba(0, 0, 50, 0.08);
+      @include applyTheme(background-color, "surface");
+      position: absolute;
+      display: block;
+      height: 100%;
+      width: 100%;
+      content: "";
+      opacity: 0;
+      right: 0;
+      left: 0;
+      top: 0;
     }
 
-    /* -- Navigation -- */
-    @at-root .navbar {
-        $radius: 18px;
-        transition: background-color #{$transitionDuration} ease;
-        @include applyTheme(background-color, "background");
+    &-focus,
+    &-show,
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
 
-        position: relative;
-        max-height: 1000px;
-        height: $height;
-        z-index: 1200;
-        width: 100%;
+      .navbar-title-line {
+        border-left-color: darken($background, 14%);
+      }
+    }
+
+    &-fixed {
+      contain: layout size;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    &-head {
+      vertical-align: middle;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: nowrap;
+      display: flex;
+    }
+
+    &-logo {
+      //   transform: translate3d(0, 4px, 0);
+      vertical-align: middle;
+      display: inline-block;
+      line-height: $height;
+      min-height: 30px;
+      height: 30px;
+      width: auto;
+      padding-left: $size;
+    }
+
+    &-title {
+      transition: color #{$transitionDuration} ease;
+      letter-spacing: 0.03em;
+      line-height: $height;
+      position: relative;
+      font-size: 17px;
+      color: $dark;
+      @include applyTheme(color, "dark");
+
+      & .name {
+        // position: absolute;
+        font-family: $bold-font;
+        vertical-align: sub;
+        font-weight: 700;
+        // top: 1.5px;
+      }
+
+      &,
+      &:focus {
+        text-decoration: none;
+      }
+
+      &-line {
+        // transition: border-left-color #{$transitionDuration} ease;
+
+        border-left: 1px solid transparent;
+        border-left-color: darken($mid-light, 2%);
+        border-left-color: var(--mid-light, darken($mid-light, 2%));
+
+        margin-right: $size-smaller;
+        margin-left: $size-smaller;
+        vertical-align: middle;
+        display: inline-block;
+        height: 14px;
+      }
+    }
+
+    &-main {
+      z-index: 10;
+    }
+
+    &-list {
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      overflow-y: hidden;
+      list-style: none;
+      display: flex;
+      width: 100%;
+      margin: 0;
+    }
+
+    &-link {
+      transition: color #{$transitionDuration} ease;
+      text-transform: uppercase;
+      font-family: $bold-font;
+      text-decoration: none;
+      line-height: $height;
+      letter-spacing: 1px;
+      font-weight: 600;
+      padding: 0 28px;
+      font-size: 14px;
+      color: $black; // #bbb8b8
+      @include applyTheme(color, "dark");
+      width: 100%;
+
+      &-content {
+        display: inline-block;
 
         &:before {
-            transition: background-color #{$transitionDuration} ease,
-                opacity 0.25s ease-out;
-            box-shadow: 0 5px 15px rgba(0, 0, 50, 0.08);
-            @include applyTheme(background-color, "surface");
-            position: absolute;
-            display: block;
-            height: 100%;
-            width: 100%;
-            content: "";
-            opacity: 0;
-            right: 0;
-            left: 0;
-            top: 0;
+          transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            background-color #{$transitionDuration} ease;
+          transform: translate3d(0, $height - 14px, 0) scaleX(0);
+          @include applyTheme(background-color, "primary-dark");
+          border: 1.5px solid transparent;
+          transform-origin: 100% 50%;
+          transition-delay: 70ms;
+          border-radius: 10px;
+          display: block;
+          height: 2.5px;
+          width: 100%;
+          content: "";
+        }
+      }
+
+      &:hover,
+      &:focus,
+      &-focus {
+        text-decoration: none;
+        @include applyTheme(color, "dark");
+
+        .navbar-link-content:before {
+          transform: translate3d(0, $height - 14px, 0) scaleX(1);
+          transform-origin: 0 50%;
+        }
+      }
+
+      &:active {
+        color: $primary;
+        @include applyTheme(color, "primary-dark");
+      }
+
+      &-focus {
+        &,
+        &:focus {
+          @include applyTheme(color, "primary-dark");
+        }
+      }
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    &-menu,
+    &-btn {
+      & {
+        transition: color #{$transitionDuration} ease;
+      }
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+
+      &,
+      &:hover,
+      &:focus {
+        color: $primary;
+        color: var(--dark, $primary);
+      }
+    }
+
+    &-mobile {
+      // display: none;
+      visibility: hidden;
+    }
+
+    &-desktop {
+      // display: block;
+      visibility: visible;
+    }
+
+    &-mobile-display {
+      display: none;
+    }
+
+    &-desktop-display {
+      display: block;
+    }
+
+    // Mobile navbar settings
+    @media (max-width: #{$tablet + 50}px) {
+      &-layout,
+      &-list {
+        flex-direction: column;
+      }
+
+      &:before,
+      &-head {
+        z-index: 15;
+      }
+
+      &:before,
+      &-main {
+        box-shadow: 0 2px 15px rgba(0, 0, 50, 0.08);
+      }
+
+      &-head {
+        padding-right: $size-small;
+        position: relative;
+        width: 100%;
+      }
+
+      &-main {
+        transition: transform #{$transitionDuration} ease-out,
+          opacity 0.3s ease 0.1s;
+        transform: translate3d(0, -100%, 0);
+        display: block;
+        width: 100%;
+        opacity: 0;
+        z-index: 0;
+      }
+
+      &-list {
+        transition: background-color #{$transitionDuration} ease;
+        background-color: lighten($very-light, 2%); // #292d33
+        @include applyTheme(background-color, "very-light");
+        position: relative;
+        overflow: hidden;
+        display: block;
+
+        li {
+          display: block;
+          width: 100%;
+        }
+      }
+
+      &-show {
+        .navbar-head {
+          box-shadow: none;
+        }
+
+        .navbar-main {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+
+      &-link {
+        line-height: $height - 12px;
+        padding: 0 24px;
+
+        &-content:before {
+          transform: translate3d(0, $height - 18px, 0) scaleX(0);
         }
 
         &-focus,
-        &-show,
+        &:focus,
         &:hover {
-            &:before {
-                opacity: 1;
-            }
-
-            .navbar-title-line {
-                border-left-color: darken($background, 14%);
-            }
+          .navbar-link-content:before {
+            transform: translate3d(0, $height - 18px, 0) scaleX(1);
+          }
         }
+      }
 
-        &-fixed {
-            contain: layout size;
-            position: fixed;
-            left: 0;
-            top: 0;
-        }
+      &-desktop {
+        visibility: hidden;
+        // display: none;
+      }
 
-        &-head {
-            vertical-align: middle;
-            flex-direction: row;
-            align-items: center;
-            flex-wrap: nowrap;
-            display: flex;
-        }
+      &-mobile {
+        // display: block;
+        visibility: visible;
+      }
 
-        &-logo {
-            // transform: translate3d(0, 4px, 0);
-            vertical-align: middle;
-            display: inline-block;
-            line-height: $height;
-            min-height: 20px;
-            height: 20px;
-            width: auto;
-        }
+      &-desktop-display {
+        display: none;
+      }
 
-        &-title {
-            transition: color #{$transitionDuration} ease;
-            letter-spacing: 0.03em;
-            line-height: $height;
-            position: relative;
-            font-size: 17px;
-            color: $dark;
-            @include applyTheme(color, "primary-dark");
-
-            & .name {
-                // position: absolute;
-                font-family: $bold-font;
-                font-weight: 700;
-                // top: 1.5px;
-            }
-
-            &,
-            &:focus {
-                text-decoration: none;
-            }
-
-            &-line {
-                // transition: border-left-color #{$transitionDuration} ease;
-
-                border-left: 1px solid transparent;
-                border-left-color: darken($mid-light, 2%);
-                border-left-color: var(--mid-light, darken($mid-light, 2%));
-
-                margin-right: $size-smaller;
-                margin-left: $size-smaller;
-                vertical-align: middle;
-                display: inline-block;
-                height: 14px;
-            }
-        }
-
-        &-main {
-            z-index: 10;
-        }
-
-        &-list {
-            justify-content: center;
-            align-items: center;
-            white-space: nowrap;
-            overflow-y: hidden;
-            list-style: none;
-            display: flex;
-            width: 100%;
-            margin: 0;
-        }
-
-        &-link {
-            transition: color #{$transitionDuration} ease;
-            text-transform: uppercase;
-            font-family: $bold-font;
-            text-decoration: none;
-            line-height: $height;
-            letter-spacing: 1px;
-            font-weight: 600;
-            padding: 0 28px;
-            font-size: 14px;
-            color: $black; // #bbb8b8
-            @include applyTheme(color, "dark");
-            width: 100%;
-
-            &-content {
-                display: inline-block;
-
-                &:before {
-                    transition: transform 0.25s
-                            cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                        background-color #{$transitionDuration} ease;
-                    transform: translate3d(0, $height - 14px, 0) scaleX(0);
-                    @include applyTheme(background-color, "primary-dark");
-                    border: 1.5px solid transparent;
-                    transform-origin: 100% 50%;
-                    transition-delay: 70ms;
-                    border-radius: 10px;
-                    display: block;
-                    height: 2.5px;
-                    width: 100%;
-                    content: "";
-                }
-            }
-
-            &:hover,
-            &:focus,
-            &-focus {
-                text-decoration: none;
-                @include applyTheme(color, "dark");
-
-                .navbar-link-content:before {
-                    transform: translate3d(0, $height - 14px, 0) scaleX(1);
-                    transform-origin: 0 50%;
-                }
-            }
-
-            &:active {
-                color: $primary;
-                @include applyTheme(color, "primary-dark");
-            }
-
-            &-focus {
-                &,
-                &:focus {
-                    @include applyTheme(color, "primary-dark");
-                }
-            }
-        }
-
-        a:hover {
-            text-decoration: none;
-        }
-
-        &-menu,
-        &-btn {
-            & {
-                transition: color #{$transitionDuration} ease;
-            }
-
-            &:hover,
-            &:focus {
-                cursor: pointer;
-            }
-
-            &,
-            &:hover,
-            &:focus {
-                color: $primary;
-                color: var(--dark, $primary);
-            }
-        }
-
-        &-mobile {
-            // display: none;
-            visibility: hidden;
-        }
-
-        &-desktop {
-            // display: block;
-            visibility: visible;
-        }
-
-        &-mobile-display {
-            display: none;
-        }
-
-        &-desktop-display {
-            display: block;
-        }
-
-        // Mobile navbar settings
-        @media (max-width: #{$tablet + 50}px) {
-            &-layout,
-            &-list {
-                flex-direction: column;
-            }
-
-            &:before,
-            &-head {
-                z-index: 15;
-            }
-
-            &:before,
-            &-main {
-                box-shadow: 0 2px 15px rgba(0, 0, 50, 0.08);
-            }
-
-            &-head {
-                padding-right: $size-small;
-                position: relative;
-                width: 100%;
-            }
-
-            &-main {
-                transition: transform #{$transitionDuration} ease-out,
-                    opacity 0.3s ease 0.1s;
-                transform: translate3d(0, -100%, 0);
-                display: block;
-                width: 100%;
-                opacity: 0;
-                z-index: 0;
-            }
-
-            &-list {
-                transition: background-color #{$transitionDuration} ease;
-                background-color: lighten($very-light, 2%); // #292d33
-                @include applyTheme(background-color, "very-light");
-                position: relative;
-                overflow: hidden;
-                display: block;
-
-                li {
-                    display: block;
-                    width: 100%;
-                }
-            }
-
-            &-show {
-                .navbar-head {
-                    box-shadow: none;
-                }
-
-                .navbar-main {
-                    transform: translate3d(0, 0, 0);
-                    opacity: 1;
-                }
-            }
-
-            &-link {
-                line-height: $height - 12px;
-                padding: 0 24px;
-
-                &-content:before {
-                    transform: translate3d(0, $height - 18px, 0) scaleX(0);
-                }
-
-                &-focus,
-                &:focus,
-                &:hover {
-                    .navbar-link-content:before {
-                        transform: translate3d(0, $height - 18px, 0) scaleX(1);
-                    }
-                }
-            }
-
-            &-desktop {
-                visibility: hidden;
-                // display: none;
-            }
-
-            &-mobile {
-                // display: block;
-                visibility: visible;
-            }
-
-            &-desktop-display {
-                display: none;
-            }
-
-            &-mobile-display {
-                display: block;
-            }
-        }
-
-        // Desktop navbar settings
-        @media (min-width: #{$tablet + 50}px) {
-            &-layout {
-                padding: 0 $size;
-                display: flex;
-            }
-
-            &-list {
-                height: $height;
-            }
-        }
+      &-mobile-display {
+        display: block;
+      }
     }
+
+    // Desktop navbar settings
+    @media (min-width: #{$tablet + 50}px) {
+      &-layout {
+        padding: 0 $size;
+        display: flex;
+      }
+
+      &-list {
+        height: $height;
+      }
+    }
+  }
 }

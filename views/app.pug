@@ -202,28 +202,31 @@ html(lang="en")
     block seo
       +seo(page)
 
-    <!--[if IE]>
-    link(rel="shortcut icon", href="/favicon/favicon.ico", type="image/x-icon")
-    <![endif]-->
 
     link(rel="manifest", href="/manifest.json")
     link(type="text/plain" rel="author" href="/humans.txt")
     link(rel="home", href=websiteURL)
 
-    meta(name="theme-color", content="#2d22ca")
+    <!--[if IE]>
+    link(rel="shortcut icon", href="/favicon/favicon.ico", type="image/x-icon")
+    <![endif]-->
+
+    meta(name="theme-color", content="#ff3a6b")
     meta(name="twitter:card", content="summary")
     meta(name="application-name", content="Okikio")
     meta(name="msapplication-tap-highlight" content="no")
-    meta(name="msapplication-TileColor", content="#2d22ca")
+    meta(name="msapplication-TileColor", content="#ff3a6b")
     meta(name="apple-mobile-web-app-capable", content="yes")
     meta(name="apple-mobile-web-app-title", content="Okikio")
-    meta(name="msapplication-config", content="/browserconfig.xml")
-    meta(name="apple-mobile-web-app-status-bar-style", content="#2d22ca")
+    meta(name="msapplication-config", content="/favicon/browserconfig.xml")
+    meta(name="apple-mobile-web-app-status-bar-style", content="#ff3a6b")
     meta(name="msapplication-TileImage", content="/favicon/mstile-144x144.png")
-    link(rel="mask-icon", href="/favicon/safari-pinned-tab.svg", color="#2d22ca")
+    link(rel="mask-icon", href="/favicon/safari-pinned-tab.svg", color="#000000")
     link(rel="apple-touch-icon", sizes="180x180", href="/favicon/apple-touch-icon.png")
     link(rel="icon", type="image/png", sizes="32x32", href="/favicon/favicon-32x32.png")
     link(rel="icon", type="image/png", sizes="16x16", href="/favicon/favicon-16x16.png")
+    link(rel="icon" type="image/png" sizes="194x194" href="/favicon/favicon-194x194.png")
+    link(rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png")
 
     //- <!--[if lt IE 9]>
     //- link(rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin)
@@ -242,9 +245,45 @@ html(lang="en")
       +navbar(page)
 
     main.main.transition-in-view(data-container tabindex="-1")
-      block hero
-      section(id="content" itemtype="http://schema.org/WebPageElement" itemscope itemprop="mainEntity")
-        block content
+      if false 
+        block hero
+        section(id="content" itemtype="http://schema.org/WebPageElement" itemscope itemprop="mainEntity")
+          block content
+      else
+        section(id="content" itemtype="http://schema.org/WebPageElement" itemscope itemprop="mainEntity")
+          //- Intro layer
+          +layer
+            +layout({
+              class: "layout-contain layer-overflow-hide"
+            })
+              section(class="layout-shorten layout-max-height-limited layout-flex layout-align-items-center layout-justify-content-center")
+                section.style-center.layout-margin-top-larger--device-phone
+                  +head({
+                    class: "layout-margin-bottom"
+                  })
+                    h1.style-font-45--device-phone.style-primary-dark.style-bold.style-uppercase.layout-margin-dull Coming Soon.
+                  +main
+                    +p("Sorry, the page you are looking for is currently under maintenence.")
+                    div
+                      span(itemscope itemtype="https://schema.org/SiteNavigationElement")
+                      +link({
+                        href: "https://www.linkedin.com/in/okikio",
+                        class: "layout-margin-left-mini",
+                        content: "LinkedIn"
+                      })(target="_blank" rel="noreferrer noopener" title="My LinkedIn page.")
+                      span= " - "
+                      +link({
+                        href: "https://github.com/okikio",
+                        class: "layout-margin-left-mini",
+                        content: "Github"
+                      })(target="_blank" rel="noreferrer noopener" title="The official Okiki Ojo github link.")
+                      span= " - "
+                      span(itemprop="publisher" itemscope itemtype="https://schema.org/Organization" itemid="https://okikio.netlify.app")
+                        +link({
+                          href: "mailto:okikio.dev&#64;gmail&#46;com",
+                          class: "layout-margin-left-mini",
+                          content: "Email"
+                        })(target="_blank" rel="noreferrer noopener" itemprop="email" title="An email you can contact me with.")
 
     .layer-action-center.layer-action-center-hide
       article.layer-action-group
@@ -259,6 +298,8 @@ html(lang="en")
                 i.action-icon.style-font-size-24(inline) expand_less
 
     block footer
-      +footer
+      +footer({
+        class: "footer-stuck layout-margin-vert-top"
+      })
 
     script(src="/js/vendor.min.js" ph-inline)

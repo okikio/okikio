@@ -22,20 +22,20 @@ mixin navbar(value = {})
             href: "/",
             class: "navbar-title style-primary-dark-hover style-primary-dark-focus"
           })(itemprop="url" data-swup-preload title="The Okiki Ojo Logo.")
-            //- img.navbar-logo(src="/favicon/favicon.svg" alt="Logo." itemprop="logo" inline)
-            //- span.navbar-title-line
+            img.navbar-logo(src="/favicon/favicon.svg" alt="Logo." itemprop="logo" inline)
+            span.navbar-title-line
             span.name.layout-inline-block(itemprop="name") Okikio
           .layout-spacer
           .navbar-foot.navbar-mobile
             +themeSwitcher
-            .layout-inline-block
+            //- .layout-inline-block
               a.navbar-menu.action-btn.layer-round.layout-padding-smaller.layer-transparent.layer-light-hover.layer-mid-dark-focus(title="Menu Button" name="Menu Button")
                 span.action-btn-group
                   i.action-icon.style-font-family-bold.style-font-size-24(inline) menu
 
         .layout-spacer.navbar-desktop
         .navbar-main
-          ul.navbar-list(itemscope itemtype="http://schema.org/BreadcrumbList")
+          //- ul.navbar-list(itemscope itemtype="http://schema.org/BreadcrumbList")
             each tab, i in tabs
               li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
                 +link({
@@ -44,5 +44,6 @@ mixin navbar(value = {})
                 })(itemprop="url" tabindex="-1" data-swup-preload title=`The ${tab[0].toUpperCase() + tab.slice(1).replace("-", " ")} navbar link.`)
                   span.navbar-link-content(itemprop="name")= tab.replace("-", " ")
                   meta(itemprop="position" content="1")
+          .navbar-list
             .navbar-desktop-display
               +themeSwitcher
