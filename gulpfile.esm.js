@@ -1,6 +1,7 @@
 import gulp from "gulp";
 const { src, series, dest, watch, parallel } = gulp;
 import {
+    netlifyURL,
     websiteURL,
     dev,
     author,
@@ -73,7 +74,7 @@ const generalConfig = {
 };
 
 const bannerContent = [
-    ` * @author         ${author}`,
+    ` * @author         ${author.name} (${author.url})`,
     ` * @link           ${homepage}`,
     ` * @github         ${github}`,
     ` * @build          ${moment().format("llll")} ET`,
@@ -171,7 +172,7 @@ export const html = () => {
         pipes: [
             // Pug compiler
             pug({
-                locals: { dev, websiteURL, netlify, keywords },
+                locals: { dev, websiteURL, netlifyURL, netlify, keywords },
                 basedir: "views",
                 self: true,
             }),

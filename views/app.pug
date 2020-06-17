@@ -14,6 +14,7 @@ html(lang="en")
     include /components/link.pug
     include /components/seo.pug
     include /components/row.pug
+    - let netlifyURL = self.netlifyURL;
     - let websiteURL = self.websiteURL;
     - let keywords = self.keywords;
     - let netlify = self.netlify;
@@ -22,6 +23,7 @@ html(lang="en")
       let defaults = {
         url: "/",
         websiteURL,
+        netlifyURL,
         name: "index",
         title: "Okiki Ojo — Website Developer / Portfolio",
         description: "I am Okiki a skilled Website Developer based in Oshawa, Ontario. This is my portfolio site, it holds my resume and ways to contact me."
@@ -66,7 +68,9 @@ html(lang="en")
               "https://www.instagram.com/okikio.dev/",
               "https://github.com/okikio",
               "https://github.com/okikio/okikio",
-              "https://twitter.com/okikio_dev"
+              "https://twitter.com/okikio_dev",
+              "#{defaults.websiteURL}",
+              "#{defaults.netlifyURL}"
             ],
             "description": "#{defaults.description}",
             "logo": {
@@ -81,7 +85,7 @@ html(lang="en")
               {
                 "@type": "ContactPoint",
                 "url": "#{defaults.websiteURL}",
-                "email": "mailto:okikio.dev&#64;gmail&#46;com",
+                "email": "mailto:hey@okikio.dev",
                 "contactType": "customer service"
               }
             ]
@@ -99,7 +103,9 @@ html(lang="en")
               "https://www.instagram.com/okikio.dev/",
               "https://github.com/okikio",
               "https://github.com/okikio/okikio",
-              "https://twitter.com/okikio_dev"
+              "https://twitter.com/okikio_dev",
+              "#{defaults.websiteURL}",
+              "#{defaults.netlifyURL}"
             ],
             "description": "#{defaults.description}",
             "jobTitle": "Web Developer",
@@ -115,7 +121,7 @@ html(lang="en")
               {
                 "@type": "ContactPoint",
                 "url": "#{defaults.websiteURL}",
-                "email": "mailto:okikio.dev&#64;gmail&#46;com",
+                "email": "mailto:hey@okikio.dev",
                 "contactType": "customer service"
               }
             ]
@@ -133,7 +139,9 @@ html(lang="en")
               "https://www.instagram.com/okikio.dev/",
               "https://github.com/okikio",
               "https://github.com/okikio/okikio",
-              "https://twitter.com/okikio_dev"
+              "https://twitter.com/okikio_dev",
+              "#{defaults.websiteURL}",
+              "#{defaults.netlifyURL}"
             ],
             "mainEntityOfPage": {
               "@type": "WebPage",
@@ -172,13 +180,13 @@ html(lang="en")
       }
 
     //- if dev
-      meta(http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data: https:; style-src 'self' 'unsafe-inline'; img-src data: 'self' https://res.cloudinary.com/ https://okikio.netlify.app; script-src 'self' https://res.cloudinary.com/ https://polyfill.io/ 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; block-all-mixed-content; upgrade-insecure-requests; base-uri 'self'; object-src 'none'; worker-src 'self'; manifest-src 'self'; media-src 'self' https://res.cloudinary.com/; form-action 'self'; frame-ancestors 'self';")
+      meta(http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data: https:; style-src 'self' 'unsafe-inline'; img-src data: 'self' https://res.cloudinary.com/ https://okikio.dev; script-src 'self' https://res.cloudinary.com/ https://polyfill.io/ 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; block-all-mixed-content; upgrade-insecure-requests; base-uri 'self'; object-src 'none'; worker-src 'self'; manifest-src 'self'; media-src 'self' https://res.cloudinary.com/; form-action 'self'; frame-ancestors 'self';")
       meta(http-equiv="Feature-Policy" content="microphone 'none'; geolocation 'none'; usb 'none'; display-capture 'none'; sync-xhr 'self'; camera 'none'; battery 'none'")
 
     meta(name="web-author" content="Okiki Ojo")
     meta(name="robots" content="index, follow")
     meta(name="copyright" content="Okiki Ojo")
-    meta(name="contact" content="okikio.dev&#64;gmail&#46;com")
+    meta(name="contact" content="hey@okikio.dev")
 
     meta(name="mobile-web-app-capable" content="yes")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes")
@@ -308,9 +316,9 @@ html(lang="en")
                         content: "Stackoverflow"
                       })(target="_blank" rel="noreferrer noopener" title="The official Okiki Ojo Stackoverflow link.")
                       span= " - "
-                      span(itemprop="publisher" itemscope itemtype="https://schema.org/Organization" itemid="https://okikio.netlify.app")
+                      span(itemprop="publisher" itemscope itemtype="https://schema.org/Organization" itemid="https://okikio.dev")
                         +link({
-                          href: "mailto:okikio.dev&#64;gmail&#46;com",
+                          href: "mailto:hey@okikio.dev",
                           class: "layout-margin-left-mini",
                           content: "Email"
                         })(target="_blank" rel="noreferrer noopener" itemprop="email" title="An email you can contact me with.")

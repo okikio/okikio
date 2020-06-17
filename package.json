@@ -37,9 +37,13 @@
         "site",
         "js"
     ],
-    "author": "Okiki Ojo (okikio)",
+    "author": {
+        "name": "Okiki Ojo",
+        "email": "hey@okikio.dev",
+        "url": "okikio.dev"
+    },
     "copyright": "Okiki Ojo",
-    "homepage": "https://okikio.netlify.app/",
+    "homepage": "https://okikio.dev/",
     "developerURL": "https://github.com/okikio/",
     "github": "https://github.com/okikio/okikio/",
     "license": "AGPL-3.0-only",

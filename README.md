@@ -1,4 +1,4 @@
-# [**Okikio**](https://okikio.netlify.app/)
+# [**Okikio**](https://okikio.dev/)
 
 [Getting started](#getting-started) | [Documentation](#documentation) | [Demos and examples](#demos-and-examples) | [Browser support](#browser-support)
 

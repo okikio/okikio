@@ -1,2 +1,2 @@
-Sitemap: https://okikio.netlify.app/sitemap.xml
+Sitemap: https://okikio.dev/sitemap.xml
 User-agent: *

@@ -1,12 +1,12 @@
 /* DEVELOPMENT */
   Okiki Ojo: Development, Concept, Research, Art Direction, SEO
-  Contact: femikiki@gmail.com
-  Site: https://okikio.herokuapp.com
+  Contact: hey@okikio.dev
+  Site: https://okikio.dev
   Twitter: @okikio_dev
   From: Oshawa, Canada
 
 /* SITE */
-  Last update: 2020/03/16
+  Last update: 2020/06/16
   Language: English
   Technologies: Nunjucks, Gulp, Babel, SWUP, Pjax, Postcss, Posthtml, Pug, SCSS, Cloudinary, JS, Rollup
   IDE: VS Code
