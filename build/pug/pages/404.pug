@@ -1,0 +1,28 @@
+extends /layouts/layout.pug
+
+block pageInfo
+  -
+    let page = {
+      url: "/404",
+      title: "404 Page - okikio"
+    };
+
+block hero
+
+  title 404 Page - okikio
+  section.py-24.bg-primary
+    .text-black.text-center.mx-auto.max-w-3xl.px-5.pt-24.pb-20.w-full
+      h1.text-5xl.font-title.font-black.tracking-wider.pb-8
+        strong.layer 404 Page
+      h2.text-2xl.leading-10.mb-16
+        | Oops, it seems you are lost would you like to
+        |
+        +link({
+          href: "/",
+          class: "underline",
+          content: "return home"
+        })
+        | .
+
+block content
+  main

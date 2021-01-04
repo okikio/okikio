@@ -1,0 +1,8 @@
+mixin carousel-buttons()
+  .carousel-btn.top-half.w-full.z-10.text-2xl(class="lt-md:hidden focus:outline-none")
+    button.prev-btn.absolute.top-0.left-0.ml-5.theme-bg-invert.theme-text-invert.rounded-full.flex.w-14.h-14(type="button", title="Previous" aria-label="Previous Carousel Button" aria-hidden="true")
+      i.icon.w-full.justify-center.self-center
+        +icon("chevron_left")
+    button.next-btn.absolute.top-0.right-0.mr-5.theme-bg-invert.theme-text-invert.rounded-full.flex.w-14.h-14(type="button", title="Next" aria-label="Next Carousel Button" aria-hidden="true")
+      i.icon.w-full.justify-center.self-center
+        +icon("chevron_right")

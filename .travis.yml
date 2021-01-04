@@ -3,8 +3,8 @@ dist: xenial
 os: linux
 node_js:
   - "14"
-cache: 
+cache:
   npm: true
-  yarn: true
+  pnpm: true
   directories:
     - node_modules

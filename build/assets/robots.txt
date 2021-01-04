@@ -1,0 +1,2 @@
+Sitemap: https://okikio.dev/sitemap.xml
+User-agent: *

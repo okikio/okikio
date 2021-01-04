@@ -1,0 +1,9 @@
+mixin link(arg = {})
+  -
+    let { content, href } = arg;
+    let _class = arg.class || "layout-inline";
+    let _href = href === "/" ? `/index.html` : (href[0] === "/" ? `${href}${href.includes(".html") ? "" : ".html"}` : href);
+  if self.netlify
+    - _href = _href.replace(/\.html/g, "").replace(/\/index/g, "/");
+  a(href=_href class=_class)&attributes(attributes)= content
+    block

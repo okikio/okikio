@@ -1,8 +1,0 @@
-mixin link(value = {}, noFocus)
-    - let { content, href } = value;
-    - let _class = value.class || "layout-inline";
-    - let _html = self.netlify ? "" : ".html";
-    - let _href = href === "/" ? (self.netlify ? '/' : '/index.html') : (href[0] === "/" ? `${href}${_html}` : href);
-
-    a(href=_href class=`${_class} ${noFocus ? "" : "focus-box"}` title=content)&attributes(attributes)= content
-        block

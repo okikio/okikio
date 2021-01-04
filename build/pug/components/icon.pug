@@ -1,0 +1,15 @@
+mixin icon(name = "menu")
+  -
+    let icon = self.icons[name];
+    let attrs = typeof icon === "object" && !Array.isArray(icon) ? icon.attrs : {};
+  if typeof icon === "object" || typeof icon === "string"
+    svg(xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="currentcolor" width="24" height="24")&attributes(Object.assign({}, attrs, attributes))
+      path(fill="none" stroke="none" d="M0 0h24v24H0z")
+      if Array.isArray(icon)
+        each path in icon
+          path(d=`${path}`.trim())
+      else if typeof icon === "object" && !Array.isArray(icon)
+        each path in icon.paths
+          path(d=`${path}`.trim())
+      else
+        path(d=`${icon}`.trim())

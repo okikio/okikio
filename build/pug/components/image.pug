@@ -1,0 +1,29 @@
+mixin image(value = {})
+  -
+    let _class = value.class;
+    let _picClass = value.picclass;
+    let _loading = value.loading || "lazy";
+    let _figClass = value.figclass !== "" ? (value.figclass || "min-h-300") : "";
+    let src = value.src || "cloudinary/city";
+    let alt = value.alt || "Alternate text";
+
+    let cloudinaryTest = /^cloudinary\//.test(src);
+    let origin = "https://res.cloudinary.com/okikio-assets/image/upload/";
+    let urlParse = (filters = "") => cloudinaryTest ? `${origin + "ar_4:3,c_fill/q_auto/c_scale," + filters},dpr_auto/c_limit/${src.replace(/^cloudinary\//, "")}` : src;
+
+  figure.img(class=_figClass itemprop="image" itemscope itemtype="https://schema.org/ImageObject")
+    .img-overlay
+    picture(class=_picClass)
+      - let effects = (blur ? "/e_blur:1000" : "") + (grayscale ? "/e_grayscale" : "");
+      .core-img-pic
+        img.img-core(data-src!=`${urlParse(`w_auto${effects}`)}.webp`  class=_class alt=alt loading=_loading itemprop="url")&attributes(attributes)
+
+      noscript Javascript is necessary for this sites awesome experience.
+        - var n = 4;
+        - let srcset = `${urlParse(`w_auto${effects}`)}.webp 300w`;
+
+        while n <= 21
+          - srcset += `, ${urlParse(`w_${n * 100}${effects}`)}.webp ${n * 100}w`;
+          - n ++
+
+        img.no-script-img(class=_class srcset=srcset src!=`${urlParse(`w_auto${effects}`)}.jpg` alt=alt loading=_loading itemprop="url")&attributes(attributes)

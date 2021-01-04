@@ -1,46 +1,34 @@
 {
     "name": "okikio",
-    "version": "2.5.5",
-    "description": "My portfolio of projects, it contains some of my amazing projects, etc...",
+    "version": "0.0.0",
+    "description": "This is my portfolio. My name is Okiki Ojo, and this website contains some of my coolest projects, while also serving as one of my most interesting projects.",
+    "private": true,
     "scripts": {
-        "test": "gulp",
-        "watch": "npx cross-env NODE_ENV=development gulp doWatchFiles",
-        "develop": "npx cross-env NODE_ENV=development gulp develop",
-        "build": "gulp"
+        "build": "gulp build",
+        "watch": "gulp default --watch",
+        "start": "npm run watch",
+        "test": "npm run build",
+        "changelog": "npm run build && standard-version && git push --follow-tags origin master"
     },
     "engines": {
-        "node": ">=12",
-        "npm": ">=6",
-        "yarn": ">=1"
+        "node": ">=14"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/okikio/okikio.git"
     },
     "keywords": [
-        "developer",
-        "Okiki Ojo",
-        "okikiojo",
         "okikio",
-        "okiki",
-        "ojo",
+        "web dev",
         "portfolio",
-        "web",
-        "software",
+        "web design",
         "UOIT",
-        "OntarioTech",
-        "tech",
-        "website",
-        "netlify",
-        "pug",
-        "node",
-        "site",
-        "js"
+        "OntarioTech"
     ],
     "author": {
         "name": "Okiki Ojo",
         "email": "hey@okikio.dev",
-        "url": "okikio.dev"
+        "url": "https://okikio.dev"
     },
     "copyright": "Okiki Ojo",
     "homepage": "https://okikio.dev/",
@@ -50,51 +38,43 @@
     "bugs": {
         "url": "https://github.com/okikio/okikio/issues"
     },
-    "dependencies": {
-        "@swup/head-plugin": "^1.0.2",
-        "@swup/scroll-plugin": "^1.0.6",
-        "delegate": "^3.2.0",
-        "swup": "^2.0.9"
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS --verbose"
+        }
     },
-    "devDependencies": {
-        "fast-stringify": "^2.0.0",
-        "gulp-better-rollup": "^4.0.1",
-        "@babel/core": "^7.9.6",
-        "@babel/preset-env": "^7.9.6",
-        "@babel/register": "^7.9.0",
-        "@fullhuman/postcss-purgecss": "^2.2.0",
-        "@rollup/plugin-buble": "^0.21.3",
-        "@rollup/plugin-commonjs": "^11.1.0",
-        "@rollup/plugin-node-resolve": "^7.1.3",
-        "autoprefixer": "^9.8.0",
-        "browser-sync": "^2.26.7",
-        "cross-env": "^7.0.2",
+    "dependencies": {
+        "@csstools/postcss-sass": "^4.0.0",
+        "@fullhuman/postcss-purgecss": "^3.1.3",
+        "@okikio/native": "^1.3.0",
+        "autoprefixer": "^10.1.0",
+        "browser-sync": "^2.26.13",
+        "del": "^6.0.0",
         "dotenv": "^8.2.0",
-        "eslint": "^7.0.0",
-        "esm": "^3.2.25",
+        "esbuild": "^0.8.29",
         "gulp": "^4.0.2",
-        "gulp-header": "^2.0.9",
-        "gulp-htmlmin": "^5.0.1",
+        "gulp-concat": "^2.6.1",
+        "gulp-esbuild": "^0.3.12",
         "gulp-minify-inline-json": "^1.3.4",
-        "gulp-postcss": "^8.0.0",
-        "gulp-posthtml": "^3.0.4",
+        "gulp-plumber": "^1.2.1",
+        "gulp-postcss": "^9.0.0",
         "gulp-pug": "^4.0.1",
         "gulp-rename": "^2.0.0",
-        "gulp-sass": "^4.1.0",
-        "gulp-sitemap": "^7.6.0",
-        "gulp-sourcemaps": "^2.6.5",
-        "moment": "^2.24.0",
-        "postcss-csso": "^4.0.0",
-        "posthtml-doctype": "^1.1.1",
-        "posthtml-link-noreferrer": "^1.0.7",
-        "posthtml-lorem": "^1.0.0",
-        "posthtml-match-helper": "^1.0.1",
-        "posthtml-textr": "^1.0.5",
-        "posthtml-transformer": "^0.1.2",
-        "rollup": "^2.7.3",
-        "rollup-plugin-babel": "^4.4.0",
-        "rollup-plugin-terser": "^5.3.0",
-        "typographic-single-spaces": "^1.0.2",
-        "yarn": "^1.22.4"
+        "gzip-size": "^6.0.0",
+        "merge-stream": "^2.0.0",
+        "pnpm": "^5.14.3",
+        "postcss": "^8.2.2",
+        "postcss-csso": "^5.0.0",
+        "posthtml": "^0.15.1",
+        "pretty-bytes": "^5.5.0",
+        "tailwindcss": "^2.0.2",
+        "ultra-runner": "^3.8.0"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^11.0.0",
+        "@commitlint/config-conventional": "^11.0.0",
+        "commitizen": "^4.2.2",
+        "husky": "^4.3.6",
+        "standard-version": "^9.1.0"
     }
 }

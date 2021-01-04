@@ -1,0 +1,46 @@
+-
+  let links = [
+    {
+      href: "/about",
+      content: "About",
+      data_path: "/about(.html)?"
+    },
+    {
+      href: "/services",
+      content: "Projects",
+      data_path: "/service(.html|s\/)?"
+    },
+    {
+      href: "/contact",
+      content: "Contact",
+      data_path: "/contact(.html)?"
+    }
+  ];
+
+mixin navbar(page)
+  nav.navbar(role="navigation")
+    .navbar-container
+      +link({
+        href: "/",
+        class: "navbar-logo"
+      })
+        +icon("okikio")
+        span okikio
+
+      .flex-grow
+
+      button(type="button", role="button" aria-label="Light/Dark mode toggle" title="Switch Theme")
+        +icon("theme_switcher")
+
+      button(type="button", role="button" aria-label="Navigation bar button" title="Menu Bar")
+        +icon("menu_double_bar")
+
+      //- section.navbar-list
+        each val, i in links
+          -
+            let active = new RegExp(val.data_path, "i").test(page.url) ? "active" : "";
+            let _link = {
+              ...val,
+              class: `navbar-link ${active}`,
+            };
+          +link(_link)(data-path=val.data_path)

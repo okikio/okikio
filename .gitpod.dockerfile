@@ -1,12 +1,8 @@
 FROM gitpod/workspace-full
 
-# RUN nvm install 13 && nvm alias default 13 && nvm use default && npm install -g pnpm gulp
-
-
-## bash -c ". .nvm/nvm.sh \ && 
-# USER root
-# RUN nvm install 13 \
-#     && nvm alias default 13 \
-#     && nvm use 13 \
-#     && npm install -g yarn gulp
-# USER root
+# Install custom tools, runtime, etc. using apt-get
+# For example, the command below would install "bastet" - a command line tetris clone:
+#
+# RUN sudo apt-get -q update && #     sudo apt-get install -yq bastet && #     sudo rm -rf /var/lib/apt/lists/*
+#
+# More information: https://www.gitpod.io/docs/config-docker/
