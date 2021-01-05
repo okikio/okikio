@@ -292,7 +292,7 @@ task("watch", async () => {
     );
     watch(
         [`${srcCSSFolder}/**/*.css`, `./tailwind.js`],
-        { delay: 100 },
+        { delay: 350 },
         series(`css`)
     );
     watch(

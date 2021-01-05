@@ -17,66 +17,51 @@ export let setTheme = (theme: string): void => {
 
 export let mediaTheme = (): string | null => {
     // If they haven't been explicitly set, let's check the media query
-    let mql = window.matchMedia("(prefers-color-scheme: dark)");
-    let hasMediaQueryPreference = typeof mql.matches === "boolean";
-    if (hasMediaQueryPreference) return mql.matches ? "dark" : "light";
+    let { matches } = window.matchMedia("(prefers-color-scheme: dark)");
+    let hasMediaQueryPreference = typeof matches === "boolean";
+    if (hasMediaQueryPreference) return matches ? "dark" : "light";
     return null;
 };
 
-let html = document.querySelector("html");
 // Get theme from html tag, if it has a theme or get it from localStorage
+let html = document.querySelector("html");
 export let themeGet = () => {
     let themeAttr = html.getAttribute("data-theme");
-    if (typeof themeAttr === "string" && themeAttr.length) {
-        return themeAttr;
-    }
-
+    if (typeof themeAttr === "string" && themeAttr.length) return themeAttr;
     return getTheme();
 };
 
 // Set theme in localStorage, as well as in the html tag
 export let themeSet = (theme: string) => {
-    requestAnimationFrame(() => {
-        html.setAttribute("data-theme", theme);
-    });
+    html.setAttribute("data-theme", theme);
     setTheme(theme);
 };
-export let runTheme = () => {
-    try {
-        let theme = getTheme();
-        if (theme === null) theme = mediaTheme();
-        theme && themeSet(theme);
 
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-            themeSet(e.matches ? "dark" : "light");
-        });
+try {
+    let theme = getTheme();
+    if (theme === null) theme = mediaTheme();
+    theme && themeSet(theme);
 
-        window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
-            themeSet(e.matches ? "light" : "dark");
-        });
+    window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", ({ matches }) => themeSet(matches ? "dark" : "light"));
 
-    } catch (e) {
-        console.warn("Theming isn't available on this browser.", e);
-    }
-};
+    window
+        .matchMedia("(prefers-color-scheme: light)")
+        .addEventListener("change", ({ matches }) => themeSet(matches ? "light" : "dark"));
 
-let handler = (() => {
-    document.removeEventListener("DOMContentLoaded", handler);
-    window.removeEventListener("load", handler);
-
-    try {
+    let handler = () => {
         // On theme switcher button click (mouseup is a tiny bit more efficient) toggle the theme between dark and light mode
         let themeSwitch = document.querySelector(".theme-switch");
-        if (themeSwitch) {
-            themeSwitch.addEventListener("click", () => {
-                themeSet(themeGet() === "dark" ? "light" : "dark");
-            });
-        }
-    } catch (e) {
-        console.warn("Theming seems to break on this browser.", e);
-    }
-}).bind(this);
+        themeSwitch
+            ?.addEventListener("click", () => themeSet(themeGet() === "dark" ? "light" : "dark"));
 
-runTheme();
-document.addEventListener("DOMContentLoaded", handler);
-window.addEventListener("load", handler);
+        document.removeEventListener("DOMContentLoaded", handler);
+        window.removeEventListener("load", handler);
+    };
+
+    document.addEventListener("DOMContentLoaded", handler);
+    window.addEventListener("load", handler);
+} catch (e) {
+    console.warn("Theming isn't available on this browser.", e);
+}

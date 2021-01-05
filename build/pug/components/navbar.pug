@@ -3,44 +3,35 @@
     {
       href: "/about",
       content: "About",
-      data_path: "/about(.html)?"
+      path: "/about(.html)?"
     },
     {
-      href: "/services",
+      href: "/projects",
       content: "Projects",
-      data_path: "/service(.html|s\/)?"
+      path: "/project(.html|s\/)?"
     },
     {
       href: "/contact",
       content: "Contact",
-      data_path: "/contact(.html)?"
+      path: "/contact(.html)?"
     }
   ];
 
 mixin navbar(page)
   nav.navbar(role="navigation")
     .navbar-container
-      +link({
-        href: "/",
-        class: "navbar-logo"
-      })
-        +icon("okikio")
-        span okikio
+      +link.navbar-logo("/")
+        +icon("logo")
 
       .flex-grow
 
-      button(type="button", role="button" aria-label="Light/Dark mode toggle" title="Switch Theme")
+      button.navbar-link(type="button", role="button" aria-label="Light/Dark mode toggle" title="Switch Theme")
         +icon("theme_switcher")
 
-      button(type="button", role="button" aria-label="Navigation bar button" title="Menu Bar")
+      button.navbar-link(type="button", role="button" aria-label="Navigation bar button" title="Menu Bar")
         +icon("menu_double_bar")
 
       //- section.navbar-list
-        each val, i in links
-          -
-            let active = new RegExp(val.data_path, "i").test(page.url) ? "active" : "";
-            let _link = {
-              ...val,
-              class: `navbar-link ${active}`,
-            };
-          +link(_link)(data-path=val.data_path)
+        each link, i in links
+          - let active = new RegExp(link.path, "i").test(page.url);
+          +link(link.href)(class="navbar-link" class={ active } data-path=link.path)

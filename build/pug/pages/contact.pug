@@ -14,40 +14,19 @@ block hero
       h1.text-5xl.text-center.font-title.font-black.tracking-wider.pb-8.layer Let's Talk.
       h2.text-2xl.font-thin.leading-10.mb-16 We are an independent marine specialist organization inspired to serve the Marine Oil and Gas communities with reliability, integrity and consistent delivery.
       section.text-center.py-2.font-semibold.text-lg.leading-10
-        +link({
-          href: "/404",
-          class: "inline-block intro-animation px-5 underline",
-          content: "Facebook"
-        })
+        +link("/404")(class="inline-block intro-animation px-5 underline")
+          | Facebook
 
-        +link({
-          href: "/404",
-          class: "inline-block intro-animation px-5 underline",
-          content: "LinkedIn"
-        })
+        +link("/404")(class="inline-block intro-animation px-5 underline")
+          | LinkedIn
 
-        +link({
-          href: "/404",
-          class: "inline-block intro-animation px-5 underline",
-          content: "Instagram"
-        })
+        +link("/404")(class="inline-block intro-animation px-5 underline")
+          | Instagram
 
-        +link({
-          href: "/404",
-          class: "inline-block intro-animation px-5 underline",
-          content: "Twitter"
-        })
+        +link("/404")(class="inline-block intro-animation px-5 underline")
+          | Twitter
 
         br
 
-        +link({
-          href: "mailto:hey@okikio.dev",
-          class: "inline-block intro-animation px-5 underline",
-          content: "hey@okikio.dev"
-        })
-
-        +link({
-          href: "tel:+2348033324072",
-          class: "inline-block intro-animation px-5 underline",
-          content: "+2348033324072"
-        })
+        +link("mailto:hey@okikio.dev")(class="inline-block intro-animation px-5 underline")
+          | hey@okikio.dev

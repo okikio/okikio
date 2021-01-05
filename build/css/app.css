@@ -3,20 +3,44 @@
 @tailwind utilities;
 
 html {
-    @apply font-sans;
+    @apply bg-white text-black font-sans;
 
     font-size: 15px;
     font-weight: 400;
 }
 
+.title-font {
+    @apply font-serif text-9xl uppercase;
+}
+
 .navbar {
-    height: 60px;
+    @apply h-16 w-full fixed left-0 top-0;
+    background-color: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(15px);
 
     &-container {
-        @apply h-full w-full max-w-screen-lg flex mx-auto;
+        @apply h-full w-full flex mx-auto px-16;
+    }
+
+    &-logo {
+        @extend .navbar-link;
+
+        svg {
+            width: 35px;
+            height: 35px;
+        }
     }
 
     &-link {
-        @apply leading-loose;
+        @apply px-3 text-primary hover:bg-black;
+
+        &,
+        svg {
+            @apply h-full;
+        }
+
+        svg {
+            @apply grid place-self-center;
+        }
     }
 }

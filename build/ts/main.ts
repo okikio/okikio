@@ -114,13 +114,13 @@ try {
         wait = false;
     };
 
-    init();
-    window.addEventListener("scroll", ScrollEventListener, { passive: true });
+    // init();
+    // window.addEventListener("scroll", ScrollEventListener, { passive: true });
 
-    app.on("CONTENT_REPLACED", init);
-    app.on("BEFORE_TRANSITION_OUT", destroy);
+    // app.on("CONTENT_REPLACED", init);
+    // app.on("BEFORE_TRANSITION_OUT", destroy);
 
-    app.boot();
+    // app.boot();
 } catch (err) {
     console.warn("[App] boot failed,", err);
 }

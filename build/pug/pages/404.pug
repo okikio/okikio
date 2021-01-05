@@ -17,11 +17,8 @@ block hero
       h2.text-2xl.leading-10.mb-16
         | Oops, it seems you are lost would you like to
         |
-        +link({
-          href: "/",
-          class: "underline",
-          content: "return home"
-        })
+        +link()(class="underline")
+          | return home
         | .
 
 block content

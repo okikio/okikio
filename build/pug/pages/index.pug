@@ -1,7 +1,22 @@
 extends /layouts/layout.pug
 
 block hero
-  p Hero here
+  .text-center.text-white.py-16.px-16.h-screen.flex
+    .bg-primary.flex.w-full
+      .flex.w-full.relative.mx-auto
+        .flex.w-full.h-full.grid
+          h1.place-self-center.title-font Hello
+          .mb-8.absolute.bottom-0.self-center(class="left-1/2 transform -translate-x-1/2")
+            button.uppercase.tracking-wider(class="hover:underline" type="button", role="button" aria-label="Scroll down button" title="Scroll Down")
+              | Scroll
+              +icon("arrow_downward").mt-3.mx-auto
+        .h-full.max-h-screen-sm.p-16.absolute.right-0.text-primary
+          .bg-white.grid.h-full.px-5
+            .self-end.pb-2
+              - let list = ["menu", "menu_book", "pause", "logo"];
+              each value in list
+                +link.py-3.block
+                  +icon(value)
 
 block content
   p Content here
