@@ -23,7 +23,7 @@ const netlify = "netlify" in env ? env.netlify == "true" : false;
 
 // Origin folders (source and destination folders)
 const srcFolder = `build`;
-const destFolder = `public`;
+const destFolder = `docs`;
 
 // Source file folders
 const tsFolder = `${srcFolder}/ts`;
