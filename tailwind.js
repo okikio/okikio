@@ -81,7 +81,7 @@ module.exports = {
         borderOpacity: false,
         borderRadius: {
             none: "0px",
-            sm: "0.125rem",
+            sm: "0.2rem",
             DEFAULT: "0.25rem",
             md: "0.375rem",
             lg: "0.5rem",
@@ -150,6 +150,7 @@ module.exports = {
             xs: ["0.75rem", { lineHeight: "1rem" }],
             sm: ["0.875rem", { lineHeight: "1.25rem" }],
             base: ["1rem", { lineHeight: "1.5rem" }],
+            "base-lg": ["1.025rem", { lineHeight: "1.75rem" }],
             lg: ["1.125rem", { lineHeight: "1.75rem" }],
             xl: ["1.25rem", { lineHeight: "1.75rem" }],
             "2xl": ["1.5rem", { lineHeight: "2rem" }],
@@ -173,21 +174,21 @@ module.exports = {
             extrabold: "800",
             // black: "900",
         },
-        gap: false, // (theme) => theme("spacing"),
-        gradientColorStops: false,
-        gridAutoColumns: false /*  {
+        gap: (theme) => theme("spacing"),
+        // gradientColorStops: false,
+        gridAutoColumns: {
             auto: "auto",
             min: "min-content",
             max: "max-content",
             fr: "minmax(0, 1fr)",
-        }, */,
-        gridAutoRows: false /* {
+        },
+        gridAutoRows: {
             auto: "auto",
             min: "min-content",
             max: "max-content",
             fr: "minmax(0, 1fr)",
-        }, */,
-        gridColumn: false /* {
+        },
+        gridColumn: {
             auto: "auto",
             "span-1": "span 1 / span 1",
             "span-2": "span 2 / span 2",
@@ -202,8 +203,8 @@ module.exports = {
             "span-11": "span 11 / span 11",
             "span-12": "span 12 / span 12",
             "span-full": "1 / -1",
-        }, */,
-        gridColumnEnd: false /* {
+        },
+        gridColumnEnd: {
             auto: "auto",
             1: "1",
             2: "2",
@@ -218,8 +219,8 @@ module.exports = {
             11: "11",
             12: "12",
             13: "13",
-        }, */,
-        gridColumnStart: false /* {
+        },
+        gridColumnStart: {
             auto: "auto",
             1: "1",
             2: "2",
@@ -234,8 +235,8 @@ module.exports = {
             11: "11",
             12: "12",
             13: "13",
-        }, */,
-        gridRow: false /* {
+        },
+        gridRow: {
             auto: "auto",
             "span-1": "span 1 / span 1",
             "span-2": "span 2 / span 2",
@@ -244,8 +245,8 @@ module.exports = {
             "span-5": "span 5 / span 5",
             "span-6": "span 6 / span 6",
             "span-full": "1 / -1",
-        }, */,
-        gridRowStart: false /* {
+        },
+        gridRowStart: {
             auto: "auto",
             1: "1",
             2: "2",
@@ -254,8 +255,8 @@ module.exports = {
             5: "5",
             6: "6",
             7: "7",
-        }, */,
-        gridRowEnd: false /* {
+        },
+        gridRowEnd: {
             auto: "auto",
             1: "1",
             2: "2",
@@ -264,9 +265,9 @@ module.exports = {
             5: "5",
             6: "6",
             7: "7",
-        }, */,
-        transformOrigin: false,
-        gridTemplateColumns: false /* {
+        },
+        // transformOrigin: false,
+        gridTemplateColumns: {
             none: "none",
             1: "repeat(1, minmax(0, 1fr))",
             2: "repeat(2, minmax(0, 1fr))",
@@ -280,8 +281,8 @@ module.exports = {
             10: "repeat(10, minmax(0, 1fr))",
             11: "repeat(11, minmax(0, 1fr))",
             12: "repeat(12, minmax(0, 1fr))",
-        }, */,
-        gridTemplateRows: false /* {
+        },
+        gridTemplateRows: {
             none: "none",
             1: "repeat(1, minmax(0, 1fr))",
             2: "repeat(2, minmax(0, 1fr))",
@@ -289,7 +290,7 @@ module.exports = {
             4: "repeat(4, minmax(0, 1fr))",
             5: "repeat(5, minmax(0, 1fr))",
             6: "repeat(6, minmax(0, 1fr))",
-        }, */,
+        },
         height: (theme) => ({
             auto: "auto",
             ...theme("spacing"),
@@ -564,17 +565,17 @@ module.exports = {
         flexShrink: false,
         space: false,
 
-        gridColumn: false,
-        gridColumnStart: false,
-        gridColumnEnd: false,
-        gridTemplateRows: false,
-        gridRow: false,
-        gridRowStart: false,
-        gridRowEnd: false,
-        gridAutoFlow: false,
-        gridAutoColumns: false,
-        gridAutoRows: false,
-        gap: false,
+        // gridColumn: false,
+        // gridColumnStart: false,
+        // gridColumnEnd: false,
+        // gridTemplateRows: false,
+        // gridRow: false,
+        // gridRowStart: false,
+        // gridRowEnd: false,
+        // gridAutoFlow: false,
+        // gridAutoColumns: false,
+        // gridAutoRows: false,
+        // gap: false,
 
         fontVariantNumeric: false,
         placeholderColor: false,

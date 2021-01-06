@@ -17,10 +17,43 @@ block hero
             +icon(value)
 
 block content
-  .mx-auto.w-full.p-24.max-w-screen-lg
-    .p-16
+  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-24
+    .py-16(class="md:px-16")
       .sub-title.font-extrabold
         h2.inline-block.text-primary.text-4xl.mr-2 dedicated.
         span.text-base (adj.):
       p.mt-5.trackin-wide.font-bold.description.text-xl devoted to a task or purpose; having single-minded loyalty or integrity.
-      p.leading-9.mt-10.trackin-wide.description.text-xl Dedication is at the heart of what I do. My name is Okiki and I am a Website Developer, what I create is driven by passion and fine tuned to overcome any and all challenges.
+      p.leading-9.mt-10.trackin-wide.description.text-xl
+        span Dedication is at the heart of what I do at okikio. okikio is a web design & development agency I developed to bring out the best in web design & development, my name is Okiki Ojo and I am a web developer. I strive to creates digital experiences driven by passion and fine tuned to overcome all challenges.
+        br
+        br
+        //- span With over 5+ years of development experience I aim to enhance your buisness to new heights through the use of innovative technologies and great user experiences, okikio is the official face of the projects I build, but you get the benefits of an independent developer working hard to bring your vision into an innovative digital product.
+
+      .text-lg
+        button.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-sm(type="button", role="button" aria-label="Let's talk about your vision for your buisness")
+          | Lets talk
+
+        button.bg-gray-100.text-primary.mt-12.px-10.py-3.font-extrabold.tracking-wide.rounded(type="button", role="button" aria-label="Let's talk about your vision for your buisness")
+          | What I do
+
+
+  +image("cloudinary/flamingo-illustration", "An image of a peacock")
+  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-24
+    .py-16(class="md:px-16")
+      .sub-title.font-extrabold
+        h2.inline-block.text-primary.text-4xl.mr-2 My design method
+      p.leading-9.mt-10.trackin-wide.text-xl.description I first determine and understand your buisnesses needs and goals, I then determine the best approach to build a site that displays that vision for your buisness. There are four parts to my method, they are speed, efficiency, ease-of-use, and lasting experiences.
+      .grid.gap-x-0.gap-y-24.grid-rows-4.grid-flow-col.mt-16(class="md:grid-rows-2 md:gap-x-6")
+        -
+          let pilars = [
+            ["offline_bolt", "Speed", "I first determine and understand your buisnesses needs and goals, I then determine the best approach to build a site that displays that vision for your buisness. There are four parts to my method, they are speed, efficiency, ease-of-use, and lasting experiences."],
+            ["waves", "Efficiency", "I first determine and understand your buisnesses needs and goals, I then determine the best approach to build a site that displays that vision for your buisness. There are four parts to my method, they are speed, efficiency, ease-of-use, and lasting experiences."],
+            ["gavel", "Ease-of-use", "I first determine and understand your buisnesses needs and goals, I then determine the best approach to build a site that displays that vision for your buisness. There are four parts to my method, they are speed, efficiency, ease-of-use, and lasting experiences."],
+            ["history", "Ease-of-use", "I first determine and understand your buisnesses needs and goals, I then determine the best approach to build a site that displays that vision for your buisness. There are four parts to my method, they are speed, efficiency, ease-of-use, and lasting experiences."],
+          ];
+        each val in pilars
+          div
+            span.text-2xl.w-16.h-16.bg-secondary.text-primary.inline-block.rounded-full.grid
+              +icon(val[0]).place-self-center.w-8.h-8
+            h3.font-sans.font-bold.text-lg.my-5= val[1]
+            p.leading-7.trackin-wide.description.text-base-lg= val[2]
