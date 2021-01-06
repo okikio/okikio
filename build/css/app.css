@@ -125,3 +125,14 @@ figure.img {
         width: 100%;
     }
 }
+
+.graphic {
+    margin: auto;
+    display: block;
+
+    path {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 18px;
+    }
+}

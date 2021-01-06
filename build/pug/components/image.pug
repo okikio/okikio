@@ -6,5 +6,5 @@ mixin image(src = "cloudinary/city", alt = "Alternate text")
 
   figure.img(itemprop="image" itemscope itemtype="https://schema.org/ImageObject")&attributes(attributes)
     img.img-core(src!=`${urlParse()}.webp` alt=alt loading="lazy" itemprop="url")
-    noscript Javascript is necessary for this sites awesome experience.
-      img.no-script-img(src!=`${urlParse()}.jpg` alt=alt loading="lazy")
+    noscript()
+      img.no-script-img(src!=`${urlParse()}.jpg` aria-hidden="true" alt=alt loading="lazy")

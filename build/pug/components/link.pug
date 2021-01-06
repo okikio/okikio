@@ -1,5 +1,3 @@
-mixin link(url = "/")
-  -
-    let href = self.netlify ? url : (url === "/" ? `./index.html` : `${url}${!/\.html$/.test(url) && ".html"}`);
+mixin link(href = "/")
   a(href=href)&attributes(attributes)
     block

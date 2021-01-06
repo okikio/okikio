@@ -1,4 +1,4 @@
-import { PJAX, App, TransitionManager, HistoryManager, PageManager } from "@okikio/native";
+import { PJAX, App, TransitionManager, HistoryManager, PageManager, animate } from "@okikio/native";
 import { toArr } from "./toArr";
 
 import { IntroAnimation } from "./services/IntroAnimation";
@@ -113,6 +113,25 @@ try {
         layer = undefined;
         wait = false;
     };
+
+    animate({
+        target: ".graphic path.animate",
+        duration: 3000,
+        easing: "linear",
+        direction: "alternate",
+        fillMode: "both",
+        // delay(index) {
+        //     return Math.abs(index) * 500;
+        // },
+        strokeDashoffset(index, len, el: SVGPathElement) {
+            const pathLength = el.getTotalLength();
+            el.setAttribute('stroke-dasharray', `` + pathLength);
+            return [pathLength + Math.abs(index) * 500, 0];
+        },
+
+        loop: true,
+        autoplay: true
+    });
 
     // init();
     // window.addEventListener("scroll", ScrollEventListener, { passive: true });

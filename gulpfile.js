@@ -11,15 +11,11 @@ const {
     parallelFn,
 } = require("./util");
 
-const dotenv =
-    "netlify" in process.env || "dev" in process.env
-        ? process.env
-        : require("dotenv");
+const dotenv = "dev" in process.env ? process.env : require("dotenv");
 if (typeof dotenv.config === "function") dotenv.config();
 
 const env = process.env;
 const dev = "dev" in env ? env.dev == "true" : false;
-const netlify = "netlify" in env ? env.netlify == "true" : false;
 
 // Origin folders (source and destination folders)
 const srcFolder = `build`;
@@ -71,7 +67,7 @@ task("html", async () => {
             // Compile src html using Pug
             pug({
                 ...pugConfig,
-                data: { ...data, icons, netlify },
+                data: { ...data, icons },
             }),
             minifyJSON(), // Minify application/ld+json
         ],
@@ -121,10 +117,14 @@ task("css", async () => {
                 sassPostcss({ outputStyle: "compressed" }),
 
                 // Purge & Compress CSS
-                ...(dev ? [] : [
-                    (await import("@fullhuman/postcss-purgecss")).default(purgeConfig),
-                    (await import("postcss-csso")).default()
-                ]),
+                ...(dev
+                    ? []
+                    : [
+                          (await import("@fullhuman/postcss-purgecss")).default(
+                              purgeConfig
+                          ),
+                          (await import("postcss-csso")).default(),
+                      ]),
             ]),
             dev ? null : (await import("gulp-autoprefixer")).default(),
             rename("app.min.css"),
@@ -233,8 +233,7 @@ task("reload", (resolve) => {
 });
 
 // Delete destFolder for added performance
-task("clean", async (done) => {
-    if (netlify) return await Promise.resolve(done());
+task("clean", async () => {
     const { default: del } = await import("del");
     return del(destFolder);
 });
@@ -245,7 +244,12 @@ task("watch", async () => {
     browserSync.init(
         {
             notify: true,
-            server: destFolder,
+            server: {
+                baseDir: destFolder,
+                serveStaticOptions: {
+                    extensions: ["html"],
+                },
+            },
             online: true,
             scrollThrottle: 250,
         },

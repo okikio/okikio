@@ -18,23 +18,25 @@
   ];
 
 mixin navbar(page)
-  nav.navbar(role="navigation")
-    .navbar-container
+  nav.navbar
+    .navbar-container(role="menubar")
       +link.navbar-logo("/")
-        .wrapper
+        .wrapper(aria-label="okikio logo")
           +icon("logo")
 
       .flex-grow
 
-      //- button.navbar-link(type="button", role="button" aria-label="Light/Dark mode toggle" title="Switch Theme")
+      //- button.navbar-link(type="button", aria-label="Light/Dark mode toggle" title="Switch Theme")
         .wrapper
           +icon("theme_switcher")
 
-      button.navbar-link(type="button", role="button" aria-label="Navigation bar button" title="Menu Bar")
+      //- https://www.w3.org/TR/wai-aria-practices-1.1/#menu
+      button.navbar-link(type="button", aria-haspopup="menu" aria-expanded="hidden" aria-label="Navigation menu button" title="Menu Bar")
         .wrapper
           +icon("menu_double_bar")
 
-      //- section.navbar-list
+      //- section.navbar-list(role="menu")
         each link, i in links
           - let active = new RegExp(link.path, "i").test(page.url);
-          +link(link.href)(class="navbar-link" class={ active } data-path=link.path)
+          div(role="menuitem")
+            +link(link.href)(class="navbar-link" class={ active } data-path=link.path)
