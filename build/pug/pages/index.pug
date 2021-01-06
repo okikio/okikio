@@ -1,22 +1,26 @@
 extends /layouts/layout.pug
 
 block hero
-  .text-center.text-white.py-16.px-16.h-screen.flex
-    .bg-primary.flex.w-full
-      .flex.w-full.relative.mx-auto
-        .flex.w-full.h-full.grid
-          h1.place-self-center.title-font Hello
-          .mb-8.absolute.bottom-0.self-center(class="left-1/2 transform -translate-x-1/2")
-            button.uppercase.tracking-wider(class="hover:underline" type="button", role="button" aria-label="Scroll down button" title="Scroll Down")
-              | Scroll
-              +icon("arrow_downward").mt-3.mx-auto
-        .h-full.max-h-screen-sm.p-16.absolute.right-0.text-primary
-          .bg-white.grid.h-full.px-5
-            .self-end.pb-2
-              - let list = ["menu", "menu_book", "pause", "logo"];
-              each value in list
-                +link.py-3.block
-                  +icon(value)
+  .hero
+    .container
+      h1 Hello
+      .scroll-btn
+        button(type="button", role="button" aria-label="Scroll down button" title="Scroll Down")
+          | Scroll
+          +icon("arrow_downward")
+  .social-sidebar
+    .container
+      .iconset
+        - let list = ["twitter", "facebook", "instagram", "github", "linkedin"];
+        each value in list
+          +link
+            +icon(value)
 
 block content
-  p Content here
+  .mx-auto.w-full.p-24.max-w-screen-lg
+    .p-16
+      .sub-title.font-extrabold
+        h2.inline-block.text-primary.text-4xl.mr-2 dedicated.
+        span.text-base (adj.):
+      p.mt-5.trackin-wide.font-bold.description.text-xl devoted to a task or purpose; having single-minded loyalty or integrity.
+      p.leading-9.mt-10.trackin-wide.description.text-xl Dedication is at the heart of what I do. My name is Okiki and I am a Website Developer, what I create is driven by passion and fine tuned to overcome any and all challenges.

@@ -81,79 +81,53 @@ task("html", async () => {
 
 // CSS Tasks
 let browserSync;
-task("css", async () => {
-    let extraImports = !dev
-        ? [
-              import("autoprefixer"),
-              import("postcss-csso"),
-              import("@fullhuman/postcss-purgecss"),
-          ]
-        : [{ default: () => {} }, { default: () => {} }, { default: () => {} }];
+let purgeConfig = {
+    mode: "all",
+    content: [`${pugFolder}/**/*.pug`],
 
+    // safelist: [/-webkit-scrollbar/, /active/, /show/, /hide/, /light/, /dark/],
+    keyframes: false,
+    fontFace: false,
+    defaultExtractor: (content) => {
+        // Capture as liberally as possible, including things like `h-(screen-1.5)`
+        const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []; // Capture classes within other delimiters like .block(class="w-1/2") in Pug
+
+        const innerMatches =
+            content.match(/[^<>"'`\s.(){}\[\]#=%]*[^<>"'`\s.(){}\[\]#=%:]/g) ||
+            [];
+        return broadMatches.concat(innerMatches);
+    },
+};
+task("css", async () => {
     const [
         { default: postcss },
         { default: tailwind },
         { default: sassPostcss },
         { default: plumber },
-        { default: concat },
+        { default: rename },
+    ] = await Promise.all([
+        import("gulp-postcss"),
+        import("tailwindcss"),
+        import("@csstools/postcss-sass"),
+        import("gulp-plumber"),
+        import("gulp-rename"),
+    ]);
 
-        { default: autoprefixer },
-        { default: csso },
-        { default: purge },
-    ] = await Promise.all(
-        [
-            import("gulp-postcss"),
-            import("tailwindcss"),
-            import("@csstools/postcss-sass"),
-            import("gulp-plumber"),
-            import("gulp-concat"),
-        ].concat(extraImports)
-    );
-
-    let finalize = [
-        // Purge, Prefix & Compress CSS
-        purge({
-            mode: "all",
-            content: [`${pugFolder}/**/*.pug`],
-
-            safelist: [
-                /-webkit-scrollbar/,
-                /active/,
-                /show/,
-                /hide/,
-                /light/,
-                /dark/,
-            ],
-            keyframes: false,
-            fontFace: false,
-            defaultExtractor: (content) => {
-                // Capture as liberally as possible, including things like `h-(screen-1.5)`
-                const broadMatches =
-                    content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []; // Capture classes within other delimiters like .block(class="w-1/2") in Pug
-
-                const innerMatches =
-                    content.match(
-                        /[^<>"'`\s.(){}\[\]#=%]*[^<>"'`\s.(){}\[\]#=%:]/g
-                    ) || [];
-                return broadMatches.concat(innerMatches);
-            },
-        }),
-        csso(),
-        autoprefixer({
-            overrideBrowserslist: ["defaults"],
-        }),
-    ];
-
-    return stream(`${srcCSSFolder}/*.css`, {
+    return stream(`${srcCSSFolder}/app.css`, {
         pipes: [
             plumber(),
-            postcss(
-                [
-                    tailwind("./tailwind.js"),
-                    sassPostcss({ outputStyle: "compressed" }),
-                ] //.concat(!dev ? finalize : [])
-            ),
-            concat("app.min.css"),
+            postcss([
+                tailwind("./tailwind.js"),
+                sassPostcss({ outputStyle: "compressed" }),
+
+                // Purge & Compress CSS
+                ...(dev ? [] : [
+                    (await import("@fullhuman/postcss-purgecss")).default(purgeConfig),
+                    (await import("postcss-csso")).default()
+                ]),
+            ]),
+            dev ? null : (await import("gulp-autoprefixer")).default(),
+            rename("app.min.css"),
         ],
         dest: destCSSFolder,
         end: browserSync ? [browserSync.stream()] : undefined,
@@ -291,7 +265,7 @@ task("watch", async () => {
         series(`html`, "reload")
     );
     watch(
-        [`${srcCSSFolder}/**/*.css`, `./tailwind.js`],
+        [`${srcCSSFolder}/**/*`, `./tailwind.js`],
         { delay: 350 },
         series(`css`)
     );

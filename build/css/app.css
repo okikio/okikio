@@ -1,5 +1,6 @@
+@import "./fonts.scss";
+
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
 
 html {
@@ -10,37 +11,102 @@ html {
 }
 
 .title-font {
-    @apply font-serif text-9xl uppercase;
+    @apply font-serif lg:text-12xl text-8xl uppercase;
 }
 
 .navbar {
-    @apply h-16 w-full fixed left-0 top-0;
-    background-color: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(15px);
+    @apply md:h-16 h-12 w-full fixed bg-white;
+    z-index: 5;
+    left: 0;
+    top: 0;
 
     &-container {
-        @apply h-full w-full flex mx-auto px-16;
+        @apply h-full w-full flex mx-auto md:px-16 sm:px-12 px-2;
+    }
+
+    &-link {
+        @apply h-full text-primary grid focus:outline-none;
+        font-size: 24px;
+
+        .wrapper {
+            transition: background-color ease-out 0.15s;
+            @apply grid place-self-center rounded-full bg-white;
+            $size: 38px;
+            width: $size;
+            height: $size;
+        }
+
+        svg {
+            @apply place-self-center;
+            width: 1em;
+            height: 1em;
+        }
+
+        &:hover,
+        &:focus {
+            .wrapper {
+                @apply bg-secondary;
+            }
+        }
     }
 
     &-logo {
         @extend .navbar-link;
+        font-size: 24px;
+    }
+}
 
-        svg {
-            width: 35px;
-            height: 35px;
+.hero {
+    @apply text-center text-white md:p-16 sm:p-12 h-screen;
+
+    .container {
+        @apply relative bg-primary mx-auto h-full grid;
+    }
+
+    h1 {
+        @apply place-self-center title-font;
+    }
+}
+
+.scroll-btn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    button {
+        @apply uppercase tracking-wider hover:underline mb-8;
+    }
+
+    svg {
+        @apply mt-3 mx-auto;
+    }
+}
+
+.social-sidebar {
+    @apply pr-16 text-primary hidden absolute h-full;
+    font-size: 28px;
+    right: 0;
+    top: 0;
+
+    .container {
+        @apply grid h-full;
+    }
+
+    svg {
+        width: 1em;
+        height: 1em;
+    }
+
+    .iconset {
+        @apply bg-secondary self-center pb-2;
+
+        a {
+            @apply px-6 py-5 block;
         }
     }
 
-    &-link {
-        @apply px-3 text-primary hover:bg-black;
-
-        &,
-        svg {
-            @apply h-full;
-        }
-
-        svg {
-            @apply grid place-self-center;
-        }
+    @screen md {
+        @apply block;
     }
 }

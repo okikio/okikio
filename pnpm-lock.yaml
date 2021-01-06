@@ -2,13 +2,12 @@ dependencies:
   '@csstools/postcss-sass': 4.0.0
   '@fullhuman/postcss-purgecss': 3.1.3
   '@okikio/native': 1.3.0
-  autoprefixer: 10.1.0_postcss@8.2.2
   browser-sync: 2.26.13
   del: 6.0.0
   dotenv: 8.2.0
   esbuild: 0.8.29
   gulp: 4.0.2
-  gulp-concat: 2.6.1
+  gulp-autoprefixer: 7.0.1_gulp@4.0.2
   gulp-esbuild: 0.3.12
   gulp-minify-inline-json: 1.3.4
   gulp-plumber: 1.2.1
@@ -22,7 +21,7 @@ dependencies:
   postcss-csso: 5.0.0_postcss@8.2.2
   posthtml: 0.15.1
   pretty-bytes: 5.5.0
-  tailwindcss: 2.0.2_af0f84ec51438f8ab9d26470b52a2535
+  tailwindcss: 2.0.2_postcss@8.2.2
   ultra-runner: 3.8.0
 devDependencies:
   '@commitlint/cli': 11.0.0
@@ -707,23 +706,19 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
-  /autoprefixer/10.1.0_postcss@8.2.2:
+  /autoprefixer/9.8.6:
     dependencies:
       browserslist: 4.16.0
       caniuse-lite: 1.0.30001173
       colorette: 1.2.1
-      fraction.js: 4.0.13
       normalize-range: 0.1.2
-      postcss: 8.2.2
+      num2fraction: 1.2.2
+      postcss: 7.0.35
       postcss-value-parser: 4.1.0
     dev: false
-    engines:
-      node: ^10 || ^12 || >=14
     hasBin: true
-    peerDependencies:
-      postcss: ^8.1.0
     resolution:
-      integrity: sha512-0/lBNwN+ZUnb5su18NZo5MBIjDaq6boQKZcxwy86Gip/CmXA2zZqUoFQLCNAGI5P25ZWSP2RWdhDJ8osfKEjoQ==
+      integrity: sha512-XrvP4VVHdRBCdX1S3WXVD8+RyG9qeb1D5Sn1DeLiG2xfSpzellk5k54xbUERJ3M5DggQxes39UGOTP8CFrEGbg==
   /axios/0.19.0:
     dependencies:
       follow-redirects: 1.5.10
@@ -1420,12 +1415,6 @@ packages:
       '0': node >= 6.0
     resolution:
       integrity: sha512-MWufYdFw53ccGjCA+Ol7XJYpAlW6/prSMzuPOTRnJGcGzuhLn4Scrz7qf6o8bROZ514ltazcIFJZevcfbo0x7A==
-  /concat-with-sourcemaps/1.1.0:
-    dependencies:
-      source-map: 0.6.1
-    dev: false
-    resolution:
-      integrity: sha512-4gEjHJFT9e+2W/77h/DS5SGUgwDaOwprX8L/gl5+3ixnzkVJJsZWDSelmN3Oilw3LNDZjZV0yqH1hLG3k6nghg==
   /connect-history-api-fallback/1.6.0:
     dev: false
     engines:
@@ -2498,10 +2487,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-xjMy9BXO3EsE2/5wz4NklMU8tEs=
-  /fraction.js/4.0.13:
-    dev: false
-    resolution:
-      integrity: sha512-E1fz2Xs9ltlUp+qbiyx9wmt2n9dRzPsS11Jtdb8D2o+cC7wr9xkkKsVKJuBX0ST+LVS+LhLO+SbLJNtfWcJvXA==
   /fragment-cache/0.2.1:
     dependencies:
       map-cache: 0.2.2
@@ -2577,7 +2562,7 @@ packages:
     resolution:
       integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==
   /fsevents/2.1.3:
-    deprecated: Please update to v 2.2.x
+    deprecated: '"Please update to latest v2.3 or v2.2"'
     dev: false
     engines:
       node: ^8.16.0 || ^10.6.0 || >=11.0.0
@@ -2801,6 +2786,25 @@ packages:
   /graceful-fs/4.2.4:
     resolution:
       integrity: sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
+  /gulp-autoprefixer/7.0.1_gulp@4.0.2:
+    dependencies:
+      autoprefixer: 9.8.6
+      fancy-log: 1.3.3
+      gulp: 4.0.2
+      plugin-error: 1.0.1
+      postcss: 7.0.35
+      through2: 3.0.2
+      vinyl-sourcemaps-apply: 0.2.1
+    dev: false
+    engines:
+      node: '>=8'
+    peerDependencies:
+      gulp: '>=4'
+    peerDependenciesMeta:
+      gulp:
+        optional: true
+    resolution:
+      integrity: sha512-QJGEmHw+bEt7FSqvmbAUTxbCuNLJYx4sz3ox9WouYqT/7j5FH5CQ8ZnpL1M7H5npX1bUJa7lUVY1w20jXxhOxg==
   /gulp-cli/2.3.0:
     dependencies:
       ansi-colors: 1.1.0
@@ -2827,16 +2831,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-zzGBl5fHo0EKSXsHzjspp3y5CONegCm8ErO5Qh0UzFzk2y4tMvzLWhoDokADbarfZRL2pGpRp7yt6gfJX4ph7A==
-  /gulp-concat/2.6.1:
-    dependencies:
-      concat-with-sourcemaps: 1.1.0
-      through2: 2.0.5
-      vinyl: 2.2.1
-    dev: false
-    engines:
-      node: '>= 0.10'
-    resolution:
-      integrity: sha1-Yz0WyV2IUEYorQJmVmPO5aR5M1M=
   /gulp-esbuild/0.3.12:
     dependencies:
       esbuild: 0.8.29
@@ -4161,6 +4155,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-l33/1xdgErnsMNKjnbXPcqBDnt0=
+  /num2fraction/1.2.2:
+    dev: false
+    resolution:
+      integrity: sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
   /number-is-nan/1.0.1:
     engines:
       node: '>=0.10.0'
@@ -5859,10 +5857,9 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-g0D8RwLDEi310iKI+IKD9RPT/dQ=
-  /tailwindcss/2.0.2_af0f84ec51438f8ab9d26470b52a2535:
+  /tailwindcss/2.0.2_postcss@8.2.2:
     dependencies:
       '@fullhuman/postcss-purgecss': 3.1.3
-      autoprefixer: 10.1.0_postcss@8.2.2
       bytes: 3.1.0
       chalk: 4.1.0
       color: 3.1.3
@@ -5920,6 +5917,13 @@ packages:
       xtend: 4.0.2
     resolution:
       integrity: sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==
+  /through2/3.0.2:
+    dependencies:
+      inherits: 2.0.4
+      readable-stream: 3.6.0
+    dev: false
+    resolution:
+      integrity: sha512-enaDQ4MUyP2W6ZyT6EsMzqBPZaM/avg8iuo+l2d3QCs0J+6RaqkHV/2/lOwDTueBHeJ/2LG9lrLW3d5rWPucuQ==
   /through2/4.0.2:
     dependencies:
       readable-stream: 3.6.0
@@ -6591,14 +6595,13 @@ specifiers:
   '@csstools/postcss-sass': ^4.0.0
   '@fullhuman/postcss-purgecss': ^3.1.3
   '@okikio/native': ^1.3.0
-  autoprefixer: ^10.1.0
   browser-sync: ^2.26.13
   commitizen: ^4.2.2
   del: ^6.0.0
   dotenv: ^8.2.0
   esbuild: ^0.8.29
   gulp: ^4.0.2
-  gulp-concat: ^2.6.1
+  gulp-autoprefixer: ^7.0.1
   gulp-esbuild: ^0.3.12
   gulp-minify-inline-json: ^1.3.4
   gulp-plumber: ^1.2.1

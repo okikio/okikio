@@ -21,15 +21,18 @@ mixin navbar(page)
   nav.navbar(role="navigation")
     .navbar-container
       +link.navbar-logo("/")
-        +icon("logo")
+        .wrapper
+          +icon("logo")
 
       .flex-grow
 
-      button.navbar-link(type="button", role="button" aria-label="Light/Dark mode toggle" title="Switch Theme")
-        +icon("theme_switcher")
+      //- button.navbar-link(type="button", role="button" aria-label="Light/Dark mode toggle" title="Switch Theme")
+        .wrapper
+          +icon("theme_switcher")
 
       button.navbar-link(type="button", role="button" aria-label="Navigation bar button" title="Menu Bar")
-        +icon("menu_double_bar")
+        .wrapper
+          +icon("menu_double_bar")
 
       //- section.navbar-list
         each link, i in links
