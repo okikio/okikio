@@ -28,10 +28,10 @@ block content
         //- span With over 5+ years of development experience I aim to enhance your buisness to new heights through the use of innovative technologies and great user experiences, okikio is the official face of the projects I build, but you get the benefits of an independent developer working hard to bring your vision into an innovative digital product.
 
       .text-lg.mt-16
-        button.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-sm(type="button")
+        +link(class="focus:ring-opacity-50 focus:outline-none" type="button").ring-opacity-0.ring-3.ring-primary.ring-offset-2.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-sm
           | Lets talk
 
-        button.bg-gray-100.text-primary.mt-12.px-10.py-3.font-extrabold.tracking-wide.rounded(type="button")
+        +link.bg-gray-200.text-primary.mt-12.px-10.py-3.font-extrabold.tracking-wide.rounded
           | What I do
 
 
@@ -58,6 +58,6 @@ block content
   .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-24
     svg.graphic(xmlns='http://www.w3.org/2000/svg' width='349' height='611' fill='none')
       path(d='M188.5 12v124.5C188.5 243.5 337 94 337 236c0 191.44-325-85-325 94.5 0 128.14 176.5-1 176.5 132v136m0 0l-61.5-35m61.5 35l56-35' stroke-linecap="round" stroke='#000' stroke-width='24' stroke-linejoin='round')
-      - let colors = ["#FFC5C5", '#FFE600', '#F24C4C']
+      - let colors = ['#FFE600', '#F24C4C', "#FFC5C5"]
       each color in colors
         path.animate(d='M188.5 12v124.5C188.5 243.5 337 94 337 236c0 191.44-325-85-325 94.5 0 128.14 176.5-1 176.5 132v136m0 0l-61.5-35m61.5 35l56-35' stroke-linecap="round" stroke=color stroke-width='24' stroke-linejoin='round')

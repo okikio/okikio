@@ -55,10 +55,10 @@
         "browser-sync": "^2.26.13",
         "del": "^6.0.0",
         "dotenv": "^8.2.0",
-        "esbuild": "^0.8.30",
+        "esbuild": "^0.8.31",
         "gulp": "^4.0.2",
         "gulp-autoprefixer": "^7.0.1",
-        "gulp-esbuild": "^0.3.13",
+        "gulp-esbuild": "^0.3.14",
         "gulp-minify-inline-json": "^1.3.4",
         "gulp-plumber": "^1.2.1",
         "gulp-postcss": "^9.0.0",
@@ -67,7 +67,7 @@
         "gzip-size": "^6.0.0",
         "merge-stream": "^2.0.0",
         "pnpm": "^5.14.3",
-        "postcss": "^8.2.2",
+        "postcss": "^8.2.3",
         "postcss-csso": "^5.0.0",
         "posthtml": "^0.15.1",
         "pretty-bytes": "^5.5.0",
@@ -78,7 +78,7 @@
         "@commitlint/cli": "^11.0.0",
         "@commitlint/config-conventional": "^11.0.0",
         "commitizen": "^4.2.2",
-        "husky": "^4.3.6",
+        "husky": "^4.3.7",
         "standard-version": "^9.1.0"
     }
 }

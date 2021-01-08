@@ -116,17 +116,14 @@ try {
 
     animate({
         target: ".graphic path.animate",
-        duration: 3000,
+        duration: 2500,
         easing: "linear",
         direction: "alternate",
         fillMode: "both",
-        // delay(index) {
-        //     return Math.abs(index) * 500;
-        // },
         strokeDashoffset(index, len, el: SVGPathElement) {
             const pathLength = el.getTotalLength();
-            el.setAttribute('stroke-dasharray', `` + pathLength);
-            return [pathLength + Math.abs(index) * 500, 0];
+            el.setAttribute('stroke-dasharray', `` + pathLength / 2);
+            return [pathLength / 2 + Math.abs(index) * 500, 0];
         },
 
         loop: true,

@@ -5,29 +5,29 @@ dependencies:
   browser-sync: 2.26.13
   del: 6.0.0
   dotenv: 8.2.0
-  esbuild: 0.8.30
+  esbuild: 0.8.31
   gulp: 4.0.2
   gulp-autoprefixer: 7.0.1_gulp@4.0.2
-  gulp-esbuild: 0.3.13
+  gulp-esbuild: 0.3.14
   gulp-minify-inline-json: 1.3.4
   gulp-plumber: 1.2.1
-  gulp-postcss: 9.0.0_postcss@8.2.2
+  gulp-postcss: 9.0.0_postcss@8.2.3
   gulp-pug: 4.0.1
   gulp-rename: 2.0.0
   gzip-size: 6.0.0
   merge-stream: 2.0.0
   pnpm: 5.14.3
-  postcss: 8.2.2
-  postcss-csso: 5.0.0_postcss@8.2.2
+  postcss: 8.2.3
+  postcss-csso: 5.0.0_postcss@8.2.3
   posthtml: 0.15.1
   pretty-bytes: 5.5.0
-  tailwindcss: 2.0.2_postcss@8.2.2
+  tailwindcss: 2.0.2_postcss@8.2.3
   ultra-runner: 3.8.0
 devDependencies:
   '@commitlint/cli': 11.0.0
   '@commitlint/config-conventional': 11.0.0
   commitizen: 4.2.2
-  husky: 4.3.6
+  husky: 4.3.7
   standard-version: 9.1.0
 lockfileVersion: 5.2
 packages:
@@ -209,7 +209,7 @@ packages:
     dependencies:
       '@csstools/sass-import-resolve': 1.0.0
       postcss: 7.0.35
-      sass: 1.32.0
+      sass: 1.32.2
       source-map: 0.7.3
     dev: false
     engines:
@@ -256,7 +256,7 @@ packages:
     dependencies:
       '@okikio/emitter': 1.3.0
       '@okikio/manager': 1.3.0
-      esbuild: 0.8.30
+      esbuild: 0.8.31
       gzip-size: 6.0.0
       pretty-bytes: 5.5.0
       standard-version: 9.1.0
@@ -267,7 +267,7 @@ packages:
   /@okikio/emitter/1.3.0:
     dependencies:
       '@okikio/manager': 1.3.0
-      esbuild: 0.8.30
+      esbuild: 0.8.31
       gzip-size: 6.0.0
       pretty-bytes: 5.5.0
       standard-version: 9.1.0
@@ -277,7 +277,7 @@ packages:
       integrity: sha512-tXB/x+V4A814/zTQeLK8MOkylqR76NYQj57t6xroSOYqlF8qhVCzK0pSwtnv/pAoN8lhMK25R3STnDJUPeWtWg==
   /@okikio/manager/1.3.0:
     dependencies:
-      esbuild: 0.8.30
+      esbuild: 0.8.31
       gzip-size: 6.0.0
       pretty-bytes: 5.5.0
       standard-version: 9.1.0
@@ -290,7 +290,7 @@ packages:
       '@okikio/animate': 1.3.0
       '@okikio/emitter': 1.3.0
       '@okikio/manager': 1.3.0
-      esbuild: 0.8.30
+      esbuild: 0.8.31
       gzip-size: 6.0.0
       pretty-bytes: 5.5.0
       standard-version: 9.1.0
@@ -1545,7 +1545,7 @@ packages:
       handlebars: 4.7.6
       json-stringify-safe: 5.0.1
       lodash: 4.17.20
-      meow: 8.1.0
+      meow: 8.1.2
       semver: 6.3.0
       split: 1.0.1
       through2: 4.0.2
@@ -1588,7 +1588,7 @@ packages:
       JSONStream: 1.3.5
       is-text-path: 1.0.1
       lodash: 4.17.20
-      meow: 8.1.0
+      meow: 8.1.2
       split2: 2.2.0
       through2: 4.0.2
       trim-off-newlines: 1.0.1
@@ -1605,7 +1605,7 @@ packages:
       conventional-commits-parser: 3.2.0
       git-raw-commits: 2.0.0
       git-semver-tags: 4.1.1
-      meow: 8.1.0
+      meow: 8.1.2
       q: 1.5.1
     engines:
       node: '>=10'
@@ -2145,12 +2145,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-p5um32HOTO1kP+w7PRnB+5lQ43Z6muuMuIMffvDN8ZB4GcnjLBV6zGStpbASIMk4DCAvEaamhe2zhyCb/QXXsA==
-  /esbuild/0.8.30:
+  /esbuild/0.8.31:
     dev: false
     hasBin: true
     requiresBuild: true
     resolution:
-      integrity: sha512-gCJQYUMO9QNrfpNOIiCnFoX41nWiPFCvURBQF+qWckyJ7gmw2xCShdKCXvS+RZcQ5krcxEOLIkzujqclePKhfw==
+      integrity: sha512-7EIU0VdUxltwivjVezX3HgeNzeIVR1snkrAo57WdUnuBMykdzin5rTrxwCDM6xQqj0RL/HjOEm3wFr2ijHKeaA==
   /escalade/3.1.1:
     dev: false
     engines:
@@ -2401,14 +2401,14 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==
-  /find-versions/3.2.0:
+  /find-versions/4.0.0:
     dependencies:
-      semver-regex: 2.0.0
+      semver-regex: 3.1.2
     dev: true
     engines:
-      node: '>=6'
+      node: '>=10'
     resolution:
-      integrity: sha512-P8WRou2S+oe222TOCHitLy8zj+SIsVJh52VP4lvXkaFVnOFFdoWv1H1Jjvel1aI6NCFOAaeAVm8qrI0odiLcww==
+      integrity: sha512-wgpWy002tA+wgmO27buH/9KzyEOQnKsG/R0yrcjPT9BOFm0zRBVQbZ95nRGXWMywS8YR5knRbpohio0bcJABxQ==
   /findup-sync/2.0.0:
     dependencies:
       detect-file: 1.0.0
@@ -2632,7 +2632,7 @@ packages:
     dependencies:
       dargs: 7.0.0
       lodash.template: 4.5.0
-      meow: 8.1.0
+      meow: 8.1.2
       split2: 3.2.2
       through2: 4.0.2
     engines:
@@ -2650,7 +2650,7 @@ packages:
       integrity: sha1-UoJlna4hBxRaERJhEq0yFuxfpl8=
   /git-semver-tags/4.1.1:
     dependencies:
-      meow: 8.1.0
+      meow: 8.1.2
       semver: 6.3.0
     engines:
       node: '>=10'
@@ -2830,16 +2830,16 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-zzGBl5fHo0EKSXsHzjspp3y5CONegCm8ErO5Qh0UzFzk2y4tMvzLWhoDokADbarfZRL2pGpRp7yt6gfJX4ph7A==
-  /gulp-esbuild/0.3.13:
+  /gulp-esbuild/0.3.14:
     dependencies:
-      esbuild: 0.8.30
+      esbuild: 0.8.31
       plugin-error: 1.0.1
       vinyl: 2.2.1
     dev: false
     engines:
       node: '>=8.6.0'
     resolution:
-      integrity: sha512-5AmhT5VreULUuhRD9PkvFzPDZTUnY7gwPa95pAr6ued2JrMZo229ifpkZz+txqxi0t60y7ae6Q4gvqsgoxDrJA==
+      integrity: sha512-t07JZxkeRgZnX3cmKFCqTPI/lWIkhHs4n90nD9AG+YJGPF/HMsKGFtoqzuVnvXoolobmu+bS5EGVSJIKo9Pmcw==
   /gulp-minify-inline-json/1.3.4:
     dependencies:
       minify-inline-json: 1.0.1
@@ -2862,11 +2862,11 @@ packages:
       npm: '>=1.2.10'
     resolution:
       integrity: sha512-mctAi9msEAG7XzW5ytDVZ9PxWMzzi1pS2rBH7lA095DhMa6KEXjm+St0GOCc567pJKJ/oCvosVAZEpAey0q2eQ==
-  /gulp-postcss/9.0.0_postcss@8.2.2:
+  /gulp-postcss/9.0.0_postcss@8.2.3:
     dependencies:
       fancy-log: 1.3.3
       plugin-error: 1.0.1
-      postcss: 8.2.2
+      postcss: 8.2.3
       postcss-load-config: 2.1.2
       vinyl-sourcemaps-apply: 0.2.1
     dev: false
@@ -3078,15 +3078,15 @@ packages:
       node: '>=8.0.0'
     resolution:
       integrity: sha512-7mz/721AbnJwIVbnaSv1Cz3Am0ZLT/UBwkC92VlxhXv/k/BBQfM2fXElQNC27BVGr0uwUpplYPQM9LnaBMR5NQ==
-  /husky/4.3.6:
+  /husky/4.3.7:
     dependencies:
       chalk: 4.1.0
       ci-info: 2.0.0
       compare-versions: 3.6.0
       cosmiconfig: 7.0.0
-      find-versions: 3.2.0
+      find-versions: 4.0.0
       opencollective-postinstall: 2.0.3
-      pkg-dir: 4.2.0
+      pkg-dir: 5.0.0
       please-upgrade-node: 3.2.0
       slash: 3.0.0
       which-pm-runs: 1.0.0
@@ -3096,7 +3096,7 @@ packages:
     hasBin: true
     requiresBuild: true
     resolution:
-      integrity: sha512-o6UjVI8xtlWRL5395iWq9LKDyp/9TE7XMOTvIpEVzW638UcGxTmV5cfel6fsk/jbZSTlvfGVJf2svFtybcIZag==
+      integrity: sha512-0fQlcCDq/xypoyYSJvEuzbDPHFf8ZF9IXKJxlrnvxABTSzK1VPT2RKYQKrcgJ+YD39swgoB6sbzywUqFxUiqjw==
   /iconv-lite/0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -3885,7 +3885,7 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-xcSBHD5Z86zaOc+781KrupuHAzeGXSLtiAOmBsiLDiPSaYSB6hdew2ng9EBAnZ62jagG9MHAOdxpDi/lWBFJ/A==
-  /meow/8.1.0:
+  /meow/8.1.2:
     dependencies:
       '@types/minimist': 1.2.1
       camelcase-keys: 6.2.2
@@ -3901,7 +3901,7 @@ packages:
     engines:
       node: '>=10'
     resolution:
-      integrity: sha512-fNWkgM1UVMey2kf24yLiccxLihc5W+6zVus3/N0b+VfnJgxV99E9u04X6NAiKdg6ED7DAQBX5sy36NM0QJZkWA==
+      integrity: sha512-r85E3NdZ+mpYk1C6RjPFEMSE+s1iZMuHtsHAqY0DT3jZczl0diWUZ8g6oU7h0M9cD2EL+PzaYghhCLzR0ZNn5Q==
   /merge-stream/2.0.0:
     dev: false
     resolution:
@@ -4562,14 +4562,14 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
-  /pkg-dir/4.2.0:
+  /pkg-dir/5.0.0:
     dependencies:
-      find-up: 4.1.0
+      find-up: 5.0.0
     dev: true
     engines:
-      node: '>=8'
+      node: '>=10'
     resolution:
-      integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
+      integrity: sha512-NPE8TDbzl/3YQYY7CSS228s3g2ollTFnc+Qi3tqmqJp9Vg2ovUpixcJEo2HJScN2Ez+kEaal6y70c0ehqJBJeA==
   /please-upgrade-node/3.2.0:
     dependencies:
       semver-compare: 1.0.0
@@ -4621,10 +4621,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
-  /postcss-csso/5.0.0_postcss@8.2.2:
+  /postcss-csso/5.0.0_postcss@8.2.3:
     dependencies:
       csso: 4.2.0
-      postcss: 8.2.2
+      postcss: 8.2.3
     dev: false
     engines:
       node: '>=10.12.0'
@@ -4644,7 +4644,7 @@ packages:
   /postcss-js/3.0.3:
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.2.2
+      postcss: 8.2.3
     dev: false
     engines:
       node: '>=10.0'
@@ -4659,9 +4659,9 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha512-/rDeGV6vMUo3mwJZmeHfEDvwnTKKqQ0S7OHUi/kJvvtx3aWtyWG2/0ZWnzCt2keEclwN6Tf0DST2v9kITdOKYw==
-  /postcss-nested/5.0.3_postcss@8.2.2:
+  /postcss-nested/5.0.3_postcss@8.2.3:
     dependencies:
-      postcss: 8.2.2
+      postcss: 8.2.3
       postcss-selector-parser: 6.0.4
     dev: false
     engines:
@@ -4709,7 +4709,7 @@ packages:
       node: '>=6.0.0'
     resolution:
       integrity: sha512-3QT8bBJeX/S5zKTTjTCIjRF3If4avAT6kqxcASlTWEtAFCb9NH0OUxNDfgZSWdP5fJnBYCMEWkIFfWeugjzYMg==
-  /postcss/8.2.2:
+  /postcss/8.2.3:
     dependencies:
       colorette: 1.2.1
       nanoid: 3.1.20
@@ -4718,7 +4718,7 @@ packages:
     engines:
       node: ^10 || ^12 || >=14
     resolution:
-      integrity: sha512-HM1NDNWLgglJPQQMNwvLxgH2KcrKZklKLi/xXYIOaqQB57p/pDWEJNS83PVICYsn1Dg/9C26TiejNr422/ePaQ==
+      integrity: sha512-tdmNCCmxJEsLZNj810qlj8QbvnUNKFL9A5doV+uHrGGK/YNKWEslrytnHDWr9M/GgGjfUFwXCRbxd/b6IoRBXQ==
   /posthtml-parser/0.6.0:
     dependencies:
       htmlparser2: 5.0.1
@@ -4881,7 +4881,7 @@ packages:
     dependencies:
       commander: 6.2.1
       glob: 7.1.6
-      postcss: 8.2.2
+      postcss: 8.2.3
       postcss-selector-parser: 6.0.4
     dev: false
     hasBin: true
@@ -5284,7 +5284,7 @@ packages:
   /safer-buffer/2.1.2:
     resolution:
       integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
-  /sass/1.32.0:
+  /sass/1.32.2:
     dependencies:
       chokidar: 3.5.0
     dev: false
@@ -5292,7 +5292,7 @@ packages:
       node: '>=8.9.0'
     hasBin: true
     resolution:
-      integrity: sha512-fhyqEbMIycQA4blrz/C0pYhv2o4x2y6FYYAH0CshBw3DXh5D5wyERgxw0ptdau1orc/GhNrhF7DFN2etyOCEng==
+      integrity: sha512-u1pUuzqwz3SAgvHSWp1k0mRhX82b2DdlVnP6UIetQPZtYbuJUDaPQhZE12jyjB7vYeOScfz9WPsZJB6Rpk7heA==
   /semver-compare/1.0.0:
     dev: true
     resolution:
@@ -5305,12 +5305,12 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha1-E+jCZYq5aRywzXEJMkAoDTb3els=
-  /semver-regex/2.0.0:
+  /semver-regex/3.1.2:
     dev: true
     engines:
-      node: '>=6'
+      node: '>=8'
     resolution:
-      integrity: sha512-mUdIBBvdn0PLOeP3TEkMH7HHeUP3GjsXCwKarjv/kGmUFOYg1VqEemKhoQpWMu6X2I8kHeuVdGibLGkVK+/5Qw==
+      integrity: sha512-bXWyL6EAKOJa81XG1OZ/Yyuq+oT0b2YLlxx7c+mrdYPaPbnj6WgVULXhinMIeZGufuUBu/eVRqXEhiv4imfwxA==
   /semver/5.7.1:
     hasBin: true
     resolution:
@@ -5856,7 +5856,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-g0D8RwLDEi310iKI+IKD9RPT/dQ=
-  /tailwindcss/2.0.2_postcss@8.2.2:
+  /tailwindcss/2.0.2_postcss@8.2.3:
     dependencies:
       '@fullhuman/postcss-purgecss': 3.1.3
       bytes: 3.1.0
@@ -5870,10 +5870,10 @@ packages:
       modern-normalize: 1.0.0
       node-emoji: 1.10.0
       object-hash: 2.1.1
-      postcss: 8.2.2
+      postcss: 8.2.3
       postcss-functions: 3.0.0
       postcss-js: 3.0.3
-      postcss-nested: 5.0.3_postcss@8.2.2
+      postcss-nested: 5.0.3_postcss@8.2.3
       postcss-selector-parser: 6.0.4
       postcss-value-parser: 4.1.0
       pretty-hrtime: 1.0.3
@@ -6598,20 +6598,20 @@ specifiers:
   commitizen: ^4.2.2
   del: ^6.0.0
   dotenv: ^8.2.0
-  esbuild: ^0.8.30
+  esbuild: ^0.8.31
   gulp: ^4.0.2
   gulp-autoprefixer: ^7.0.1
-  gulp-esbuild: ^0.3.13
+  gulp-esbuild: ^0.3.14
   gulp-minify-inline-json: ^1.3.4
   gulp-plumber: ^1.2.1
   gulp-postcss: ^9.0.0
   gulp-pug: ^4.0.1
   gulp-rename: ^2.0.0
   gzip-size: ^6.0.0
-  husky: ^4.3.6
+  husky: ^4.3.7
   merge-stream: ^2.0.0
   pnpm: ^5.14.3
-  postcss: ^8.2.2
+  postcss: ^8.2.3
   postcss-csso: ^5.0.0
   posthtml: ^0.15.1
   pretty-bytes: ^5.5.0
