@@ -134,7 +134,8 @@ module.exports = {
         flexShrink: false,
         fontFamily: {
             sans: ["Manrope", "sans-serif"],
-            serif: ["Abril Fatface", "serif"],
+            serif: ["Playfair Display", "serif"],
+            title: ["Abril Fatface", "serif"],
             mono: [
                 "ui-monospace",
                 "SFMono-Regular",
@@ -518,10 +519,10 @@ module.exports = {
         rotate: false,
         scale: false,
         skew: false,
-        space: false /* (theme, { negative }) => ({
+        space:  (theme, { negative }) => ({
             ...theme("spacing"),
             // ...negative(theme("spacing")),
-        }), */,
+        }),
         stroke: false,
         strokeWidth: false,
         textColor: (theme) => theme("colors"),
@@ -577,7 +578,7 @@ module.exports = {
         flexShrink: false,
         gridTemplateColumns: false,
         flexShrink: false,
-        space: false,
+        // space: false,
 
         // gridColumn: false,
         // gridColumnStart: false,

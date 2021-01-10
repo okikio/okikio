@@ -8,7 +8,7 @@ block hero
         button(type="button", aria-label="Scroll down button" title="Scroll Down")
           | Scroll
           +icon("arrow_downward")
-  aside.social-sidebar
+  aside.social-sidebar(class="md:block hidden")
     .container
       .iconset
         - let list = ["twitter", "facebook", "instagram", "github", "linkedin"];
@@ -24,11 +24,11 @@ block content
         span.text-base (adj.):
       p.mt-5.trackin-wide.font-bold.description.text-xl devoted to a task or purpose; having single-minded loyalty or integrity.
       p.leading-9.mt-10.trackin-wide.description.text-xl
-        span Dedication is at the heart of what I do at okikio. okikio is a web design & development agency I developed to bring out the best in web design & development, my name is Okiki Ojo and I am a web developer. I strive to creates digital experiences driven by passion and fine tuned to overcome all challenges.
+        span Dedication is at the heart of what I do. okikio is a web design & development agency I developed to bring out the best in web design & development, my name is Okiki Ojo and I am a web developer. I strive to creates digital experiences driven by passion and fine tuned to overcome all challenges.
         //- span With over 5+ years of development experience I aim to enhance your buisness to new heights through the use of innovative technologies and great user experiences, okikio is the official face of the projects I build, but you get the benefits of an independent developer working hard to bring your vision into an innovative digital product.
 
       .text-lg.mt-16
-        +link(class="focus:ring-opacity-50 focus:outline-none" type="button").ring-opacity-0.ring-3.ring-primary.ring-offset-2.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-sm
+        +link(class="focus:ring-opacity-50 focus:outline-none" type="button").ring-opacity-0.ring-3.ring-primary.ring-offset-2.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-md
           | Lets talk
 
         +link.bg-gray-200.text-primary.mt-12.px-10.py-3.font-extrabold.tracking-wide.rounded
@@ -38,9 +38,8 @@ block content
   +image("cloudinary/flamingo-illustration", "An image of a peacock")(role="presentation")
   .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-24
     .py-16(class="md:px-16")
-      .sub-title.font-extrabold
-        h2.inline-block.text-primary.text-4xl.mr-2 My design method
-      p.leading-9.mt-10.trackin-wide.text-xl.description I first determine and understand your buisnesses needs and goals, I then determine the best approach to build a site that displays that vision for your buisness. There are four parts to my method, they are speed, efficiency, ease-of-use, and impact.
+      h2.sub-title.font-extrabold.text-primary.text-4xl Design method
+      p.leading-9.mt-10.trackin-wide.text-xl.description To design a site, I first understand the needs and goals of the project, I then determine the best approach to build a site that displays the final vision for the site. There are four parts to my method, they are speed, efficiency, ease-of-use, and impact.
       .grid.gap-x-0.gap-y-24.grid-rows-4.grid-flow-col.mt-16(class="md:grid-rows-2 md:gap-x-6")
         -
           let pilars = [
@@ -55,9 +54,56 @@ block content
               +icon(val[0]).place-self-center.w-8.h-8
             h3.font-sans.font-bold.text-lg.my-5= val[1]
             p.leading-7.trackin-wide.description.text-base-lg= val[2]
-  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-24
+  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-16
     svg.graphic(xmlns='http://www.w3.org/2000/svg' width='349' height='611' fill='none')
       path(d='M188.5 12v124.5C188.5 243.5 337 94 337 236c0 191.44-325-85-325 94.5 0 128.14 176.5-1 176.5 132v136m0 0l-61.5-35m61.5 35l56-35' stroke-linecap="round" stroke='#000' stroke-width='24' stroke-linejoin='round')
       - let colors = ['#FFE600', '#F24C4C', "#FFC5C5"]
       each color in colors
         path.animate(d='M188.5 12v124.5C188.5 243.5 337 94 337 236c0 191.44-325-85-325 94.5 0 128.14 176.5-1 176.5 132v136m0 0l-61.5-35m61.5 35l56-35' stroke-linecap="round" stroke=color stroke-width='24' stroke-linejoin='round')
+
+  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-24
+    .py-16(class="lg:px-16 md:px-8")
+      h2.sub-title.font-extrabold.text-primary.text-4xl My Services
+      p.leading-9.mt-10.trackin-wide.text-xl.description 
+        | I offer many services ranging from Web Design to Search Engine Optimization (SEO). My services separated by whether the project is design oriented and/or development oriented.  
+      .grid.gap-x-0.gap-y-24.grid-cols-2.grid-flow-row.mt-16(class="md:gap-x-8 md:grid-flow-col")
+        mixin col(name, list)
+          div
+            h3.sub-title.text-primary.text-2xl.mb-5= name
+            .grid.gap-y-5.grid-auto-row
+              each item in list
+                - let [icon, title, description] = item;
+                .p-5.bg-gray-100.rounded-xl
+                  span.text-2xl.w-16.h-16.bg-secondary.text-primary.inline-block.rounded-full.grid
+                    +icon(icon).place-self-center.w-8.h-8
+                  h3.font-sans.font-bold.text-lg.my-5= title
+                  p.leading-7.trackin-wide.description.text-base-lg= description
+
+
+        +col("Design", [
+            ["offline_bolt", "Web Design", "Responsive design that works on all devices, ensuring a seamless experience on all modern browsers."],
+            ["waves", "UI / UX", "A mockup design of a project."],
+            ["gavel", "Logo Design", "Designing logo and brand identity for the web."],
+            ["history", "Art Direction", "Creating the color palette, fonts, and design components required for high quality web sites."],
+          ])
+
+        +col("Development", [
+          ["offline_bolt", "Frontend", "Building the HTML, CSS, and Javascript required to make a site function"],
+          ["waves", "Backend", "Development of the servers, and databases a site runs on"],
+          ["gavel", "SEO", "Search Engine Optimization aid a site in ranking higher in search engines like Google."],
+        ])
+      
+      div.py-12
+        p.leading-9.mt-10.trackin-wide.text-xl.description 
+          | These are some of the innovative technologies that power the services that I offer.
+
+        .flex.py-5.space-x-5.flex-nowrap.overflow-x-scroll
+          - for (let i = 0; i < 10; i ++) {
+            .bg-primary.rounded-xl
+              .w-24.h-24
+          - }
+  
+    
+      .text-lg.text-center
+        +link(class="focus:ring-opacity-50 focus:outline-none" type="button").ring-opacity-0.ring-3.ring-primary.ring-offset-2.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-md
+          | Lets talk

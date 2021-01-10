@@ -11,28 +11,27 @@ html {
 }
 
 .title-font {
-    @apply font-serif lg:text-12xl text-8xl uppercase;
+    @apply font-title lg:text-12xl text-8xl uppercase;
 }
 
 .navbar {
-    @apply md:h-12 h-16 w-full fixed;
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(1rem);
+    @apply h-16 w-full fixed bg-white;
     z-index: 5;
     left: 0;
     top: 0;
 
     &-container {
-        @apply h-full w-full flex mx-auto md:px-12 sm:px-16 px-2;
+        @apply relative h-full w-full flex mx-auto md:px-16 px-2;
+        z-index: 5;
     }
 
-    &-link {
+    &-icon {
         @apply h-full text-primary grid focus:outline-none;
         font-size: 28px;
 
         .wrapper {
             @apply grid place-self-center rounded-full;
-            $size: 38px;
+            $size: 42px;
             width: $size;
             height: $size;
         }
@@ -52,13 +51,48 @@ html {
     }
 
     &-logo {
-        @extend .navbar-link;
+        @extend .navbar-icon;
         font-size: 28px;
     }
+
+    &-list {
+        @apply absolute h-screen bg-white;
+        top: 0;
+        right: 0;
+        width: 100%;
+
+        @screen md {
+            width: 75%;
+        }
+    }
+
+    &-link {
+        @apply relative block text-center font-serif lg:text-7xl text-6xl text-primary tracking-wide;
+
+        span {
+            @apply block relative;
+        z-index: 1;
+        }
+
+        &.active:before {
+            position: absolute;
+            @apply bg-secondary;
+            content: "";
+            display: block;
+            width: 120%;
+            height: 25px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+
+        }
+    }
+
 }
 
 .hero {
-    @apply text-center text-white md:p-12 sm:p-16 h-screen;
+    @apply text-center text-white sm:p-16 h-screen;
 
     .container {
         @apply relative bg-primary mx-auto h-full grid;
@@ -85,7 +119,7 @@ html {
 }
 
 .social-sidebar {
-    @apply pr-24 py-12 text-primary hidden absolute h-full;
+    @apply pr-24 py-12 text-primary absolute h-full;
     font-size: 28px;
     right: 0;
     top: 0;
@@ -100,15 +134,33 @@ html {
     }
 
     .iconset {
-        @apply bg-secondary self-end pb-2;
+        @apply bg-secondary self-end;
 
         a {
             @apply px-6 py-5 block;
         }
     }
 
-    @screen md {
-        @apply block;
+    &.horizontal {
+        @apply px-24 text-primary absolute;
+        font-size: 28px;
+        bottom: 0;
+        right: 50%;
+        transform: translateX(50%);
+
+        .container {
+            @apply grid place-self-center;
+        }
+
+
+        .iconset {
+            @apply flex flex-row;
+            padding: 0;
+
+            a {
+                @apply px-5 py-4 block;
+            }
+        }
     }
 }
 

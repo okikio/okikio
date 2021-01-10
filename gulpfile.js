@@ -256,7 +256,7 @@ task("watch", async () => {
         (_err, bs) => {
             bs.addMiddleware("*", (_req, res) => {
                 res.writeHead(302, {
-                    location: `/404.html`,
+                    location: `/404`,
                 });
                 res.end("404 Error");
             });

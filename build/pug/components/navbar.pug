@@ -18,25 +18,33 @@
   ];
 
 mixin navbar(page)
-  nav.navbar
-    .navbar-container(role="menubar")
+  nav.navbar(role="menubar")
+    .navbar-container
       +link.navbar-logo("/")
         .wrapper(aria-label="okikio logo")
           +icon("logo")
 
       .flex-grow
 
-      //- button.navbar-link(type="button", aria-label="Light/Dark mode toggle" title="Switch Theme")
+      button.navbar-icon.mr-5(type="button", aria-label="Light/Dark mode toggle" title="Switch Theme")
         .wrapper
           +icon("theme_switcher")
 
-      //- https://www.w3.org/TR/wai-aria-practices-1.1/#menu
-      button.navbar-link(type="button", aria-haspopup="menu" aria-expanded="hidden" aria-label="Navigation menu button" title="Menu Bar")
+      button.navbar-icon(type="button", aria-haspopup="menu" aria-expanded="hidden" aria-label="Navigation menu button" title="Menu Bar")
         .wrapper
           +icon("menu_double_bar")
-
-      //- section.navbar-list(role="menu")
+    
+    //- .navbar-list(role="menu").grid
+      .container.place-self-center.grid.gap-y-10
         each link, i in links
           - let active = new RegExp(link.path, "i").test(page.url);
-          div(role="menuitem")
-            +link(link.href)(class="navbar-link" class={ active } data-path=link.path)
+          +link(link.href)(role="menuitem" class="navbar-link" class={ active } data-path=link.path)
+            span= link.content
+          
+      //- aside.social-sidebar.horizontal
+        .container
+          .iconset
+            - let list = ["twitter", "facebook", "instagram", "github", "linkedin"];
+            each value in list
+              +link(aria-label=`Link to my ${value}`)
+                +icon(value)
