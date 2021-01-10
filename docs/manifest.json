@@ -1,16 +1,12 @@
 {
   "name": "okikio",
   "short_name": "okikio",
-  "url": "https://okikio.dev/",
-  "scope": "/",
-  "start_url": "/",
   "display": "standalone",
-  "background_color": "#ff3a6b",
-  "theme_color": "#ff3a6b",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "dir": "ltr",
   "lang": "English",
   "orientation": "any",
-  "description": "This is my portfolio. My name is Okiki Ojo, and this website contains some of my coolest projects, while also being one of my most interesting projects.",
   "icons": [
     {
       "src": "/favicon/android-chrome-192x192.png",
@@ -22,6 +18,18 @@
       "src": "/favicon/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon/maskable_icon_x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any"
     }
   ]
