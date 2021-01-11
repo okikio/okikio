@@ -3,8 +3,12 @@ dist: xenial
 os: linux
 node_js:
   - "15"
-cache:
-  npm: true
-  pnpm: true
-  directories:
-    - node_modules
+cache: 
+  npm: false 
+  directories: 
+    - "~/.pnpm-store" 
+before_install: 
+  - curl -L https://unpkg.com/@pnpm/self-installer | node 
+  - pnpm config set store-dir ~/.pnpm-store 
+install: 
+  - pnpm install
