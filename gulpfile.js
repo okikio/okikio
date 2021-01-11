@@ -19,7 +19,7 @@ const dev = "dev" in env ? env.dev == "true" : false;
 
 // Origin folders (source and destination folders)
 const srcFolder = `build`;
-const destFolder = `docs`;
+const destFolder = `public`;
 
 // Source file folders
 const tsFolder = `${srcFolder}/ts`;
