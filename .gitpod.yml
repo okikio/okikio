@@ -10,14 +10,13 @@ ports:
 
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
 tasks:
-    - command: >
-          nvm install 15 &&
-          nvm alias default 15 &&
-          npm install pnpm -g &&
-          pnpm install gulp ultra-runner commitizen -g  &&
-          pnpm install -r &&
-          echo -e "dev=true" > .env &&
-          ultra watch
+  - init: >
+      pnpm install gulp ultra-runner commitizen -g && 
+      pnpm install -r && 
+      echo -e "dev=true" > .env
+      
+    command: >
+      ultra watch
 
 vscode:
   extensions:

@@ -72,7 +72,7 @@
         "posthtml": "^0.15.1",
         "pretty-bytes": "^5.5.0",
         "tailwindcss": "^2.0.2",
-        "ultra-runner": "^3.8.0"
+        "ultra-runner": "^3.9.0"
     },
     "devDependencies": {
         "@commitlint/cli": "^11.0.0",
