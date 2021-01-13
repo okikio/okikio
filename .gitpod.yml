@@ -14,20 +14,16 @@ tasks:
       pnpm install gulp ultra-runner commitizen -g && 
       pnpm install -r && 
       echo -e "dev=true" > .env
-      
+
     command: >
       ultra watch
 
 vscode:
   extensions:
-    - michelemelluso.code-beautifier@2.3.3:aRVPC/UxkGF1U5lMncPQNw==
     - afractal.node-essentials@1.1.0:Jxchs8x551PYj7RQCMD/Tw==
     - jasonnutter.search-node-modules@1.3.0:G786iJxLfc//erh6tQ8MWw==
-    - msjsdiag.debugger-for-chrome@4.12.1:xXSEoy8/LqF/SyOtQTqrQw==
-    - redhat.fabric8-analytics@0.0.13:k9RQ8fqmg2WmkP2sL4ccbA==
     - shinnn.stylelint@0.51.0:Uy6xDb5psDPzfFra0dwP4w==
     - dzannotti.vscode-babel-coloring@0.0.4:5Rlj2/kADFIl+crtoyiywQ==
-    - dbaeumer.vscode-eslint@1.9.1:YVcwmzKVVl+zZ+wMB02GjQ==
     - mikestead.dotenv@1.0.1:SSXjr5hZcbqSF7nMIhTNnA==
     - eamodio.gitlens@10.1.1:W/mM/phTCRJ9XghzvZRI4g==
     - christian-kohler.path-intellisense@1.4.2:QnOrf5fk6KiVaQs4cNEP+w==

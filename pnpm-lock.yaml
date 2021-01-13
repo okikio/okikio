@@ -353,7 +353,7 @@ packages:
     dependencies:
       '@csstools/sass-import-resolve': 1.0.0
       postcss: 7.0.35
-      sass: 1.32.2
+      sass: 1.32.4
       source-map: 0.7.3
     dev: false
     engines:
@@ -898,7 +898,7 @@ packages:
   /autoprefixer/9.8.6:
     dependencies:
       browserslist: 4.16.1
-      caniuse-lite: 1.0.30001174
+      caniuse-lite: 1.0.30001176
       colorette: 1.2.1
       normalize-range: 0.1.2
       num2fraction: 1.2.2
@@ -1118,9 +1118,9 @@ packages:
       integrity: sha512-JPYLTngIzI+Dzx+StSSlMtF+Q9yjdh58HW6bMFqkFXuzQkJL8FCvp4lozlS6BbECZcsM2Gmlgp0uhEjvl18X4w==
   /browserslist/4.16.1:
     dependencies:
-      caniuse-lite: 1.0.30001174
+      caniuse-lite: 1.0.30001176
       colorette: 1.2.1
-      electron-to-chromium: 1.3.636
+      electron-to-chromium: 1.3.637
       escalade: 3.1.1
       node-releases: 1.1.69
     engines:
@@ -1270,9 +1270,9 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
-  /caniuse-lite/1.0.30001174:
+  /caniuse-lite/1.0.30001176:
     resolution:
-      integrity: sha512-tqClL/4ThQq6cfFXH3oJL4rifFBeM6gTkphjao5kgwMaW9yn0tKgQLAEfKzDwj6HQWCB/aWo8kTFlSvIN8geEA==
+      integrity: sha512-VWdkYmqdkDLRe0lvfJlZQ43rnjKqIGKHWhWWRbkqMsJIUaYDNf/K/sdZZcVO6YKQklubokdkJY+ujArsuJ5cag==
   /center-align/0.1.3:
     dependencies:
       align-text: 0.1.4
@@ -2244,9 +2244,9 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
-  /electron-to-chromium/1.3.636:
+  /electron-to-chromium/1.3.637:
     resolution:
-      integrity: sha512-Adcvng33sd3gTjNIDNXGD1G4H6qCImIy2euUJAQHtLNplEKU5WEz5KRJxupRNIIT8sD5oFZLTKBWAf12Bsz24A==
+      integrity: sha512-924WXYMYquYybc+7pNApGlhY2RWg3MY3he4BrZ5BUmM2n1MGBsrS+PZxrlo6UAsWuNl4NE66fqFdwsWkBUGgkA==
   /emoji-regex/8.0.0:
     resolution:
       integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==
@@ -3351,7 +3351,7 @@ packages:
       depd: 1.1.2
       inherits: 2.0.3
       setprototypeof: 1.1.0
-      statuses: 1.4.0
+      statuses: 1.5.0
     dev: false
     engines:
       node: '>= 0.6'
@@ -5788,7 +5788,7 @@ packages:
   /safer-buffer/2.1.2:
     resolution:
       integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
-  /sass/1.32.2:
+  /sass/1.32.4:
     dependencies:
       chokidar: 3.5.0
     dev: false
@@ -5796,7 +5796,7 @@ packages:
       node: '>=8.9.0'
     hasBin: true
     resolution:
-      integrity: sha512-u1pUuzqwz3SAgvHSWp1k0mRhX82b2DdlVnP6UIetQPZtYbuJUDaPQhZE12jyjB7vYeOScfz9WPsZJB6Rpk7heA==
+      integrity: sha512-N0BT0PI/t3+gD8jKa83zJJUb7ssfQnRRfqN+GIErokW6U4guBpfYl8qYB+OFLEho+QvnV5ZH1R9qhUC/Z2Ch9w==
   /semver-compare/1.0.0:
     dev: true
     resolution:

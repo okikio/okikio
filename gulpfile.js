@@ -141,15 +141,19 @@ tasks({
             { default: gulpEsBuild, createGulpEsbuild },
             { default: gzipSize },
             { default: prettyBytes },
+        { default: plumber },
         ] = await Promise.all([
             import("gulp-esbuild"),
             import("gzip-size"),
             import("pretty-bytes"),
+            import("gulp-plumber"),
         ]);
 
         const esbuild = mode == "watch" ? createGulpEsbuild() : gulpEsBuild;
         return stream(`${tsFolder}/${tsFile}`, {
             pipes: [
+                plumber(),
+
                 // Bundle Modules
                 esbuild({
                     bundle: true,
@@ -173,11 +177,17 @@ tasks({
     "legacy-js": async () => {
         const [
             { default: gulpEsBuild, createGulpEsbuild },
-        ] = await Promise.all([import("gulp-esbuild")]);
+        { default: plumber },
+        ] = await Promise.all([
+            import("gulp-esbuild"),
+        import("gulp-plumber"),
+        ]);
 
         const esbuild = mode == "watch" ? createGulpEsbuild() : gulpEsBuild;
         return stream(`${tsFolder}/${tsFile}`, {
             pipes: [
+                plumber(),
+
                 // Bundle Modules
                 esbuild({
                     bundle: true,
@@ -194,11 +204,18 @@ tasks({
         const [
             { default: gulpEsBuild, createGulpEsbuild },
             { default: rename },
-        ] = await Promise.all([import("gulp-esbuild"), import("gulp-rename")]);
+        { default: plumber },
+        ] = await Promise.all([
+            import("gulp-esbuild"), 
+            import("gulp-rename"),
+        import("gulp-plumber"),
+        ]);
 
         const esbuild = mode == "watch" ? createGulpEsbuild() : gulpEsBuild;
         return stream([`${tsFolder}/*.ts`, `!${tsFolder}/${tsFile}`], {
             pipes: [
+                plumber(),
+
                 // Bundle Modules
                 esbuild({
                     bundle: true,
@@ -234,6 +251,9 @@ task("reload", (resolve) => {
 
 // Delete destFolder for added performance
 task("clean", async () => {
+    const { default: fn } = await import("fs");
+    if (!fn.existsSync(destFolder)) return Promise.resolve();
+    
     const { default: del } = await import("del");
     return del(destFolder);
 });
@@ -274,7 +294,7 @@ task("watch", async () => {
         series(`css`)
     );
     watch(
-        [`${tsFolder}/${tsFile}`, `!${tsFolder}/*.ts`, `${tsFolder}/**/*.ts`],
+        [`!${tsFolder}/*.ts`, `${tsFolder}/**/*.ts`],
         { delay: 100 },
         series(`modern-js`, `reload`)
     );

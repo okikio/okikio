@@ -114,7 +114,7 @@ try {
         wait = false;
     };
 
-    animate({
+    let svgDownAnimation = animate({
         target: ".graphic path.animate",
         duration: 2500,
         easing: "linear",
@@ -127,8 +127,26 @@ try {
         },
 
         loop: true,
-        autoplay: true
+        autoplay: false
     });
+
+    let options = {
+        rootMargin: '0px',
+        threshold: Array.from(Array(5), (_, i) => (i + 1) / 5)
+    };
+
+    let observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.intersectionRatio >= 0.05 && svgDownAnimation.play();
+            } else {
+                svgDownAnimation.pause();
+            }
+        });
+    }, options);
+
+    let svg = document.querySelector(".graphic");
+    observer.observe(svg);
 
     // init();
     // window.addEventListener("scroll", ScrollEventListener, { passive: true });
