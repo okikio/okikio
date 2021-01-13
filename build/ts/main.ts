@@ -131,7 +131,6 @@ try {
     });
 
     let options = {
-        rootMargin: '0px',
         threshold: Array.from(Array(5), (_, i) => (i + 1) / 5)
     };
 
