@@ -161,7 +161,6 @@ html(lang="en")
     //- link(href='https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Manrope:wght@500;700;800&family=Playfair+Display:wght@700&display=swap' rel='stylesheet')
 
     link(rel="stylesheet", href="./css/app.min.css", async)
-    script(src="./js/theme.min.js", async)
   body
     +navbar(page)
 
@@ -175,7 +174,10 @@ html(lang="en")
         block footer
           //- +back-to-top
           //- +footer
+    
+    script(src=`https://polyfill.io/v3/polyfill.min.js?features=default,es2015,es2016,es2017,es2018,Object.entries,fetch,IntersectionObserver,IntersectionObserverEntry,smoothscroll,matchMedia,localStorage,getComputedStyle,Element.prototype.scrollIntoView` async)
+    script(src="./js/theme.min.js", async)
 
-    script(src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2Cdefault%2CArray.prototype.includes%2CArray.prototype.entries%2CObject.entries%2CArray.prototype.values%2CObject.values%2CPromise%2CString.prototype.includes%2CURL%2CWebAnimations%2Cfetch%2CscrollIntoView%2Cscroll%2CmatchMedia%2ClocalStorage%2Chtml5shiv%2CgetComputedStyle%2CXMLHttpRequest%2CMap%2CElement.prototype.scrollIntoView%2CElement.prototype.scroll%2CString.prototype.trim" async)
-    script(src="./js/legacy.min.js", nomodule)
+    script(src=`https://polyfill.io/v3/polyfill.min.js?features=WebAnimations&flags=always` async)
+    script(src="./js/legacy.min.js", nomodule defer)
     script(src="./js/modern.min.js", type="module" defer)

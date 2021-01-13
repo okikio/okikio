@@ -9,3 +9,6 @@
     ]);
     console.log(pug);
 })();
+
+
+default,es2015,es2016,es2017,es2018,Object.entries,fetch,IntersectionObserver,IntersectionObserverEntry,smoothscroll,matchMedia,localStorage,getComputedStyle,Element.prototype.scrollIntoView

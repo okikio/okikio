@@ -12,6 +12,7 @@
   Link: </css/app.min.css>; rel=preload; as=style
   Link: <https://fonts.gstatic.com/s/abrilfatface/v12/zOL64pLDlL1D99S8g8PtiKchq-dmjQ.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
   Link: <https://fonts.gstatic.com/s/manrope/v3/xn7gYHE41ni1AdIRggexSg.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
+  Link: <https://polyfill.io>; rel=preconnect; crossorigin
   Link: <https://res.cloudinary.com>; rel=preconnect; crossorigin
 
 /css/*.css
