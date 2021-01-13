@@ -138,7 +138,7 @@ try {
     let observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.intersectionRatio >= 0.05 && svgDownAnimation.play();
+                entry.intersectionRatio >= 0.25 && svgDownAnimation.play();
             } else {
                 svgDownAnimation.pause();
             }
