@@ -7,6 +7,7 @@ import { Image } from "./services/Image";
 
 import { Carousel } from "./services/Carousel";
 import { Fade } from "./transitions/Fade";
+// import { animate } from "./animate";
 
 let app: App = new App();
 app
@@ -132,18 +133,6 @@ try {
         loop: true,
         autoplay: false
     });
-    console.log(svgDownAnimation.animationFrame)
-
-    svgDownAnimation.on("update", () => {
-        if (svgDownAnimation.getPlayState() === "paused") {
-
-            // @ts-ignore
-            // svgDownAnimation.loop();
-            cancelAnimationFrame(svgDownAnimation.animationFrame);
-        }
-
-        console.log("runnginu")
-    })
 
     let options = {
         threshold: Array.from(Array(5), (_, i) => (i + 1) / 5)
@@ -152,10 +141,10 @@ try {
     let observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.intersectionRatio >= 0.25 && svgDownAnimation.play();
-            } else {
-                svgDownAnimation.pause();
-            }
+                if (entry.intersectionRatio >= 0.25) {
+                    svgDownAnimation.play();
+                }
+            } else svgDownAnimation.pause();
         });
     }, options);
 
