@@ -1,11 +1,11 @@
 dependencies:
-  '@csstools/postcss-sass': 4.0.0
+  '@csstools/sass-import-resolve': 1.0.0
   '@fullhuman/postcss-purgecss': 3.1.3
   '@okikio/native': 2.0.0
   browser-sync: 2.26.13
   del: 6.0.0
   dotenv: 8.2.0
-  esbuild: 0.8.31
+  esbuild: 0.8.32
   gulp: 4.0.2
   gulp-autoprefixer: 7.0.1_gulp@4.0.2
   gulp-esbuild: 0.3.14
@@ -16,11 +16,13 @@ dependencies:
   gulp-rename: 2.0.0
   gzip-size: 6.0.0
   merge-stream: 2.0.0
-  pnpm: 5.15.0
+  pnpm: 5.15.1
   postcss: 8.2.4
   postcss-csso: 5.0.0_postcss@8.2.4
   posthtml: 0.15.1
   pretty-bytes: 5.5.0
+  sass: 1.32.4
+  source-map: 0.7.3
   tailwindcss: 2.0.2_postcss@8.2.4
   ultra-runner: 3.9.0
 devDependencies:
@@ -349,17 +351,6 @@ packages:
       node: '>=v10.22.0'
     resolution:
       integrity: sha512-VoNqai1vR5anRF5Tuh/+SWDFk7xi7oMwHrHrbm1BprYXjB2RJsWLhUrStMssDxEl5lW/z3EUdg8RvH/IUBccSQ==
-  /@csstools/postcss-sass/4.0.0:
-    dependencies:
-      '@csstools/sass-import-resolve': 1.0.0
-      postcss: 7.0.35
-      sass: 1.32.4
-      source-map: 0.7.3
-    dev: false
-    engines:
-      node: '>=8.0.0'
-    resolution:
-      integrity: sha512-yvm2aaODNJ8PBn43HjYiRvVJcYLEpz5BEKXxQ/7HryqcL+TnAceXZO+khadTEkjw90r8afR5wykTzvVpFeo4vw==
   /@csstools/sass-import-resolve/1.0.0:
     dev: false
     engines:
@@ -397,7 +388,7 @@ packages:
     dependencies:
       '@okikio/emitter': 2.0.0
       '@okikio/manager': 2.0.0
-      esbuild: 0.8.31
+      esbuild: 0.8.32
       gzip-size: 6.0.0
       pretty-bytes: 5.5.0
       standard-version: 9.1.0
@@ -408,7 +399,7 @@ packages:
   /@okikio/emitter/2.0.0:
     dependencies:
       '@okikio/manager': 2.0.0
-      esbuild: 0.8.31
+      esbuild: 0.8.32
       gzip-size: 6.0.0
       pretty-bytes: 5.5.0
       standard-version: 9.1.0
@@ -418,7 +409,7 @@ packages:
       integrity: sha512-fgGP9PxzHf5gaEMg0/2nGy+qxwbmujXmv2vmEu582B0PRQ/UcxRT8vvn6cXJ0CmKVyBcoB6rkw+pp7zqxqY1Ig==
   /@okikio/manager/2.0.0:
     dependencies:
-      esbuild: 0.8.31
+      esbuild: 0.8.32
       gzip-size: 6.0.0
       pretty-bytes: 5.5.0
       standard-version: 9.1.0
@@ -431,7 +422,7 @@ packages:
       '@okikio/animate': 2.0.0
       '@okikio/emitter': 2.0.0
       '@okikio/manager': 2.0.0
-      esbuild: 0.8.31
+      esbuild: 0.8.32
       gzip-size: 6.0.0
       pretty-bytes: 5.5.0
       standard-version: 9.1.0
@@ -1120,7 +1111,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001176
       colorette: 1.2.1
-      electron-to-chromium: 1.3.637
+      electron-to-chromium: 1.3.639
       escalade: 3.1.1
       node-releases: 1.1.69
     engines:
@@ -2244,9 +2235,9 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
-  /electron-to-chromium/1.3.637:
+  /electron-to-chromium/1.3.639:
     resolution:
-      integrity: sha512-924WXYMYquYybc+7pNApGlhY2RWg3MY3he4BrZ5BUmM2n1MGBsrS+PZxrlo6UAsWuNl4NE66fqFdwsWkBUGgkA==
+      integrity: sha512-bwl6/U6xb3d3CNufQU9QeO1L32ueouFwW4bWANSwdXR7LVqyLzWjNbynoKNfuC38QFB5Qn7O0l2KLqBkcXnC3Q==
   /emoji-regex/8.0.0:
     resolution:
       integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==
@@ -2369,12 +2360,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-p5um32HOTO1kP+w7PRnB+5lQ43Z6muuMuIMffvDN8ZB4GcnjLBV6zGStpbASIMk4DCAvEaamhe2zhyCb/QXXsA==
-  /esbuild/0.8.31:
+  /esbuild/0.8.32:
     dev: false
     hasBin: true
     requiresBuild: true
     resolution:
-      integrity: sha512-7EIU0VdUxltwivjVezX3HgeNzeIVR1snkrAo57WdUnuBMykdzin5rTrxwCDM6xQqj0RL/HjOEm3wFr2ijHKeaA==
+      integrity: sha512-5IzQapMW/wFy5oxziHCJzawk26K3xeyrIAQPnPN3c0Q84hqRw6IfGDGfGWOdJNw5tAx77yvwqZ4r1QMpo6emJA==
   /escalade/3.1.1:
     engines:
       node: '>=6'
@@ -3123,7 +3114,7 @@ packages:
       integrity: sha512-zzGBl5fHo0EKSXsHzjspp3y5CONegCm8ErO5Qh0UzFzk2y4tMvzLWhoDokADbarfZRL2pGpRp7yt6gfJX4ph7A==
   /gulp-esbuild/0.3.14:
     dependencies:
-      esbuild: 0.8.31
+      esbuild: 0.8.32
       plugin-error: 1.0.1
       vinyl: 2.2.1
     dev: false
@@ -5019,13 +5010,13 @@ packages:
       node: '>= 0.10'
     resolution:
       integrity: sha512-L1zP0dk7vGweZME2i+EeakvUNqSrdiI3F91TwEoYiGrAfUXmVv6fJIq4g82PAXxNsWOp0J7ZqQy/3Szz0ajTxA==
-  /pnpm/5.15.0:
+  /pnpm/5.15.1:
     dev: false
     engines:
       node: '>=10.16'
     hasBin: true
     resolution:
-      integrity: sha512-c9erF7MX4ZQFfoqG6V5zHY6B49har85JJ8xH1DtA0dXQvWzRzZbk+GvRrw88lL+QGy/rDYoIpuOGTqmTdirsWA==
+      integrity: sha512-QCGLm5Vxp97QDgYLqDF93CzQoryX3TXwEz3fc86b5CfU31Xq3u3mV8lAQTKbZOLJfAh3wZpz61KsWIpFW/3QAQ==
   /portscanner/2.1.1:
     dependencies:
       async: 1.5.2
@@ -7245,14 +7236,14 @@ packages:
 specifiers:
   '@commitlint/cli': ^11.0.0
   '@commitlint/config-conventional': ^11.0.0
-  '@csstools/postcss-sass': ^4.0.0
+  '@csstools/sass-import-resolve': ^1.0.0
   '@fullhuman/postcss-purgecss': ^3.1.3
   '@okikio/native': ^2.0.0
   browser-sync: ^2.26.13
   commitizen: ^4.2.2
   del: ^6.0.0
   dotenv: ^8.2.0
-  esbuild: ^0.8.31
+  esbuild: ^0.8.32
   gulp: ^4.0.2
   gulp-autoprefixer: ^7.0.1
   gulp-esbuild: ^0.3.14
@@ -7264,11 +7255,13 @@ specifiers:
   gzip-size: ^6.0.0
   husky: ^4.3.7
   merge-stream: ^2.0.0
-  pnpm: ^5.15.0
+  pnpm: ^5.15.1
   postcss: ^8.2.4
   postcss-csso: ^5.0.0
   posthtml: ^0.15.1
   pretty-bytes: ^5.5.0
+  sass: ^1.32.4
+  source-map: ^0.7.3
   standard-version: ^9.1.0
   stylelint: ^13.8.0
   stylelint-scss: ^3.18.0

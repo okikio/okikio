@@ -98,13 +98,13 @@ task("css", async () => {
     const [
         { default: postcss },
         { default: tailwind },
-        { default: sassPostcss },
+        { default: sass },
         { default: plumber },
         { default: rename },
     ] = await Promise.all([
         import("gulp-postcss"),
         import("tailwindcss"),
-        import("@csstools/postcss-sass"),
+        import("./sass-postcss.js"),
         import("gulp-plumber"),
         import("gulp-rename"),
     ]);
@@ -114,7 +114,7 @@ task("css", async () => {
             plumber(),
             postcss([
                 tailwind("./tailwind.js"),
-                sassPostcss({ outputStyle: "compressed" }),
+                sass({ outputStyle: "compressed" }),
 
                 // Purge & Compress CSS
                 ...(dev
@@ -141,7 +141,7 @@ tasks({
             { default: gulpEsBuild, createGulpEsbuild },
             { default: gzipSize },
             { default: prettyBytes },
-        { default: plumber },
+            { default: plumber },
         ] = await Promise.all([
             import("gulp-esbuild"),
             import("gzip-size"),
@@ -177,11 +177,8 @@ tasks({
     "legacy-js": async () => {
         const [
             { default: gulpEsBuild, createGulpEsbuild },
-        { default: plumber },
-        ] = await Promise.all([
-            import("gulp-esbuild"),
-        import("gulp-plumber"),
-        ]);
+            { default: plumber },
+        ] = await Promise.all([import("gulp-esbuild"), import("gulp-plumber")]);
 
         const esbuild = mode == "watch" ? createGulpEsbuild() : gulpEsBuild;
         return stream(`${tsFolder}/${tsFile}`, {
@@ -204,11 +201,11 @@ tasks({
         const [
             { default: gulpEsBuild, createGulpEsbuild },
             { default: rename },
-        { default: plumber },
+            { default: plumber },
         ] = await Promise.all([
-            import("gulp-esbuild"), 
+            import("gulp-esbuild"),
             import("gulp-rename"),
-        import("gulp-plumber"),
+            import("gulp-plumber"),
         ]);
 
         const esbuild = mode == "watch" ? createGulpEsbuild() : gulpEsBuild;
@@ -253,7 +250,7 @@ task("reload", (resolve) => {
 task("clean", async () => {
     const { default: fn } = await import("fs");
     if (!fn.existsSync(destFolder)) return Promise.resolve();
-    
+
     const { default: del } = await import("del");
     return del(destFolder);
 });

@@ -1,6 +1,6 @@
 const gulp = require("gulp");
 const mergeStream = require("merge-stream");
-const { src, dest, parallel, watch, task, series } = gulp;
+const { src, dest, parallel, task, series } = gulp;
 
 // Streamline Gulp Tasks
 const stream = (_src, _opt = {}) => {
@@ -20,7 +20,7 @@ const stream = (_src, _opt = {}) => {
     });
 
     if (_dest !== null) host = host.pipe(dest(_dest));
-    host = host.on("data", _log);
+    host.on("data", _log);
     host = host.on("end", (...args) => {
         if (typeof _end === "function") _end(...args);
     }); // Output
@@ -37,7 +37,7 @@ const stream = (_src, _opt = {}) => {
 
 // A list of streams
 const streamList = (...args) => {
-    //
+    // return Promise.all(
     return mergeStream(
         (Array.isArray(args[0]) ? args[0] : args).map((_stream) => {
             return Array.isArray(_stream) ? stream(..._stream) : _stream;
@@ -53,23 +53,18 @@ const tasks = (list) => {
     }
 };
 
-module.exports = {
-    parallelFn(...args) {
-        let tasks = args.filter((x) => x !== undefined && x !== null);
-        return (done) => parallel(...tasks)(done);
-    },
-    seriesFn(...args) {
-        let tasks = args.filter((x) => x !== undefined && x !== null);
-        return (done) => series(...tasks)(done);
-    },
-    src,
-    dest,
-    watch,
-    task,
-    parallel,
-    series,
-    stream,
-    streamList,
-    tasks,
-    gulp,
+const parallelFn = (...args) => {
+    let tasks = args.filter((x) => x !== undefined && x !== null);
+    return function parallelrun(done) {
+        return parallel(...tasks)(done);
+    };
 };
+
+const seriesFn = (...args) => {
+    let tasks = args.filter((x) => x !== undefined && x !== null);
+    return function seriesrun(done) {
+        return series(...tasks)(done);
+    };
+};
+
+module.exports = { ...gulp, gulp, stream, streamList, seriesFn, parallelFn, tasks };
