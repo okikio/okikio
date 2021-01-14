@@ -8,7 +8,7 @@ dependencies:
   esbuild: 0.8.32
   gulp: 4.0.2
   gulp-autoprefixer: 7.0.1_gulp@4.0.2
-  gulp-esbuild: 0.3.14
+  gulp-esbuild: 0.3.15
   gulp-minify-inline-json: 1.3.4
   gulp-plumber: 1.2.1
   gulp-postcss: 9.0.0_postcss@8.2.4
@@ -889,7 +889,7 @@ packages:
   /autoprefixer/9.8.6:
     dependencies:
       browserslist: 4.16.1
-      caniuse-lite: 1.0.30001176
+      caniuse-lite: 1.0.30001177
       colorette: 1.2.1
       normalize-range: 0.1.2
       num2fraction: 1.2.2
@@ -1109,7 +1109,7 @@ packages:
       integrity: sha512-JPYLTngIzI+Dzx+StSSlMtF+Q9yjdh58HW6bMFqkFXuzQkJL8FCvp4lozlS6BbECZcsM2Gmlgp0uhEjvl18X4w==
   /browserslist/4.16.1:
     dependencies:
-      caniuse-lite: 1.0.30001176
+      caniuse-lite: 1.0.30001177
       colorette: 1.2.1
       electron-to-chromium: 1.3.639
       escalade: 3.1.1
@@ -1261,9 +1261,9 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
-  /caniuse-lite/1.0.30001176:
+  /caniuse-lite/1.0.30001177:
     resolution:
-      integrity: sha512-VWdkYmqdkDLRe0lvfJlZQ43rnjKqIGKHWhWWRbkqMsJIUaYDNf/K/sdZZcVO6YKQklubokdkJY+ujArsuJ5cag==
+      integrity: sha512-6Ld7t3ifCL02jTj3MxPMM5wAYjbo4h/TAQGFTgv1inihP1tWnWp8mxxT4ut4JBEHLbpFXEXJJQ119JCJTBkYDw==
   /center-align/0.1.3:
     dependencies:
       align-text: 0.1.4
@@ -3112,7 +3112,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-zzGBl5fHo0EKSXsHzjspp3y5CONegCm8ErO5Qh0UzFzk2y4tMvzLWhoDokADbarfZRL2pGpRp7yt6gfJX4ph7A==
-  /gulp-esbuild/0.3.14:
+  /gulp-esbuild/0.3.15:
     dependencies:
       esbuild: 0.8.32
       plugin-error: 1.0.1
@@ -3121,7 +3121,7 @@ packages:
     engines:
       node: '>=8.6.0'
     resolution:
-      integrity: sha512-t07JZxkeRgZnX3cmKFCqTPI/lWIkhHs4n90nD9AG+YJGPF/HMsKGFtoqzuVnvXoolobmu+bS5EGVSJIKo9Pmcw==
+      integrity: sha512-0VYN5Sa46+jPXjNWqrhtyuf8Pjaury8JWOKwNBpp7WBhACFVkFfpm6447C5PR+HLnpXHhZHcdoCOkxs82HBzbg==
   /gulp-minify-inline-json/1.3.4:
     dependencies:
       minify-inline-json: 1.0.1
@@ -7246,7 +7246,7 @@ specifiers:
   esbuild: ^0.8.32
   gulp: ^4.0.2
   gulp-autoprefixer: ^7.0.1
-  gulp-esbuild: ^0.3.14
+  gulp-esbuild: ^0.3.15
   gulp-minify-inline-json: ^1.3.4
   gulp-plumber: ^1.2.1
   gulp-postcss: ^9.0.0

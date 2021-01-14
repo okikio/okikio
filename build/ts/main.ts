@@ -116,19 +116,34 @@ try {
 
     let svgDownAnimation = animate({
         target: ".graphic path.animate",
-        duration: 2500,
+        duration(index, len) {
+            return 2500 * len;
+        },
         easing: "linear",
-        direction: "alternate",
+        direction: "normal", // "alternate",
         fillMode: "both",
         strokeDashoffset(index, len, el: SVGPathElement) {
             const pathLength = el.getTotalLength();
-            el.setAttribute('stroke-dasharray', `` + pathLength / 2);
-            return [pathLength / 2 + Math.abs(index) * 500, 0];
+            el.setAttribute('stroke-dasharray', `` + pathLength);
+            el.style["stroke-dashoffset"] = 0;
+            return [0, pathLength * (2 + index)];
         },
 
         loop: true,
         autoplay: false
     });
+    console.log(svgDownAnimation.animationFrame)
+
+    svgDownAnimation.on("update", () => {
+        if (svgDownAnimation.getPlayState() === "paused") {
+
+            // @ts-ignore
+            // svgDownAnimation.loop();
+            cancelAnimationFrame(svgDownAnimation.animationFrame);
+        }
+
+        console.log("runnginu")
+    })
 
     let options = {
         threshold: Array.from(Array(5), (_, i) => (i + 1) / 5)
