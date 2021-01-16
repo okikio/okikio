@@ -28,8 +28,8 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 11.0.0
   '@commitlint/config-conventional': 11.0.0
-  commitizen: 4.2.2
-  husky: 4.3.7
+  commitizen: 4.2.3
+  husky: 4.3.8
   standard-version: 9.1.0
   stylelint: 13.8.0
   stylelint-scss: 3.18.0_stylelint@13.8.0
@@ -1075,7 +1075,7 @@ packages:
       browser-sync-ui: 2.26.13
       bs-recipes: 1.3.4
       bs-snippet-injector: 2.0.1
-      chokidar: 3.5.0
+      chokidar: 3.5.1
       connect: 3.6.6
       connect-history-api-fallback: 1.6.0
       dev-ip: 1.0.1
@@ -1111,7 +1111,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001177
       colorette: 1.2.1
-      electron-to-chromium: 1.3.639
+      electron-to-chromium: 1.3.641
       escalade: 3.1.1
       node-releases: 1.1.69
     engines:
@@ -1343,7 +1343,7 @@ packages:
       fsevents: 1.2.13
     resolution:
       integrity: sha512-ZmZUazfOzf0Nve7duiCKD23PFSCs4JPoYyccjUFF3aQkQadqBhfzhjkwBH2mNOG9cTBwhamM37EIsIkZw3nRgg==
-  /chokidar/3.5.0:
+  /chokidar/3.5.1:
     dependencies:
       anymatch: 3.1.1
       braces: 3.0.2
@@ -1358,7 +1358,7 @@ packages:
     optionalDependencies:
       fsevents: 2.3.1
     resolution:
-      integrity: sha512-JgQM9JS92ZbFR4P90EvmzNpSGhpPBGBSj10PILeDyYFwp4h2/D9OM03wsJ4zW1fEp4ka2DGrnUeD7FuvQ2aZ2Q==
+      integrity: sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==
   /ci-info/2.0.0:
     dev: true
     resolution:
@@ -1536,10 +1536,10 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
-  /commitizen/4.2.2:
+  /commitizen/4.2.3:
     dependencies:
       cachedir: 2.2.0
-      cz-conventional-changelog: 3.3.0
+      cz-conventional-changelog: 3.2.0
       dedent: 0.7.0
       detect-indent: 6.0.0
       find-node-modules: 2.0.0
@@ -1557,7 +1557,7 @@ packages:
       node: '>= 10'
     hasBin: true
     resolution:
-      integrity: sha512-uz+E6lGsDBDI2mYA4QfOxFeqdWUYwR1ky11YmLgg2BnEEP3YbeejpT4lxzGjkYqumnXr062qTOGavR9NtX/iwQ==
+      integrity: sha512-pYlYEng7XMV2TW4xtjDKBGqeJ0Teq2zyRSx2S3Ml1XAplHSlJZK8vm1KdGclpMEZuGafbS5TeHXIVnHk8RWIzQ==
   /compare-func/2.0.0:
     dependencies:
       array-ify: 1.0.0
@@ -1908,10 +1908,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-mI3zP+qxke95mmE2nddsF635V+o=
-  /cz-conventional-changelog/3.3.0:
+  /cz-conventional-changelog/3.2.0:
     dependencies:
       chalk: 2.4.2
-      commitizen: 4.2.2
+      commitizen: 4.2.3
       conventional-commit-types: 3.0.0
       lodash.map: 4.6.0
       longest: 2.0.1
@@ -1922,7 +1922,7 @@ packages:
     optionalDependencies:
       '@commitlint/load': 11.0.0
     resolution:
-      integrity: sha512-U466fIzU5U22eES5lTNiNbZ+d8dfcHcssH4o7QsdWaCcRs/feIPCxKYSWkYBNs5mny7MvEfwpTLWjvbm94hecw==
+      integrity: sha512-yAYxeGpVi27hqIilG1nh4A9Bnx4J3Ov+eXy4koL3drrR+IO9GaWPsKjik20ht608Asqi8TQPf0mczhEeyAtMzg==
   /d/1.0.1:
     dependencies:
       es5-ext: 0.10.53
@@ -2235,9 +2235,9 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
-  /electron-to-chromium/1.3.639:
+  /electron-to-chromium/1.3.641:
     resolution:
-      integrity: sha512-bwl6/U6xb3d3CNufQU9QeO1L32ueouFwW4bWANSwdXR7LVqyLzWjNbynoKNfuC38QFB5Qn7O0l2KLqBkcXnC3Q==
+      integrity: sha512-b0DLhsHSHESC1I+Nx6n4w4Lr61chMd3m/av1rZQhS2IXTzaS5BMM5N+ldWdMIlni9CITMRM09m8He4+YV/92TA==
   /emoji-regex/8.0.0:
     resolution:
       integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==
@@ -3370,7 +3370,7 @@ packages:
       node: '>=8.0.0'
     resolution:
       integrity: sha512-7mz/721AbnJwIVbnaSv1Cz3Am0ZLT/UBwkC92VlxhXv/k/BBQfM2fXElQNC27BVGr0uwUpplYPQM9LnaBMR5NQ==
-  /husky/4.3.7:
+  /husky/4.3.8:
     dependencies:
       chalk: 4.1.0
       ci-info: 2.0.0
@@ -3388,7 +3388,7 @@ packages:
     hasBin: true
     requiresBuild: true
     resolution:
-      integrity: sha512-0fQlcCDq/xypoyYSJvEuzbDPHFf8ZF9IXKJxlrnvxABTSzK1VPT2RKYQKrcgJ+YD39swgoB6sbzywUqFxUiqjw==
+      integrity: sha512-LCqqsB0PzJQ/AlCgfrfzRe3e3+NvmefAdKQhRYpxS4u6clblBoDdzzvHi8fmxKRzvMxPY/1WZWzomPZww0Anow==
   /iconv-lite/0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -5781,7 +5781,7 @@ packages:
       integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
   /sass/1.32.4:
     dependencies:
-      chokidar: 3.5.0
+      chokidar: 3.5.1
     dev: false
     engines:
       node: '>=8.9.0'
@@ -7240,7 +7240,7 @@ specifiers:
   '@fullhuman/postcss-purgecss': ^3.1.3
   '@okikio/native': ^2.0.2
   browser-sync: ^2.26.13
-  commitizen: ^4.2.2
+  commitizen: ^4.2.3
   del: ^6.0.0
   dotenv: ^8.2.0
   esbuild: ^0.8.32
@@ -7253,7 +7253,7 @@ specifiers:
   gulp-pug: ^4.0.1
   gulp-rename: ^2.0.0
   gzip-size: ^6.0.0
-  husky: ^4.3.7
+  husky: ^4.3.8
   merge-stream: ^2.0.0
   pnpm: ^5.15.1
   postcss: ^8.2.4

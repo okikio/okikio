@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 html {
-    @apply bg-white text-black font-sans;
+    @apply bg-gray-200 text-black font-sans;
 
     font-size: 15px;
     font-weight: 400;
@@ -15,10 +15,37 @@ html {
 }
 
 .navbar {
-    @apply h-16 w-full fixed bg-white;
-    z-index: 5;
+    transition: opacity 0.35s ease;
+    @apply h-16 w-full;
+    z-index: 10;
     left: 0;
-    top: 0;
+
+    &.top {
+        @apply relative;
+        top: 0;
+    }
+
+    &.bottom {
+        background-color: white;
+        /* backdrop-filter: blur(theme("spacing.4")); */
+        /* will-change: opacity; */
+        bottom: 0;
+    }
+
+    &.hide {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &.show {
+        opacity: 1;
+    }
+
+    &-overlay {
+        background-color: rgb(59, 58, 102);
+        opacity: 0.6;
+        z-index: 4;
+    }
 
     &-container {
         @apply relative h-full w-full flex mx-auto md:px-16 px-2;
@@ -55,26 +82,21 @@ html {
         font-size: 28px;
     }
 
-    &-list {
-        @apply absolute h-screen bg-white;
-        top: 0;
-        right: 0;
-        width: 100%;
-
-        @screen md {
-            width: 75%;
-        }
-    }
-
     &-link {
         @apply relative block text-center font-serif lg:text-7xl text-6xl text-primary tracking-wide;
 
-        span {
-            @apply block relative;
+        @screen md {
+            text-align: right;
+        }
+
+        span,
+        i {
+            @apply inline-block relative;
+            font-style: normal;
             z-index: 1;
         }
 
-        &.active:before {
+        &.active span:before {
             position: absolute;
             @apply bg-secondary;
             content: "";
@@ -83,14 +105,45 @@ html {
             height: 25px;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, calc(-50% + 5px));
             z-index: 0;
+        }
+    }
+
+    &-panel {
+        @apply fixed h-screen bg-white;
+        top: 0;
+        right: 0;
+        z-index: 5;
+        width: 100%;
+
+        @screen md {
+            width: 75%;
+            max-width: 800px;
+        }
+
+        .panel-container {
+            @apply px-16 py-24 relative h-full;
+            top: 0;
+            right: 0;
+            width: 100%;
+
+            .layout {
+                right: 0;
+            }
         }
     }
 }
 
+.nav.active {
+    .navbar.bottom {
+        background-color: transparent;
+    }
+}
+
 .hero {
-    @apply text-center text-white md:p-16 h-screen;
+    @apply text-center text-white md:px-16;
+    height: calc(100vh - theme("spacing.32"));
 
     .container {
         @apply relative bg-primary mx-auto h-full grid;
@@ -140,14 +193,21 @@ html {
     }
 
     &.horizontal {
-        @apply px-24 text-primary absolute;
+        @apply p-0 text-primary relative flex bg-transparent justify-center;
         font-size: 28px;
         bottom: 0;
-        right: 50%;
-        transform: translateX(50%);
+        height: initial;
+
+        @screen md {
+            @apply justify-end;
+        }
+        /* right: 50%; */
+        /* transform: translateX(50%); */
 
         .container {
-            @apply grid place-self-center;
+            /* @apply grid place-self-center; */
+            @apply inline-block bg-primary p-0 place-self-center;
+            height: initial;
         }
 
         .iconset {
@@ -165,13 +225,21 @@ figure.img {
     height: 500px;
     width: 100%;
     overflow: hidden;
+    position: relative;
 
     img {
+        position: absolute;
         object-fit: cover;
         object-position: center top;
+        left: 0;
+        bottom: 0;
 
         height: 100vh;
         width: 100%;
+    }
+
+    &.bottom img {
+        object-position: center bottom;
     }
 }
 

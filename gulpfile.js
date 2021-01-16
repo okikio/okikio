@@ -81,7 +81,7 @@ let purgeConfig = {
     mode: "all",
     content: [`${pugFolder}/**/*.pug`],
 
-    // safelist: [/-webkit-scrollbar/, /active/, /show/, /hide/, /light/, /dark/],
+    safelist: [/-webkit-scrollbar/, /active/, /show/, /hide/, /light/, /dark/],
     keyframes: false,
     fontFace: false,
     defaultExtractor: (content) => {

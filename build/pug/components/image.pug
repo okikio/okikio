@@ -1,10 +1,12 @@
-mixin image(src = "cloudinary/city", alt = "Alternate text")
+mixin image(source = "cloudinary/city", alt = "Alternate text")
   -
+    let external = /\/fetch\//.test(source);
+    let src = source.replace("fetch/", "");
     let cloudinaryTest = /^cloudinary\//.test(src);
-    let origin = "https://res.cloudinary.com/okikio-assets/image/upload/";
-    let urlParse = (filters = "w_auto") => cloudinaryTest ? `${origin + "ar_4:3,c_fill/q_auto/c_scale," + filters},dpr_auto/c_limit/${src.replace(/^cloudinary\//, "")}` : src;
+    let origin = `https://res.cloudinary.com/okikio-assets/image/${external ? "fetch" : "upload"}/`;
+    let urlParse = (filters = "w_auto") => cloudinaryTest ? `${origin + "ar_4:3,c_fill/q_auto:best/c_scale," + filters},dpr_auto/c_limit/${src.replace(/^cloudinary\//, "")}` : src;
 
   figure.img(itemprop="image" itemscope itemtype="https://schema.org/ImageObject")&attributes(attributes)
-    img.img-core(src!=`${urlParse()}.webp` alt=alt loading="lazy" itemprop="url")
+    img.img-core(data-src!=`${urlParse()}.webp` alt=alt loading="lazy" itemprop="url")
     noscript()
       img.no-script-img(src!=`${urlParse()}.jpg` aria-hidden="true" alt=alt loading="lazy")

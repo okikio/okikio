@@ -8,8 +8,8 @@ export class Navbar extends Service {
 
     public init() {
         // Elements
-        this.navbar = document.querySelector(".navbar") as HTMLElement;
-        this.elements = toArr(this.navbar.querySelectorAll(".navbar-item"));
+        this.navbar = document.querySelector(".nav") as HTMLElement;
+        this.elements = toArr(this.navbar.querySelectorAll(".navbar-link"));
         this.menu = document.querySelector(".navbar-menu") as HTMLElement;
 
         this.click = this.click.bind(this);

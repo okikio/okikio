@@ -17,8 +17,8 @@ block hero
             +icon(value)
 
 block content
-  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-5(class="md:py-24")
-    .py-5(class="md:px-16 md:py-16")
+  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5(class="md:py-16 md:pb-32")
+    .py-32(class="md:px-16 md:py-24")
       .sub-title.font-extrabold
         h2.inline-block.text-primary.text-4xl.mr-2 dedicated.
         span.text-base (adj.):
@@ -28,14 +28,15 @@ block content
         //- span With over 5+ years of development experience I aim to enhance your buisness to new heights through the use of innovative technologies and great user experiences, okikio is the official face of the projects I build, but you get the benefits of an independent developer working hard to bring your vision into an innovative digital product.
 
       .text-lg.mt-16
-        +link(class="focus:ring-opacity-50 focus:outline-none" type="button").ring-opacity-0.ring-3.ring-primary.ring-offset-2.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-md
+        +link(class="focus:ring-opacity-50 focus:outline-none" type="button").ring-opacity-0.ring-3.ring-primary.ring-offset-transparent.ring-offset-2.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-md
           | Lets talk
 
-        +link.bg-gray-200.text-primary.mt-12.px-10.py-3.font-extrabold.tracking-wide.rounded
+        +link.bg-gray-300.text-primary.mt-12.px-10.py-3.font-extrabold.tracking-wide.rounded
           | What I do
 
 
-  +image("cloudinary/flamingo-illustration", "An image of a peacock")(role="presentation")
+  +image("cloudinary/sand-and-sky-2",
+    "An image of a desert on top of a beautifully blue daytime sky; by @christianweiss on Unsplash.")(role="presentation")
   .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-24
     .py-16(class="md:px-16")
       h2.sub-title.font-extrabold.text-primary.text-4xl Design method

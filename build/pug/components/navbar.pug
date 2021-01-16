@@ -2,49 +2,70 @@
   let links = [
     {
       href: "/about",
-      content: "About",
-      path: "/about(.html)?"
+      content: "About"
     },
     {
       href: "/projects",
       content: "Projects",
-      path: "/project(.html|s\/)?"
+      path: "/projects"
     },
     {
       href: "/contact",
-      content: "Contact",
-      path: "/contact(.html)?"
+      content: "Contact"
     }
   ];
 
+mixin navLogo(page)
+  +link.navbar-logo("/")
+    .wrapper(aria-label="okikio logo")
+      +icon("logo")
+
+mixin navIcons(page)
+  button.navbar-icon.mr-5(type="button", aria-label="Light/Dark mode toggle" title="Switch Theme")
+    .wrapper
+      +icon("theme_switcher")
+
+  button.navbar-icon.navbar-menu(type="button", aria-haspopup="menu" aria-expanded="hidden" aria-label="Navigation menu button" title="Menu Bar")
+    .wrapper
+      +icon("menu_double_bar")
+
 mixin navbar(page)
-  nav.navbar(role="menubar")
-    .navbar-container
-      +link.navbar-logo("/")
-        .wrapper(aria-label="okikio logo")
-          +icon("logo")
+  section.nav.active
+    .navbar-overlay.w-full.h-screen.fixed
+    nav.navbar.top(role="menubar")
+      .navbar-container
+        +navLogo(page)
 
-      .flex-grow
+        .flex-grow
 
-      button.navbar-icon.mr-5(type="button", aria-label="Light/Dark mode toggle" title="Switch Theme")
-        .wrapper
-          +icon("theme_switcher")
+        +navIcons(page)
 
-      button.navbar-icon(type="button", aria-haspopup="menu" aria-expanded="hidden" aria-label="Navigation menu button" title="Menu Bar")
-        .wrapper
-          +icon("menu_double_bar")
-    
-    //- .navbar-list(role="menu").grid
-      .container.place-self-center.grid.gap-y-10
-        each link, i in links
-          - let active = new RegExp(link.path, "i").test(page.url);
-          +link(link.href)(role="menuitem" class="navbar-link" class={ active } data-path=link.path)
-            span= link.content
-          
-      //- aside.social-sidebar.horizontal
-        .container
-          .iconset
-            - let list = ["twitter", "facebook", "instagram", "github", "linkedin"];
-            each value in list
-              +link(aria-label=`Link to my ${value}`)
-                +icon(value)
+    nav.navbar.fixed.bottom.hide(role="menubar")
+      .navbar-container
+        +navLogo(page)
+
+        .flex-grow
+
+        button.navbar-icon.mr-5(type="button", aria-label="Back to Top button" title="Back to Top")
+          .wrapper
+            +icon("keyboard_capslock")
+
+        +navIcons(page)
+
+    .navbar-panel.fixed
+      .panel-container.flex.flex-col.h-full
+        .flex.flex-col.flex-grow.justify-center
+          .navbar-list(role="menu").grid.gap-y-8
+            each link, i in links
+              - let active = new RegExp(link.path, "i").test(page.url);
+              +link(link.href)(role="menuitem" class="navbar-link" class={ active } data-path=(link.href || link.path))
+                span
+                  i= link.content
+
+        aside.social-sidebar.horizontal
+          .container
+            .iconset
+              - let list = ["twitter", "facebook", "instagram", "github", "linkedin"];
+              each value in list
+                +link(aria-label=`Link to my ${value}`)
+                  +icon(value)
