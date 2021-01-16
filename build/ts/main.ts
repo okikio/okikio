@@ -121,7 +121,7 @@ try {
             return 2500 * len;
         },
         easing: "linear",
-        direction: "normal", // "alternate",
+        direction: "reverse", // "alternate",
         fillMode: "both",
         strokeDashoffset(index, len, el: SVGPathElement) {
             const pathLength = el.getTotalLength();
@@ -135,13 +135,13 @@ try {
     });
 
     let options = {
-        threshold: Array.from(Array(5), (_, i) => (i + 1) / 5)
+        threshold: Array.from(Array(101), (_, i) => (i + 1) / 100)
     };
 
     let observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                if (entry.intersectionRatio >= 0.25) {
+                if (entry.intersectionRatio >= 0.05) {
                     svgDownAnimation.play();
                 }
             } else svgDownAnimation.pause();
