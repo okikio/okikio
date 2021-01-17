@@ -32,7 +32,8 @@ html {
 
         .background {
             transition: transform ease 0.45s, opacity ease 0.55s;
-            background-color: white;
+            /* background-color: white; */
+            @apply bg-white;
             position: absolute;
             transform: translateY(0);
             opacity: 1;
