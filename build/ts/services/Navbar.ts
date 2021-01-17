@@ -2,14 +2,14 @@ import { Service } from "@okikio/native";
 import { toArr } from "../toArr";
 
 export class Navbar extends Service {
-    public navbar: HTMLElement;
+    public nav: HTMLElement;
     public elements: HTMLElement[];
     public menu: HTMLElement;
 
     public init() {
         // Elements
-        this.navbar = document.querySelector(".nav") as HTMLElement;
-        this.elements = toArr(this.navbar.querySelectorAll(".navbar-link"));
+        this.nav = document.querySelector(".nav") as HTMLElement;
+        this.elements = toArr(this.nav.querySelectorAll(".navbar-link"));
         this.menu = document.querySelector(".navbar-menu") as HTMLElement;
 
         this.click = this.click.bind(this);
@@ -38,10 +38,12 @@ export class Navbar extends Service {
         let el = this.getLink(event);
         if (!el) return;
 
-        if (el.classList.contains("navbar-menu"))
-            this.navbar.classList.toggle("active");
-        else if (el.classList.contains("navbar-link"))
-            this.navbar.classList.remove("active");
+        if (el.classList.contains("navbar-menu")) {
+            this.nav.classList.toggle("active");
+        }
+
+        // else if (el.classList.contains("navbar-link"))
+        // this.navbar.classList.remove("active");
     }
 
     public activateLink() {
@@ -63,13 +65,13 @@ export class Navbar extends Service {
     }
 
     public initEvents() {
-        this.navbar.addEventListener("click", this.click);
+        this.nav.addEventListener("click", this.click);
         this.emitter.on("READY", this.activateLink, this);
         this.emitter.on("GO", this.activateLink, this);
     }
 
     public stopEvents() {
-        this.navbar.removeEventListener("click", this.click);
+        this.nav.removeEventListener("click", this.click);
         this.emitter.off("READY", this.activateLink, this);
         this.emitter.off("GO", this.activateLink, this);
     }
@@ -78,6 +80,6 @@ export class Navbar extends Service {
         while (this.elements.length) this.elements.pop();
         this.elements = undefined;
         this.menu = undefined;
-        this.navbar = undefined;
+        this.nav = undefined;
     }
 }

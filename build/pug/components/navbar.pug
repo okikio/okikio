@@ -30,7 +30,7 @@ mixin navIcons(page)
       +icon("menu_double_bar")
 
 mixin navbar(page)
-  section.nav.active
+  section.nav
     .navbar-overlay.w-full.h-screen.fixed
     nav.navbar.top(role="menubar")
       .navbar-container
@@ -41,6 +41,7 @@ mixin navbar(page)
         +navIcons(page)
 
     nav.navbar.fixed.bottom.hide(role="menubar")
+      .background
       .navbar-container
         +navLogo(page)
 
