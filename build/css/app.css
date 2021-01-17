@@ -11,18 +11,25 @@ html {
 }
 
 .title-font {
-    @apply font-title lg:text-12xl text-8xl uppercase;
+    @apply font-title lg:text-8xl md:text-7xl text-6xl uppercase;
 }
 
 .navbar {
-    transition: opacity 0.35s ease;
+    transition: transform 0.25s ease;
     @apply h-16 w-full;
     z-index: 10;
     left: 0;
 
     &.top {
-        @apply relative;
+        @apply absolute;
         top: 0;
+
+        @media (max-width: theme("screens.md")) {
+            .navbar-logo,
+            .navbar-icon {
+                color: white;
+            }
+        }
     }
 
     &.bottom {
@@ -45,12 +52,14 @@ html {
     }
 
     &.hide {
-        opacity: 0;
+        transform: translateY(theme("spacing.16"));
+        /* opacity: 0; */
         pointer-events: none;
     }
 
     &.show {
-        opacity: 1;
+        transform: translateY(0);
+        /* opacity: 1; */
     }
 
     &-overlay {
@@ -68,7 +77,14 @@ html {
 
     &-icon {
         @apply h-full text-primary grid focus:outline-none;
-        font-size: 28px;
+
+        &.icon-small {
+            font-size: 24px;
+        }
+
+        &.icon-large {
+            font-size: 28px;
+        }
 
         .wrapper {
             @apply grid place-self-center rounded-full;
@@ -167,40 +183,67 @@ html {
         /* opacity: 0; */
     }
 
+    @media (max-width: theme("screens.md")) {
+        .navbar-logo,
+        .navbar-icon {
+            @apply text-primary;
+        }
+    }
+
+    .navbar-logo {
+        @screen md {
+            @apply text-white;
+        }
+    }
+
     .navbar-panel {
         transform: translate(0, 0);
     }
 
     .navbar-overlay {
+        pointer-events: auto;
         opacity: 0.6;
     }
 }
 
 .hero {
-    @apply text-center text-white md:px-16;
-    height: calc(100vh - theme("spacing.32"));
+    @apply text-white md:p-16;
+    height: 100vh;
 
     .container {
-        @apply relative bg-primary mx-auto h-full grid;
+        @apply relative bg-primary mx-auto h-full flex flex-col;
+    }
+
+    .content {
+        @apply pl-5 md:pl-24 mx-auto w-full;
     }
 
     h1 {
-        @apply place-self-center title-font;
+        @apply inline-block title-font;
+    }
+
+    h2 {
+        @apply pt-5 lg:text-3xl text-xl;
     }
 }
 
 .scroll-btn {
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+
+    @apply ml-5 md:ml-24;
 
     button {
-        @apply uppercase tracking-wider hover:underline mb-8;
+        @apply uppercase tracking-wider hover:underline mb-8 text-4xl p-5;
     }
 
     svg {
         @apply mt-3 mx-auto;
+        width: 1em;
+        height: 1em;
     }
 }
 

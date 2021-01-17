@@ -21,11 +21,11 @@ mixin navLogo(page)
       +icon("logo")
 
 mixin navIcons(page)
-  button.navbar-icon.mr-5(type="button", aria-label="Light/Dark mode toggle" title="Switch Theme")
+  button.navbar-icon.icon-small.mr-3(type="button", aria-label="Light/Dark mode toggle" title="Switch Theme")
     .wrapper
       +icon("theme_switcher")
 
-  button.navbar-icon.navbar-menu(type="button", aria-haspopup="menu" aria-expanded="hidden" aria-label="Navigation menu button" title="Menu Bar")
+  button.navbar-icon.icon-large.navbar-menu(type="button", aria-haspopup="menu" aria-expanded="hidden" aria-label="Navigation menu button" title="Menu Bar")
     .wrapper
       +icon("menu_double_bar")
 
@@ -47,7 +47,7 @@ mixin navbar(page)
 
         .flex-grow
 
-        button.navbar-icon.mr-5(type="button", aria-label="Back to Top button" title="Back to Top")
+        button.navbar-icon.icon-large.mr-3#back-to-top(type="button", aria-label="Back to Top button" title="Back to Top")
           .wrapper
             +icon("keyboard_capslock")
 

@@ -120,46 +120,38 @@ export class Carousel extends Service {
     }
 
     public setDots() {
-        requestAnimationFrame(() => {
-            for (let i = 0; i < this.slideLen; i++) {
-                let newDot = this.dot.cloneNode() as HTMLElement;
-                if (i === this.index) newDot.classList.add("active");
-                newDot.setAttribute("data-index", `${i}`);
-                this.dotContainer.appendChild(newDot);
-                this.dots[i] = newDot;
-                newDot = undefined;
-            }
-        });
+        for (let i = 0; i < this.slideLen; i++) {
+            let newDot = this.dot.cloneNode() as HTMLElement;
+            if (i === this.index) newDot.classList.add("active");
+            newDot.setAttribute("data-index", `${i}`);
+            this.dotContainer.appendChild(newDot);
+            this.dots[i] = newDot;
+            newDot = undefined;
+        }
     }
 
     public setActiveDot() {
-        requestAnimationFrame(() => {
-            this.dots[this.lastIndex].classList.remove("active");
-            this.dots[this.index].classList.add("active");
-        });
+        this.dots[this.lastIndex].classList.remove("active");
+        this.dots[this.index].classList.add("active");
     }
 
     public clearDots() {
-        requestAnimationFrame(() => {
-            for (let i = this.dots.length; --i >= 0;) {
-                this.dots[i].classList.remove("active");
-                this.dots[i].removeAttribute("data-index");
-                this.dots[i].remove();
-                this.dots.pop();
-            }
-        });
+        for (let i = this.dots.length; --i >= 0;) {
+            this.dots[i].classList.remove("active");
+            this.dots[i].removeAttribute("data-index");
+            this.dots[i].remove();
+            this.dots.pop();
+        }
     }
 
     public setHeight() {
-        requestAnimationFrame(() => {
-            let maxHeight = this.slides[0].getBoundingClientRect().height;
-            for (let i = 0; i < this.slideLen; i++) {
-                let height = this.slides[i].scrollHeight;
-                if (height > maxHeight) maxHeight = height;
-            }
+        let maxHeight = this.slides[0].getBoundingClientRect().height;
+        for (let i = 0; i < this.slideLen; i++) {
+            let height = this.slides[i].scrollHeight;
+            if (height > maxHeight) maxHeight = height;
+        }
 
-            this.container.style.height = `${maxHeight}px`;
-        });
+        this.container.style.height = `${maxHeight}px`;
     }
 
     public setBounds() {

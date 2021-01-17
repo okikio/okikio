@@ -5,10 +5,12 @@ export class Navbar extends Service {
     public nav: HTMLElement;
     public elements: HTMLElement[];
     public menu: HTMLElement;
+    public overlay: HTMLElement;
 
     public init() {
         // Elements
         this.nav = document.querySelector(".nav") as HTMLElement;
+        this.overlay = document.querySelector(".navbar-overlay") as HTMLElement;
         this.elements = toArr(this.nav.querySelectorAll(".navbar-link"));
         this.menu = document.querySelector(".navbar-menu") as HTMLElement;
 
@@ -40,10 +42,8 @@ export class Navbar extends Service {
 
         if (el.classList.contains("navbar-menu")) {
             this.nav.classList.toggle("active");
-        }
-
-        // else if (el.classList.contains("navbar-link"))
-        // this.navbar.classList.remove("active");
+        } else if (el.classList.contains("navbar-link") || el.classList.contains("navbar-logo"))
+            this.nav.classList.remove("active");
     }
 
     public activateLink() {
@@ -61,11 +61,13 @@ export class Navbar extends Service {
                 item.classList.toggle("active", URLmatch);
             }
         }
-
     }
 
     public initEvents() {
         this.nav.addEventListener("click", this.click);
+        this.overlay.addEventListener("click", () => {
+            this.nav.classList.contains("active") && this.nav.classList.remove("active");
+        });
         this.emitter.on("READY", this.activateLink, this);
         this.emitter.on("GO", this.activateLink, this);
     }

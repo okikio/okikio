@@ -301,12 +301,17 @@ task("watch", async () => {
     watch(
         [`!${tsFolder}/*.ts`, `${tsFolder}/**/*.ts`],
         { delay: 100 },
-        series(`modern-js`, `reload`)
+        series(`modern-js`)
     );
     watch(
         [`!${tsFolder}/${tsFile}`, `${tsFolder}/*.ts`],
         { delay: 100 },
-        series(`other-js`, `reload`)
+        series(`other-js`)
+    );
+    watch(
+        [`${jsFolder}/**/*.js`],
+        { delay: 100 },
+        series(`reload`)
     );
     watch(`${assetsFolder}/**/*`, { delay: 500 }, series(`assets`, "reload"));
 });

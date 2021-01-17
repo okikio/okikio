@@ -14,9 +14,7 @@ export class Image extends Service {
         (async () => {
             await this.test_webp();
             this.get_images();
-            requestAnimationFrame(() => {
-                this.load_img();
-            });
+            this.load_img();
         })();
     }
 
@@ -85,7 +83,7 @@ export class Image extends Service {
             } else srcWid = Number(maxW);
 
             let src = srcset.replace(/w_auto/, `w_${srcWid}`);
-            if (srcHei > srcWid) src = src.replace(/ar_4:3,/, `ar_3:4,`); 
+            if (srcHei > srcWid) src = src.replace(/ar_4:3,/, `ar_3:4,`);
             if (!this.WebpSupport) src = src.replace(".webp", ".jpg");
 
             // If nothing has changed don't bother
@@ -100,11 +98,13 @@ export class Image extends Service {
     }
 
     waitOnResize = false;
+    rafID: number;
     resize() {
         if (!this.waitOnResize) {
             let timer;
             this.waitOnResize = true;
-            requestAnimationFrame(() => {
+            this.rafID = requestAnimationFrame(() => {
+                cancelAnimationFrame(this.rafID);
                 this.load_img();
 
                 // set a timeout to un-throttle
