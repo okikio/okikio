@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 html {
-    @apply bg-gray-200 text-black font-sans;
+    @apply bg-gray-100 text-black font-sans;
 
     font-size: 15px;
     font-weight: 400;
@@ -15,7 +15,7 @@ html {
 }
 
 .navbar {
-    transition: opacity 0.25s ease;
+    transition: opacity 0.35s ease;
     @apply h-16 w-full;
     z-index: 10;
     left: 0;
