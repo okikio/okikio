@@ -9,6 +9,7 @@ const {
     series,
     tasks,
     parallelFn,
+    streamList,
 } = require("./util");
 
 const dotenv = "dev" in process.env ? process.env : require("dotenv");
@@ -77,61 +78,62 @@ task("html", async () => {
 
 // CSS Tasks
 let browserSync;
-let purgeConfig = {
-    mode: "all",
-    content: [`${pugFolder}/**/*.pug`],
+tasks({
+    async appCSS() {
+        const [
+            { default: postcss },
+            { default: tailwind },
+            { default: sass },
+            { default: plumber },
+            { default: rename },
+            { default: parser },
+        ] = await Promise.all([
+            import("gulp-postcss"),
+            import("tailwindcss"),
+            import("./sass-postcss.js"),
+            import("gulp-plumber"),
+            import("gulp-rename"),
+            import("postcss-scss"),
+        ]);
 
-    safelist: [/-webkit-scrollbar/, /active/, /show/, /hide/, /light/, /dark/],
-    keyframes: false,
-    fontFace: false,
-    defaultExtractor: (content) => {
-        // Capture as liberally as possible, including things like `h-(screen-1.5)`
-        const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []; // Capture classes within other delimiters like .block(class="w-1/2") in Pug
-
-        const innerMatches =
-            content.match(/[^<>"'`\s.(){}\[\]#=%]*[^<>"'`\s.(){}\[\]#=%:]/g) ||
-            [];
-        return broadMatches.concat(innerMatches);
+        return stream(`${srcCSSFolder}/app.scss`, {
+            pipes: [
+                plumber(),
+                postcss([
+                    tailwind("./tailwind.js"),
+                    sass({ outputStyle: "compressed" }),
+                ], { parser }),
+                rename({ extname: ".css" }),
+            ],
+            dest: destCSSFolder,
+            end: browserSync ? [browserSync.stream()] : undefined,
+        });
     },
-};
-task("css", async () => {
-    const [
-        { default: postcss },
-        { default: tailwind },
-        { default: sass },
-        { default: plumber },
-        { default: rename },
-    ] = await Promise.all([
-        import("gulp-postcss"),
-        import("tailwindcss"),
-        import("./sass-postcss.js"),
-        import("gulp-plumber"),
-        import("gulp-rename"),
-    ]);
 
-    return stream(`${srcCSSFolder}/app.css`, {
-        pipes: [
-            plumber(),
-            postcss([
-                tailwind("./tailwind.js"),
-                sass({ outputStyle: "compressed" }),
+    async tailwindCSS() {
+        const [
+            { default: postcss },
+            { default: tailwind },
+            { default: plumber },
+            { default: parser },
+        ] = await Promise.all([
+            import("gulp-postcss"),
+            import("tailwindcss"),
+            import("gulp-plumber"),
+            import("postcss-scss"),
+        ]);
 
-                // Purge & Compress CSS
-                ...(dev
-                    ? []
-                    : [
-                          (await import("@fullhuman/postcss-purgecss")).default(
-                              purgeConfig
-                          ),
-                          (await import("postcss-csso")).default(),
-                      ]),
-            ]),
-            dev ? null : (await import("gulp-autoprefixer")).default(),
-            rename("app.min.css"),
-        ],
-        dest: destCSSFolder,
-        end: browserSync ? [browserSync.stream()] : undefined,
-    });
+        return stream(`${srcCSSFolder}/tailwind.css`, {
+            pipes: [
+                plumber(),
+                postcss([tailwind("./tailwind.js")], { parser }),
+            ],
+            dest: destCSSFolder,
+            end: browserSync ? [browserSync.stream()] : undefined,
+        });
+    },
+
+    css: parallelFn("appCSS", "tailwindCSS"),
 });
 
 // JS Tasks
@@ -238,6 +240,92 @@ task("assets", () => {
     });
 });
 
+let purgeConfig = {
+    mode: "all",
+    content: [`${pugFolder}/**/*.pug`],
+
+    safelist: [/-webkit-scrollbar/, /active/, /show/, /hide/, /light/, /dark/],
+    keyframes: false,
+    fontFace: false,
+    defaultExtractor: (content) => {
+        // Capture as liberally as possible, including things like `h-(screen-1.5)`
+        const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []; // Capture classes within other delimiters like .block(class="w-1/2") in Pug
+
+        const innerMatches =
+            content.match(/[^<>"'`\s.(){}\[\]#=%]*[^<>"'`\s.(){}\[\]#=%:]/g) ||
+            [];
+        return broadMatches.concat(innerMatches);
+    },
+};
+task("optimize", async () => {
+    const [
+        { default: querySelector },
+        { default: posthtml },
+        { default: concat },
+
+        { default: postcss },
+        { default: autoprefixer },
+        { default: csso },
+        { default: purge },
+    ] = await Promise.all([
+        import("posthtml-match-helper"),
+        import("gulp-posthtml"),
+        import("gulp-concat"),
+
+        import("gulp-postcss"),
+        import("autoprefixer"),
+        import("postcss-csso"),
+        import("@fullhuman/postcss-purgecss"),
+    ]);
+
+    const query = querySelector(`link.style-module, meta#concat-style`);
+    return streamList([
+        [
+            `${htmlFolder}/**/*.html`,
+            {
+                pipes: [
+                    posthtml([
+                        (tree) => {
+                            tree.match(query, (node) => {
+                                let attrs = node?.attrs;
+                                if (attrs?.class == "style-module") {
+                                    delete node;
+                                    return;
+                                } else if (attrs?.id == "concat-style") {
+                                    node.tag = "link";
+                                    node.attrs = {
+                                        rel: "stylesheet",
+                                        href: "/css/app.min.css",
+                                        async: "",
+                                    };
+                                }
+
+                                return node;
+                            });
+                        },
+                    ]),
+                ],
+                dest: htmlFolder,
+            },
+        ],
+        [
+            `${destCSSFolder}/*.css`,
+            {
+                pipes: [
+                    concat("app.min.css"),
+                    postcss([
+                        // Purge, Compress and Prefix CSS
+                        purge(purgeConfig),
+                        csso(),
+                        autoprefixer(),
+                    ]),
+                ],
+                dest: destCSSFolder,
+            },
+        ],
+    ]);
+});
+
 // BrowserSync
 task("reload", (resolve) => {
     if (browserSync) browserSync.reload();
@@ -288,16 +376,18 @@ task("watch", async () => {
         }
     );
 
+    // Watch Pug & HTML
     watch(
         [`${pugFolder}/**/*.pug`, dataPath, iconPath],
         { delay: 200 },
         series(`html`, "reload")
     );
-    watch(
-        [`${srcCSSFolder}/**/*`, `./tailwind.js`],
-        { delay: 350 },
-        series(`css`)
-    );
+
+    // Watch Tailwind, Sass, & CSS
+    watch([`${srcCSSFolder}/**/*.scss`], series(`appCSS`)); // { delay: 200 }, 
+    watch([`./tailwind.js`], { delay: 350 }, series(`css`));
+
+    // Watch Typescript & JS
     watch(
         [`!${tsFolder}/*.ts`, `${tsFolder}/**/*.ts`],
         { delay: 100 },
@@ -308,16 +398,17 @@ task("watch", async () => {
         { delay: 100 },
         series(`other-js`)
     );
-    watch(
-        [`${jsFolder}/**/*.js`],
-        { delay: 100 },
-        series(`reload`)
-    );
+    watch([`${jsFolder}/**/*.js`], { delay: 100 }, series(`reload`));
+
+    // Watch Other Assets
     watch(`${assetsFolder}/**/*`, { delay: 500 }, series(`assets`, "reload"));
 });
 
 // Build & Watch Tasks
-task("build", series("clean", parallel("html", "css", "js", "assets")));
+task(
+    "build",
+    series("clean", parallel("html", "css", "js", "assets"), "optimize")
+);
 
 task(
     "default",

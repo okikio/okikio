@@ -160,7 +160,11 @@ html(lang="en")
     //- link(rel='preconnect' href='https://fonts.gstatic.com')
     //- link(href='https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Manrope:wght@500;700;800&family=Playfair+Display:wght@700&display=swap' rel='stylesheet')
 
-    link(rel="stylesheet", href="./css/app.min.css", async)
+    //- link(rel="stylesheet", href="./css/app.min.css", async)
+    meta#concat-style
+
+    link.style-module(rel="stylesheet", href="/css/tailwind.css", async)
+    link.style-module(rel="stylesheet", href="/css/app.css", async)
   body
     +navbar(page)
 

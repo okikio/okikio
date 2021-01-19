@@ -1,10 +1,8 @@
 @import "./fonts.scss";
 
-@tailwind base;
-@tailwind utilities;
-
 html {
-    @apply bg-gray-100 text-black font-sans;
+    @apply bg-gray-200 text-black font-sans;
+    // background-color: theme("colors.gray.600");
 
     font-size: 15px;
     font-weight: 400;
