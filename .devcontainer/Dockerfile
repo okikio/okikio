@@ -1,10 +1,10 @@
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node
 
-COPY library-scripts/desktop-lite-debian.sh /tmp/library-scripts/
-RUN apt-get update && bash /tmp/library-scripts/desktop-lite-debian.sh
-ENV DBUS_SESSION_BUS_ADDRESS="autolaunch:" DISPLAY=":1" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
-ENTRYPOINT ["/usr/local/share/desktop-init.sh"]
-CMD ["sleep", "infinity"]
+# COPY library-scripts/desktop-lite-debian.sh /tmp/library-scripts/
+# RUN apt-get update && bash /tmp/library-scripts/desktop-lite-debian.sh
+# ENV DBUS_SESSION_BUS_ADDRESS="autolaunch:" DISPLAY=":1" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
+# ENTRYPOINT ["/usr/local/share/desktop-init.sh"]
+# CMD ["sleep", "infinity"]
 
 
 # [Optional] Uncomment if you want to install an additional version of node using nvm
@@ -16,21 +16,22 @@ RUN sudo -u node npm install -g pnpm && pnpm install gulp ultra-runner commitize
 #     && pnpm install
 #     && echo -e "dev=true" > .env
 
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y firefox-esr
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y firefox-esr
 
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
-    && sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ \
-    && sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list' \
-    && sudo rm microsoft.gpg \
-    && sudo apt update \
-    && sudo apt install microsoft-edge-dev
+# Edge Install is broken
+# RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
+#     && sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ \
+#     && sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list' \
+#     && sudo rm microsoft.gpg \
+#     && sudo apt update \
+#     && sudo apt install microsoft-edge-dev
 
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /tmp/chrome.deb \
-    && apt-get -y install /tmp/chrome.deb \
-    && ALIASES="alias google-chrome='google-chrome --disable-dev-shm-usage'\nalias google-chrome-stable='google-chrome-stable --disable-dev-shm-usage'\n\alias x-www-browser='x-www-browser --disable-dev-shm-usage'\nalias gnome-www-browser='gnome-www-browser --disable-dev-shm-usage'" \
-    && echo "${ALIASES}" >> tee -a /etc/bash.bashrc \
-    && if type zsh > /dev/null 2>&1; then echo "${ALIASES}" >> /etc/zsh/zshrc; fi
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /tmp/chrome.deb \
+#     && apt-get -y install /tmp/chrome.deb \
+#     && ALIASES="alias google-chrome='google-chrome --disable-dev-shm-usage'\nalias google-chrome-stable='google-chrome-stable --disable-dev-shm-usage'\n\alias x-www-browser='x-www-browser --disable-dev-shm-usage'\nalias gnome-www-browser='gnome-www-browser --disable-dev-shm-usage'" \
+#     && echo "${ALIASES}" >> tee -a /etc/bash.bashrc \
+#     && if type zsh > /dev/null 2>&1; then echo "${ALIASES}" >> /etc/zsh/zshrc; fi
 
 # RUN apt install snapd
 # RUN apt-get install libwebkit2gtk-4.0
