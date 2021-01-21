@@ -13,3 +13,11 @@ RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_V
 
 # [Optional] Uncomment if you want to install more global node modules
 RUN sudo -u node npm install -g pnpm
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y firefox-esr
+
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /tmp/chrome.deb \
+    && apt-get -y install /tmp/chrome.deb \
+    && ALIASES="alias google-chrome='google-chrome --disable-dev-shm-usage'\nalias google-chrome-stable='google-chrome-stable --disable-dev-shm-usage'\n\alias x-www-browser='x-www-browser --disable-dev-shm-usage'\nalias gnome-www-browser='gnome-www-browser --disable-dev-shm-usage'" \
+    && echo "${ALIASES}" >> tee -a /etc/bash.bashrc \
+    && if type zsh > /dev/null 2>&1; then echo "${ALIASES}" >> /etc/zsh/zshrc; fi
