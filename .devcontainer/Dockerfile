@@ -8,11 +8,11 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node
 
 
 # [Optional] Uncomment if you want to install an additional version of node using nvm
-ARG EXTRA_NODE_VERSION=15
-RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
+# ARG EXTRA_NODE_VERSION=15
+# RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
 
 # [Optional] Uncomment if you want to install more global node modules
-RUN sudo -u node npm install -g pnpm && pnpm install gulp ultra-runner commitizen -g
+# RUN sudo -u node npm install -g pnpm && pnpm install gulp ultra-runner commitizen -g
 #     && pnpm install
 #     && echo -e "dev=true" > .env
 
