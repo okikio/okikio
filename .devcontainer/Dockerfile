@@ -8,12 +8,12 @@ CMD ["sleep", "infinity"]
 
 
 # [Optional] Uncomment if you want to install an additional version of node using nvm
-# ARG EXTRA_NODE_VERSION=15
-# RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
+ARG EXTRA_NODE_VERSION=15
+RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
 
 # [Optional] Uncomment if you want to install more global node modules
-RUN sudo -u node npm install -g pnpm && pnpm install gulp ultra-runner commitizen -g 
-#     && pnpm install 
+RUN sudo -u node npm install -g pnpm && pnpm install gulp ultra-runner commitizen -g
+#     && pnpm install
 #     && echo -e "dev=true" > .env
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y firefox-esr
