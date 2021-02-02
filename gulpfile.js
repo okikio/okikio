@@ -49,6 +49,7 @@ const pugConfig = {
     self: true,
 };
 
+const rename = require("gulp-rename");
 task("html", async () => {
     const [
         { default: plumber },
@@ -73,6 +74,10 @@ task("html", async () => {
             minifyJSON(), // Minify application/ld+json
         ],
         dest: htmlFolder,
+        end() {
+            delete require.cache[resolve];
+            delete require.cache[iconResolve];
+        },
     });
 });
 
@@ -85,24 +90,25 @@ tasks({
             { default: tailwind },
             { default: sass },
             { default: plumber },
-            { default: rename },
             { default: parser },
         ] = await Promise.all([
             import("gulp-postcss"),
             import("tailwindcss"),
             import("./sass-postcss.js"),
             import("gulp-plumber"),
-            import("gulp-rename"),
             import("postcss-scss"),
         ]);
 
         return stream(`${srcCSSFolder}/app.scss`, {
             pipes: [
                 plumber(),
-                postcss([
-                    tailwind("./tailwind.js"),
-                    sass({ outputStyle: "compressed" }),
-                ], { parser }),
+                postcss(
+                    [
+                        tailwind("./tailwind.js"),
+                        sass({ outputStyle: "compressed" }),
+                    ],
+                    { parser }
+                ),
                 rename({ extname: ".css" }),
             ],
             dest: destCSSFolder,
@@ -202,13 +208,8 @@ tasks({
     "other-js": async () => {
         const [
             { default: gulpEsBuild, createGulpEsbuild },
-            { default: rename },
             { default: plumber },
-        ] = await Promise.all([
-            import("gulp-esbuild"),
-            import("gulp-rename"),
-            import("gulp-plumber"),
-        ]);
+        ] = await Promise.all([import("gulp-esbuild"), import("gulp-plumber")]);
 
         const esbuild = mode == "watch" ? createGulpEsbuild() : gulpEsBuild;
         return stream([`${tsFolder}/*.ts`, `!${tsFolder}/${tsFile}`], {
@@ -263,6 +264,9 @@ task("optimize", async () => {
         { default: posthtml },
         { default: concat },
 
+        { default: typescript },
+        { default: terser },
+
         { default: postcss },
         { default: autoprefixer },
         { default: csso },
@@ -271,6 +275,9 @@ task("optimize", async () => {
         import("posthtml-match-helper"),
         import("gulp-posthtml"),
         import("gulp-concat"),
+
+        import("gulp-typescript"),
+        import("gulp-terser"),
 
         import("gulp-postcss"),
         import("autoprefixer"),
@@ -309,6 +316,35 @@ task("optimize", async () => {
             },
         ],
         [
+            [`${jsFolder}/*.js`, `!${jsFolder}/modern.min.js`],
+            {
+                pipes: [
+                    // Support for es5
+                    typescript({
+                        target: "ES5",
+                        allowJs: true,
+                        checkJs: false,
+                        noEmit: true,
+                        noEmitOnError: true,
+                        sourceMap: false,
+                        declaration: false,
+                        isolatedModules: true,
+                    }),
+
+                    // Minify
+                    terser({
+                        keep_fnames: false, // change to true here
+                        toplevel: true,
+                        compress: {
+                            dead_code: true,
+                        },
+                        ecma: 5,
+                    }),
+                ],
+                dest: jsFolder, // Output
+            },
+        ],
+        [
             `${destCSSFolder}/*.css`,
             {
                 pipes: [
@@ -329,8 +365,6 @@ task("optimize", async () => {
 // BrowserSync
 task("reload", (resolve) => {
     if (browserSync) browserSync.reload();
-    delete require.cache[resolve];
-    delete require.cache[iconResolve];
     resolve();
 });
 
@@ -355,16 +389,9 @@ task("watch", async () => {
                     extensions: ["html"],
                 },
             },
-            cors: true,
             online: true,
             reloadOnRestart: true,
             scrollThrottle: 250,
-            middleware: function (req, res, next) {
-                res.setHeader("Access-Control-Allow-Origin", "*");
-                res.setHeader("Access-Control-Allow-Methods", "GET");
-                res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-                next();
-            },
         },
         (_err, bs) => {
             bs.addMiddleware("*", (_req, res) => {
@@ -384,24 +411,21 @@ task("watch", async () => {
     );
 
     // Watch Tailwind, Sass, & CSS
-    watch([`${srcCSSFolder}/**/*.scss`], series(`appCSS`)); // { delay: 200 }, 
+    watch([`${srcCSSFolder}/**/*.scss`], series(`appCSS`)); // { delay: 200 },
     watch([`./tailwind.js`], { delay: 350 }, series(`css`));
 
     // Watch Typescript & JS
     watch(
         [`!${tsFolder}/*.ts`, `${tsFolder}/**/*.ts`],
-        { delay: 100 },
-        series(`modern-js`)
+        series(`modern-js`, `reload`)
     );
     watch(
         [`!${tsFolder}/${tsFile}`, `${tsFolder}/*.ts`],
-        { delay: 100 },
-        series(`other-js`)
+        series(`other-js`, `reload`)
     );
-    watch([`${jsFolder}/**/*.js`], { delay: 100 }, series(`reload`));
 
     // Watch Other Assets
-    watch(`${assetsFolder}/**/*`, { delay: 500 }, series(`assets`, "reload"));
+    watch(`${assetsFolder}/**/*`, { delay: 300 }, series(`assets`, "reload"));
 });
 
 // Build & Watch Tasks

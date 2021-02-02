@@ -2,7 +2,24 @@ extends /layouts/layout.pug
 
 block hero
   .hero
+
     .container
+      .background
+        svg.shape(width='43' height='43' xmlns='http://www.w3.org/2000/svg')
+          circle(fill-rule='evenodd' fill="currentColor" cx='50%' cy='50%' r='50%')
+        svg.shape#round-rect(xmlns='http://www.w3.org/2000/svg' viewBox="0 0 132 132" width='132' height='132')
+          path(fill-rule='evenodd' fill="currentColor" d='M81.603 14l36.396 36.397c18.668 18.668 18.668 48.935 0 67.602-18.667 18.668-48.934 18.668-67.602 0L14.001 81.603C-4.667 62.935-4.667 32.668 14 14 32.668-4.667 62.935-4.667 81.603 14z')
+        svg.shape#round-tri(xmlns='http://www.w3.org/2000/svg' viewBox="0 0 65 74" width='65' height='74')
+          path(fill-rule='evenodd' fill="currentColor" d='M64.543 7.293l-.179 60.641c-.202 3.407-3.093 6.003-6.458 5.798a6.05 6.05 0 0 1-2.686-.817L3.607 42.751c-2.92-1.706-3.92-5.485-2.234-8.44a6.149 6.149 0 0 1 1.923-2.067l51.79-30.477c2.814-1.88 6.6-1.096 8.458 1.751a6.236 6.236 0 0 1 .999 3.775z')
+        svg.shape#rect(xmlns='http://www.w3.org/2000/svg' viewBox="0 0 371 371" width='371' height='371')
+          path(fill-rule='evenodd' fill="currentColor" d='M7.61 166.895L166.896 7.611c10.148-10.148 26.6-10.148 36.748 0l159.293 159.292c10.147 10.148 10.147 26.6 0 36.748L203.65 362.936c-10.147 10.147-26.6 10.147-36.748 0L7.611 203.643c-10.148-10.147-10.148-26.6 0-36.748z')
+        svg.shape#semi-circle(xmlns='http://www.w3.org/2000/svg' viewBox="0 0 211 171" width='211' height='171')
+          path(fill-rule='evenodd' fill="currentColor" d='M152.955 155.323c-50.494 29.359-113.79 16.16-148.937-28.546-3.49-4.44-9.18-14.48 5.866-23.227L182.612 3.12c13.636-7.93 17.444 1.232 19.311 5.688 22.418 53.517 2.273 116.722-48.968 146.515z')
+        svg.shape#semi-circle-2(xmlns='http://www.w3.org/2000/svg' viewBox="0 0 211 171" width='211' height='171')
+          path(fill-rule='evenodd' fill="currentColor" d='M152.955 155.323c-50.494 29.359-113.79 16.16-148.937-28.546-3.49-4.44-9.18-14.48 5.866-23.227L182.612 3.12c13.636-7.93 17.444 1.232 19.311 5.688 22.418 53.517 2.273 116.722-48.968 146.515z')
+
+
+
       .flex-grow
       section.content
         h1 Hello <br> Visitor
@@ -110,5 +127,5 @@ block content
 
 
       .text-lg.text-center
-        +link(class="focus:ring-opacity-50 focus:outline-none" type="button").ring-opacity-0.ring-3.ring-primary.ring-offset-2.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-md
+        +link(class="focus:ring-opacity-50 focus:outline-none" type="button").ring-opacity-0.ring-3.ring-primary.ring-offset-transparent.ring-offset-2.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-md.inline-block
           | Lets talk

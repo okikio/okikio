@@ -62,11 +62,3 @@ mixin navbar(page)
               +link(link.href)(role="menuitem" class="navbar-link" class={ active } data-path=(link.href || link.path))
                 span
                   i= link.content
-
-        aside.social-sidebar.horizontal
-          .container
-            .iconset
-              - let list = ["twitter", "facebook", "instagram", "github", "linkedin"];
-              each value in list
-                +link(aria-label=`Link to my ${value}`)
-                  +icon(value)
