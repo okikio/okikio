@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:next
+FROM mcr.microsoft.com/playwright:v1.6.2-focal
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node
 
 COPY library-scripts/desktop-lite-debian.sh /tmp/library-scripts/
