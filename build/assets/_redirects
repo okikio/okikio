@@ -3,4 +3,4 @@
 
 /images/*  https://res.cloudinary.com/okikio-assets/image/upload/:splat  200
 /registry/* https://registry.npmjs.com/:splat  200
-/bundle/* https://okikio.github.io/bundle/:splat   200
+/bundle https://okikio.github.io/bundle/   200
