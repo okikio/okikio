@@ -10,13 +10,14 @@ include /components/back-to-top.pug
 include /components/footer.pug
 
 doctype html
-html(lang="en")
+html(lang="en").dark
   head
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width,initial-scale=1")
+    meta(http-equiv="Accept-CH" content="DPR, Viewport-Width, Width")
+    meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
     meta(name="color-scheme" content="dark light")
 
-    link(rel="manifest", href="./manifest.json")
     -
       let defaults = {
         url: "/",
@@ -28,15 +29,36 @@ html(lang="en")
 
     block pageInfo
       - let page = {};
-
-    -
-      page = Object.assign({}, defaults, page, {
-        keywords: `${defaults.keywords}${"keywords" in page ? ", " + page.keywords : ""}`
-      });
-
+    - page = Object.assign({}, defaults, page);
 
     block seo
       +seo(page)
+
+    //- link(href='https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Manrope:wght@500;700;800&family=Playfair+Display:wght@700&display=swap' rel='stylesheet')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(rel="stylesheet", href="/css/app.min.css")
+      
+    link(rel="manifest", href="/manifest.json")
+    link(type="text/plain" rel="author" href="/humans.txt")
+    
+  body
+    +navbar(page)
+
+    div(data-wrapper)
+      header(role="banner")
+        block hero
+      main#main
+        article
+          block content
+      footer
+        block footer
+
+    script(src="./js/theme.min.js", defer)
+    script(src=`https://cdn.polyfill.io/v3/polyfill.min.js?features=default,es2015,es2016,es2017,fetch,smoothscroll,WebAnimations` async)
+
+    script(src=`./js/webanimation.min.js` async)
+    script(src="./js/legacy.min.js", nomodule defer)
+    script(src="./js/modern.min.js", type="module" defer)
 
     script(type="application/ld+json").
       {
@@ -137,51 +159,3 @@ html(lang="en")
         ]
       }
 
-    meta(name="web-author" content="Okiki Ojo")
-    meta(name="copyright" content="Okiki Ojo")
-    meta(name="robots" content="index, follow")
-    meta(name="contact" content="hey@okikio.dev")
-
-    <!--[if IE]>
-    link(rel="shortcut icon", href="./favicon/favicon.ico", type="image/x-icon")
-    <![endif]-->
-
-    link(rel="icon", type="image/svg+xml" href="./favicon/favicon.svg")
-    link(rel="apple-touch-icon", sizes="180x180", href="./favicon/apple-touch-icon.png")
-    link(rel="icon", type="image/png", sizes="32x32", href="./favicon/favicon-32x32.png")
-    link(rel="icon", type="image/png", sizes="16x16", href="./favicon/favicon-16x16.png")
-    link(rel="mask-icon", href="./favicon/safari-pinned-tab.svg", color="#f24c4c")
-
-    meta(name="application-name", content="okikio")
-    meta(name="msapplication-TileColor", content="#ffffff")
-    meta(name="msapplication-config", content="./favicon/browserconfig.xml")
-    meta(name="theme-color", content="#ffffff")
-
-    //- link(rel='preconnect' href='https://fonts.gstatic.com')
-    //- link(href='https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Manrope:wght@500;700;800&family=Playfair+Display:wght@700&display=swap' rel='stylesheet')
-
-    //- link(rel="stylesheet", href="./css/app.min.css", async)
-    meta#concat-style
-
-    link.style-module(rel="stylesheet", href="/css/tailwind.css", async)
-    link.style-module(rel="stylesheet", href="/css/app.css", async)
-
-    script(src=`https://cdn.polyfill.io/v3/polyfill.min.js?features=default,es2015,es2016,es2017,es2018,Object.entries,fetch,IntersectionObserver,IntersectionObserverEntry,smoothscroll,matchMedia,localStorage,getComputedStyle,Element.prototype.scrollIntoView` async)
-    script(src="./js/theme.min.js", defer)
-  body
-    +navbar(page)
-
-    div(data-wrapper)
-      header(role="banner")
-        block hero
-      main#main
-        article
-          block content
-      footer
-        block footer
-          //- +back-to-top
-          //- +footer
-
-    script(src=`https://cdn.polyfill.io/v3/polyfill.min.js?features=WebAnimations&flags=always` defer)
-    script(src="./js/legacy.min.js", nomodule defer)
-    script(src="./js/modern.min.js", type="module" defer)

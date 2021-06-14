@@ -1,17 +1,18 @@
-const gulp = require("gulp");
-const { src, dest, parallel, task, series } = gulp;
+import gulp from "gulp";
+
+export const { src, dest, parallel, task, series, watch } = gulp;
 
 // Streamline Gulp Tasks
-const stream = (_src, _opt = {}) => {
+export const stream = (_src, _opt = {}) => {
     return new Promise((resolve) => {
         let _end = _opt.end;
         let host =
-                typeof _src !== "string" && !Array.isArray(_src)
-                    ? _src
-                    : src(_src, _opt.opts),
+            typeof _src !== "string" && !Array.isArray(_src)
+                ? _src
+                : src(_src, _opt.opts),
             _pipes = _opt.pipes || [],
             _dest = _opt.dest === undefined ? "." : _opt.dest,
-            _log = _opt.log || (() => {});
+            _log = _opt.log || (() => { });
 
         _pipes.forEach((val) => {
             if (val !== undefined && val !== null) {
@@ -39,7 +40,7 @@ const stream = (_src, _opt = {}) => {
 };
 
 // A list of streams
-const streamList = (...args) => {
+export const streamList = (...args) => {
     return Promise.all(
         (Array.isArray(args[0]) ? args[0] : args).map((_stream) => {
             return Array.isArray(_stream) ? stream(..._stream) : _stream;
@@ -48,33 +49,25 @@ const streamList = (...args) => {
 };
 
 // A list of gulp tasks
-const tasks = (list) => {
+export const tasks = (list) => {
     let entries = Object.entries(list);
     for (let [name, fn] of entries) {
         task(name, (...args) => fn(...args));
     }
 };
 
-const parallelFn = (...args) => {
+export const parallelFn = (...args) => {
     let tasks = args.filter((x) => x !== undefined && x !== null);
     return function parallelrun(done) {
         return parallel(...tasks)(done);
     };
 };
 
-const seriesFn = (...args) => {
+export const seriesFn = (...args) => {
     let tasks = args.filter((x) => x !== undefined && x !== null);
     return function seriesrun(done) {
         return series(...tasks)(done);
     };
 };
 
-module.exports = {
-    ...gulp,
-    gulp,
-    stream,
-    streamList,
-    seriesFn,
-    parallelFn,
-    tasks,
-};
+export { gulp };

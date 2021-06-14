@@ -6,7 +6,7 @@
   From: Oshawa, Canada
 
 /* SITE */
-  Last update: 2020/12/30
+  Last update: 2021/06/14
   Language: English
-  Technologies: pug, gulp, esbuild, @okikio/native, postcss, csso, autoprefixer, posthtml, scss/sass, cloudinary, ts
+  Technologies: pug, gulp, esbuild, @okikio/native, postcss, csso, autoprefixer, scss/sass, cloudinary, typescript
   IDE: VS Code

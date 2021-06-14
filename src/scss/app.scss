@@ -1,4 +1,5 @@
-@import "./fonts.scss";
+@use "./components/tailwind.css";
+@use "./components/fonts.scss" as *;
 
 html {
     @apply bg-gray-200 text-black font-sans;
@@ -106,7 +107,7 @@ html {
 
             & {
                 transition: none;
-                @apply text-primary !important;
+                @apply text-primary #{!important};
             }
         }
     }
@@ -275,7 +276,8 @@ html {
     }
 
     h1 {
-        @apply inline-block title-font;
+        @apply inline-block;
+        @extend .title-font;
     }
 
     h2 {

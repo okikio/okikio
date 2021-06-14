@@ -1,13 +1,8 @@
 import { PJAX, App, TransitionManager, HistoryManager, PageManager, animate, Animate } from "@okikio/native";
-import { toArr } from "./toArr";
 
-import { IntroAnimation } from "./services/IntroAnimation";
 import { Navbar } from "./services/Navbar";
 import { Image } from "./services/Image";
-
-import { Carousel } from "./services/Carousel";
 import { Fade } from "./transitions/Fade";
-// import { animate } from "./animate";
 
 let app: App = new App();
 app
@@ -17,11 +12,9 @@ app
         [Fade.name, Fade]
     ]))
     .set("PJAX", new PJAX())
-    // .add(new IntroAnimation())
     .add(new Image())
 
     .set("Navbar", new Navbar());
-// .add(new Carousel());
 
 const navbar: HTMLElement = document.querySelector(".navbar.bottom");
 const navHeight = navbar.getBoundingClientRect().height;
@@ -75,7 +68,7 @@ let observer = new IntersectionObserver((entries) => {
 });
 
 const init = () => {
-    layers = toArr(document.querySelectorAll(".layer"));
+    layers = Array.from(document.querySelectorAll(".layer"));
     layer = layers[0] || null;
     topOfLayer = layer ? layer.getBoundingClientRect().top + window.pageYOffset - navHeight / 4 : 0;
 

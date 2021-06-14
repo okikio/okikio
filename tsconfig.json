@@ -3,8 +3,7 @@
         "moduleResolution": "node",
         "target": "ES2020",
         "module": "ES2020",
-        "sourceMap": true,
-        "outDir": "lib",
+        "sourceMap": false,
         "incremental": true,
         "isolatedModules": true,
         "esModuleInterop": true

@@ -1,6 +1,4 @@
 import { Service } from "@okikio/native";
-import { toArr } from "../toArr";
-
 export class Navbar extends Service {
     public nav: HTMLElement;
     public elements: HTMLElement[];
@@ -11,7 +9,7 @@ export class Navbar extends Service {
         // Elements
         this.nav = document.querySelector(".nav") as HTMLElement;
         this.overlay = document.querySelector(".navbar-overlay") as HTMLElement;
-        this.elements = toArr(this.nav.querySelectorAll(".navbar-link"));
+        this.elements = Array.from(this.nav.querySelectorAll(".navbar-link"));
         this.menu = document.querySelector(".navbar-menu") as HTMLElement;
 
         this.click = this.click.bind(this);

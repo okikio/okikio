@@ -31,10 +31,10 @@ export let themeGet = () => {
     return getTheme();
 };
 
-// Set theme in localStorage, as well as in the html tag
+// Set theme in the html tag
 export let themeSet = (theme: string) => {
     html.setAttribute("data-theme", theme);
-    setTheme(theme);
+    html.classList.toggle("dark", theme == "dark");
 };
 
 try {
@@ -54,7 +54,11 @@ try {
         // On theme switcher button click (mouseup is a tiny bit more efficient) toggle the theme between dark and light mode
         let themeSwitch = document.querySelector(".theme-switch");
         themeSwitch
-            ?.addEventListener("click", () => themeSet(themeGet() === "dark" ? "light" : "dark"));
+            ?.addEventListener("click", () => { 
+                let theme = themeGet() === "dark" ? "light" : "dark";
+                themeSet(theme);
+                setTheme(theme);
+         });
 
         document.removeEventListener("DOMContentLoaded", handler);
         window.removeEventListener("load", handler);

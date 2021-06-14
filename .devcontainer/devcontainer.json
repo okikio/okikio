@@ -2,21 +2,18 @@
     "name": "Node.js",
 	"build": {
 		"dockerfile": "Dockerfile",
+		
 		// Update 'VARIANT' to pick a Node version: 10, 12, 14
-		"args": { "VARIANT": "15" }
+		"args": { "VARIANT": "14" }
 	},
 
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash"
-	},
+	"settings": {  },
 
 	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"vivaxy.vscode-conventional-commits"
-    ],
+	"extensions": [ ],
     "runArgs": ["--init", "--security-opt", "seccomp=unconfined"],
-    "forwardPorts": [6080, 5901],
+    "forwardPorts": [3000, 6080, 5901],
     "overrideCommand": false,
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

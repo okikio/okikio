@@ -54,7 +54,7 @@ export class Carousel extends Service {
             this.viewport = this.rootElement.getElementsByClassName(
                 "carousel-viewport"
             )[0] as HTMLElement;
-            this.slides = toArr(this.rootElement.getElementsByClassName("carousel-item"));
+            this.slides = Array.from(this.rootElement.getElementsByClassName("carousel-item"));
             this.carouselBtn = this.rootElement.getElementsByClassName(
                 "carousel-btn"
             )[0] as HTMLElement;
@@ -68,7 +68,7 @@ export class Carousel extends Service {
             this.dotContainer = this.rootElement.getElementsByClassName(
                 "carousel-dots"
             )[0] as HTMLElement;
-            this.dots = toArr(this.rootElement.getElementsByClassName("carousel-dot"));
+            this.dots = Array.from(this.rootElement.getElementsByClassName("carousel-dot"));
             this.dot = this.dots[0] as HTMLElement;
 
             this.slideLen = this.slides.length;

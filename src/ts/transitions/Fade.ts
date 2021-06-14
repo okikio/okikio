@@ -4,7 +4,7 @@ import { ITransition, ITransitionData, animate } from "@okikio/native";
 export const Fade: ITransition = {
     name: "default",
     duration: 350,
-    scrollable: true,
+    manualScroll: true,
 
     out({ from, trigger }: ITransitionData) {
         let { duration } = this;

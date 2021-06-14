@@ -1,269 +1,203 @@
 const mode = process.argv.includes("--watch") ? "watch" : "build";
 
-// Gulp utilities
-const {
-    stream,
-    task,
-    watch,
-    parallel,
-    series,
-    tasks,
-    parallelFn,
-    streamList,
-} = require("./util");
+import { watch, task, tasks, series, parallel, seriesFn, parallelFn, stream, streamList } from "./util.js";
 
-const dotenv = "dev" in process.env ? process.env : require("dotenv");
-if (typeof dotenv.config === "function") dotenv.config();
+import { createRequire } from 'module';
+import rename from "gulp-rename";
 
-const env = process.env;
-const dev = "dev" in env ? env.dev == "true" : false;
+const require = createRequire(import.meta.url);
 
 // Origin folders (source and destination folders)
-const srcFolder = `build`;
+const srcFolder = `src`;
 const destFolder = `public`;
 
 // Source file folders
 const tsFolder = `${srcFolder}/ts`;
 const pugFolder = `${srcFolder}/pug`;
-const srcCSSFolder = `${srcFolder}/css`;
+const scssFolder = `${srcFolder}/scss`;
 const assetsFolder = `${srcFolder}/assets`;
 
 // Destination file folders
 const jsFolder = `${destFolder}/js`;
-const destCSSFolder = `${destFolder}/css`;
+const cssFolder = `${destFolder}/css`;
 const htmlFolder = `${destFolder}`;
 
 // Main ts file bane
 const tsFile = `main.ts`;
 
 // HTML Tasks
-const dataPath = `./data.js`;
-const iconPath = `./icons.js`;
-
-const resolve = require.resolve(dataPath);
+const iconPath = `./icons.cjs`;
 const iconResolve = require.resolve(iconPath);
-
-const pugConfig = {
-    pretty: false,
-    basedir: pugFolder,
-    self: true,
-};
-
-const rename = require("gulp-rename");
 task("html", async () => {
     const [
         { default: plumber },
         { default: pug },
-        { default: minifyJSON },
+        { default: minifyJSON }
     ] = await Promise.all([
         import("gulp-plumber"),
         import("gulp-pug"),
-        import("gulp-minify-inline-json"),
+        import('gulp-minify-inline-json')
     ]);
 
-    let data = require(resolve);
     let icons = require(iconResolve);
     return stream(`${pugFolder}/pages/**/*.pug`, {
         pipes: [
             plumber(), // Recover from errors without cancelling build task
+
             // Compile src html using Pug
             pug({
-                ...pugConfig,
-                data: { ...data, icons },
+                pretty: false,
+                basedir: pugFolder,
+                self: true,
+                data: { icons },
             }),
+
             minifyJSON(), // Minify application/ld+json
         ],
-        dest: htmlFolder,
         end() {
-            delete require.cache[resolve];
             delete require.cache[iconResolve];
         },
+        dest: htmlFolder
     });
 });
 
 // CSS Tasks
 let browserSync;
-tasks({
-    async appCSS() {
-        const [
-            { default: postcss },
-            { default: tailwind },
-            { default: sass },
-            { default: plumber },
-            { default: parser },
-        ] = await Promise.all([
-            import("gulp-postcss"),
-            import("tailwindcss"),
-            import("./sass-postcss.js"),
-            import("gulp-plumber"),
-            import("postcss-scss"),
-        ]);
+task("css", async () => {
+    const [
+        { default: fiber },
 
-        return stream(`${srcCSSFolder}/app.scss`, {
-            pipes: [
-                plumber(),
-                postcss(
-                    [
-                        tailwind("./tailwind.js"),
-                        sass({ outputStyle: "compressed" }),
-                    ],
-                    { parser }
-                ),
-                rename({ extname: ".css" }),
-            ],
-            dest: destCSSFolder,
-            end: browserSync ? [browserSync.stream()] : undefined,
-        });
-    },
+        { default: postcss },
+        { default: tailwind },
 
-    async tailwindCSS() {
-        const [
-            { default: postcss },
-            { default: tailwind },
-            { default: plumber },
-            { default: parser },
-        ] = await Promise.all([
-            import("gulp-postcss"),
-            import("tailwindcss"),
-            import("gulp-plumber"),
-            import("postcss-scss"),
-        ]);
+        { default: _import },
 
-        return stream(`${srcCSSFolder}/tailwind.css`, {
-            pipes: [
-                plumber(),
-                postcss([tailwind("./tailwind.js")], { parser }),
-            ],
-            dest: destCSSFolder,
-            end: browserSync ? [browserSync.stream()] : undefined,
-        });
-    },
+        { default: scss },
+        { default: sass },
+        { default: easings }
+    ] = await Promise.all([
+        import("fibers"),
 
-    css: parallelFn("appCSS", "tailwindCSS"),
+        import("gulp-postcss"),
+        import("tailwindcss"),
+
+        import("postcss-easy-import"),
+
+        import("postcss-scss"),
+        import("csstools-postcss-sass-pre-release"),
+        import("postcss-easings")
+    ]);
+
+    return stream(`${scssFolder}/*.scss`, {
+        pipes: [
+            postcss([
+                _import(),
+                sass({
+                    outputStyle: "compressed",
+                    fiber
+                }),
+                tailwind("tailwind.config.cjs"),
+            ], { syntax: scss }),
+
+            postcss([
+                easings(),
+            ], { syntax: scss }),
+
+            rename({ extname: ".min.css" }), // Rename
+        ],
+        dest: cssFolder,
+        end: browserSync ? [browserSync.stream()] : undefined,
+    });
 });
 
-// JS Tasks
+// JS tasks
+import * as ESBUILD from "gulp-esbuild";
+const { default: Esbuild, createGulpEsbuild } = ESBUILD;
 tasks({
     "modern-js": async () => {
-        const [
-            { default: gulpEsBuild, createGulpEsbuild },
-            { default: gzipSize },
-            { default: prettyBytes },
-            { default: plumber },
+        let [
+            { default: size },
+            { default: gulpif }
         ] = await Promise.all([
-            import("gulp-esbuild"),
-            import("gzip-size"),
-            import("pretty-bytes"),
-            import("gulp-plumber"),
+            import("gulp-size"),
+            import("gulp-if")
         ]);
 
-        const esbuild = mode == "watch" ? createGulpEsbuild() : gulpEsBuild;
+        const esbuild = mode == "watch" ? createGulpEsbuild({ incremental: true }) : Esbuild;
         return stream(`${tsFolder}/${tsFile}`, {
             pipes: [
-                plumber(),
-
                 // Bundle Modules
                 esbuild({
                     bundle: true,
                     minify: true,
                     sourcemap: true,
                     format: "esm",
+                    platform: "browser",
+                    target: ["es2018"],
                     outfile: "modern.min.js",
-                    target: ["chrome71"],
                 }),
+
+                // Filter out the sourcemap
+                // I don't need to know the size of the sourcemap
+                gulpif(
+                    (file) => !/\.map$/.test(file.path),
+                    size({ gzip: true, showFiles: true, showTotal: false })
+                )
             ],
             dest: jsFolder, // Output
-            async end() {
-                console.log(
-                    `=> Gzip size - ${prettyBytes(
-                        await gzipSize.file(`${jsFolder}/modern.min.js`)
-                    )}\n`
-                );
-            },
         });
     },
-    "legacy-js": async () => {
-        const [
-            { default: gulpEsBuild, createGulpEsbuild },
-            { default: plumber },
-        ] = await Promise.all([import("gulp-esbuild"), import("gulp-plumber")]);
 
-        const esbuild = mode == "watch" ? createGulpEsbuild() : gulpEsBuild;
+    "legacy-js": async () => {
+        const esbuild = mode == "watch" ? createGulpEsbuild({ incremental: true }) : Esbuild;
         return stream(`${tsFolder}/${tsFile}`, {
             pipes: [
-                plumber(),
-
                 // Bundle Modules
                 esbuild({
                     bundle: true,
                     minify: true,
-                    format: "iife",
                     outfile: "legacy.min.js",
-                    target: ["chrome58", "firefox57", "safari11", "edge16"],
+                    target: ["es6"],
+                    format: "iife",
+                    platform: "browser",
                 }),
             ],
             dest: jsFolder, // Output
         });
     },
-    "other-js": async () => {
-        const [
-            { default: gulpEsBuild, createGulpEsbuild },
-            { default: plumber },
-        ] = await Promise.all([import("gulp-esbuild"), import("gulp-plumber")]);
 
-        const esbuild = mode == "watch" ? createGulpEsbuild() : gulpEsBuild;
+    "other-js": async () => {
+        const esbuild = mode == "watch" ? createGulpEsbuild({ incremental: true }) : Esbuild;
         return stream([`${tsFolder}/*.ts`, `!${tsFolder}/${tsFile}`], {
             pipes: [
-                plumber(),
-
                 // Bundle Modules
                 esbuild({
                     bundle: true,
                     minify: true,
+                    entryNames: '[name].min',
+                    target: ["es6"],
                     format: "iife",
-                    target: ["chrome58", "firefox57", "safari11", "edge16"],
+                    platform: "browser",
                 }),
-                rename({ suffix: ".min", extname: ".js" }), // Rename
             ],
             dest: jsFolder, // Output
         });
     },
-    js: parallelFn(`modern-js`, dev ? null : `legacy-js`, `other-js`),
+
+    js: seriesFn(`modern-js`, `legacy-js`, `other-js`),
 });
 
 // Other assets
 task("assets", () => {
     return stream(`${assetsFolder}/**/*`, {
-        opts: {
-            base: assetsFolder,
-        },
+        opts: { base: assetsFolder },
         dest: destFolder,
     });
 });
 
-let purgeConfig = {
-    mode: "all",
-    content: [`${pugFolder}/**/*.pug`],
-
-    safelist: [/-webkit-scrollbar/, /active/, /show/, /hide/, /light/, /dark/],
-    keyframes: false,
-    fontFace: false,
-    defaultExtractor: (content) => {
-        // Capture as liberally as possible, including things like `h-(screen-1.5)`
-        const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []; // Capture classes within other delimiters like .block(class="w-1/2") in Pug
-
-        const innerMatches =
-            content.match(/[^<>"'`\s.(){}\[\]#=%]*[^<>"'`\s.(){}\[\]#=%:]/g) ||
-            [];
-        return broadMatches.concat(innerMatches);
-    },
-};
+// Optimize for production
 task("optimize", async () => {
     const [
-        { default: querySelector },
-        { default: posthtml },
-        { default: concat },
-
         { default: typescript },
         { default: terser },
 
@@ -272,10 +206,6 @@ task("optimize", async () => {
         { default: csso },
         { default: purge },
     ] = await Promise.all([
-        import("posthtml-match-helper"),
-        import("gulp-posthtml"),
-        import("gulp-concat"),
-
         import("gulp-typescript"),
         import("gulp-terser"),
 
@@ -285,84 +215,46 @@ task("optimize", async () => {
         import("@fullhuman/postcss-purgecss"),
     ]);
 
-    const query = querySelector(`link.style-module, meta#concat-style`);
     return streamList([
-        [
-            `${htmlFolder}/**/*.html`,
-            {
-                pipes: [
-                    posthtml([
-                        (tree) => {
-                            tree.match(query, (node) => {
-                                let attrs = node?.attrs;
-                                if (attrs?.class == "style-module") {
-                                    delete node;
-                                    return;
-                                } else if (attrs?.id == "concat-style") {
-                                    node.tag = "link";
-                                    node.attrs = {
-                                        rel: "stylesheet",
-                                        href: "/css/app.min.css",
-                                        async: "",
-                                    };
-                                }
+        stream([`${jsFolder}/*.js`, `!${jsFolder}/modern.min.js`], {
+            pipes: [
+                // Support for es5
+                typescript({
+                    target: "ES5",
+                    allowJs: true,
+                    checkJs: false,
+                    noEmit: true,
+                    noEmitOnError: true,
+                    sourceMap: false,
+                    declaration: false,
+                    isolatedModules: true,
+                }),
 
-                                return node;
-                            });
-                        },
-                    ]),
-                ],
-                dest: htmlFolder,
-            },
-        ],
-        [
-            [`${jsFolder}/*.js`, `!${jsFolder}/modern.min.js`],
-            {
-                pipes: [
-                    // Support for es5
-                    typescript({
-                        target: "ES5",
-                        allowJs: true,
-                        checkJs: false,
-                        noEmit: true,
-                        noEmitOnError: true,
-                        sourceMap: false,
-                        declaration: false,
-                        isolatedModules: true,
-                    }),
+                // Minify
+                terser(),
+            ],
+            dest: jsFolder, // Output
+        }),
 
-                    // Minify
-                    terser({
-                        keep_fnames: false, // change to true here
-                        toplevel: true,
-                        compress: {
-                            dead_code: true,
-                        },
-                        ecma: 5,
+        stream(`${cssFolder}/*.css`, {
+            pipes: [
+                // Purge, Compress and Prefix CSS
+                postcss([
+                    purge({
+                        content: [`${htmlFolder}/**/*.html`],
+                        keyframes: false,
+                        fontFace: false,
                     }),
-                ],
-                dest: jsFolder, // Output
-            },
-        ],
-        [
-            `${destCSSFolder}/*.css`,
-            {
-                pipes: [
-                    concat("app.min.css"),
-                    postcss([
-                        // Purge, Compress and Prefix CSS
-                        purge(purgeConfig),
-                        csso(),
-                        autoprefixer(),
-                    ]),
-                ],
-                dest: destCSSFolder,
-            },
-        ],
+                    csso(),
+                    autoprefixer(),
+                ]),
+            ],
+            dest: cssFolder,
+        })
     ]);
 });
 
-// BrowserSync
+// Reload Page Task
 task("reload", (resolve) => {
     if (browserSync) browserSync.reload();
     resolve();
@@ -370,13 +262,11 @@ task("reload", (resolve) => {
 
 // Delete destFolder for added performance
 task("clean", async () => {
-    const { default: fn } = await import("fs");
-    if (!fn.existsSync(destFolder)) return Promise.resolve();
-
     const { default: del } = await import("del");
     return del(destFolder);
 });
 
+// Watch for file changes
 task("watch", async () => {
     const { default: bs } = await import("browser-sync");
     browserSync = bs.create();
@@ -386,11 +276,12 @@ task("watch", async () => {
             server: {
                 baseDir: destFolder,
                 serveStaticOptions: {
+                    cacheControl: false,
                     extensions: ["html"],
                 },
             },
-            online: true,
-            reloadOnRestart: true,
+
+            browser: "chrome",
             scrollThrottle: 250,
         },
         (_err, bs) => {
@@ -403,22 +294,22 @@ task("watch", async () => {
         }
     );
 
-    // Watch Pug & HTML
+    // Watch Pug & Icons
     watch(
-        [`${pugFolder}/**/*.pug`, dataPath, iconPath],
-        { delay: 200 },
-        series(`html`, "reload")
+        [`${pugFolder}/**/*.pug`, iconPath],
+        { delay: 250 },
+        series(`html`, "css", "reload")
     );
 
-    // Watch Tailwind, Sass, & CSS
-    watch([`${srcCSSFolder}/**/*.scss`], series(`appCSS`)); // { delay: 200 },
-    watch([`./tailwind.js`], { delay: 350 }, series(`css`));
+    // Watch Tailwind & SCSS
+    watch([`${scssFolder}/**/*.scss`, `tailwind.config.cjs`], series(`css`));
 
     // Watch Typescript & JS
     watch(
-        [`!${tsFolder}/*.ts`, `${tsFolder}/**/*.ts`],
-        series(`modern-js`, `reload`)
+        [`${tsFolder}/${tsFile}`, `${tsFolder}/**/*.ts`],
+        series(`modern-js`, `legacy-js`, `reload`)
     );
+
     watch(
         [`!${tsFolder}/${tsFile}`, `${tsFolder}/*.ts`],
         series(`other-js`, `reload`)
