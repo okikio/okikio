@@ -1,78 +1,191 @@
-mixin seo(page)
+mixin seo(page = {})
   - let { title, url, description, websiteURL, keywords } = page;
+  
+  <!--[if IE]>
+  link(rel="shortcut icon", href="/favicon/favicon.ico", type="image/x-icon")
+  <![endif]-->
+
+  meta(name="twitter:card", content="summary")
+  meta(name="application-name", content="okikio")
+  link(rel='apple-touch-icon' sizes='180x180' href='/favicon/apple-touch-icon.png')
+  link(rel='icon' type='image/png' sizes='32x32' href='/favicon/favicon-32x32.png')
+  link(rel='icon' type='image/png' sizes='16x16' href='/favicon/favicon-16x16.png')
+  link(rel='mask-icon' href='/favicon/safari-pinned-tab.svg' color='#ffff00')
+  meta(name='msapplication-TileColor' content='#ffff00')
+  meta(name='msapplication-config' content='/favicon/browserconfig.xml')
+  meta(name='theme-color' content='#ffff00')
+
+  meta(charset="utf-8")
+  meta(name="color-scheme" content="dark light")
+  meta(http-equiv="x-ua-compatible" content="ie=edge")
+  meta(http-equiv="Accept-CH" content="DPR, Viewport-Width, Width")
+  meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+  
+  meta(name="web-author" content="Okiki Ojo")
+  meta(name="robots" content="index, follow")
+  meta(name="copyright" content="Okiki Ojo")
+  meta(name="contact" content="hey@okikio.dev")
+
+  meta(name="mobile-web-app-capable" content="yes")
+  meta(name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes")
+  meta(name="keywords" content=keywords)
+
+  link(rel="manifest", href="/manifest.json")
+  link(type="text/plain" rel="author" href="/humans.txt")
+  link(rel="home", href=websiteURL)
+
   meta(name="og:locale" content="en_Us")
   meta(property="og:type" content="website")
-  meta(name="keywords", content=keywords)
+  meta(name="twitter:site", content="@okikio_dev")
+  meta(property="article:author" content="Okiki Ojo")
+  meta(property="og:site_name" content=websiteURL.replace("https://", ""))
+  meta(itemprop="image" content=`${websiteURL}/favicon/android-chrome-512x512.png`)
+  meta(property="og:image" content=`${websiteURL}/favicon/android-chrome-512x512.png`)
+  meta(property="og:image:secure_url" content=`${websiteURL}/favicon/android-chrome-512x512.png`)
+  meta(name="twitter:image" content=`${websiteURL}/favicon/android-chrome-512x512.png`)
+  meta(property="og:image:type" content="image/png")
+  meta(property="og:image:width" content="512")
+  meta(property="og:image:height" content="512")
+  meta(property="og:image:alt" content="Okiki Ojo's Logo")
+  meta(property="twitter:image:alt" content="Okiki Ojo's Logo")
 
-  meta(itemprop="image" content=`/favicon/android-chrome-512x512.png`)
+  meta(property="og:type" content="website")
 
-  block title
-    title= title
-    
+  title= title
   meta(name='title' content=title)
   meta(itemprop='name' content=title)
   meta(property='og:title' content=title)
   meta(name='twitter:title' content=title)
-  meta(name="apple-mobile-web-app-title", content="Okiki Ojo")
+  meta(name="apple-mobile-web-app-title", content=title)
 
-  link(rel="home", href=`/`)
-  link(rel="relative-url", href=`${url}`)
+  link(rel="home", href=websiteURL)
   link(rel="canonical" href=`${websiteURL}${url}`)
   meta(itemprop='url' content=`${websiteURL}${url}`)
   meta(name="shortlink" content=`${websiteURL}${url}`)
   meta(property='og:url' content=`${websiteURL}${url}`)
   meta(name='twitter:url' content=`${websiteURL}${url}`)
 
-  meta(name='description' content=description)
+  meta(name='description' itemprop='description' content=description)
   meta(property='og:description' content=description)
   meta(property='twitter:description' content=description)
-  meta(itemprop='description' content=description)
 
-  <!--[if IE]>
-  link(rel="shortcut icon", href="/favicon/favicon.ico", type="image/x-icon")
-  <![endif]-->
-
-  meta(name="web-author" content="Okiki Ojo")
-  meta(name="copyright" content="Okiki Ojo")
-  meta(name="robots" content="index, follow")
-  meta(name="contact" content="hey@okikio.dev")
-
-  link(rel="icon", type="image/svg+xml" href="./favicon/favicon.svg")
-  link(rel="apple-touch-icon", sizes="180x180", href="./favicon/apple-touch-icon.png")
-  link(rel="icon", type="image/png", sizes="32x32", href="./favicon/favicon-32x32.png")
-  link(rel="icon", type="image/png", sizes="16x16", href="./favicon/favicon-16x16.png")
-  link(rel="mask-icon", href="./favicon/safari-pinned-tab.svg", color="#f24c4c")
-
-  meta(name="application-name", content="okikio")
-  meta(name="msapplication-TileColor", content="#ffffff")
-  meta(name="msapplication-config", content="./favicon/browserconfig.xml")
-  meta(name="theme-color", content="#ffffff")
-
-  meta(name="application-name", content="Okiki Ojo")
-  meta(name="msapplication-tap-highlight" content="no")
-  meta(name="msapplication-TileColor", content="#2d22ca")
-  meta(name="apple-mobile-web-app-capable", content="yes")
-  meta(name="msapplication-TileImage", content="/favicon/mstile-144x144.png")
-
-  meta(name="og:locale" content="en_Us")
-  meta(property="og:type" content="website")
-  meta(property="article:author" content="Okiki Ojo")
-  meta(property="og:site_name" content=websiteURL.replace("https://", ""))
-
-  meta(property="og:image" content=`/favicon/android-chrome-512x512.png`)
-  meta(property="og:image:secure_url" content=`/favicon/android-chrome-512x512.png`)
-  meta(property="og:image:type" content="image/png")
-  meta(property="og:image:width" content="512")
-  meta(property="og:image:height" content="512")
-  meta(property="og:image:alt" content="An image of Okiki Ojo.")
-
-  meta(name="twitter:card", content="summary")
-  meta(name="twitter:site", content="@okikio_dev")
-  meta(name="twitter:image" content=`/favicon/android-chrome-512x512.png`)
-  meta(property="twitter:image:alt" content="An image of Okiki Ojo.")
-
-  link(rel="home", href=websiteURL)
-  meta(name="mobile-web-app-capable" content="yes")
-
-  meta(name="msapplication-config", content="/browserconfig.xml")
-  meta(name="apple-mobile-web-app-status-bar-style", content="#ffffff")
+  script(type="application/ld+json").
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "#{page.websiteURL}/#organization",
+          "name": "Okikio",
+          "url": "#{page.websiteURL}",
+          "sameAs": [
+            "https://dev.to/okikio",
+            "https://stackoverflow.com/users/12140185/okikio?tab=profile",
+            "https://codepen.io/okikio",
+            "https://www.linkedin.com/in/okikio/",
+            "https://github.com/okikio",
+            "https://github.com/okikio/okikio",
+            "#{page.websiteURL}"
+          ],
+          "description": "#{page.description}",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "#{page.websiteURL}/#logo",
+            "url": "#{page.websiteURL}/favicon/android-chrome-512x512.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Okiki Ojo's Logo"
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "url": "#{page.websiteURL}",
+              "email": "mailto:hey@okikio.dev",
+              "contactType": "customer service"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "#{page.websiteURL}/about-me.html#person",
+          "name": "Okiki Ojo",
+          "url": "#{page.websiteURL}",
+          "sameAs": [
+            "https://dev.to/okikio",
+            "https://stackoverflow.com/users/12140185/okikio?tab=profile",
+            "https://codepen.io/okikio",
+            "https://www.linkedin.com/in/okikio/",
+            "https://twitter.com/okikio_dev/",
+            "https://github.com/okikio",
+            "https://github.com/okikio/okikio",
+            "#{page.websiteURL}"
+          ],
+          "description": "#{page.description}",
+          "jobTitle": "Web Developer",
+          "image": {
+            "@type": "ImageObject",
+            "@id": "#{page.websiteURL}/#image",
+            "url": "/favicon/android-chrome-512x512.png",
+            "width": 512,
+            "height": 512,
+            "caption": "An image of Okiki Ojo."
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "url": "#{page.websiteURL}",
+              "email": "mailto:hey@okikio.dev",
+              "contactType": "customer service"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "#{page.websiteURL}/#website",
+          "url": "#{page.websiteURL}",
+          "description": "#{page.description}",
+          "sameAs": [
+            "https://dev.to/okikio",
+            "https://stackoverflow.com/users/12140185/okikio?tab=profile",
+            "https://codepen.io/okikio",
+            "https://www.linkedin.com/in/okikio/",
+            "https://twitter.com/okikio_dev/",
+            "https://github.com/okikio",
+            "https://github.com/okikio/okikio",
+            "#{page.websiteURL}"
+          ],
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "#{page.websiteURL}/my-projects.html#mainentity",
+            "lastReviewed": "Thu May 26 2020 15:35:01 GMT-0400"
+          },
+          "about": {
+            "@id": "#{page.websiteURL}/about-me.html#person"
+          },
+          "name": "Okiki Ojo",
+          "publisher": {
+            "@id": "#{page.websiteURL}/about-me.html#person"
+          },
+          "copyrightYear": "2020",
+          "copyrightHolder": [
+            {
+              "@id": "#{page.websiteURL}/about-me.html#person"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "#{page.websiteURL + page.url}#webpage",
+          "url": "#{page.websiteURL + page.url}",
+          "description": "#{page.description}",
+          "inLanguage": "en",
+          "name": "#{page.title}",
+          "isPartOf": {
+            "@id": "#{page.websiteURL}/#website"
+          },
+          "about": {
+            "@id": "#{page.websiteURL}/about-me.html#person"
+          }
+        }
+      ]
+    }

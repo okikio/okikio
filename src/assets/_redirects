@@ -1,6 +1,2 @@
-/polyfill/webanimations.js  https://cdn.polyfill.io/v3/polyfill.min.js?features=WebAnimations&flags=always  200
-/polyfill/polyfill.js  https://cdn.polyfill.io/v3/polyfill.min.js?features=default,es2015,es2016,es2017,es2018,Object.entries,fetch,IntersectionObserver,IntersectionObserverEntry,smoothscroll,matchMedia,localStorage,getComputedStyle,Element.prototype.scrollIntoView  200
-
+/polyfill/polyfill.js  https://cdn.polyfill.io/v3/polyfill.min.js?features=default,es2015,es2016,es2017,fetch,smoothscroll  200
 /images/*  https://res.cloudinary.com/okikio-assets/image/upload/:splat  200
-/registry/* https://registry.npmjs.com/:splat  200
-/bundle https://okikio.github.io/bundle/   200

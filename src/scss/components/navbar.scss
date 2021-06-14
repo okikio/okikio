@@ -1,0 +1,232 @@
+@use "./mixin.scss" as *;
+
+nav {
+    transition: color 0.25s ease-out;
+    color: $black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    contain: layout size;
+    display: block;
+    z-index: 100;
+
+    &:hover,
+    &.active {
+        color: $black;
+    }
+
+    &.dark {
+        color: $primary;
+
+        &:hover,
+        &.active {
+            color: $black;
+        }
+    }
+
+    &:hover,
+    &.active {
+        nav-cover[type="small"] {
+            transform: translateY(0);
+        }
+    }
+
+    @include screen("lt-sm") {
+        navbar-list {
+            pointer-events: none;
+        }
+
+        &.show navbar-list {
+            pointer-events: auto;
+        }
+    }
+}
+
+nav-cover {
+    background: $primary;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &[type="small"] {
+        transition: transform 0.25s ease-out;
+        transform: translateY(-$navHeight);
+        height: $navHeight;
+    }
+
+    &[type="large"] {
+        transform: translateY(-100vh);
+        height: 100vh;
+    }
+}
+
+nav,
+navbar {
+    height: $navHeight;
+    line-height: $navHeight;
+    width: 100%;
+}
+
+navbar {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    max-width: get($screens, "lg");
+    margin: 0 auto;
+    flex-wrap: nowrap;
+    word-wrap: normal;
+    white-space: nowrap;
+}
+
+.navbar-logo {
+    padding: 0 get($sizes, "4");
+    margin: 0 get($sizes, "2");
+    display: flex;
+    align-items: center;
+
+    &,
+    &:hover,
+    &:focus {
+        line-height: $navHeight;
+        text-decoration: none;
+    }
+}
+
+navbar-list {
+    margin-right: get($sizes, "2");
+    display: flex;
+
+    &[type="mobile"] {
+        line-height: 1.5 * $navHeight;
+        font-size: get($sizes, "12");
+        position: absolute;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        top: 0;
+        left: 0;
+
+        & .navbar-link {
+            opacity: 0;
+        }
+    }
+
+    &[type="desktop"] {
+        font-size: get($sizes, "3");
+        overflow: hidden;
+    }
+
+    @include screen("sm") {
+        &[type="mobile"] {
+            display: none;
+        }
+    }
+
+    @include screen("lt-sm") {
+        &[type="desktop"] {
+            display: none;
+        }
+    }
+}
+
+.navbar-link {
+    text-transform: uppercase;
+    padding: 0 get($sizes, "6");
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    &:hover,
+    &:focus,
+    &.active {
+        text-decoration: line-through;
+    }
+}
+
+nav-link-bar {
+    --pos: 0;
+    --opacity: 0;
+    transition: transform ease 0.5s, opacity ease 0.5s;
+    border-radius: get($radii, "full");
+    position: absolute;
+    width: 40px;
+    height: 8px;
+    background-color: black;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translate(var(--pos), -4px);
+    opacity: var(--opacity);
+
+    @include screen("lt-sm") {
+        opacity: 0;
+    }
+}
+
+.navbar-link,
+.navbar-logo {
+    &,
+    &:hover,
+    &:focus {
+        color: inherit;
+    }
+}
+
+.navbar-link,
+.navbar-logo,
+.navbar-menu {
+    border: 2px dotted transparent;
+    cursor: pointer;
+    z-index: 50;
+
+    // &:focus {
+    //     border-color: red;
+    // }
+}
+
+.navbar-menu {
+    background-color: transparent;
+    margin-right: get($sizes, "6");
+    color: inherit;
+    display: none;
+
+    $dot-sz: 10px;
+    span,
+    &:after {
+        transition: transform ease 0.55s;
+    }
+
+    &:after {
+        content: "";
+        display: inline-block;
+        width: $dot-sz;
+        height: $dot-sz;
+        margin-left: get($sizes, "3");
+        background-color: currentColor;
+        border-radius: get($radii, "full");
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    span {
+        transform: translateX(0);
+        display: inline-block;
+    }
+
+    &:hover {
+        & span {
+            text-decoration: line-through;
+            transform: translateX($dot-sz * -0.6);
+        }
+
+        &:after {
+            transform: scale(1.6);
+        }
+    }
+
+    @include screen("lt-sm") {
+        display: inline-block;
+    }
+}

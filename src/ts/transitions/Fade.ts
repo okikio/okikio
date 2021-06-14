@@ -1,4 +1,4 @@
-import { ITransition, ITransitionData, animate } from "@okikio/native";
+import { ITransition, ITransitionData, animate, newURL } from "@okikio/native";
 
 //== Transitions
 export const Fade: ITransition = {
@@ -6,26 +6,13 @@ export const Fade: ITransition = {
     duration: 350,
     manualScroll: true,
 
-    out({ from, trigger }: ITransitionData) {
+    out({ from }: ITransitionData) {
         let { duration } = this;
         let fromWrapper = from.wrapper;
         return animate({
             target: fromWrapper,
-            keyframes: [
-                {
-                    transform: "translateY(0)",
-                    opacity: 1,
-                },
-                {
-                    opacity: 0,
-                    transform: `translateY(${window.scrollY > 100 &&
-                        !/back|popstate|forward/.test(trigger as string)
-                        ? 100
-                        : 0
-                        }px)`,
-                },
-            ],
-            easing: "out",
+            opacity: [1, 0],
+            easing: "ease-out",
             duration,
         });
     },
@@ -35,11 +22,26 @@ export const Fade: ITransition = {
         let toWrapper = to.wrapper;
 
         window.scroll(scroll.x, scroll.y);
+
+        try {
+            let { hash } = window.location;
+            let _hash = hash[0] == "#" ? hash : newURL(hash).hash;
+            if (_hash.length > 1) {
+                let el = document.getElementById(_hash.slice(1));
+                if (el) {
+                    el.scrollIntoView?.();
+                }
+            }
+        } catch (e) {
+            console.warn("[hashAction] error", e);
+        }
+
         return animate({
             target: toWrapper,
             opacity: [0, 1],
-            easing: "in",
-            duration,
+            easing: "ease-in",
+            duration
         });
     }
 };
+

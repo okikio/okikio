@@ -1,0 +1,190 @@
+@use "./mixin.scss" as *;
+
+$spaceTypes: ("margin", "padding");
+
+@each $spacing in $spaceTypes {
+    .#{str-slice($spacing, 1, 1)} {
+        @include propertyList($spacing, $sizes);
+
+        $dirs: ("left", "right", "top", "bottom");
+        @each $dir in $dirs {
+            &#{str-slice($dir, 1, 1)} {
+                @include propertyList(#{$spacing + "-" + $dir}, $sizes);
+            }
+        }
+
+        &x {
+            @include propertyList(#{$spacing + "-left"}, $sizes);
+            @include propertyList(#{$spacing + "-right"}, $sizes);
+        }
+
+        &y {
+            @include propertyList(#{$spacing + "-top"}, $sizes);
+            @include propertyList(#{$spacing + "-bottom"}, $sizes);
+        }
+
+        &-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+$dirs: ("left", "right", "top", "bottom");
+$inset: (
+    "0": 0,
+    "auto": auto,
+);
+@each $dir in $dirs {
+    .#{$dir} {
+        @include propertyList($dir, $inset);
+    }
+}
+
+$positions: ("fixed", "absolute", "static", "sticky", "relative");
+@each $position in $positions {
+    .#{$position} {
+        position: #{$position};
+    }
+}
+
+.block {
+    display: block;
+}
+
+.inline {
+    display: inline !important;
+
+    &-block {
+        display: inline-block !important;
+    }
+}
+
+.flex {
+    display: flex;
+
+    &-spacer {
+        flex: 1;
+    }
+
+    &-center {
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+
+    &-wrap {
+        flex-wrap: wrap;
+    }
+
+    &-row {
+        flex-direction: row;
+    }
+
+    &-col {
+        flex-direction: column;
+    }
+}
+
+$alignments: ("self", "items");
+@each $type in $alignments {
+    .#{$type} {
+        &-start {
+            align-#{$type}: flex-start;
+        }
+
+        &-center {
+            align-#{$type}: center;
+        }
+
+        &-stretch {
+            align-#{$type}: stretch;
+        }
+
+        &-baseline {
+            align-#{$type}: stretch;
+        }
+
+        &-end {
+            align-#{$type}: flex-end;
+        }
+    }
+}
+
+.justify {
+    &-start {
+        justify-content: start;
+    }
+
+    &-center {
+        justify-content: center;
+    }
+}
+
+.float {
+    &-left {
+        position: relative;
+        float: left;
+    }
+
+    &-right {
+        position: relative;
+        float: right;
+    }
+}
+
+.clearfix:after,
+.clearfix:before {
+    display: table;
+    content: "";
+    clear: both;
+}
+
+$width: map-merge(
+    (
+        "1\\/2": 50%,
+        "1\\/3": 33.333333%,
+        "2\\/3": 66.666667%,
+        "1\\/4": 25%,
+        "3\\/4": 75%,
+        full: 100%,
+        screen: "100vw",
+    ),
+    $sizes
+);
+
+.w {
+    @include propertyList(width, $width);
+}
+
+.max-w {
+    @include propertyList(max-width, $width);
+}
+
+$height: (
+    full: 100%,
+    screen: 100vh,
+);
+
+.h {
+    @include propertyList(height, $height);
+}
+
+$minHeight: map-merge(
+    (
+        "0": 0,
+        "1": 1px,
+        "300": 300px,
+        "400": 400px,
+        "450": 450px,
+        "500": 500px,
+    ),
+    $height
+);
+.min-h {
+    @include propertyList(min-height, $minHeight);
+}
+
+.max-h {
+    @include propertyList(max-height, $height);
+}

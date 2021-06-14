@@ -1,131 +1,79 @@
 extends /layouts/layout.pug
 
+block top-space
 block hero
-  .hero
-
-    .container
-      .background
-        svg.shape(width='43' height='43' xmlns='http://www.w3.org/2000/svg')
-          circle(fill-rule='evenodd' fill="currentColor" cx='50%' cy='50%' r='50%')
-        svg.shape#round-rect(xmlns='http://www.w3.org/2000/svg' viewBox="0 0 132 132" width='132' height='132')
-          path(fill-rule='evenodd' fill="currentColor" d='M81.603 14l36.396 36.397c18.668 18.668 18.668 48.935 0 67.602-18.667 18.668-48.934 18.668-67.602 0L14.001 81.603C-4.667 62.935-4.667 32.668 14 14 32.668-4.667 62.935-4.667 81.603 14z')
-        svg.shape#round-tri(xmlns='http://www.w3.org/2000/svg' viewBox="0 0 65 74" width='65' height='74')
-          path(fill-rule='evenodd' fill="currentColor" d='M64.543 7.293l-.179 60.641c-.202 3.407-3.093 6.003-6.458 5.798a6.05 6.05 0 0 1-2.686-.817L3.607 42.751c-2.92-1.706-3.92-5.485-2.234-8.44a6.149 6.149 0 0 1 1.923-2.067l51.79-30.477c2.814-1.88 6.6-1.096 8.458 1.751a6.236 6.236 0 0 1 .999 3.775z')
-        svg.shape#rect(xmlns='http://www.w3.org/2000/svg' viewBox="0 0 371 371" width='371' height='371')
-          path(fill-rule='evenodd' fill="currentColor" d='M7.61 166.895L166.896 7.611c10.148-10.148 26.6-10.148 36.748 0l159.293 159.292c10.147 10.148 10.147 26.6 0 36.748L203.65 362.936c-10.147 10.147-26.6 10.147-36.748 0L7.611 203.643c-10.148-10.147-10.148-26.6 0-36.748z')
-        svg.shape#semi-circle(xmlns='http://www.w3.org/2000/svg' viewBox="0 0 211 171" width='211' height='171')
-          path(fill-rule='evenodd' fill="currentColor" d='M152.955 155.323c-50.494 29.359-113.79 16.16-148.937-28.546-3.49-4.44-9.18-14.48 5.866-23.227L182.612 3.12c13.636-7.93 17.444 1.232 19.311 5.688 22.418 53.517 2.273 116.722-48.968 146.515z')
-        svg.shape#semi-circle-2(xmlns='http://www.w3.org/2000/svg' viewBox="0 0 211 171" width='211' height='171')
-          path(fill-rule='evenodd' fill="currentColor" d='M152.955 155.323c-50.494 29.359-113.79 16.16-148.937-28.546-3.49-4.44-9.18-14.48 5.866-23.227L182.612 3.12c13.636-7.93 17.444 1.232 19.311 5.688 22.418 53.517 2.273 116.722-48.968 146.515z')
-
-
-
-      .flex-grow
-      section.content
-        h1 Hello <br> Visitor
-        h2 Dedication to web design & development.
-      .flex-grow
-      .scroll-btn
-        button(type="button", aria-label="Scroll down button" title="Scroll Down")
-          //- | Scroll
+  .layer-primary.layer.h-screen
+    .layout.flex.h-full.max-w-lg.px-10.flex-col
+      section.flex.h-full
+        .self-center
+          h1.scroll-pt.h1.title Hello, I am
+            span=` `
+            span.inline-block.bg-black.text-primary.px-2 Okiki.
+          h2.sub-title Student - Developer - Innovator
+      .flex-spacer
+      button.scroll-btn(type="button" role="button")
+        .scroll-text scroll
+        .scroll-icon
+          .scroll-outline
           +icon("arrow_downward")
-  aside.social-sidebar(class="md:block hidden")
-    .container
-      .iconset
-        - let list = ["twitter", "facebook", "instagram", "github", "linkedin"];
-        each value in list
-          +link(aria-label=`Link to my ${value}`)
-            +icon(value)
+
 
 block content
-  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5(class="md:py-16 md:pb-32")
-    .py-32(class="md:px-16 md:py-24")#scroll-point
-      .sub-title.font-extrabold
-        h2.inline-block.text-primary.text-4xl.mr-2 dedicated.
-        span.text-base (adj.):
-      p.mt-5.trackin-wide.font-bold.description.text-xl devoted to a task or purpose; having single-minded loyalty or integrity.
-      p.leading-9.mt-10.trackin-wide.description.text-xl
-        span Dedication is at the heart of what I do. okikio is a web design & development agency I developed to bring out the best in web design & development, my name is Okiki Ojo and I am a web developer. I strive to creates digital experiences driven by passion and fine tuned to overcome all challenges.
-        //- span With over 5+ years of development experience I aim to enhance your buisness to new heights through the use of innovative technologies and great user experiences, okikio is the official face of the projects I build, but you get the benefits of an independent developer working hard to bring your vision into an innovative digital product.
+  .content
+    #about
+    .layout.max-w-lg.layout
+      h3.h4.text-bold.text-primary About
+      p Hey, I am Okiki Ojo (pronounced O-ke-ke O-jo), I'm a student currently studying Software Engineering at Ontario Tech University (formerly University of Ontario Institute of Technology, UOIT). I have a passion for design and development, I like to create things that don't only look good but that also function on multiple devices. I am always eager to take on a challenge. I develop websites that are functional, efficient and that act as an excellent representation of a person or business on the digital landscape. I have a 4+ years of experience designing sites, I would love to bring your digital vision to reality.
 
-      .text-lg.mt-16
-        +link(class="focus:ring-opacity-50 focus:outline-none" type="button").ring-opacity-0.ring-3.ring-primary.ring-offset-transparent.ring-offset-2.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-md.inline-block
-          | Lets talk
+      h4.h5.text-bold.mt-16 Skills
+      p I have experience in Javascript, Typescript, CSS/Sass/SCSS, HTML, Pug, Node.js, Fastify, Pjax, C#, C++, and more... I prefer to learn skills as I need them, so I can focus on finding solutions to problems instead of trying to implement new technologies for the sake of implementing them.
 
-        +link.bg-gray-300.text-primary.mt-12.px-10.py-3.font-extrabold.tracking-wide.rounded.inline-block
-          | What I do
+      h4.h5.text-bold.mt-16 Method
+      p When developing sites I first aim to understand the needs and goals of the project, I then determine the best approach to build a site. There are four parts to my method, speed, efficiency, ease-of-use, and impact.
 
-
-  +image("cloudinary/sand-and-sky-2",
-    "An image of a desert on top of a beautifully blue daytime sky; by @christianweiss on Unsplash.")(role="presentation")
-  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-24
-    .py-16(class="md:px-16")
-      h2.sub-title.font-extrabold.text-primary.text-4xl Design method
-      p.leading-9.mt-10.trackin-wide.text-xl.description To design a site, I first understand the needs and goals of the project, I then determine the best approach to build a site that displays the final vision for the site. There are four parts to my method, they are speed, efficiency, ease-of-use, and impact.
-      .grid.gap-x-0.gap-y-24.grid-rows-4.grid-flow-col.mt-16(class="md:grid-rows-2 md:gap-x-6")
+    .layout.max-w-lg.layer-bg-gray.pb-0
+      .grid-4
         -
-          let pilars = [
-            ["offline_bolt", "Speed", "I first determine and understand your buisnesses needs and goals, I then determine the best approach to build a site that displays that vision for your buisness. There are four parts to my method, they are speed, efficiency, ease-of-use, and lasting experiences."],
-            ["waves", "Efficiency", "I first determine and understand your buisnesses needs and goals, I then determine the best approach to build a site that displays that vision for your buisness. There are four parts to my method, they are speed, efficiency, ease-of-use, and lasting experiences."],
-            ["gavel", "Ease-of-use", "I first determine and understand your buisnesses needs and goals, I then determine the best approach to build a site that displays that vision for your buisness. There are four parts to my method, they are speed, efficiency, ease-of-use, and lasting experiences."],
-            ["history", "Impact", "I first determine and understand your buisnesses needs and goals, I then determine the best approach to build a site that displays that vision for your buisness. There are four parts to my method, they are speed, efficiency, ease-of-use, and lasting experiences."],
+          let cols = [
+            ["offline_bolt", "Speed", "How quickly the client wants their website, and accordingly what tools will ensure high levels of speed."],
+            ["waves", "Efficiency", "Making sure not to waste resources, time, and/or effort, so users can get the most out of the final product."],
+            ["gavel", "Ease-of-use", "The site needs to be easy to use, easy enough users can navigate the site with ease."],
+            ["history", "Impact", "As the representation of you or your business online, the site should leave an impact that causes users to visit multiple times."],
           ];
-        each val in pilars
+
+        each val in cols
           div
-            span.text-2xl.w-16.h-16.bg-secondary.text-primary.inline-block.rounded-full.grid
-              +icon(val[0]).place-self-center.w-8.h-8
-            h3.font-sans.font-bold.text-lg.my-5= val[1]
-            p.leading-7.trackin-wide.description.text-base-lg= val[2]
-  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-16
-    svg.graphic(xmlns='http://www.w3.org/2000/svg' width='349' height='611' fill='none')
-      path(d='M188.5 12v124.5C188.5 243.5 337 94 337 236c0 191.44-325-85-325 94.5 0 128.14 176.5-1 176.5 132v136m0 0l-61.5-35m61.5 35l56-35' stroke-linecap="round" stroke='#000' stroke-width='24' stroke-linejoin='round')
-      - let colors = ['#FFE600', '#F24C4C', "#FFC5C5"]
-      each color in colors
-        path.animate(d='M188.5 12v124.5C188.5 243.5 337 94 337 236c0 191.44-325-85-325 94.5 0 128.14 176.5-1 176.5 132v136m0 0l-61.5-35m61.5 35l56-35' stroke-linecap="round" stroke=color stroke-width='24' stroke-linejoin='round')
+            .icon-outline
+              +icon(val[0])
+            h3.text-bold.text-5.my-5= val[1]
+            p.description= val[2]
 
-  .mx-auto.w-full.max-w-screen-lg.font-sans.px-5.py-24
-    .py-16(class="lg:px-16 md:px-8")
-      h2.sub-title.font-extrabold.text-primary.text-4xl My Services
-      p.leading-9.mt-10.trackin-wide.text-xl.description
-        | I offer many services ranging from Web Design to Search Engine Optimization (SEO). My services separated by whether the project is design oriented and/or development oriented.
-      .grid.gap-x-0.gap-y-24.grid-cols-2.grid-flow-row.mt-16(class="md:gap-x-8 md:grid-flow-col")
-        mixin col(name, list)
-          div
-            h3.sub-title.text-primary.text-2xl.mb-5= name
-            .grid.gap-y-5.grid-auto-row
-              each item in list
-                - let [icon, title, description] = item;
-                .p-5.bg-gray-100.rounded-xl
-                  span.text-2xl.w-16.h-16.bg-secondary.text-primary.inline-block.rounded-full.grid
-                    +icon(icon).place-self-center.w-8.h-8
-                  h3.font-sans.font-bold.text-lg.my-5= title
-                  p.leading-7.trackin-wide.description.text-base-lg= description
+    #projects
+    .layout.max-w-xl
+      .max-w-lg.m-auto
+        h3.h4.text-bold.text-primary Projects
+        p Here are some of the projects I have completed thus far:
 
+      .grid-6
+        each val in self.projects
+          +tile(val).interactive
 
-        +col("Design", [
-            ["offline_bolt", "Web Design", "Responsive design that works on all devices, ensuring a seamless experience on all modern browsers."],
-            ["waves", "UI / UX", "A mockup design of a project."],
-            ["gavel", "Logo Design", "Designing logo and brand identity for the web."],
-            ["history", "Art Direction", "Creating the color palette, fonts, and design components required for high quality web sites."],
-          ])
+    .layout.max-w-xl.text-center#contact
+      h3.h3.text-bold.text-primary Contact
 
-        +col("Development", [
-          ["offline_bolt", "Frontend", "Building the HTML, CSS, and Javascript required to make a site function"],
-          ["waves", "Backend", "Development of the servers, and databases a site runs on"],
-          ["gavel", "SEO", "Search Engine Optimization aid a site in ranking higher in search engines like Google."],
-        ])
+      .py-12.line-height-huge
+        -
+          let contact = [
+            ["https://www.linkedin.com/in/okikio", "LinkedIn"],
+            ["https://github.com/okikio", "Github"],
+            ["https://codepen.io/okikio", "Codepen"],
+            ["https://dev.to/okikio", "Dev.to"],
+            ["https://stackoverflow.com/users/12140185/okikio?tab=profile", "Stackoverflow"],
+            ["mailto:hey@okikio.dev", "Email"]
+          ];
 
-      div.py-12
-        p.leading-9.mt-10.trackin-wide.text-xl.description
-          | These are some of the innovative technologies that power the services that I offer.
-
-        .flex.py-5.space-x-5.flex-nowrap.overflow-x-auto
-          - for (let i = 0; i < 10; i ++) {
-            .bg-primary.rounded-xl
-              .w-24.h-24
-          - }
-
-
-      .text-lg.text-center
-        +link(class="focus:ring-opacity-50 focus:outline-none" type="button").ring-opacity-0.ring-3.ring-primary.ring-offset-transparent.ring-offset-2.bg-primary.text-white.mt-12.px-10.py-3.font-extrabold.tracking-wide.mr-5.rounded-md.inline-block
-          | Lets talk
+        each info in contact
+          -
+            let href = info[0];
+            let content = info[1];
+          +link(href).mx-5(target="_blank" rel="noopener")= content

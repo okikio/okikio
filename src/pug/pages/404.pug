@@ -1,25 +1,28 @@
 extends /layouts/layout.pug
 
 block pageInfo
-  -
-    let page = {
+  - 
+    page = {
       url: "/404",
-      title: "404 Page - okikio"
+      name: "404",
+      title: "Ooops!",
+      description: "Sorry, the page you are looking for doesn't exist. How about going back home."
     };
 
+block top-space
 block hero
-
-  title 404 Page - okikio
-  section.py-24.bg-primary
-    .text-black.text-center.mx-auto.max-w-3xl.px-5.pt-24.pb-20.w-full
-      h1.text-5xl.font-title.font-black.tracking-wider.pb-8
-        strong.layer 404 Page
-      h2.text-2xl.leading-10.mb-16
-        | Oops, it seems you are lost would you like to
-        |
-        +link()(class="underline")
-          | return home
-        | .
+  .layer-primary.layer
+    .layout.max-w-lg.h-screen.pt-24.px-10
+      section.flex.flex-col.h-full
+        .flex-spacer
+        section.self-center
+          h1.scroll-pt.h1.title.text-uppercase 404 Page. 
+          h2.sub-title 
+            | Oops, it seems you are lost would you like to 
+            +link("/") return home.
+        .flex-spacer
+        footer.pt-24
+          +copyright
 
 block content
-  main
+block footer

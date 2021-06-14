@@ -1,0 +1,11 @@
+extends /layouts/project-style-2.pug
+
+block projectName
+  - let name = "joseph";
+
+block info
+  .info-container
+    p 
+      - for (let i = 0; i < 5; i ++) {
+        span Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+      - }

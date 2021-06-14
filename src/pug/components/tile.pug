@@ -1,0 +1,16 @@
+mixin tile(val)
+  -
+    let url = val.url;
+    let title = val.title;
+    let description = val.description;
+    let image = val.image;
+
+  tile&attributes(attributes)
+    +link(url)(class=`block`)
+      +image(image.src, image.alt).h-default
+      tile-overlay
+
+      tile-container
+        tile-content
+          h3= title
+          p= description

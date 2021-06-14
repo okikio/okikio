@@ -1,64 +1,41 @@
 -
   let links = [
     {
-      href: "/about",
-      content: "About"
+      href: "/#about",
+      content: "About",
+      path: "/(#)?about"
     },
     {
-      href: "/projects",
+      href: "/#projects",
       content: "Projects",
-      path: "/projects"
+      path: "/(#)?project(s)?"
     },
     {
-      href: "/contact",
+      href: "/#contact",
       content: "Contact"
     }
   ];
 
-mixin navLogo(page)
-  +link("/").navbar-logo
-    .wrapper(aria-label="okikio logo")
-      +icon("logo")
-
-mixin navIcons(page)
-  button.navbar-icon.icon-small.mr-3(type="button", aria-label="Light/Dark mode toggle" title="Switch Theme")
-    .wrapper
-      +icon("theme_switcher")
-
-  button.navbar-icon.icon-large.navbar-menu(type="button", aria-haspopup="menu" aria-expanded="hidden" aria-label="Navigation menu button" title="Menu Bar")
-    .wrapper
-      +icon("menu_double_bar")
+mixin navbarLinks(page)
+  each val, i in links
+    - let active = new RegExp(val.path || val.href, "i").test(page.url);
+    +link(val.href)(class=`navbar-link` data-path=val.path class={ active })= val.content
 
 mixin navbar(page)
-  section.nav
-    .navbar-overlay.w-full.h-screen.fixed
-    nav.navbar.top(role="menubar")
-      .navbar-container
-        +navLogo(page)
+  nav(role="navigation")
+    nav-cover(type="small")
+    nav-cover(type="large")
+    navbar
+      +link("/").navbar-logo(aria-label="Okiki Ojo's portfolio site logo")
+        +icon("logo")
 
-        .flex-grow
+      .flex-spacer
+      navbar-list(type="mobile")
+        +navbarLinks(page)
 
-        +navIcons(page)
+      navbar-list(type="desktop")
+        +navbarLinks(page)
 
-    nav.navbar.fixed.bottom.hide(role="menubar")
-      .background
-      .navbar-container
-        +navLogo(page)
-
-        .flex-grow
-
-        button.navbar-icon.icon-large.mr-3#back-to-top(type="button", aria-label="Back to Top button" title="Back to Top")
-          .wrapper
-            +icon("keyboard_capslock")
-
-        +navIcons(page)
-
-    .navbar-panel.fixed
-      .panel-container.flex.flex-col.h-full
-        .flex.flex-col.flex-grow.justify-center
-          .navbar-list(role="menu").grid.gap-y-8
-            each link, i in links
-              - let active = new RegExp(link.path, "i").test(page.url);
-              +link(link.href)(role="menuitem" class="navbar-link" class={ active } data-path=(link.href || link.path))
-                span
-                  i= link.content
+      button.navbar-menu(type="button" aria-label="Navigation bar button" title="Menu")
+        span Menu
+    nav-link-bar

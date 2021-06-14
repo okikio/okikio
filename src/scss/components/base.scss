@@ -1,0 +1,226 @@
+@use "./mixin.scss" as *;
+
+/* -- Presets & Resets -- */
+/* -- Elements -- */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+button,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+main,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+svg {
+    &,
+    &:before,
+    &:after {
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: 100%;
+        outline: none;
+        resize: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/**
+ * Add the correct display in IE 10+.
+ */
+
+template {
+    display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+
+[hidden] {
+    display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    line-height: 1.15;
+    font-weight: 400;
+    color: inherit;
+    display: block;
+}
+
+.h1 {
+    margin: 2.1rem 0 1.68rem 0;
+    font-weight: 900;
+}
+
+.h2 {
+    margin: 1.78rem 0 1.424rem 0;
+    font-weight: 700;
+}
+
+.h3 {
+    margin: 1.46rem 0 1.168rem 0;
+    font-weight: 600;
+}
+
+.h4 {
+    margin: 1.14rem 0 0.912rem 0;
+}
+
+.h5 {
+    margin: 0.82rem 0 0.656rem 0;
+}
+
+.h6 {
+    margin: 0.5rem 0 0.4rem 0;
+}
+
+.p {
+    margin: 0 2em 10px 2em;
+}
+
+$headerSizes: (4.2rem, 3.56rem, 2.92rem, 2.28rem, 1.64rem, 1rem);
+@each $sz in $headerSizes {
+    $i: index($headerSizes, $sz);
+
+    .h#{$i} {
+        font-size: $sz;
+    }
+}
+
+a {
+    color: rgb(63, 63, 238);
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        color: rgb(76, 76, 197);
+    }
+}
+
+// For touch screen devices
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+    background-image: none;
+    outline: 0;
+
+    @include screen("lt-md") {
+        user-select: none;
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
+}
+
+ul,
+.ul,
+ol,
+.ol {
+    list-style-type: disc;
+    margin: 20px 2em;
+    display: block;
+}
+
+ol,
+.ol {
+    list-style-type: decimal;
+}
+
+ul ul,
+.ul .ul,
+ol ul,
+.ol .ul {
+    list-style-type: circle;
+}
+
+li,
+.li {
+    text-align: inherit;
+    display: list-item;
+}

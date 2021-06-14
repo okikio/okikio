@@ -1,0 +1,338 @@
+@use "./mixin.scss" as *;
+
+html {
+    font-family: "Montserrat", Helvetica, "Helvetica Neue", Arial, sans-serif;
+    background-color: $black;
+    color: $white;
+
+    text-rendering: optimizeSpeed;
+    word-wrap: break-word;
+    line-height: 1.15;
+    font-weight: 400;
+    font-size: 15px;
+
+    @media (max-width: 300px) {
+        word-break: break-all;
+    }
+}
+
+figure.img {
+    background-color: rgb(31, 31, 44);
+    min-height: 200px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    &.h-default {
+        height: 400px;
+    }
+
+    &-show .img-core {
+        opacity: 0.7;
+    }
+
+    img {
+        position: absolute;
+        object-fit: cover;
+        object-position: center top;
+        left: 0;
+        bottom: 0;
+
+        height: 100%;
+        width: 100%;
+    }
+
+    &.bottom img {
+        object-position: center bottom;
+    }
+}
+
+.img-core {
+    transition: opacity ease 0.45s;
+    opacity: 0;
+}
+
+.img-core,
+.no-script-img {
+    image-rendering: auto;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+a.skip-main {
+    border: 2px solid $primary;
+    color: $primary;
+    background-color: $black;
+    transform: translate3d(-50%, 0, 0);
+    position: absolute;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    margin: 80px auto;
+    contain: content;
+    font-size: 1.2em;
+    overflow: auto;
+    height: auto;
+    padding: 5px;
+    z-index: 500;
+    width: 40%;
+    left: 50%;
+    top: auto;
+
+    opacity: 0;
+    pointer-events: none;
+
+    &:focus,
+    &:active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+main {
+    position: relative;
+    z-index: 50;
+    // contain: content;
+}
+
+.list {
+    list-style: circle;
+    display: list-item;
+
+    &-none {
+        list-style: none;
+    }
+}
+
+svg {
+    vertical-align: middle;
+}
+
+tile {
+    $tileHeight: get($sizes, "72");
+    position: relative;
+    display: block;
+    height: $tileHeight;
+
+    a {
+        z-index: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &.interactive a {
+        pointer-events: auto;
+    }
+
+    &,
+    figure.img {
+        overflow: hidden;
+        border-radius: get($radii, "lg");
+    }
+
+    figure.img {
+        transition: transform ease 0.55s;
+        transform: scale(1);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    &:not(.interactive) .img-show .img-core {
+        opacity: 1;
+    }
+
+    &-container {
+        position: relative;
+        display: block;
+        height: $tileHeight;
+    }
+
+    &-content {
+        transition: transform ease 0.55s;
+        position: absolute;
+        display: block;
+        z-index: 5;
+        bottom: 0;
+        left: 0;
+        padding: get($sizes, "5") get($sizes, "6");
+        @include screen("sm") {
+            padding: get($sizes, "8") get($sizes, "10");
+        }
+    }
+
+    $pLineHeight: 2.15rem;
+    $pMobileLineHeight: 1.85rem;
+    &.interactive &-content {
+        @include screen("sm") {
+            $textOffset: 2 * $pLineHeight;
+            transform: translateY($textOffset);
+        }
+
+        $textOffset: 2 * $pMobileLineHeight;
+        transform: translateY($textOffset);
+        padding: get($sizes, "5") get($sizes, "8");
+    }
+
+    h3 {
+        text-transform: uppercase;
+        font-size: get($sizes, "6");
+        line-height: 3;
+        word-break: break-all;
+        font-weight: 800;
+
+        @include screen("sm") {
+            font-size: get($sizes, "8");
+        }
+    }
+
+    &.interactive {
+        font-size: get($sizes, "5");
+        @include screen("sm") {
+            h3 {
+                font-size: get($sizes, "6");
+            }
+        }
+    }
+
+    p {
+        transition: opacity ease 0.55s;
+        line-height: $pMobileLineHeight;
+        font-size: get($sizes, "4.5");
+
+        @include screen("lg") {
+            line-height: $pLineHeight;
+        }
+    }
+
+    &.interactive p {
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    &-overlay {
+        transition: opacity ease 0.65s;
+        background-color: rgba(38, 43, 63, 0.3);
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &.interactive &-overlay {
+        @supports not (backdrop-filter: blur(5px)) {
+            background-color: rgba(38, 43, 63, 0.8);
+        }
+        backdrop-filter: blur(8px);
+        opacity: 0;
+    }
+
+    &.interactive:hover figure.img {
+        transform: scale(1.5);
+    }
+
+    &.interactive:hover &-overlay {
+        opacity: 1;
+    }
+
+    &.interactive:hover &-content {
+        transform: translateY(0);
+    }
+
+    &.interactive:hover p {
+        opacity: 1;
+    }
+
+    @include screen("lt-sm") {
+        &.interactive &-content {
+            transform: translateY(0);
+        }
+
+        &.interactive p {
+            opacity: 1;
+        }
+    }
+}
+
+.footer-layout {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include screen("lt-md") {
+        flex-direction: column;
+    }
+}
+
+#back-to-top {
+    position: relative;
+    // bottom: 0;
+    // left: 0;
+    display: flex;
+    // text-align: center;
+    z-index: 50;
+    padding: get($sizes, "3") get($sizes, "4");
+    margin: get($sizes, "5") auto;
+    border-radius: get($radii, "full");
+    align-items: center;
+    background-color: $primary;
+    color: $black;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+        border-radius: get($radii, "full");
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    &:before {
+        border: 4px solid transparent;
+    }
+
+    &:after {
+        border: 2px solid transparent;
+    }
+
+    &:focus,
+    &:hover {
+        &:before {
+            border-color: $black;
+        }
+
+        &:after {
+            border-color: $primary;
+        }
+    }
+
+    .icon,
+    span {
+        margin-right: get($sizes, "2");
+    }
+}
+
+#copyright {
+    position: relative;
+    display: block;
+    z-index: 10;
+}

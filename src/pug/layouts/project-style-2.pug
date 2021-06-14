@@ -1,0 +1,40 @@
+extends /layouts/project.pug
+
+block top-space
+block hero
+  .bg
+    - let image = page.image;
+    +image(image.src.replace("cloudinary", "cloudinary/e_blur:500"), "")
+  .layer.title-banner.dark.project-2
+    .layout.flex.max-w-lg.project-banner-layout.px-10.justify-center
+      section.self-center
+        h1.scroll-pt.project-title.text-primary #{name}.
+
+block content
+  aside.social-sidebar
+    -
+      let list = [
+        ["https://www.linkedin.com/in/okikio", "LinkedIn"],
+        ["https://github.com/okikio", "Github"],
+        ["https://codepen.io/okikio", "Codepen"],
+        ["https://dev.to/okikio", "Dev.to"],
+        ["https://stackoverflow.com/users/12140185/okikio?tab=profile", "Stackoverflow"],
+        ["mailto:hey@okikio.dev", "Email"]
+      ];
+    .sidebar-group
+      each info in list
+        -
+          let href = info[0];
+          let content = info[1];
+        +link(href)(target="_blank" rel="noopener")= content
+
+  .content.mb-16.project-2
+    .banner-tile
+      +card(project)
+
+    .container.max-w-lg.m-auto
+      .project-capsule
+
+        block info
+        .info-container.pt-5.pb-10
+          +prev_and_next(prev, next)

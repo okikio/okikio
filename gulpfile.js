@@ -26,7 +26,9 @@ const htmlFolder = `${destFolder}`;
 const tsFile = `main.ts`;
 
 // HTML Tasks
+const dataPath = `./data.cjs`;
 const iconPath = `./icons.cjs`;
+const dataResolve = require.resolve(dataPath);
 const iconResolve = require.resolve(iconPath);
 task("html", async () => {
     const [
@@ -40,6 +42,7 @@ task("html", async () => {
     ]);
 
     let icons = require(iconResolve);
+    let data = require(dataResolve);
     return stream(`${pugFolder}/pages/**/*.pug`, {
         pipes: [
             plumber(), // Recover from errors without cancelling build task
@@ -49,13 +52,14 @@ task("html", async () => {
                 pretty: false,
                 basedir: pugFolder,
                 self: true,
-                data: { icons },
+                data: { icons, ...data },
             }),
 
             minifyJSON(), // Minify application/ld+json
         ],
         end() {
             delete require.cache[iconResolve];
+            delete require.cache[dataResolve];
         },
         dest: htmlFolder
     });
@@ -273,6 +277,7 @@ task("watch", async () => {
     browserSync.init(
         {
             notify: true,
+            cors: "Cache-Control: no-cache",
             server: {
                 baseDir: destFolder,
                 serveStaticOptions: {
@@ -282,6 +287,7 @@ task("watch", async () => {
             },
 
             browser: "chrome",
+            reloadOnRestart: true,
             scrollThrottle: 250,
         },
         (_err, bs) => {
@@ -296,7 +302,7 @@ task("watch", async () => {
 
     // Watch Pug & Icons
     watch(
-        [`${pugFolder}/**/*.pug`, iconPath],
+        [`${pugFolder}/**/*.pug`, dataPath, iconPath],
         { delay: 250 },
         series(`html`, "css", "reload")
     );

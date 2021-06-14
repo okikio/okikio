@@ -1,0 +1,278 @@
+@use "./mixin.scss" as *;
+
+.project-title {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: get($sizes, "16");
+    line-height: 2;
+    word-break: break-all;
+}
+
+.project-description {
+    font-size: get($sizes, "6");
+    line-height: 1.5;
+
+    @include screen("lt-sm") {
+        font-size: get($sizes, "5");
+    }
+}
+
+.project-1 {
+    .project-layout {
+        $padding-y: get($sizes, "32");
+        padding: {
+            top: $padding-y;
+            bottom: $padding-y;
+        }
+    }
+
+    .container {
+        $padding-x: get($sizes, "10");
+        padding: {
+            left: $padding-x;
+            right: $padding-x;
+        }
+    }
+
+    $padding-title-y: get($sizes, "12");
+    .project-title {
+        padding: {
+            bottom: $padding-title-y;
+        }
+    }
+
+    @include screen("lt-sm") {
+        .project-title {
+            font-size: get($sizes, "8");
+            line-height: 1.5;
+            padding: {
+                bottom: $padding-title-y;
+                top: $padding-title-y;
+            }
+        }
+
+        .project-layout {
+            $padding-y: get($sizes, "24");
+            padding: {
+                top: $padding-y;
+                bottom: $padding-y;
+            }
+        }
+
+        .container {
+            $padding-x: get($sizes, "5");
+            padding: {
+                left: $padding-x;
+                right: $padding-x;
+            }
+        }
+    }
+}
+
+.project-2 {
+    .project-capsule {
+        background-color: $black;
+        border-radius: get($radii, "lg");
+
+        $offset: 40px;
+        padding-top: $offset;
+
+        @include screen("md") {
+            $offset: 100px;
+            padding-top: $offset;
+        }
+
+        @include screen("md") {
+            border-radius: get($radii, "xl");
+        }
+
+        @include screen("xl") {
+            border-radius: get($radii, "3xl");
+        }
+    }
+
+    .container {
+        @include screen("md") {
+            $padding-x: get($sizes, "16");
+            padding: {
+                left: $padding-x;
+                right: $padding-x;
+            }
+        }
+    }
+
+    .project-title {
+        line-height: 1.5;
+        @include screen("lt-sm") {
+            font-size: get($sizes, "12");
+        }
+
+        @include screen("lt-xsm") {
+            font-size: get($sizes, "10");
+        }
+    }
+
+    @include screen("md") {
+        border-radius: get($radii, "3xl");
+        padding: {
+            left: get($sizes, "5");
+            right: get($sizes, "5");
+        }
+    }
+
+    @include screen("lg") {
+        .project-title {
+            font-size: get($sizes, "24");
+        }
+    }
+}
+
+.project-banner-layout {
+    padding: {
+        top: get($sizes, "32");
+        bottom: get($sizes, "32");
+    }
+}
+
+.bg {
+    // filter: blur(25px);
+    position: fixed;
+    // filter: blur(8px);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+
+    .img {
+        // background-color: $black;
+        height: 100vmax;
+        width: 100vmax;
+        left: 0;
+        top: 0;
+        z-index: 0;
+    }
+}
+
+.title-banner {
+    position: relative;
+    display: block;
+    z-index: 10;
+}
+
+.banner-tile {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    max-width: get($screens, "lg");
+    z-index: 10;
+
+    $offset: -40px;
+    margin-bottom: $offset;
+
+    @include screen("md") {
+        $offset: -100px;
+        margin-bottom: $offset;
+    }
+
+    // padding: {
+    //     left: get($sizes, "8");
+    //     right: get($sizes, "8");
+    // }
+
+    tile {
+        box-shadow: 0 0 25px rgba(54, 54, 54, 0.2);
+
+        @include screen("md") {
+            border-radius: get($radii, "xl");
+        }
+    }
+
+    // @include screen("md") {
+    //     padding: {
+    //         left: get($sizes, "12");
+    //         right: get($sizes, "12");
+    //     }
+    // }
+}
+
+.info-container {
+    max-width: get($screens, "lg");
+    margin: get($sizes, "12") auto;
+    padding: {
+        left: get($sizes, "6");
+        right: get($sizes, "6");
+    }
+
+    @include screen("sm") {
+        padding: {
+            left: get($sizes, "12");
+            right: get($sizes, "12");
+        }
+    }
+
+    @include screen("md") {
+        padding: {
+            left: get($sizes, "16");
+            right: get($sizes, "16");
+        }
+    }
+}
+
+.prev_and_next {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.prev,
+.next {
+    display: flex;
+    width: 100%;
+    @media (min-width: 350px) {
+        width: 50%;
+    }
+    min-width: 100px;
+    align-items: center;
+}
+
+.prev .image-preview {
+    margin-right: get($sizes, "6");
+}
+
+.next {
+    justify-content: flex-end;
+    .image-preview {
+        margin-left: get($sizes, "6");
+    }
+}
+
+.image-preview {
+    position: relative;
+    display: block;
+    $sz: 2.5em;
+    width: $sz;
+    height: $sz;
+
+    .bg {
+        position: relative;
+        background-color: $primary;
+        min-height: $sz;
+        width: 100%;
+        height: 100%;
+        border-radius: 9999px;
+    }
+
+    svg.prev_icon,
+    svg.next_icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 70% !important;
+        height: 70% !important;
+        color: $black;
+    }
+}

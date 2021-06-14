@@ -1,10 +1,15 @@
 import { PJAX, App, TransitionManager, HistoryManager, PageManager, animate, Animate } from "@okikio/native";
 
+import { Perspective } from "./services/Perspective";
 import { Navbar } from "./services/Navbar";
 import { Image } from "./services/Image";
 import { Fade } from "./transitions/Fade";
 
-let app: App = new App();
+export let app: App = new App({
+    ignoreHashAction: true,
+    stickyScroll: false
+});
+
 app
     .set("HistoryManager", new HistoryManager())
     .set("PageManager", new PageManager())
@@ -16,14 +21,14 @@ app
 
     .set("Navbar", new Navbar());
 
-const navbar: HTMLElement = document.querySelector(".navbar.bottom");
-const navHeight = navbar.getBoundingClientRect().height;
+const nav: HTMLElement = document.querySelector("nav");
+const navHeight = nav.getBoundingClientRect().height;
 
 let layers: HTMLElement[];
 let layer: HTMLElement | null;
-let svg: HTMLElement;
-let svgDownAnimation: Animate;
-let topOfLayer: number;
+let topOfLayer: number = 0;
+let scrollOutline: HTMLElement;
+let scrollOutlineAnimation: Animate;
 
 let elToScrollTo: HTMLElement;
 let toTopEl: HTMLElement;
@@ -38,8 +43,8 @@ const ScrollEventListener = () => {
             cancelAnimationFrame(rafID);
             let scrollTop = window.scrollY;
             if (scrollTop > navHeight) {
-                navbar.classList.replace("hide", "show");
-            } else navbar.classList.replace("show", "hide");
+                nav.classList.add("active");
+            } else nav.classList.remove("active");
             wait = false;
         });
     }
@@ -60,8 +65,8 @@ const ScrollDownEventListener = () => {
 let observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            if (entry.intersectionRatio >= 0.1) svgDownAnimation.play();
-        } else svgDownAnimation.pause();
+            if (entry.intersectionRatio >= 0.1) scrollOutlineAnimation.play();
+        } else scrollOutlineAnimation.pause();
     });
 }, {
     threshold: Array.from(Array(99), (_, i) => (i + 1) / 100)
@@ -72,45 +77,28 @@ const init = () => {
     layer = layers[0] || null;
     topOfLayer = layer ? layer.getBoundingClientRect().top + window.pageYOffset - navHeight / 4 : 0;
 
-    // navbar.classList.remove("focus");
-    navbar.classList.remove("active");
+    nav.classList.remove("show");
+    nav.classList.remove("dark");
     ScrollEventListener();
 
-    svgDownAnimation = animate({
-        target: ".graphic path.animate",
-        duration(index, len) {
-            return 2500 * len;
-        },
-        easing: "linear",
-        direction: "reverse", // "alternate",
+    scrollOutlineAnimation = animate({
+        target: ".scroll-outline",
+        duration: 1600,
+        easing: "ease",
         fillMode: "both",
-        strokeDashoffset(index, len, el: SVGPathElement) {
-            const pathLength = el.getTotalLength();
-            el.setAttribute('stroke-dasharray', `` + pathLength);
-            el.style["stroke-dashoffset"] = 0;
-            return [0, pathLength * (2 + index)];
-        },
+        transform: [`scale(1)`, `scale(1.6)`],
+        opacity: [1, 0],
 
         loop: true,
         autoplay: false
     });
 
-    svg = document.querySelector(".graphic");
-    svg && observer.observe(svg);
+    scrollOutline = document.querySelector(".scroll-outline");
+    scrollOutline && observer.observe(scrollOutline);
 
-    // On the index, and all service pages, use a light color scheme for text
-    // let { pathname } = window.location;
-    // if (/(index(.html)?|\/$)|(services\/+)/g.test(pathname))
-    //     navbar.classList.add("light");
-    // else if (navbar.classList.contains("light")) navbar.classList.remove("light");
-
-
-    // // On the about, services, contact, and 404 pages use a dark color scheme for text
-    // if (/(about(.html)?)|(services(.html)?$)|(contact(.html)?)/g.test(pathname) ||
-    //     document.title.includes("404"))
-    //     navbar.classList.add("dark");
-    // else if (navbar.classList.contains("dark")) navbar.classList.remove("dark");
-
+    if (layer?.classList.contains("dark")) {
+        nav.classList.add("dark");
+    }
 
     toTopEl = document.querySelector("#back-to-top");
     if (toTopEl)
@@ -118,7 +106,7 @@ const init = () => {
 
     scrollDownEl = document.querySelector(".scroll-btn");
     if (scrollDownEl) {
-        elToScrollTo = document.querySelector("#scroll-point");
+        elToScrollTo = document.querySelector("#main");
         scrollDownEl.addEventListener("click", ScrollDownEventListener);
     }
 };
@@ -136,9 +124,6 @@ const destroy = () => {
         elToScrollTo = undefined;
     }
 
-    svgDownAnimation && svgDownAnimation.stop();
-    svg && observer.unobserve(svg);
-
     while (layers.length) layers.pop();
     layers = undefined;
     layer = undefined;
@@ -152,3 +137,4 @@ app.on("CONTENT_REPLACED", init);
 app.on("BEFORE_TRANSITION_OUT", destroy);
 
 app.boot();
+

@@ -1,20 +1,14 @@
-include /components/image.pug
-mixin card(service = {}, index)
+mixin card(val)
   -
-    let url = service.url;
-    let title = service.title;
-    let description = service.description;
-    let { image } = service;
-    let even = index % 2;
-  //-
-  div(class=`${!even ? "md:pr-8" : ""} ${index < 8 ? "" : ""} md:max-w-1/2 card col pb-8`)
-    +link(url)(class=`text-white hover:border border-solid border-red  block cursor-pointer group`)
-      section.rounded-lg.relative.overflow-hidden.h-72.bg-overlay.card-layout
-        span.intro-animation
-          +image(image)
-        section.lackluster
-          //- +image(image)
-        .p-5.left-half.w-full.text-shadow.gra.intro-animation
-          h3.text-xl.mb-3.font-bold= title
-          //- (class="group-hover:underline")
-          p.line-clamp= description
+    let title = val.title;
+    let description = val.description;
+    let image = val.image;
+
+  tile&attributes(attributes)
+    +image(image.src, image.alt).h-default
+    tile-overlay
+
+    tile-container
+      tile-content
+        h3= title
+        p= description
