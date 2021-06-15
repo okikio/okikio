@@ -22,8 +22,8 @@ mixin navbarLinks(page)
     +link(val.href)(class=`navbar-link` data-path=val.path class={ active })= val.content
 
 mixin navbar(page)
+  nav-overlay
   nav(role="navigation" initial-color="bright" color-mode="dark")
-    nav-overlay
     nav-cover(type="small")
     nav-cover(type="large")
     navbar

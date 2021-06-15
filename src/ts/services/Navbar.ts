@@ -22,14 +22,14 @@ export class Navbar extends Service {
     public menu: HTMLElement;
     public active: boolean;
     public navCover: HTMLElement;
-    public mobileLinks: HTMLElement[];
+    public navOverlay: HTMLElement;
     public linkBar: HTMLElement;
 
     public init() {
         // Elements
         this.nav = document.querySelector("nav") as HTMLElement;
+        this.navOverlay = document.querySelector(`nav-overlay`);
         this.elements = Array.from(this.nav.querySelectorAll(".navbar-link"));
-        this.mobileLinks = Array.from(this.nav.querySelectorAll(`navbar-list .navbar-link`));
         this.menu = document.querySelector(".navbar-menu") as HTMLElement;
         this.navCover = document.querySelector(`nav-cover`);
         this.linkBar = document.querySelector(`nav-link-bar`);
@@ -72,12 +72,13 @@ export class Navbar extends Service {
     public async showNav() {
         this.active = true;
         this.nav.classList.add("show");
-
+        this.navOverlay.classList.add("show");
     }
 
     public async hideNav() {
         this.active = false;
         this.nav.classList.remove("show");
+        this.navOverlay.classList.remove("show");
     }
 
     public activateLink() {
