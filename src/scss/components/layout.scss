@@ -181,6 +181,7 @@ $minHeight: map-merge(
     ),
     $height
 );
+
 .min-h {
     @include propertyList(min-height, $minHeight);
 }
@@ -190,9 +191,9 @@ $minHeight: map-merge(
 }
 
 .container-lg {
-    @apply container max-w-screen-lg lt-sm:px-3;
+    @apply container max-w-screen-lg lt-sm:px-3 sm:px-10;
 }
 
 .container-xl {
-    @apply container max-w-screen-xl lt-sm:px-3;
+    @apply container max-w-screen-xl lt-sm:px-3 sm:px-10;
 }

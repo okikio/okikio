@@ -116,6 +116,11 @@ template {
     display: none;
 }
 
+html, body {
+    @apply font-manrope font-400;
+
+}
+
 h1,
 h2,
 h3,

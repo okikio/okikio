@@ -11,9 +11,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Manrope", "sans-serif"],
-                serif: ["Playfair Display", "serif"],
-                title: ["Abril Fatface", "serif"],
+                manrope: ["Manrope", "Century Gothic", "sans-serif"],
+                montserrat: ["Montserrat", "Century Gothic", "sans-serif"],
             },
             fontWeight,
             colors: {

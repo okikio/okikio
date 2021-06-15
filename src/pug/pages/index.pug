@@ -1,24 +1,27 @@
 extends /layouts/layout.pug
 
 block hero
-  banner.layer.container-lg
+  banner.container-lg(data-layer="bright" initial-nav-color="bright")
     .w-full.h-screen.flex.flex-col.items-center
-      .flex-spacer.w-full.flex
-        .self-center
-          h1 Hello, I am 
-            span.text-primary Okiki.
+      .flex-spacer.w-full.flex.items-center
+        .content
+          h1 Hello, I'm 
+            span.inline-block.text-primary Okiki.
           h2 Student - Developer - Innovator
+        .image
+          +image("cloudinary/e_art:audrey/okikio/okiki-ojo")
       button.scroll-btn
-        .scroll-text scroll
-        .scroll-icon
-          .scroll-outline
-          +icon("arrow_downward")
+        section
+          .scroll-text scroll
+          .scroll-icon
+            .scroll-outline
+            +icon("arrow_downward")
 
 
 block content
   .content
     #about
-    .layout.max-w-lg.layout
+    .layout.max-w-lg
       h3.h4.text-bold.text-primary About
       p Hey, I am Okiki Ojo (pronounced O-ke-ke O-jo), I'm a student currently studying Software Engineering at Ontario Tech University (formerly University of Ontario Institute of Technology, UOIT). I have a passion for design and development, I like to create things that don't only look good but that also function on multiple devices. I am always eager to take on a challenge. I develop websites that are functional, efficient and that act as an excellent representation of a person or business on the digital landscape. I have a 4+ years of experience designing sites, I would love to bring your digital vision to reality.
 

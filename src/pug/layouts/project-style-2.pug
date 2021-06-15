@@ -4,7 +4,7 @@ block hero
   .bg
     - let image = page.image;
     +image(image.src.replace("cloudinary", "cloudinary/e_blur:1500"), "")
-  .layer.title-banner.dark.project-2
+  .title-banner.dark.project-2(data-layer="bright" initial-nav-color="bright")
     .layout.flex.max-w-lg.project-banner-layout.px-10.justify-center
       section.self-center
         h1.scroll-pt.project-title.text-primary #{name}.

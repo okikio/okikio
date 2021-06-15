@@ -1,60 +1,146 @@
 @use "./mixin.scss" as *;
 
 nav {
-    transition: color 0.25s ease-out;
-    color: $primary;
+    transition: color 0.35s ease;
     position: fixed;
     top: 0;
     left: 0;
     contain: layout size;
     display: block;
     z-index: 100;
+    @apply font-montserrat;
 
-    &.bright {
+    &[initial-color="bright"] {
+        color: $primary;
+    }
+
+    &[initial-color="dark"] {
         color: $black;
+    }
 
-        &:hover {
+    &[color-mode="bright"] {
+        &:hover,
+        &.active {
+            color: $black;
+        }
+
+        nav-cover {
+            background-color: $primary;
+        }
+    }
+
+    &[color-mode="dark"] {
+        &:hover,
+        &.active {
             color: $primary;
         }
 
         nav-cover {
-            background: $primary;
+            background-color: $black;
         }
     }
 
     &:hover,
     &.active {
-        // color: $black;
-
-        nav-cover {
-            transform: translateY(calc(-100vh+#{$navHeight}));
+        nav-cover[type="small"] {
+            transform: translateY(0);
         }
     }
 
     @include screen("lt-sm") {
+        transition: color 0.55s ease-out 0.2s;
+
+        nav-overlay {
+            transition: opacity ease-out 0.75s;
+        }
+
+        nav-cover[type="large"] {
+            transition: transform 0.55s ease-out, opacity 0.55s ease-out 0.45s,
+                background-color 0.55s ease-out 0.2s;
+        }
+
         navbar-list {
+            transition: opacity 0.25s ease;
             pointer-events: none;
+            opacity: 0;
         }
 
-        &.show navbar-list {
-            pointer-events: auto;
-        }
-
-        &.show .navbar-link {
+        .navbar-link {
+            transition: visibility 0.55s ease, opacity 0.35s ease,
+                transform 0.35s ease-out 0.45s;
             visibility: hidden;
+            transform: translateY(80px);
+            opacity: 0;
+        }
+
+        &.show {
+            transition: color 0.45s ease;
+            color: $primary !important;
+
+            nav-overlay {
+                opacity: 1;
+            }
+            
+            nav-cover[type="large"] {
+                transition: transform 0.55s ease-out 0.15s, opacity 0.35s ease-out;
+                transform: translateY(0);
+                background-color: $black;
+                opacity: 1;
+            }
+
+            navbar-list {
+                pointer-events: auto;
+                opacity: 1;
+            }
+
+            .navbar-link {
+                visibility: visible;
+                transform: translateY(0);
+                opacity: 1;
+
+                @for $i from 0 through 4 {
+                    &:nth-of-type(#{$i}) {
+                        $duration: 0.45s + $i * 0.25s;
+                        transition: opacity 0.35s ease 0.3s,
+                            transform #{$duration} ease 0.15s;
+                    }
+                }
+            }
         }
     }
 }
 
 nav-cover {
-    transition: transform 0.25s ease-out;
-    transform: translateY(-100vh);
-    background: $primary;
+    transition: background-color 0.35s ease-out, transform 0.35s ease-out;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &[type="large"] {
+        transform: translateY(calc(-100vh + #{$navHeight}));
+        height: 100vh;
+        opacity: 0;
+    }
+
+    &[type="small"] {
+        transform: translateY(-$navHeight);
+        height: $navHeight;
+    }
+}
+
+nav-overlay {
+    background-color: transparentize(black, 0.2);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
+    opacity: 0;
+    // @supports (backdrop-filter: blur(8px)) {
+    //     @apply  backdrop-filter backdrop-blur;
+    // }
 }
 
 nav,
@@ -109,10 +195,6 @@ navbar-list {
         width: 100%;
         top: 0;
         left: 0;
-
-        & .navbar-link {
-            opacity: 0;
-        }
     }
 }
 
@@ -146,6 +228,7 @@ nav-link-bar {
 
     @include screen("lt-sm") {
         opacity: 0;
+        visibility: hidden;
     }
 }
 
@@ -164,10 +247,6 @@ nav-link-bar {
     border: 2px dotted transparent;
     cursor: pointer;
     z-index: 50;
-
-    // &:focus {
-    //     border-color: red;
-    // }
 }
 
 .navbar-menu {

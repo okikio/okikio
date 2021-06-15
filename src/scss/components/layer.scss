@@ -4,6 +4,7 @@ banner {
     @apply block relative;
 
     h1 {
+        @apply font-montserrat;
         font-size: get($sizes, "12");
         font-weight: 800;
         word-break: break-all;
@@ -28,6 +29,81 @@ banner {
     
         @include screen("lg") {
             font-size: get($sizes, "8");
+        }
+    }
+
+    .image {
+        @apply absolute bottom-1/2 right-5 transform translate-y-1/2;
+        width: 250px;
+
+        @screen sm {
+            width: 450px;
+        }
+
+        .img {
+            height: 350px;
+
+            @screen sm {
+                height: 350px;
+
+            }
+        }
+    }
+
+    .content {
+        @apply z-10;
+    }
+
+    .scroll-btn {
+        border: 2px dashed transparent;
+        background-color: get($colors, "transparent");
+        color: $primary;
+        cursor: pointer;
+        font-family: inherit;
+        @apply relative;
+
+        section {
+            @apply absolute left-0 bottom-0 transform -translate-x-1/2 pb-5;
+        }
+    
+        &:hover,
+        &:focus {
+            text-decoration: line-through;
+        }
+    
+        .scroll-text {
+            text-transform: uppercase;
+            font-size: get($sizes, "4");
+            font-weight: 600;
+        }
+    
+        .scroll-outline,
+        .scroll-icon {
+            $sz: 1.75em;
+            font-size: get($sizes, "8");
+            border-radius: get($radii, "full");
+    
+            color: $black;
+            width: $sz;
+            height: $sz;
+            line-height: $sz;
+        }
+    
+        .scroll-outline {
+            transform-origin: center center;
+            border: 2px solid $primary;
+            transform: scale(1);
+            position: absolute;
+            pointer-events: none;
+            opacity: 1;
+            left: 0;
+            top: 0;
+        }
+    
+        .scroll-icon {
+            background-color: $primary;
+            margin: get($sizes, "5");
+            position: relative;
         }
     }
 }

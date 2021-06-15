@@ -5,10 +5,10 @@ mixin image(source = "cloudinary/city", alt = "Alternate text")
 
     let cloudinaryTest = /^cloudinary\//.test(src);
     let origin = `https://res.cloudinary.com/okikio-assets/image/${external ? "fetch" : "upload"}/`;
-    let urlParse = (filters = "w_auto") => cloudinaryTest ? `${origin + "f_auto,q_auto/c_fit," + filters},dpr_auto/${src.replace(/^cloudinary\//, "")}` : src;
+    let urlParse = (filters = "w_auto") => cloudinaryTest ? `${origin + "f_auto,q_auto:best/c_fit," + filters},dpr_auto/${src.replace(/^cloudinary\//, "")}` : src;
     
   figure.img&attributes(attributes)
-    img.img-core(data-src!=`${urlParse()}.jpg` alt=alt loading="lazy" itemprop="url")
+    img.img-core(data-src!=`${urlParse()}.webp` alt=alt loading="lazy" itemprop="url")
     noscript
       - var n = 4;
       - let srcset = `${urlParse(`w_auto`)}.webp 300w`;

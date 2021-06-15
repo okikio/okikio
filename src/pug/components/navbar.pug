@@ -22,10 +22,12 @@ mixin navbarLinks(page)
     +link(val.href)(class=`navbar-link` data-path=val.path class={ active })= val.content
 
 mixin navbar(page)
-  nav(role="navigation")
-    nav-cover
+  nav(role="navigation" initial-color="bright" color-mode="dark")
+    nav-overlay
+    nav-cover(type="small")
+    nav-cover(type="large")
     navbar
-      +link("/").navbar-logo(aria-label="Okiki Ojo's portfolio site logo")
+      +link("/")(class="navbar-logo" aria-label="okikio")
         +icon("logo")
 
       .flex-spacer

@@ -16,7 +16,7 @@ app
     .set("TransitionManager", new TransitionManager([
         [Fade.name, Fade]
     ]))
-    
+
     .set("PJAX", new PJAX())
     .add(new Image())
     .set("Navbar", new Navbar());
@@ -41,10 +41,7 @@ const ScrollEventListener = () => {
         wait = true;
         rafID = requestAnimationFrame(() => {
             cancelAnimationFrame(rafID);
-            let scrollTop = window.scrollY;
-            if (scrollTop > navHeight) {
-                nav.classList.add("active");
-            } else nav.classList.remove("active");
+            nav.classList.toggle("active", window.scrollY > navHeight);
             wait = false;
         });
     }
@@ -73,12 +70,11 @@ let observer = new IntersectionObserver((entries) => {
 });
 
 const init = () => {
-    layers = Array.from(document.querySelectorAll(".layer"));
+    layers = Array.from(document.querySelectorAll("[data-layer]"));
     layer = layers[0] || null;
     topOfLayer = layer ? layer.getBoundingClientRect().top + window.pageYOffset - navHeight / 4 : 0;
 
     nav.classList.remove("show");
-    nav.classList.remove("bright");
     ScrollEventListener();
 
     scrollOutlineAnimation = animate({
@@ -95,9 +91,12 @@ const init = () => {
 
     scrollOutline = document.querySelector(".scroll-outline");
     scrollOutline && observer.observe(scrollOutline);
-
-    if (layer?.classList.contains("bright")) {
-        nav.classList.add("bright");
+    if (layer) {
+        let layerColor = layer.getAttribute("data-layer");
+        let initialColor = layer.getAttribute("initial-nav-color");
+        
+        nav.setAttribute("color-mode", layerColor ?? "");
+        nav.setAttribute("initial-color", initialColor ?? "");
     }
 
     toTopEl = document.querySelector("#back-to-top");
