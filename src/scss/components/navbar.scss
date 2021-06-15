@@ -2,7 +2,7 @@
 
 nav {
     transition: color 0.25s ease-out;
-    color: $black;
+    color: $primary;
     position: fixed;
     top: 0;
     left: 0;
@@ -10,24 +10,24 @@ nav {
     display: block;
     z-index: 100;
 
-    &:hover,
-    &.active {
+    &.bright {
         color: $black;
-    }
 
-    &.dark {
-        color: $primary;
+        &:hover {
+            color: $primary;
+        }
 
-        &:hover,
-        &.active {
-            color: $black;
+        nav-cover {
+            background: $primary;
         }
     }
 
     &:hover,
     &.active {
-        nav-cover[type="small"] {
-            transform: translateY(0);
+        // color: $black;
+
+        nav-cover {
+            transform: translateY(calc(-100vh+#{$navHeight}));
         }
     }
 
@@ -39,26 +39,22 @@ nav {
         &.show navbar-list {
             pointer-events: auto;
         }
+
+        &.show .navbar-link {
+            visibility: hidden;
+        }
     }
 }
 
 nav-cover {
+    transition: transform 0.25s ease-out;
+    transform: translateY(-100vh);
     background: $primary;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-
-    &[type="small"] {
-        transition: transform 0.25s ease-out;
-        transform: translateY(-$navHeight);
-        height: $navHeight;
-    }
-
-    &[type="large"] {
-        transform: translateY(-100vh);
-        height: 100vh;
-    }
+    height: 100vh;
 }
 
 nav,
@@ -97,7 +93,12 @@ navbar-list {
     margin-right: get($sizes, "2");
     display: flex;
 
-    &[type="mobile"] {
+    @include screen("sm") {
+        font-size: get($sizes, "3");
+        overflow: hidden;
+    }
+
+    @include screen("lt-sm") {
         line-height: 1.5 * $navHeight;
         font-size: get($sizes, "12");
         position: absolute;
@@ -111,23 +112,6 @@ navbar-list {
 
         & .navbar-link {
             opacity: 0;
-        }
-    }
-
-    &[type="desktop"] {
-        font-size: get($sizes, "3");
-        overflow: hidden;
-    }
-
-    @include screen("sm") {
-        &[type="mobile"] {
-            display: none;
-        }
-    }
-
-    @include screen("lt-sm") {
-        &[type="desktop"] {
-            display: none;
         }
     }
 }

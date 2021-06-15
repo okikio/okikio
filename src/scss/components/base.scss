@@ -183,13 +183,26 @@ a {
 }
 
 // For touch screen devices
+
+
+button,
+a {
+    transition: box-shadow 0.2s ease-out;
+    @apply focus-visible:ring-4 focus-visible:ring-blue-600 focus-visible:ring-opacity-50;
+    @apply ring-offset-2 ring-offset-black dark:ring-offset-white;
+    @apply rounded-md focus:outline-none;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+// For touch screen devices
 a,
 button {
     -webkit-tap-highlight-color: transparent;
     background-image: none;
     outline: 0;
 
-    @include screen("lt-md") {
+    @screen lt-sm {
         user-select: none;
     }
 
@@ -197,6 +210,7 @@ button {
         border: 0;
     }
 }
+
 
 ul,
 .ul,

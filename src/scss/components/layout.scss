@@ -188,3 +188,11 @@ $minHeight: map-merge(
 .max-h {
     @include propertyList(max-height, $height);
 }
+
+.container-lg {
+    @apply container max-w-screen-lg lt-sm:px-3;
+}
+
+.container-xl {
+    @apply container max-w-screen-xl lt-sm:px-3;
+}

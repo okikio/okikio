@@ -1,10 +1,9 @@
 extends /layouts/project.pug
 
-block top-space
 block hero
   .bg
     - let image = page.image;
-    +image(image.src.replace("cloudinary", "cloudinary/e_blur:500"), "")
+    +image(image.src.replace("cloudinary", "cloudinary/e_blur:1500"), "")
   .layer.title-banner.dark.project-2
     .layout.flex.max-w-lg.project-banner-layout.px-10.justify-center
       section.self-center

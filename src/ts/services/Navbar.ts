@@ -1,5 +1,20 @@
 import { Service, animate } from "@okikio/native";
-import type { PJAX, LinkEvent } from "@okikio/native";
+import { Animate } from "@okikio/native";
+
+const validLink = (el: HTMLAnchorElement): boolean => {
+    let tagName = el?.tagName?.toLowerCase?.();
+    return (tagName === "a" || tagName === "button");
+}
+
+const getLink = ({ target }): HTMLAnchorElement => {
+    let el = target as HTMLAnchorElement;
+    while (el && !validLink(el))
+        el = (el as HTMLElement).parentNode as HTMLAnchorElement;
+
+    // Check for a valid link
+    if (!el) return;
+    return el;
+}
 
 export class Navbar extends Service {
     public nav: HTMLElement;
@@ -14,9 +29,9 @@ export class Navbar extends Service {
         // Elements
         this.nav = document.querySelector("nav") as HTMLElement;
         this.elements = Array.from(this.nav.querySelectorAll(".navbar-link"));
-        this.mobileLinks = Array.from(this.nav.querySelectorAll(`navbar-list[type="mobile"] .navbar-link`));
+        this.mobileLinks = Array.from(this.nav.querySelectorAll(`navbar-list .navbar-link`));
         this.menu = document.querySelector(".navbar-menu") as HTMLElement;
-        this.navCover = document.querySelector(`nav-cover[type="large"]`);
+        this.navCover = document.querySelector(`nav-cover`);
         this.linkBar = document.querySelector(`nav-link-bar`);
         this.active = false;
 
@@ -27,8 +42,7 @@ export class Navbar extends Service {
     }
 
     public click(event: Event) {
-        let pjax = this.manager.get("PJAX") as PJAX;
-        let el = pjax.getLink(event as LinkEvent);
+        let el = getLink(event);
         if (!el) return;
 
         let offEl = (el.classList.contains("navbar-menu") || el.classList.contains("navbar-link") || el.classList.contains("navbar-logo"));
@@ -40,8 +54,7 @@ export class Navbar extends Service {
     }
 
     public mouseover(event: Event) {
-        let pjax = this.manager.get("PJAX") as PJAX;
-        let el = pjax.getLink(event as LinkEvent);
+        let el = getLink(event);
         if (!el) return;
 
         if (el.classList.contains("navbar-link")) {
@@ -60,52 +73,11 @@ export class Navbar extends Service {
         this.active = true;
         this.nav.classList.add("show");
 
-        let duration = 650;
-        await Promise.all([
-            animate({
-                target: this.navCover,
-                transform: [`translateY(-100vh)`, `translateY(0)`],
-                fillMode: "both",
-                duration,
-                easing: "ease-out"
-            }),
-
-            animate({
-                target: this.mobileLinks,
-                transform(index: number) {
-                    return [`translateY(${50 * (index + 1)}px)`, `translateY(0)`];
-                },
-                delay(index: number) {
-                    return duration / 2 + (index * 100);
-                },
-                opacity: [0, 1],
-                fillMode: "both",
-                duration: 650,
-                easing: "ease"
-            })
-        ]);
     }
 
     public async hideNav() {
         this.active = false;
         this.nav.classList.remove("show");
-        await Promise.all([
-            animate({
-                target: this.navCover,
-                transform: [`translateY(0)`, `translateY(-100vh)`],
-                fillMode: "both",
-                duration: 650,
-                easing: "ease-out"
-            }),
-
-            animate({
-                target: this.mobileLinks,
-                opacity: [1, 0],
-                fillMode: "both",
-                duration: 550,
-                easing: "ease"
-            })
-        ]);
     }
 
     public activateLink() {

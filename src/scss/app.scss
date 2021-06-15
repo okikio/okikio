@@ -1,13 +1,15 @@
-@use "./components/mixin.scss";
+@use "./components/mixin.scss" as *;
 
-@use "./components/tailwind.css";
-@use "./components/fonts.scss";
-@use "./components/base.scss";
-@use "./components/styles.scss";
-@use "./components/layout.scss";
-@use "./components/typography.scss";
-@use "./components/site.scss";
-@use "./components/navbar.scss";
-@use "./components/content.scss";
-@use "./components/projects.scss";
-@use "./components/social-sidebar.scss";
+@use "./components/tailwind.scss" as *;
+@use "./components/fonts.scss" as *;
+@use "./components/base.scss" as *;
+@use "./components/style.scss" as *;
+@use "./components/layout.scss" as *;
+@use "./components/layer.scss" as *;
+@use "./components/typography.scss" as *;
+@use "./components/site.scss" as *;
+@use "./components/button.scss" as *;
+@use "./components/navbar.scss" as *;
+@use "./components/content.scss" as *;
+@use "./components/projects.scss" as *;
+@use "./components/social-sidebar.scss" as *;

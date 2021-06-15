@@ -67,6 +67,7 @@
         "gulp-size": "^4.0.1",
         "gulp-terser": "^2.0.1",
         "gulp-typescript": "^6.0.0-alpha.1",
+        "jstransformer-markdown-it": "^2.1.0",
         "postcss": "^8.3.4",
         "postcss-csso": "^5.0.1",
         "postcss-easings": "^3.0.1",

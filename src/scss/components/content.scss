@@ -1,71 +1,20 @@
 @use "./mixin.scss" as *;
 
-top-space {
-    margin-top: $navHeight;
-    display: block;
-}
-
-.layer-primary {
-    background: $primary;
-    color: $black;
-}
-
-.layer-black {
-    background: $black;
-    color: $primary;
-}
-
-.layout {
-    margin: 0 auto;
-    width: 100%;
-}
-
-.title {
-    font-size: get($sizes, "12");
-    line-height: 1.5em;
-    word-break: break-all;
-
-    @include screen("sm") {
-        font-size: get($sizes, "16");
-    }
-
-    @include screen("lg") {
-        font-size: get($sizes, "24");
-    }
-}
-
-.sub-title {
-    font-size: get($sizes, "5");
-    line-height: 1.5em;
-    font-weight: 600;
-
-    @include screen("sm") {
-        font-size: get($sizes, "6");
-    }
-
-    @include screen("lg") {
-        font-size: get($sizes, "10");
-    }
-}
-
 .scroll-btn {
     border: 2px dashed transparent;
-    // padding: get($sizes, "4");
     background-color: get($colors, "transparent");
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    color: $black;
+    // padding: get($sizes, "4");
+    // position: absolute;
+    // bottom: 0;
+    // left: 50%;
+    // transform: translateX(-50%);
+    color: $primary;
     cursor: pointer;
     font-family: inherit;
 
     &:hover,
     &:focus {
         text-decoration: line-through;
-    }
-    &:focus {
-        border-color: red;
     }
 
     .scroll-text {
@@ -80,7 +29,7 @@ top-space {
         font-size: get($sizes, "8");
         border-radius: get($radii, "full");
 
-        color: $primary;
+        color: $black;
         width: $sz;
         height: $sz;
         line-height: $sz;
@@ -88,7 +37,7 @@ top-space {
 
     .scroll-outline {
         transform-origin: center center;
-        border: 2px solid $black;
+        border: 2px solid $primary;
         transform: scale(1);
         position: absolute;
         pointer-events: none;
@@ -98,7 +47,7 @@ top-space {
     }
 
     .scroll-icon {
-        background-color: $black;
+        background-color: $primary;
         margin: get($sizes, "5");
         position: relative;
     }

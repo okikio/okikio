@@ -16,7 +16,7 @@ html(lang="en").dark
     meta(name="viewport", content="width=device-width,initial-scale=1")
     meta(http-equiv="Accept-CH" content="DPR, Viewport-Width, Width")
     meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-    meta(name="color-scheme" content="dark light")
+    meta(name="color-scheme" content="dark")
 
     -
       let defaults = {
@@ -49,8 +49,6 @@ html(lang="en").dark
     +navbar(page)
 
     div(data-wrapper)
-      block top-space
-        top-space
       header(role="banner")
         block hero
       main#main
@@ -58,110 +56,11 @@ html(lang="en").dark
           block content
       footer
         block footer
+          +footer
 
-    script(src="./js/theme.min.js", defer)
+    script(src="/js/theme.min.js", defer)
     script(src=`https://cdn.polyfill.io/v3/polyfill.min.js?features=default,es2015,es2016,es2017,fetch,smoothscroll` async)
 
-    script(src=`./js/webanimation.min.js` async)
-    script(src="./js/legacy.min.js", nomodule defer)
-    script(src="./js/modern.min.js", type="module" defer)
-
-    script(type="application/ld+json").
-      {
-        "@context":"https://schema.org",
-        "@graph":[
-          {
-            "@type":"Organization",
-            "@id":"#{defaults.websiteURL}/#organization",
-            "name":"okikio Offshore Consultants Limited",
-            "url":"#{defaults.websiteURL}",
-            "sameAs":[
-              "https://okikio.dev",
-              "https://github.com/okikio/okikio"
-            ],
-            "description":"#{defaults.description}",
-            "logo":{
-              "@type":"ImageObject",
-              "@id":"#{defaults.websiteURL}/#logo",
-              "url":"#{defaults.websiteURL}/favicon/android-chrome-512x512.png",
-              "width": 512,
-              "height": 512,
-              "caption":"okikio's Logo"
-            },
-            "contactPoint":[
-              {
-                "@type": "ContactPoint",
-                "url": "#{defaults.websiteURL}",
-                "email": "mailto:hey@okikio.dev",
-                "contactType": "customer service"
-              }
-            ]
-          },
-          {
-            "@type":"Person",
-            "@id":"#{defaults.websiteURL}/team/john-a-b-oyedeji.html",
-            "name":"John A.B Oyedeji",
-            "url":"#{defaults.websiteURL}",
-            "description":"#{defaults.description}",
-            "jobTitle":"Principal Partner",
-            "image":{
-              "@type":"ImageObject",
-              "@id":"#{defaults.websiteURL}/#image",
-              "url":"https://res.cloudinary.com/okikio-assets/image/upload/city.jpg",
-              "width":410,
-              "height":512,
-              "caption":"An image of John Oyedeji."
-            },
-            "contactPoint":[
-              {
-                "@type":"ContactPoint",
-                "url":"#{defaults.websiteURL}",
-                "email":"mailto:hey@okikio.dev",
-                "contactType":"customer service"
-              }
-            ]
-          },
-          {
-            "@type":"WebSite",
-            "@id":"#{defaults.websiteURL}/#website",
-            "url":"#{defaults.websiteURL}",
-            "description":"#{defaults.description}",
-            "sameAs":[
-              "https://github.com/okikio/okikio"
-            ],
-            "mainEntityOfPage":{
-              "@type":"WebPage",
-              "@id":"#{defaults.websiteURL}/services.html#mainentity",
-              "lastReviewed":"Sat August 19 2020 15:35:01 GMT-0400"
-            },
-            "about":{
-              "@id":"#{defaults.websiteURL}/team/john-a-b-oyedeji.html"
-            },
-            "name":"John A.B Oyedeji",
-            "publisher":{
-              "@id":"#{defaults.websiteURL}/team/john-a-b-oyedeji.html"
-            },
-            "copyrightYear":"2020",
-            "copyrightHolder":[
-              {
-                "@id":"#{defaults.websiteURL}/team/john-a-b-oyedeji.html"
-              }
-            ]
-          },
-          {
-            "@type":"WebPage",
-            "@id":"#{page.websiteURL + page.url}#webpage",
-            "url":"#{page.websiteURL + page.url}",
-            "description":"#{page.description}",
-            "inLanguage":"en",
-            "name":"#{page.title}",
-            "isPartOf":{
-              "@id":"#{defaults.websiteURL}/#website"
-            },
-            "about":{
-              "@id":"#{defaults.websiteURL}/about.html"
-            }
-          }
-        ]
-      }
-
+    script(src=`/js/webanimation-polyfill.min.js` async)
+    script(src="/js/legacy.min.js", nomodule defer)
+    script(src="/js/modern.min.js", type="module" defer)

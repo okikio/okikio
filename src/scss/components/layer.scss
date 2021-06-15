@@ -1,0 +1,53 @@
+@use "./mixin.scss" as *;
+
+banner {
+    @apply block relative;
+
+    h1 {
+        font-size: get($sizes, "12");
+        font-weight: 800;
+        word-break: break-all;
+    
+        @include screen("sm") {
+            font-size: get($sizes, "16");
+        }
+    
+        @include screen("lg") {
+            font-size: get($sizes, "24");
+        }
+    }
+    
+    h2 {
+        font-size: get($sizes, "5");
+        line-height: 1.5em;
+        font-weight: 500;
+    
+        @include screen("sm") {
+            font-size: get($sizes, "6");
+        }
+    
+        @include screen("lg") {
+            font-size: get($sizes, "8");
+        }
+    }
+}
+
+top-space {
+    margin-top: $navHeight;
+    display: block;
+}
+
+.layer-primary {
+    background: $primary;
+    color: $black;
+}
+
+.layer-black {
+    background: $black;
+    color: $primary;
+}
+
+.layout {
+    margin: 0 auto;
+    width: 100%;
+}

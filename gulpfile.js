@@ -304,11 +304,18 @@ task("watch", async () => {
     watch(
         [`${pugFolder}/**/*.pug`, dataPath, iconPath],
         { delay: 250 },
-        series(`html`, "css", "reload")
+        series(`html`, "reload")
     );
 
     // Watch Tailwind & SCSS
-    watch([`${scssFolder}/**/*.scss`, `tailwind.config.cjs`], series(`css`));
+    watch(
+        [
+            `${scssFolder}/**/*.scss`,
+            `${pugFolder}/**/*.pug`,
+            `tailwind.config.cjs`,
+        ],
+        series(`css`)
+    );
 
     // Watch Typescript & JS
     watch(

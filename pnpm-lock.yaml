@@ -21,6 +21,7 @@ specifiers:
   gulp-size: ^4.0.1
   gulp-terser: ^2.0.1
   gulp-typescript: ^6.0.0-alpha.1
+  jstransformer-markdown-it: ^2.1.0
   postcss: ^8.3.4
   postcss-csso: ^5.0.1
   postcss-easings: ^3.0.1
@@ -55,6 +56,7 @@ devDependencies:
   gulp-size: 4.0.1_gulp@4.0.2
   gulp-terser: 2.0.1
   gulp-typescript: 6.0.0-alpha.1_typescript@4.3.2
+  jstransformer-markdown-it: 2.1.0
   postcss: 8.3.4
   postcss-csso: 5.0.1_postcss@8.3.4
   postcss-easings: 3.0.1_postcss@8.3.4
@@ -2619,6 +2621,13 @@ packages:
       graceful-fs: 4.2.6
     dev: true
 
+  /jstransformer-markdown-it/2.1.0:
+    resolution: {integrity: sha1-aewwzkUYvtWZezjwJ2SOjChekvc=}
+    engines: {node: '>=7'}
+    dependencies:
+      markdown-it: 8.4.2
+    dev: true
+
   /jstransformer/1.0.0:
     resolution: {integrity: sha1-7Yvwkh4vPx7U1cGkT2hwntJHIsM=}
     dependencies:
@@ -2706,6 +2715,12 @@ packages:
     resolution: {integrity: sha512-FWWMIEOxz3GwUI4Ts/IvgVy6LPvoMPgjMdQ185nN6psJyBJ4yOpzqm695/h5umdLJg2vW3GR5iG11MAkR2AzJA==}
     dev: true
 
+  /linkify-it/2.2.0:
+    resolution: {integrity: sha512-GnAl/knGn+i1U/wjBz3akz2stz+HrHLsxMwHQGofCDfPvlf+gDKN58UtfmUquTY4/MXeE2x7k19KQmeoZi94Iw==}
+    dependencies:
+      uc.micro: 1.0.6
+    dev: true
+
   /load-json-file/1.1.0:
     resolution: {integrity: sha1-lWkFcI1YtLq0wiYbBPWfMcmTdMA=}
     engines: {node: '>=0.10.0'}
@@ -2772,6 +2787,17 @@ packages:
       object-visit: 1.0.1
     dev: true
 
+  /markdown-it/8.4.2:
+    resolution: {integrity: sha512-GcRz3AWTqSUphY3vsUqQSFMbgR38a4Lh3GWlHRh/7MRwz8mcu9n2IO7HOh+bXHrR9kOPDl5RNCaEsrneb+xhHQ==}
+    hasBin: true
+    dependencies:
+      argparse: 1.0.10
+      entities: 1.1.2
+      linkify-it: 2.2.0
+      mdurl: 1.0.1
+      uc.micro: 1.0.6
+    dev: true
+
   /matchdep/2.0.0:
     resolution: {integrity: sha1-xvNINKDY28OzfCfui7yyfHd1WC4=}
     engines: {node: '>= 0.10.0'}
@@ -2784,6 +2810,10 @@ packages:
 
   /mdn-data/2.0.14:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
+    dev: true
+
+  /mdurl/1.0.1:
+    resolution: {integrity: sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=}
     dev: true
 
   /merge-stream/2.0.0:
@@ -4442,6 +4472,10 @@ packages:
 
   /ua-parser-js/0.7.28:
     resolution: {integrity: sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==}
+    dev: true
+
+  /uc.micro/1.0.6:
+    resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: true
 
   /unc-path-regex/0.1.2:

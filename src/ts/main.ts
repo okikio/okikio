@@ -16,9 +16,9 @@ app
     .set("TransitionManager", new TransitionManager([
         [Fade.name, Fade]
     ]))
+    
     .set("PJAX", new PJAX())
     .add(new Image())
-
     .set("Navbar", new Navbar());
 
 const nav: HTMLElement = document.querySelector("nav");
@@ -78,7 +78,7 @@ const init = () => {
     topOfLayer = layer ? layer.getBoundingClientRect().top + window.pageYOffset - navHeight / 4 : 0;
 
     nav.classList.remove("show");
-    nav.classList.remove("dark");
+    nav.classList.remove("bright");
     ScrollEventListener();
 
     scrollOutlineAnimation = animate({
@@ -96,8 +96,8 @@ const init = () => {
     scrollOutline = document.querySelector(".scroll-outline");
     scrollOutline && observer.observe(scrollOutline);
 
-    if (layer?.classList.contains("dark")) {
-        nav.classList.add("dark");
+    if (layer?.classList.contains("bright")) {
+        nav.classList.add("bright");
     }
 
     toTopEl = document.querySelector("#back-to-top");

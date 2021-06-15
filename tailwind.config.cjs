@@ -25,9 +25,9 @@ module.exports = {
                 quaternary: "#333",
                 "center-container-dark": "#121212",
 
-                primary: "#F24C4C",
-                secondary: "#FFC5C5",
-                vibrant: "#FFE600",
+                primary: "#ffff00",
+                // secondary: "#FFC5C5",
+                // vibrant: "#FFE600",
             },
             screens: {
                 "3xl": "1633px",

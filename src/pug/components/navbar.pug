@@ -23,17 +23,13 @@ mixin navbarLinks(page)
 
 mixin navbar(page)
   nav(role="navigation")
-    nav-cover(type="small")
-    nav-cover(type="large")
+    nav-cover
     navbar
       +link("/").navbar-logo(aria-label="Okiki Ojo's portfolio site logo")
         +icon("logo")
 
       .flex-spacer
-      navbar-list(type="mobile")
-        +navbarLinks(page)
-
-      navbar-list(type="desktop")
+      navbar-list
         +navbarLinks(page)
 
       button.navbar-menu(type="button" aria-label="Navigation bar button" title="Menu")

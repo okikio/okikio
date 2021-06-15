@@ -1,17 +1,14 @@
 extends /layouts/layout.pug
 
-block top-space
 block hero
-  .layer-primary.layer.h-screen
-    .layout.flex.h-full.max-w-lg.px-10.flex-col
-      section.flex.h-full
+  banner.layer.container-lg
+    .w-full.h-screen.flex.flex-col.items-center
+      .flex-spacer.w-full.flex
         .self-center
-          h1.scroll-pt.h1.title Hello, I am
-            span=` `
-            span.inline-block.bg-black.text-primary.px-2 Okiki.
-          h2.sub-title Student - Developer - Innovator
-      .flex-spacer
-      button.scroll-btn(type="button" role="button")
+          h1 Hello, I am 
+            span.text-primary Okiki.
+          h2 Student - Developer - Innovator
+      button.scroll-btn
         .scroll-text scroll
         .scroll-icon
           .scroll-outline
@@ -65,6 +62,7 @@ block content
         -
           let contact = [
             ["https://www.linkedin.com/in/okikio", "LinkedIn"],
+            ["https://twitter.com/okikio_dev", "Twitter"],
             ["https://github.com/okikio", "Github"],
             ["https://codepen.io/okikio", "Codepen"],
             ["https://dev.to/okikio", "Dev.to"],
