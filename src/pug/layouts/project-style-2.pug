@@ -3,7 +3,7 @@ extends /layouts/project.pug
 block hero
   .bg
     - let image = page.image;
-    +image(image.src.replace("cloudinary", "cloudinary/e_blur:1000"), "").object-center
+    +image(image.src.replace("cloudinary", "cloudinary/e_blur:1500"), "").object-center
   banner.title-banner.project-2(data-layer="bright" initial-nav-color="bright")
     .layout.flex.max-w-lg.project-banner-layout.justify-center
       section.self-center.text-primary
