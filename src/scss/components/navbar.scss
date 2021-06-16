@@ -64,16 +64,16 @@ nav {
             transition: visibility 0.55s ease, opacity 0.35s ease,
                 transform 0.35s ease-out 0.45s;
             visibility: hidden;
-            transform: translateY(80px);
+            transform: translateY(100px);
             opacity: 0;
         }
 
         &.show {
             transition: color 0.45s ease;
             color: $primary !important;
-            
+
             nav-cover[type="large"] {
-                transition: transform 0.55s ease-out 0.15s, opacity 0.35s ease-out;
+                transition: transform 0.55s ease-out, opacity 0.35s ease-out;
                 transform: translateY(0);
                 background-color: $black;
                 opacity: 1;
@@ -91,9 +91,9 @@ nav {
 
                 @for $i from 0 through 4 {
                     &:nth-of-type(#{$i}) {
-                        $duration: 0.45s + $i * 0.25s;
+                        $duration: 0.35s + $i * 0.25s;
                         transition: opacity 0.35s ease 0.3s,
-                            transform #{$duration} ease 0.15s;
+                            transform #{$duration} ease 0.2s;
                     }
                 }
             }
@@ -182,7 +182,6 @@ navbar-list {
     }
 
     @include screen("lt-sm") {
-        line-height: theme("spacing.16");
         font-size: get($sizes, "12");
         @apply absolute top-0 left-0 w-full h-screen flex-col justify-center items-center;
     }
@@ -192,13 +191,11 @@ navbar-list {
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 2px;
-    height: theme("spacing.10");
-    @apply px-6 lt-sm:py-8 relative items-center flex-nowrap flex;
+    @apply px-6 lt-sm:py-8 relative items-center flex-nowrap flex sm:h-10;
 
     @include screen("lt-sm") {
-        line-height: theme("spacing.16");
+        line-height: theme("spacing.4");
     }
-
 
     &:hover,
     &:focus,
@@ -240,9 +237,12 @@ nav-link-bar {
 .navbar-link,
 .navbar-logo,
 .navbar-menu {
-    line-height: theme("spacing.10");
     cursor: pointer;
     @apply z-50;
+
+    @screen sm {
+        line-height: theme("spacing.10");
+    }
 }
 
 .navbar-menu {

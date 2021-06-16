@@ -56,7 +56,7 @@ block content
 
       .grid-6
         each val in self.projects
-          +tile(val).interactive
+          +tile(Object.assign({ interactive: true }, val))
 
     .layout.max-w-xl.text-center#contact
       h3.h3.text-bold.text-primary Contact

@@ -3,11 +3,13 @@ extends /layouts/project.pug
 block hero
   .bg
     - let image = page.image;
-    +image(image.src.replace("cloudinary", "cloudinary/e_blur:1500"), "")
-  .title-banner.dark.project-2(data-layer="bright" initial-nav-color="bright")
-    .layout.flex.max-w-lg.project-banner-layout.px-10.justify-center
-      section.self-center
-        h1.scroll-pt.project-title.text-primary #{name}.
+    +image(image.src.replace("cloudinary", "cloudinary/e_blur:1000"), "").object-center
+  banner.title-banner.project-2(data-layer="bright" initial-nav-color="bright")
+    .layout.flex.max-w-lg.project-banner-layout.justify-center
+      section.self-center.text-primary
+        top-space
+        h1.project-title #{name}.
+        h2 #{project.description}.
 
 block content
   aside.social-sidebar
@@ -28,12 +30,12 @@ block content
         +link(href)(target="_blank" rel="noopener")= content
 
   .content.mb-16.project-2
-    .banner-tile
-      +card(project)
+    .container-lg
+      .banner-tile
+        +tile(Object.assign({}, project, { title: "", description: "" }))
 
-    .container.max-w-lg.m-auto
+      
       .project-capsule
-
         block info
         .info-container.pt-5.pb-10
           +prev_and_next(prev, next)

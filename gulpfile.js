@@ -1,6 +1,5 @@
 const mode = process.argv.includes("--watch") ? "watch" : "build";
-
-import { watch, task, tasks, series, parallel, seriesFn, parallelFn, stream, streamList } from "./util.js";
+import { watch, task, tasks, series, parallel, seriesFn, stream, streamList } from "./util.js";
 
 import { createRequire } from 'module';
 import rename from "gulp-rename";
@@ -246,6 +245,7 @@ task("optimize", async () => {
                 postcss([
                     purge({
                         content: [`${htmlFolder}/**/*.html`],
+                        safelist: [/active/g, /show/g, /bright/g, /dark/g],
                         keyframes: false,
                         fontFace: false,
                     }),

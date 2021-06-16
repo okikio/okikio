@@ -72,22 +72,16 @@
 .project-2 {
     .project-capsule {
         background-color: $black;
-        border-radius: get($radii, "lg");
+        // border-radius: get($radii, "lg");
 
-        $offset: 40px;
+        @apply md:px-10 lt-sm:rounded-xl sm:rounded-3xl;
+
+        $offset: 240px;
         padding-top: $offset;
 
         @include screen("md") {
-            $offset: 100px;
+            $offset: 280px;
             padding-top: $offset;
-        }
-
-        @include screen("md") {
-            border-radius: get($radii, "xl");
-        }
-
-        @include screen("xl") {
-            border-radius: get($radii, "3xl");
         }
     }
 
@@ -103,6 +97,7 @@
 
     .project-title {
         line-height: 1.5;
+        @apply pb-6 sm:pb-12;
         @include screen("lt-sm") {
             font-size: get($sizes, "12");
         }
@@ -128,10 +123,7 @@
 }
 
 .project-banner-layout {
-    padding: {
-        top: get($sizes, "32");
-        bottom: get($sizes, "32");
-    }
+   @apply px-6 py-16 sm:px-10 sm:py-32; 
 }
 
 .bg {
@@ -163,37 +155,24 @@
 .banner-tile {
     position: relative;
     display: block;
-    margin: 0 auto;
-    max-width: get($screens, "lg");
+    @apply mx-0 sm:mx-12 md:mx-16;
     z-index: 10;
 
-    $offset: -40px;
+    $offset: -240px;
     margin-bottom: $offset;
 
     @include screen("md") {
-        $offset: -100px;
+        $offset: -280px;
         margin-bottom: $offset;
     }
 
-    // padding: {
-    //     left: get($sizes, "8");
-    //     right: get($sizes, "8");
-    // }
-
     tile {
-        box-shadow: 0 0 25px rgba(54, 54, 54, 0.2);
+        box-shadow: 0 0 25px 5px rgba(41, 41, 41, 0.2);
 
         @include screen("md") {
             border-radius: get($radii, "xl");
         }
     }
-
-    // @include screen("md") {
-    //     padding: {
-    //         left: get($sizes, "12");
-    //         right: get($sizes, "12");
-    //     }
-    // }
 }
 
 .info-container {

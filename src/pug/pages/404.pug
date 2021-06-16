@@ -10,18 +10,18 @@ block pageInfo
     };
 
 block hero
-  .bg-primary(data-layer="bright" initial-nav-color="dark")
+  banner.bg-primary.text-black(data-layer="bright" initial-nav-color="dark")
     .layout.max-w-lg.h-screen.pt-24.px-10
       section.flex.flex-col.h-full
-        .flex-spacer
-        section.self-center
-          h1.scroll-pt.h1.title.text-uppercase 404 Page. 
-          h2.sub-title 
-            | Oops, it seems you are lost would you like to 
-            +link("/") return home.
-        .flex-spacer
-        footer.pt-24
-          +copyright
+        .flex-spacer.flex.items-center
+          div
+            h1.text-uppercase Missing Page. 
+            h2
+              | Yikes, it seems you have run into a 404 page and are lost, would you like to 
+              +link("/").return-home return home.
+        footer.pt-24.relative
+          .absolute.bottom-0.left-0.text-center
+            +copyright
 
 block content
 block footer

@@ -112,7 +112,7 @@ banner {
 }
 
 top-space {
-    margin-top: $navHeight;
+    padding-top: $navHeight;
     display: block;
 }
 
@@ -129,4 +129,8 @@ top-space {
 .layout {
     margin: 0 auto;
     width: 100%;
+}
+
+.return-home {
+    @apply bg-black hover:text-primary px-3;
 }

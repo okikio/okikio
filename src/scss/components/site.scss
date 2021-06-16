@@ -104,6 +104,7 @@ a.skip-main {
         pointer-events: auto;
     }
 }
+
 main {
     position: relative;
     // contain: content;
@@ -122,20 +123,23 @@ svg {
     vertical-align: middle;
 }
 
+figure.object-center img {
+    @apply object-center;
+}
+
 tile {
     $tileHeight: get($sizes, "72");
-    position: relative;
-    display: block;
-    height: $tileHeight;
+    @apply relative block lt-sm:h-72 sm:h-96;
 
     a {
-        @apply relative block;
+        @apply relative block h-full;
     }
 
-    &.interactive a {
-        pointer-events: auto;
+    &:not(.interactive) .img-show .img-core {
+        opacity: 1;
     }
 
+    &,
     a,
     figure.img {
         overflow: hidden;
@@ -150,14 +154,9 @@ tile {
         left: 0;
     }
 
-    &:not(.interactive) .img-show .img-core {
-        opacity: 1;
-    }
-
     &-container {
-        position: relative;
-        display: block;
-        height: $tileHeight;
+        height: 100%;
+        @apply relative block overflow-hidden;
     }
 
     &-content {
@@ -187,6 +186,7 @@ tile {
     }
 
     h3 {
+        @apply font-montserrat;
         text-transform: uppercase;
         font-size: get($sizes, "6");
         line-height: 3;
