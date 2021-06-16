@@ -1,7 +1,7 @@
 @use "./mixin.scss" as *;
 
 html {
-    font-family: "Montserrat", Helvetica, "Helvetica Neue", Arial, sans-serif;
+    @apply font-manrope font-400;
     background-color: $black;
     color: $white;
 
@@ -10,10 +10,32 @@ html {
     line-height: 1.15;
     font-weight: 400;
     font-size: 15px;
+    -webkit-tap-highlight-color: transparent;
 
     @media (max-width: 300px) {
         word-break: break-all;
     }
+}
+
+a {
+    @apply text-primary;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        color: darken($primary, 55%);
+    }
+}
+
+button,
+a {
+    transition: box-shadow 0.2s ease-out;
+    @apply focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-opacity-90;
+    @apply ring-offset-2 ring-offset-black;
+    @apply rounded-md focus:outline-none;
 }
 
 figure.img {
@@ -63,27 +85,18 @@ figure.img {
 }
 
 a.skip-main {
+    transition: border 0.35s ease;
     border: 2px solid $primary;
-    color: $primary;
-    background-color: $black;
-    transform: translate3d(-50%, 0, 0);
-    position: absolute;
-    border-radius: 6px;
-    text-align: center;
-    font-weight: 600;
-    margin: 80px auto;
-    contain: content;
-    font-size: 1.2em;
-    overflow: auto;
-    height: auto;
-    padding: 5px;
-    z-index: 500;
-    width: 40%;
-    left: 50%;
-    top: auto;
+    color: $black;
+    background-color: $primary;
+    transform: translateX(-50%);
 
-    opacity: 0;
-    pointer-events: none;
+    @apply absolute top-0 left-0 rounded-lg text-center mt-10 text-lg py-2 w-full;
+    @apply transform left-1/2 -translate-x-1/2 opacity-0 pointer-events-none;
+    max-width: theme("spacing.96");
+
+    z-index: 500;
+
 
     &:focus,
     &:active {
@@ -91,10 +104,8 @@ a.skip-main {
         pointer-events: auto;
     }
 }
-
 main {
     position: relative;
-    z-index: 50;
     // contain: content;
 }
 
@@ -118,19 +129,14 @@ tile {
     height: $tileHeight;
 
     a {
-        z-index: 0;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
+        @apply relative block;
     }
 
     &.interactive a {
         pointer-events: auto;
     }
 
-    &,
+    a,
     figure.img {
         overflow: hidden;
         border-radius: get($radii, "lg");
@@ -278,12 +284,13 @@ tile {
 }
 
 #back-to-top {
+    transition: box-shadow 0.2s ease-out;
     position: relative;
     // bottom: 0;
     // left: 0;
     display: flex;
     // text-align: center;
-    z-index: 50;
+    // z-index: 50;
     padding: get($sizes, "3") get($sizes, "4");
     margin: get($sizes, "5") auto;
     border-radius: get($radii, "full");
@@ -294,35 +301,10 @@ tile {
     letter-spacing: 0.5px;
     cursor: pointer;
 
-    &:before,
-    &:after {
-        border-radius: get($radii, "full");
-        position: absolute;
-        content: "";
-        display: block;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-    }
-
-    &:before {
-        border: 4px solid transparent;
-    }
-
-    &:after {
-        border: 2px solid transparent;
-    }
-
     &:focus,
     &:hover {
-        &:before {
-            border-color: $black;
-        }
-
-        &:after {
-            border-color: $primary;
-        }
+        @apply ring-2 ring-primary;
+        @apply ring-offset-2 ring-offset-black;
     }
 
     .icon,

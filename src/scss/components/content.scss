@@ -12,23 +12,19 @@
 }
 
 .content {
-    // font-size: 1.125rem;
-    font-size: get($sizes, "4.5");
+    @apply text-base;
     line-height: 2;
 
     .layout {
-        padding: get($sizes, "12") get($sizes, "8");
-    }
+        padding: get($sizes, "12") get($sizes, "3");
 
-    @include screen("sm") {
-        .layout {
+        @include screen("sm") {
             padding: get($sizes, "24") get($sizes, "10");
         }
     }
 
     @include screen("lg") {
         font-size: get($sizes, "5");
-        // line-height: 2.5rem;
     }
 }
 

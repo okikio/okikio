@@ -8,27 +8,27 @@ banner {
         font-size: get($sizes, "12");
         font-weight: 800;
         word-break: break-all;
-    
+
         @include screen("sm") {
             font-size: get($sizes, "16");
         }
-    
+
         @include screen("lg") {
             font-size: get($sizes, "24");
         }
     }
-    
+
     h2 {
         font-size: get($sizes, "5");
         line-height: 1.5em;
         font-weight: 500;
-    
+
         @include screen("sm") {
             font-size: get($sizes, "6");
         }
-    
+
         @include screen("lg") {
-            font-size: get($sizes, "8");
+            font-size: get($sizes, "7");
         }
     }
 
@@ -45,7 +45,6 @@ banner {
 
             @screen sm {
                 height: 350px;
-
             }
         }
     }
@@ -65,30 +64,30 @@ banner {
         section {
             @apply absolute left-0 bottom-0 transform -translate-x-1/2 pb-5;
         }
-    
+
         &:hover,
         &:focus {
             text-decoration: line-through;
         }
-    
+
         .scroll-text {
             text-transform: uppercase;
             font-size: get($sizes, "4");
             font-weight: 600;
         }
-    
+
         .scroll-outline,
         .scroll-icon {
             $sz: 1.75em;
             font-size: get($sizes, "8");
             border-radius: get($radii, "full");
-    
+
             color: $black;
             width: $sz;
             height: $sz;
             line-height: $sz;
         }
-    
+
         .scroll-outline {
             transform-origin: center center;
             border: 2px solid $primary;
@@ -99,11 +98,15 @@ banner {
             left: 0;
             top: 0;
         }
-    
+
         .scroll-icon {
-            background-color: $primary;
-            margin: get($sizes, "5");
-            position: relative;
+            @apply relative bg-primary my-5;
+
+            &:hover,
+            &:focus {
+                @apply ring-4 ring-primary ring-opacity-90;
+                @apply ring-offset-2 ring-offset-black;
+            }
         }
     }
 }

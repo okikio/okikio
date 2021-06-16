@@ -7,8 +7,7 @@ nav {
     left: 0;
     contain: layout size;
     display: block;
-    z-index: 100;
-    @apply font-montserrat;
+    @apply z-50 font-montserrat;
 
     &[initial-color="bright"] {
         color: $primary;
@@ -49,10 +48,6 @@ nav {
 
     @include screen("lt-sm") {
         transition: color 0.55s ease-out 0.2s;
-
-        nav-overlay {
-            transition: opacity ease-out 0.75s;
-        }
 
         nav-cover[type="large"] {
             transition: transform 0.55s ease-out, opacity 0.55s ease-out 0.45s,
@@ -107,16 +102,20 @@ nav {
 }
 
 nav-overlay {
-    background-color: transparentize(black, 0.2);
-    position: absolute;
+    transition: opacity 0.25s ease;
+    background-color: transparentize(black, 0.1);
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
     opacity: 0;
+    @apply z-30;
+    pointer-events: none;
 
     @screen lt-sm {
         &.show {
+            transition: opacity 0.55s ease-out 0.35s;
             opacity: 1;
         }
     }
@@ -158,10 +157,11 @@ navbar {
     flex-wrap: nowrap;
     word-wrap: normal;
     white-space: nowrap;
+    @apply items-center;
 }
 
 .navbar-logo {
-    padding: 0 get($sizes, "4");
+    padding: 0 get($sizes, "6");
     margin: 0 get($sizes, "2");
     display: flex;
     align-items: center;
@@ -169,39 +169,36 @@ navbar {
     &,
     &:hover,
     &:focus {
-        line-height: $navHeight;
         text-decoration: none;
     }
 }
 
 navbar-list {
+    @apply relative items-center flex-nowrap flex;
     margin-right: get($sizes, "2");
-    display: flex;
 
     @include screen("sm") {
         font-size: get($sizes, "3");
-        overflow: hidden;
     }
 
     @include screen("lt-sm") {
-        line-height: 1.5 * $navHeight;
+        line-height: theme("spacing.16");
         font-size: get($sizes, "12");
-        position: absolute;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        width: 100%;
-        top: 0;
-        left: 0;
+        @apply absolute top-0 left-0 w-full h-screen flex-col justify-center items-center;
     }
 }
 
 .navbar-link {
     text-transform: uppercase;
-    padding: 0 get($sizes, "6");
     font-weight: 600;
     letter-spacing: 2px;
+    height: theme("spacing.10");
+    @apply px-6 lt-sm:py-8 relative items-center flex-nowrap flex;
+
+    @include screen("lt-sm") {
+        line-height: theme("spacing.16");
+    }
+
 
     &:hover,
     &:focus,
@@ -243,9 +240,9 @@ nav-link-bar {
 .navbar-link,
 .navbar-logo,
 .navbar-menu {
-    border: 2px dotted transparent;
+    line-height: theme("spacing.10");
     cursor: pointer;
-    z-index: 50;
+    @apply z-50;
 }
 
 .navbar-menu {

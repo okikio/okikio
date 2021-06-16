@@ -116,11 +116,6 @@ template {
     display: none;
 }
 
-html, body {
-    @apply font-manrope font-400;
-
-}
-
 h1,
 h2,
 h3,
@@ -174,38 +169,11 @@ $headerSizes: (4.2rem, 3.56rem, 2.92rem, 2.28rem, 1.64rem, 1rem);
     }
 }
 
-a {
-    color: rgb(63, 63, 238);
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-
-    &:hover,
-    &:focus {
-        text-decoration: underline;
-        color: rgb(76, 76, 197);
-    }
-}
-
-// For touch screen devices
-
-
-button,
-a {
-    transition: box-shadow 0.2s ease-out;
-    @apply focus-visible:ring-4 focus-visible:ring-blue-600 focus-visible:ring-opacity-50;
-    @apply ring-offset-2 ring-offset-black dark:ring-offset-white;
-    @apply rounded-md focus:outline-none;
-
-    -webkit-tap-highlight-color: transparent;
-}
-
 // For touch screen devices
 a,
 button {
-    -webkit-tap-highlight-color: transparent;
     background-image: none;
-    outline: 0;
+    outline: none;
 
     @screen lt-sm {
         user-select: none;

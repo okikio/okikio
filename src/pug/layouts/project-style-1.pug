@@ -1,15 +1,15 @@
 extends /layouts/project.pug
 
 block hero
-  .project-1.bg-primary(data-layer="bright" initial-nav-color="dark")
-    .project-layout.container.layout.flex.max-w-lg.justify-center
+  banner.project-1.bg-primary(data-layer="bright" initial-nav-color="dark")
+    .project-layout.container-lg.flex.justify-center.text-black
       section.self-center
-        h1.scroll-pt.project-title #{name}.
+        h1.project-title #{name}.
         h2.project-description #{project.description}
 
 block content
-  .content.project-1.max-w-lg.m-auto
-    .container
+  .content.project-1.m-auto
+    .container-lg
       block info
 
       .py-10
