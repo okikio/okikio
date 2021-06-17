@@ -25,20 +25,20 @@ mixin footer(value = {})
           href: "https://www.linkedin.com/in/okikio",
           class: "layout-margin-left-mini",
           content: "LinkedIn"
-        })(target="_blank" rel="noreferrer noopener" title="My LinkedIn page.")
+        })(target="_blank" rel="noopener" title="My LinkedIn page.")
         span= " - "
         +link({
           href: "https://github.com/okikio",
           class: "layout-margin-left-mini",
           content: "Github"
-        })(target="_blank" rel="noreferrer noopener" title="The official Okiki Ojo github link.")
+        })(target="_blank" rel="noopener" title="The official Okiki Ojo github link.")
         span= " - "
         span(itemprop="publisher" itemscope itemtype="https://schema.org/Organization" itemid="https://okikio.netlify.app")
           +link({
             href: "mailto:hey@okikio.dev",
             class: "layout-margin-left-mini",
             content: "Email"
-          })(target="_blank" rel="noreferrer noopener" itemprop="email" title="An email you can contact me with.")
+          })(target="_blank" rel="noopener" itemprop="email" title="An email you can contact me with.")
       div
         span
           span Made with
@@ -50,4 +50,4 @@ mixin footer(value = {})
             +link({
               href: "https://github.com/okikio",
               content: "Okiki Ojo"
-            })(target="_blank" rel="noreferrer noopener" title="The github link to the Web Developer who designed this site, Okiki Ojo.")
+            })(target="_blank" rel="noopener" title="The github link to the Web Developer who designed this site, Okiki Ojo.")
