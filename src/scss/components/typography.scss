@@ -1,130 +1,21 @@
 @use "./mixin.scss" as *;
-// $fonts: (
-//     "title": $title-font,
-//     "regular": $regular-font,
-//     "bold": $bold-font,
-// );
 
-.text {
-    $styleParent: &;
-    font-weight: 400;
-    font-size: 14px;
+.content {
+    @apply text-base;
+    line-height: 2;
 
-    // @include propertyList(font-family, $fonts);
-    @include propertyList(font-size, $sizes);
-    @include deviceList {
-        @include propertyList(font-size, $sizes);
-    }
-
-    @for $weight from 1 through 9 {
-        &-#{$weight}00 {
-            font-weight: #{$weight + "00"};
-        }
-    }
-
-    &-title {
-        font-family: "Montserrat", Helvetica, "Helvetica Neue", Arial,
-            sans-serif;
-    }
-
-    &-content {
-        font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
-    }
-
-    &-bolder {
-        font-weight: 800;
-    }
-
-    &-bold {
-        font-weight: 600;
-    }
-
-    &-regular {
-        font-weight: 400;
-    }
-
-    &-italic {
-        font-style: italic;
-    }
-
-    &-underline {
-        text-decoration: underline;
-    }
-
-    &-left {
-        text-align: left;
-    }
-
-    &-center {
-        text-align: center;
-    }
-
-    &-right {
-        text-align: right;
-    }
-
-    &-justify {
-        text-align: justify;
-        text-justify: inter-word;
-    }
-
-    &-capital {
-        text-transform: capitalize;
-    }
-
-    &-uppercase {
-        text-transform: uppercase;
-    }
-
-    &-lowercase {
-        text-transform: lowercase;
+    @include screen("sm") {
+        @apply text-lg;
+        line-height: 2;
     }
 }
 
-.letter-spacing {
-    letter-spacing: 3px;
-
-    &-none {
-        letter-spacing: 0;
-    }
-
-    &-small {
-        letter-spacing: 1px;
-    }
-
-    &-double {
-        letter-spacing: 2px;
-    }
-
-    &-large {
-        letter-spacing: 7px;
-    }
+.section-title {
+    @apply text-2xl sm:text-3xl font-600;
+    line-height: 2;
 }
 
-.line-height {
-    line-height: 1.5rem;
-
-    &-none {
-        line-height: 0;
-    }
-
-    &-small {
-        line-height: 1;
-    }
-
-    &-double {
-        line-height: 2rem;
-    }
-
-    &-large {
-        line-height: 2.5rem;
-    }
-
-    &-xl {
-        line-height: 3rem;
-    }
-
-    &-huge {
-        line-height: 3.5rem;
-    }
+.sub-section-title {
+    @apply font-manrope text-xl sm:text-2xl;
+    line-height: 1.75;
 }

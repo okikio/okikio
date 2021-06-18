@@ -3,7 +3,7 @@ extends /layouts/layout.pug
 block hero
   banner.container-lg(data-layer="bright" initial-nav-color="bright")
     .w-full.h-screen.flex.flex-col.items-center
-      .flex-spacer.w-full.flex.items-center
+      .flex-grow.w-full.flex.items-center
         .content
           h1 Hello, I'm 
             span.inline-block.text-primary Okiki.
@@ -21,17 +21,19 @@ block hero
 block content
   .content
     #about
-    .layout.max-w-lg
-      h3.h4.text-bold.text-primary About
-      p Hey, I am Okiki Ojo (pronounced O-ke-ke O-jo), I'm a student currently studying Software Engineering at Ontario Tech University (formerly University of Ontario Institute of Technology, UOIT). I have a passion for design and development, I like to create things that don't only look good but that also function on multiple devices. I am always eager to take on a challenge. I develop websites that are functional, efficient and that act as an excellent representation of a person or business on the digital landscape. I have a 4+ years of experience designing sites, I would love to bring your digital vision to reality.
+    top-space.container-lg
+      h3.section-title.text-bold.text-primary About
+      | Hey, I am Okiki Ojo (pronounced O-ke-ke O-jo), I'm a student currently studying Software Engineering at Ontario Tech University (formerly University of Ontario Institute of Technology, UOIT). I have a passion for design and development, I like to create things that don't only look good but that also function on multiple devices. I am always eager to take on a challenge. I develop websites that are functional, efficient and that act as an excellent representation of a person or business on the digital landscape. I have a 4+ years of experience designing sites, I would love to bring your digital vision to reality.
 
-      h4.h5.text-bold.mt-16 Skills
-      p I have experience in Javascript, Typescript, CSS/Sass/SCSS, HTML, Pug, Node.js, Fastify, Pjax, C#, C++, and more... I prefer to learn skills as I need them, so I can focus on finding solutions to problems instead of trying to implement new technologies for the sake of implementing them.
+      h4.sub-section-title.mt-16 Skills
+      | I have experience in Javascript, Typescript, CSS/Sass/SCSS, HTML, Pug, Node.js, Fastify, Pjax, C#, C++, and more... I prefer to learn skills as I need them, so I can focus on finding solutions to problems instead of trying to implement new technologies for the sake of implementing them.
 
-      h4.h5.text-bold.mt-16 Method
-      p When developing sites I first aim to understand the needs and goals of the project, I then determine the best approach to build a site. There are four parts to my method, speed, efficiency, ease-of-use, and impact.
+      h4.sub-section-title.mt-16 Method
+      | When developing sites I first aim to understand the needs and goals of the project, I then determine the best approach to build a site. There are four parts to my method, speed, efficiency, ease-of-use, and impact.
+      br
+      br
 
-    .layout.max-w-lg.layer-bg-gray.pb-0
+    .layout.rounded-layout.bg-elevated
       .grid-4
         -
           let cols = [
@@ -45,21 +47,22 @@ block content
           div
             .icon-outline
               +icon(val[0])
-            h3.text-bold.text-5.my-5= val[1]
+            h3.sub-section-title.mt-3= val[1]
             p.description= val[2]
 
     #projects
-    .layout.max-w-xl
-      .max-w-lg.m-auto
-        h3.h4.text-bold.text-primary Projects
-        p Here are some of the projects I have completed thus far:
+    .container-xl
+      top-space.container.max-w-screen-lg(class="pb-3 lg:pb-10")
+        h3.section-title.text-primary Projects
+        | Here are some of the projects I have completed thus far:
 
-      .grid-6
+      .row.col-grid
         each val in self.projects
-          +tile(Object.assign({ interactive: true }, val))
-
-    .layout.max-w-xl.text-center#contact
-      h3.h3.text-bold.text-primary Contact
+          .col-4
+            +tile(Object.assign({ interactive: true }, val))
+    
+    .container-xl.text-center#contact.pt-24
+      h3.section-title.font-600.text-primary Contact
 
       .py-12.line-height-huge
         -
@@ -77,4 +80,4 @@ block content
           -
             let href = info[0];
             let content = info[1];
-          +link(href).mx-5(target="_blank" rel="noopener")= content
+          +link(href)(class="mx-2 px-3")= content

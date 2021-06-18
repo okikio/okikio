@@ -11,16 +11,16 @@ block pageInfo
 
 block hero
   banner.bg-primary.text-black(data-layer="bright" initial-nav-color="dark")
-    .layout.max-w-lg.h-screen.pt-24.px-10
+    .container.max-w-screen-lg.h-screen.pt-24
       section.flex.flex-col.h-full
-        .flex-spacer.flex.items-center
-          div
-            h1.text-uppercase Missing Page. 
-            h2
+        .flex-grow.flex.items-center
+          div.layout
+            h1(class="text-uppercase lt-sm:text-4xl mb-3") Missing Page. 
+            h2(class="text-base sm:text-lg md:text-xl")
               | Yikes, it seems you have run into a 404 page and are lost, would you like to 
               +link("/").return-home return home.
         footer.pt-24.relative
-          .absolute.bottom-0.left-0.text-center
+          .absolute.bottom-0.left-0.text-center.w-full
             +copyright
 
 block content

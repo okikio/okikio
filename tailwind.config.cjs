@@ -14,6 +14,14 @@ module.exports = {
                 manrope: ["Manrope", "Century Gothic", "sans-serif"],
                 montserrat: ["Montserrat", "Century Gothic", "sans-serif"],
             },
+            spacing: {
+                300: "300px",
+                400: "400px",
+                450: "450px",
+                500: "500px",
+            },
+            minHeight: (theme) => theme("spacing"),
+            minWidth: (theme) => theme("spacing"),
             fontWeight,
             colors: {
                 elevated: "#1C1C1E",

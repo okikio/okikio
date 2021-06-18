@@ -62,7 +62,7 @@ nav {
 
         .navbar-link {
             transition: visibility 0.55s ease, opacity 0.35s ease,
-                transform 0.35s ease-out 0.45s;
+                transform 0.35s ease-out 0.45s, box-shadow ease-out 0.35s;
             visibility: hidden;
             transform: translateY(100px);
             opacity: 0;
@@ -93,7 +93,7 @@ nav {
                     &:nth-of-type(#{$i}) {
                         $duration: 0.35s + $i * 0.25s;
                         transition: opacity 0.35s ease 0.3s,
-                            transform #{$duration} ease 0.2s;
+                            transform #{$duration} ease 0.2s, box-shadow ease-out 0.35s;
                     }
                 }
             }

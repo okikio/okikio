@@ -4,18 +4,8 @@ banner {
     @apply block relative;
 
     h1 {
-        @apply font-montserrat;
-        font-size: get($sizes, "12");
-        font-weight: 800;
+        @apply font-montserrat font-800 text-5xl sm:text-6xl lg:text-8xl mb-4;
         word-break: break-all;
-
-        @include screen("sm") {
-            font-size: get($sizes, "16");
-        }
-
-        @include screen("lg") {
-            font-size: get($sizes, "24");
-        }
     }
 
     h2 {
@@ -33,7 +23,7 @@ banner {
     }
 
     .image {
-        @apply absolute bottom-1/2 right-5 transform translate-y-1/2;
+        @apply absolute bottom-1/2 right-5 translate-y-1/2;
         width: 250px;
 
         @screen sm {
@@ -50,7 +40,7 @@ banner {
     }
 
     .content {
-        @apply z-10;
+        z-index: 10;
     }
 
     .scroll-btn {
@@ -62,7 +52,7 @@ banner {
         @apply relative;
 
         section {
-            @apply absolute left-0 bottom-0 transform -translate-x-1/2 pb-5;
+            @apply absolute left-0 bottom-0 -translate-x-1/2 pb-5;
         }
 
         &:hover,
@@ -114,23 +104,138 @@ banner {
 top-space {
     padding-top: $navHeight;
     display: block;
-}
 
-.layer-primary {
-    background: $primary;
-    color: $black;
-}
-
-.layer-black {
-    background: $black;
-    color: $primary;
-}
-
-.layout {
-    margin: 0 auto;
-    width: 100%;
+    @supports (padding-top: env(safe-area-inset-top)) {
+        padding-top: calc(#{$navHeight} + env(safe-area-inset-top));
+    }
 }
 
 .return-home {
     @apply bg-black hover:text-primary px-3;
+}
+
+#main {
+    a {
+        color: $primary;
+    }
+
+    svg {
+        vertical-align: middle;
+        width: 1em;
+        height: 1em;
+    }
+}
+
+tile {
+    @apply relative block lt-sm:h-72 sm:h-96;
+
+    a {
+        @apply relative block h-full;
+    }
+    &:not(.interactive),
+    a,
+    figure.img {
+        overflow: hidden;
+        border-radius: get($radii, "lg");
+    }
+
+    figure.img {
+        transition: transform ease 0.55s;
+        transform: scale(1);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    &-container {
+        height: 100%;
+        @apply relative block overflow-hidden;
+    }
+
+    &-content {
+        transition: transform ease 0.55s;
+        @apply absolute left-0 bottom-0 block px-6 py-5;
+        z-index: 5;
+    }
+
+    h3 {
+        @apply font-montserrat font-700 text-lg md:text-xl;
+        text-transform: uppercase;
+        line-height: 2.5em;
+        word-break: break-all;
+    }
+
+    p {
+        @apply font-400 text-lg;
+        line-height: 1.5em;
+    }
+
+    &-overlay {
+        transition: opacity ease 0.65s;
+        background-color: rgba(38, 43, 63, 0.3);
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    $pLineHeight: calc(2 * (1.5 * theme("fontSize.lg")) + theme("spacing.5") / 2);
+    &.interactive {
+        tile-content {
+            transition: transform ease 0.55s;
+    
+            $textOffset: $pLineHeight;
+            transform: translateY($textOffset);
+        }
+
+        p {
+            transition: opacity ease 0.55s;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        tile-overlay {
+            @supports not (backdrop-filter: blur(5px)) {
+                background-color: rgba(38, 43, 63, 0.8);
+            }
+
+            backdrop-filter: blur(8px);
+            opacity: 0;
+        }
+
+        &:hover,
+        &:focus {
+            figure.img {
+                transform: scale(1.5);
+            }
+
+            tile-overlay {
+                opacity: 1;
+            }
+
+            tile-content {
+                transform: translateY(0);
+            }
+
+            p {
+                opacity: 1;
+            }
+        }
+
+        @screen lt-sm {
+            tile-content {
+                transform: translateY(0);
+            }
+            
+            p {
+                opacity: 1;
+            }
+        }
+    }
 }

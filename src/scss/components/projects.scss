@@ -3,54 +3,39 @@
 .project-title {
     font-weight: 800;
     text-transform: uppercase;
-    font-size: get($sizes, "16");
+    @apply lt-xsm:text-2xl text-3xl sm:text-5xl;
     line-height: 2;
     word-break: break-all;
 }
 
 .project-description {
-    font-size: get($sizes, "6");
+    @apply text-lg;
     line-height: 1.5;
 
-    @include screen("lt-sm") {
-        font-size: get($sizes, "5");
+    @include screen("sm") {
+        @apply text-2xl;
+        line-height: 1.75;
     }
 }
 
 .project-1 {
-    .project-layout {
-        $padding-y: get($sizes, "32");
-        padding: {
-            top: $padding-y;
-            bottom: $padding-y;
-        }
-    }
+    // .project-layout {
+    //     $padding-y: get($sizes, "32");
+    //     padding: {
+    //         top: $padding-y;
+    //         bottom: $padding-y;
+    //     }
+    // }
 
-    .container {
-        $padding-x: get($sizes, "10");
-        padding: {
-            left: $padding-x;
-            right: $padding-x;
-        }
-    }
-
-    $padding-title-y: get($sizes, "12");
-    .project-title {
-        padding: {
-            bottom: $padding-title-y;
-        }
-    }
+    // .container {
+    //     $padding-x: get($sizes, "10");
+    //     padding: {
+    //         left: $padding-x;
+    //         right: $padding-x;
+    //     }
+    // }
 
     @include screen("lt-sm") {
-        .project-title {
-            font-size: get($sizes, "8");
-            line-height: 1.5;
-            padding: {
-                bottom: $padding-title-y;
-                top: $padding-title-y;
-            }
-        }
-
         .project-layout {
             $padding-y: get($sizes, "24");
             padding: {
@@ -59,53 +44,58 @@
             }
         }
 
-        .container {
-            $padding-x: get($sizes, "5");
-            padding: {
-                left: $padding-x;
-                right: $padding-x;
-            }
-        }
+        // .container {
+        //     $padding-x: get($sizes, "5");
+        //     padding: {
+        //         left: $padding-x;
+        //         right: $padding-x;
+        //     }
+
+        //     @supports (padding-top: env(safe-area-inset-left)) {
+        //         padding: {
+        //             left: calc(#{$padding-x} + env(safe-area-inset-left));
+        //             right: calc(#{$padding-x} + env(safe-area-inset-right));
+        //         }
+        //     }
+        // }
+    }
+}
+.project-capsule {
+    @apply bg-black relative;
+    @apply md:px-10 lt-sm:rounded-xl sm:rounded-3xl;
+
+    $offset: 240px;
+    padding-top: $offset;
+
+    @include screen("md") {
+        $offset: 280px;
+        padding-top: $offset;
     }
 }
 
 .project-2 {
-    .project-capsule {
-        background-color: $black;
-        // border-radius: get($radii, "lg");
 
-        @apply md:px-10 lt-sm:rounded-xl sm:rounded-3xl;
+    // .container {
+    //     @include screen("md") {
+    //         $padding-x: get($sizes, "16");
+    //         padding: {
+    //             left: $padding-x;
+    //             right: $padding-x;
+    //         }
+    //     }
+    // }
 
-        $offset: 240px;
-        padding-top: $offset;
+    // .project-title {
+    //     line-height: 1.5;
+    //     @apply pb-6 sm:pb-12;
+    //     @include screen("lt-sm") {
+    //         font-size: get($sizes, "12");
+    //     }
 
-        @include screen("md") {
-            $offset: 280px;
-            padding-top: $offset;
-        }
-    }
-
-    .container {
-        @include screen("md") {
-            $padding-x: get($sizes, "16");
-            padding: {
-                left: $padding-x;
-                right: $padding-x;
-            }
-        }
-    }
-
-    .project-title {
-        line-height: 1.5;
-        @apply pb-6 sm:pb-12;
-        @include screen("lt-sm") {
-            font-size: get($sizes, "12");
-        }
-
-        @include screen("lt-xsm") {
-            font-size: get($sizes, "10");
-        }
-    }
+    //     @include screen("lt-xsm") {
+    //         font-size: get($sizes, "10");
+    //     }
+    // }
 
     @include screen("md") {
         border-radius: get($radii, "3xl");
@@ -115,16 +105,13 @@
         }
     }
 
-    @include screen("lg") {
-        .project-title {
-            font-size: get($sizes, "24");
-        }
-    }
+    // @include screen("lg") {
+    //     .project-title {
+    //         font-size: get($sizes, "24");
+    //     }
+    // }
 }
 
-.project-banner-layout {
-   @apply px-6 py-16 sm:px-10 sm:py-32; 
-}
 
 .bg {
     // filter: blur(25px);

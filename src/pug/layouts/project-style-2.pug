@@ -5,7 +5,7 @@ block hero
     - let image = page.image;
     +image(image.src.replace("cloudinary", "cloudinary/e_blur:1500"), "").object-center
   banner.title-banner.project-2(data-layer="bright" initial-nav-color="bright")
-    .layout.flex.max-w-lg.project-banner-layout.justify-center
+    .layout.container-lg.flex.justify-center
       section.self-center.text-primary
         top-space
         h1.project-title #{name}.
@@ -27,7 +27,7 @@ block content
         -
           let href = info[0];
           let content = info[1];
-        +link(href)(target="_blank" rel="noopener")= content
+        +link(href)= content
 
   .content.mb-16.project-2
     .container-lg

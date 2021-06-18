@@ -41,6 +41,27 @@
     }
 }
 
+.icon-outline {
+    text-align: center;
+    $sz: get($sizes, "16");
+    color: $primary;
+    font-size: get($sizes, "8");
+    width: $sz;
+    height: $sz;
+    line-height: $sz;
+    border-radius: get($radii, "full");
+    background: transparentize($primary, 0.75);
+    display: grid;
+
+    @include screen("md") {
+        margin: 0 auto;
+    }
+
+    svg {
+        place-self: center;
+    }
+}
+
 .btn {
     transition: width 0.6s ease 0s !important;
     @apply overflow-hidden select-none;
@@ -70,5 +91,31 @@
         @apply text-center text-sm;
         @apply font-bold uppercase whitespace-nowrap;
         @apply overflow-hidden flex w-full;
+    }
+}
+
+#back-to-top {
+    transition: box-shadow 0.2s ease-out;
+    position: relative;
+    display: flex;
+    padding: get($sizes, "3") get($sizes, "4");
+    margin: get($sizes, "5") auto;
+    border-radius: get($radii, "full");
+    align-items: center;
+    background-color: $primary;
+    color: $black;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+
+    &:focus,
+    &:hover {
+        @apply ring-2 ring-primary;
+        @apply ring-offset-2 ring-offset-black;
+    }
+
+    .icon,
+    span {
+        margin-right: get($sizes, "2");
     }
 }

@@ -1,213 +1,129 @@
 @use "./mixin.scss" as *;
 
-/* -- Presets & Resets -- */
-/* -- Elements -- */
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-button,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-main,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video,
-svg {
-    &,
-    &:before,
-    &:after {
-        box-sizing: border-box;
-        font-family: inherit;
-        font-size: 100%;
-        outline: none;
-        resize: none;
-        border: none;
-        padding: 0;
-        margin: 0;
-    }
-}
+html {
+    @apply font-manrope font-400;
+    background-color: $black;
+    color: $white;
 
-/**
- * Add the correct display in IE 10+.
- */
-
-template {
-    display: none;
-}
-
-/**
- * Add the correct display in IE 10.
- */
-
-[hidden] {
-    display: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: inherit;
+    text-rendering: optimizeSpeed;
+    word-wrap: break-word;
     line-height: 1.15;
     font-weight: 400;
-    color: inherit;
-    display: block;
-}
+    font-size: 15px;
+    -webkit-tap-highlight-color: transparent;
 
-.h1 {
-    margin: 2.1rem 0 1.68rem 0;
-    font-weight: 900;
-}
-
-.h2 {
-    margin: 1.78rem 0 1.424rem 0;
-    font-weight: 700;
-}
-
-.h3 {
-    margin: 1.46rem 0 1.168rem 0;
-    font-weight: 600;
-}
-
-.h4 {
-    margin: 1.14rem 0 0.912rem 0;
-}
-
-.h5 {
-    margin: 0.82rem 0 0.656rem 0;
-}
-
-.h6 {
-    margin: 0.5rem 0 0.4rem 0;
-}
-
-.p {
-    margin: 0 2em 10px 2em;
-}
-
-$headerSizes: (4.2rem, 3.56rem, 2.92rem, 2.28rem, 1.64rem, 1rem);
-@each $sz in $headerSizes {
-    $i: index($headerSizes, $sz);
-
-    .h#{$i} {
-        font-size: $sz;
+    @media (max-width: 300px) {
+        word-break: break-all;
     }
 }
 
-// For touch screen devices
-a,
-button {
-    background-image: none;
-    outline: none;
+a {
+    @apply text-primary;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
 
-    @screen lt-sm {
-        user-select: none;
-    }
-
-    &::-moz-focus-inner {
-        border: 0;
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        color: darken($primary, 55%);
     }
 }
 
-
-ul,
-.ul,
-ol,
-.ol {
-    list-style-type: disc;
-    margin: 20px 2em;
-    display: block;
+button,
+a {
+    transition: box-shadow 0.2s ease-out;
+    @apply focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-opacity-90;
+    @apply ring-offset-2 ring-offset-black;
+    @apply rounded-md focus:outline-none;
 }
 
-ol,
-.ol {
-    list-style-type: decimal;
+figure.img {
+    background-color: rgb(31, 31, 44);
+    min-height: 200px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    &.h-default {
+        height: 400px;
+    }
+
+    &-show .img-core {
+        opacity: 0.7;
+    }
+
+    img {
+        position: absolute;
+        object-fit: cover;
+        object-position: center top;
+        left: 0;
+        bottom: 0;
+
+        height: 100%;
+        width: 100%;
+    }
+
+    &.bottom img {
+        object-position: center bottom;
+    }
 }
 
-ul ul,
-.ul .ul,
-ol ul,
-.ol .ul {
-    list-style-type: circle;
+.img-core {
+    transition: opacity ease 0.45s;
+    opacity: 0;
 }
 
-li,
-.li {
-    text-align: inherit;
-    display: list-item;
+.img-core,
+.no-script-img {
+    image-rendering: auto;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+a.skip-main {
+    transition: border 0.35s ease;
+    border: 2px solid $primary;
+    color: $black;
+    background-color: $primary;
+    transform: translateX(-50%);
+
+    @apply absolute top-0 left-0 rounded-lg text-center mt-10 text-lg py-2 w-full;
+    @apply left-1/2 -translate-x-1/2 opacity-0 pointer-events-none;
+    max-width: theme("spacing.96");
+
+    z-index: 500;
+
+
+    &:focus,
+    &:active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+figure.object-center img {
+    @apply object-center;
+}
+
+.footer-layout {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include screen("lt-md") {
+        flex-direction: column;
+    }
+
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+#copyright {
+    @apply relative z-10;
 }

@@ -6,7 +6,7 @@ mixin prev_and_next(prev, next)
           +icon("navigate_before").prev_icon
           .bg
         span Previous
-    .flex-spacer
+    .flex-grow
     if next
       +link(next.url)(class="next text-right" title=next.title)
         span Next
