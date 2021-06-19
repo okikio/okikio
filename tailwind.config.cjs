@@ -11,6 +11,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
+                sans: ["Manrope", "Century Gothic", "sans-serif"],
                 manrope: ["Manrope", "Century Gothic", "sans-serif"],
                 montserrat: ["Montserrat", "Century Gothic", "sans-serif"],
             },

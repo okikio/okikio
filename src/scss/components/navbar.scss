@@ -1,21 +1,13 @@
 @use "./mixin.scss" as *;
 
 nav {
-    transition: color 0.35s ease;
+    transition: color 0.35s ease-out;
     position: fixed;
     top: 0;
     left: 0;
     contain: layout size;
     display: block;
     @apply z-50 font-montserrat;
-
-    &[initial-color="bright"] {
-        color: $primary;
-    }
-
-    &[initial-color="dark"] {
-        color: $black;
-    }
 
     &[color-mode="bright"] {
         &:hover,
@@ -39,6 +31,14 @@ nav {
         }
     }
 
+    &[initial-color="bright"] {
+        color: $primary;
+    }
+
+    &[initial-color="dark"] {
+        color: $black;
+    }
+
     &:hover,
     &.active {
         nav-cover[type="small"] {
@@ -47,11 +47,19 @@ nav {
     }
 
     @include screen("lt-sm") {
-        transition: color 0.55s ease-out 0.2s;
+        transition: color 0.45s ease-out;
+
+        &[initial-color="bright"] {
+            &:not(:hover) {
+                nav-cover[type="large"] {
+                    background-color: $black;
+                }
+            }
+        }
 
         nav-cover[type="large"] {
-            transition: transform 0.55s ease-out, opacity 0.55s ease-out 0.45s,
-                background-color 0.55s ease-out 0.2s;
+            transition: transform 0.5s ease, opacity 0.5s ease 0.45s,
+                background-color 0.5s ease-out 0.2s;
         }
 
         navbar-list {
@@ -69,11 +77,11 @@ nav {
         }
 
         &.show {
-            transition: color 0.45s ease;
+            transition: color 0.35s ease-out;
             color: $primary !important;
 
             nav-cover[type="large"] {
-                transition: transform 0.55s ease-out, opacity 0.35s ease-out;
+                transition: transform 0.5s ease, background-color 0.35s ease-out;
                 transform: translateY(0);
                 background-color: $black;
                 opacity: 1;
@@ -93,7 +101,8 @@ nav {
                     &:nth-of-type(#{$i}) {
                         $duration: 0.35s + $i * 0.25s;
                         transition: opacity 0.35s ease 0.3s,
-                            transform #{$duration} ease 0.2s, box-shadow ease-out 0.35s;
+                            transform #{$duration} ease 0.2s,
+                            box-shadow ease-out 0.35s;
                     }
                 }
             }
