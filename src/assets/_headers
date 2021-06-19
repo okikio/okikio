@@ -10,9 +10,9 @@
   Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self'; img-src 'self' https://res.cloudinary.com https://okikio.dev data:; script-src 'self' https://res.cloudinary.com https://cdn.polyfill.io; connect-src 'self'; block-all-mixed-content; upgrade-insecure-requests; base-uri 'self'; object-src 'none'; worker-src 'self'; manifest-src 'self'; media-src 'self' https://res.cloudinary.com/; form-action 'self'; frame-ancestors 'self';
   Permissions-Policy: geolocation=(), microphone=(), usb=(), sync-xhr=(self), camera=()
   Link: </css/app.min.css>; rel=preload; as=style
-  Link: </fonts/montserrat-400-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Link: </fonts/montserrat-600-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
   Link: </fonts/montserrat-800-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
+  Link: </fonts/montserrat-600-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
+  Link: </fonts/manrope.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
   Link: <https://cdn.polyfill.io>; rel=preconnect; crossorigin
   Link: <https://res.cloudinary.com>; rel=preconnect; crossorigin
 
