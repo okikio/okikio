@@ -1,0 +1,59 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import HeroBanner from "@/components/HeroBanner.astro";
+import MethodBlock from "@/components/MethodBlock.astro";
+
+// Data Fetching: List all Markdown posts in the repo.
+// const projects = Astro.fetchContent("./project/**/*.md");
+// const featuredProject = projects[0];
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+
+<BaseLayout>
+  <HeroBanner />
+
+  <main id="content">
+    <article>
+      <section class="content">
+        <h2 id="about" class="text-primary">About</h2>
+        <p>
+          Hey, I am Okiki Ojo (pronounced O-ke-ke O-jo), I’m a student currently
+          studying Software Engineering at Ontario Tech University (formerly
+          University of Ontario Institute of Technology, UOIT). I have a passion
+          for design and development, I like to create things that don’t only
+          look good but that also function on multiple devices. I am always
+          eager to take on a challenge. I develop websites that are functional,
+          efficient and that act as an excellent representation of a person or
+          business on the digital landscape. I have a 4+ years of experience
+          designing sites, I would love to bring your digital vision to reality.
+        </p>
+      </section>
+
+      <section class="content">
+        <h3 id="skills">Skills</h3>
+        <p>
+          I have experience in Javascript, Typescript, CSS/Sass/SCSS, HTML, Pug,
+          Node.js, Fastify, Pjax, C#, C++, and more… I prefer to learn skills as
+          I need them, so I can focus on finding solutions to problems instead
+          of trying to implement new technologies for the sake of implementing
+          them.
+        </p>
+      </section>
+      
+      <section class="content">
+        <h3 id="method">Method</h3>
+        <p>
+          When developing sites I first aim to understand the needs and goals of
+          the project, I then determine the best approach to build a site. There
+          are four parts to my method, speed, efficiency, ease-of-use, and
+          impact.
+        </p>
+        
+        <MethodBlock />
+      </section>
+    </article>
+  </main>
+</BaseLayout>

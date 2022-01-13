@@ -1,0 +1,39 @@
+{
+  "name": "@example/portfolio",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "Okiki Ojo",
+    "email": "hey@okikio.dev",
+    "url": "https://okikio.dev"
+  },
+  "copyright": "Okiki Ojo",
+  "homepage": "https://okikio.dev/",
+  "github": "https://github.com/okikio/okikio/",
+  "license": "AGPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/okikio/okikio/issues"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format": "prettier --plugin=prettier-plugin-astro -w ./**/*.astro",
+    "format-onchange": "onchange -i -d 2500 './**/*.astro' -- prettier --plugin=prettier-plugin-astro --write {{changed}}"
+  },
+  "devDependencies": {
+    "@astrojs/renderer-svelte": "^0.3.1",
+    "@tailwindcss/typography": "^0.5.0",
+    "astro": "^0.22.10",
+    "astro-icon": "^0.5.3",
+    "astro-seo": "^0.4.2",
+    "autoprefixer": "^10.4.2",
+    "onchange": "^7.1.0",
+    "postcss": "^8.4.5",
+    "prettier-plugin-astro": "^0.0.11",
+    "sass": "^1.47.0",
+    "tailwindcss": "^3.0.13",
+    "tsm": "^2.2.1"
+  }
+}

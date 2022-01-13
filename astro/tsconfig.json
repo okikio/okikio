@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "module": "es2022",
+    "incremental": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+
+    "lib": ["DOM", "ES2021"],
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}

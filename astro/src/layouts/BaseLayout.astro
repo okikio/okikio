@@ -1,0 +1,18 @@
+---
+import HeadMetadata from "@/components/HeadMetadata.astro";
+import Navbar from "@/components/Navbar.astro";
+import Anchor from "@/components/Anchor.astro";
+
+const { content } = Astro.props;
+---
+
+<html lang="en" dir="ltr">
+  <head>
+    <HeadMetadata {...content} />
+  </head>
+  <body>
+    <Navbar />
+    <Anchor id="skip-main" href="#content">Skip to main content</Anchor>
+    <slot />
+  </body>
+</html>
