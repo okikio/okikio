@@ -1,7 +1,9 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import HeroBanner from "@/components/HeroBanner.astro";
-import MethodBlock from "@/components/MethodBlock.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroBanner from "../components/HeroBanner.astro";
+import MethodBlock from "../components/MethodBlock.astro";
+import Card from "../components/Card.astro";
+import Anchor from "../components/Anchor.astro";
 
 // Data Fetching: List all Markdown posts in the repo.
 // const projects = Astro.fetchContent("./project/**/*.md");
@@ -10,50 +12,100 @@ import MethodBlock from "@/components/MethodBlock.astro";
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
-
-
 <BaseLayout>
-  <HeroBanner />
+  <HeroBanner slot="hero" />
 
-  <main id="content">
-    <article>
-      <section class="content">
-        <h2 id="about" class="text-primary">About</h2>
-        <p>
-          Hey, I am Okiki Ojo (pronounced O-ke-ke O-jo), I’m a student currently
-          studying Software Engineering at Ontario Tech University (formerly
-          University of Ontario Institute of Technology, UOIT). I have a passion
-          for design and development, I like to create things that don’t only
-          look good but that also function on multiple devices. I am always
-          eager to take on a challenge. I develop websites that are functional,
-          efficient and that act as an excellent representation of a person or
-          business on the digital landscape. I have a 4+ years of experience
-          designing sites, I would love to bring your digital vision to reality.
-        </p>
-      </section>
+  <section>
+    <div class="content">
+      <h2>About.</h2>
+      <p>
+        Hey, I am Okiki Ojo (pronounced O-ke-ke O-jo), I’m a student currently
+        studying Software Engineering at Ontario Tech University (formerly
+        University of Ontario Institute of Technology, UOIT). I have a passion
+        for design and development, I like to create things that don’t only
+        look good but that also function on multiple devices. I am always
+        eager to take on a challenge. I develop websites that are functional,
+        efficient and that act as an excellent representation of a person or
+        business on the digital landscape. I have a 4+ years of experience
+        designing sites, I would love to bring your digital vision to reality.
+      </p>
+    </div>
 
-      <section class="content">
-        <h3 id="skills">Skills</h3>
-        <p>
-          I have experience in Javascript, Typescript, CSS/Sass/SCSS, HTML, Pug,
-          Node.js, Fastify, Pjax, C#, C++, and more… I prefer to learn skills as
-          I need them, so I can focus on finding solutions to problems instead
-          of trying to implement new technologies for the sake of implementing
-          them.
-        </p>
-      </section>
+    <div class="content">
+      <h3>Skills</h3>
+      <p>
+        I have experience in Javascript, Typescript, CSS/Sass/SCSS, HTML, Pug,
+        Node.js, Fastify, Pjax, C#, C++, and more… I prefer to learn skills as
+        I need them, so I can focus on finding solutions to problems instead
+        of trying to implement new technologies for the sake of implementing
+        them.
+      </p>
+    </div>
+    
+    <div class="content">
+      <h3>Method</h3>
+      <p>
+        When developing sites I first aim to understand the needs and goals of
+        the project, I then determine the best approach to build a site. There
+        are four parts to my method, speed, efficiency, ease-of-use, and
+        impact.
+      </p>
+    </div>
       
-      <section class="content">
-        <h3 id="method">Method</h3>
-        <p>
-          When developing sites I first aim to understand the needs and goals of
-          the project, I then determine the best approach to build a site. There
-          are four parts to my method, speed, efficiency, ease-of-use, and
-          impact.
-        </p>
-        
-        <MethodBlock />
-      </section>
-    </article>
-  </main>
+    <div class="py-6">
+      <MethodBlock />
+    </div>
+  </section>
+
+  <section>
+    <div class="content">
+      <h2>Featured Projects.</h2>
+    </div>
+    <div class="container px-5 max-w-[105ch]">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+        {() => {
+          return Array.from({ length: 6 }, () => {
+            return (<Card img={{
+              src: "cloudinary/e_art:audrey/okikio/okiki-ojo", 
+              alt: "An image of Okiki Ojo.", 
+              width: "450", 
+              height:"350", 
+            }}>
+              <h3 class="card-title">@okikio/sharedworker</h3>
+              <p class="card-description">A small spec. compliant polyfill for SharedWorkers, it acts as a drop in replacement for normal Workers.</p>
+            </Card>);
+          });
+        }}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="content text-center">
+      <h2>Contact.</h2>
+    </div>
+    <div class="container px-5 max-w-[85ch]">
+      <div class="flex gap-6 justify-center">
+        {() => {
+          return Array.from({ length: 6 }, () => {
+            return (<Anchor class="px-4 py-2 focus-visible:bg-primary/20" href="https://www.linkedin.com/in/okikio/">LinkedIn</Anchor>);
+          });
+        }}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style lang="scss">
+  h1, h2, h3, h4, h5, h6 {
+    @apply mt-0;
+  }
+
+  h1, h2 {
+    @apply text-primary font-lexend font-700;
+  }
+
+  h3, h4, h5, h6 {
+    @apply font-manrope font-400;
+  }  
+</style>

@@ -8,6 +8,10 @@ html, body {
   @apply scroll-smooth;
 }
 
+main {
+  @apply py-16;
+}
+
 article {
   @apply prose prose-lg prose-invert max-w-full;
   @apply prose-h3:font-[400];

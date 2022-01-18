@@ -60,7 +60,7 @@ const extendMeta = {
 <meta name="color-scheme" content="dark" />
 
 <SEO
-  title={title + " — Okiki Ojo"}
+  title={/Okiki/i.test(title) ? title : title + " — Okiki Ojo"}
   {description}
   openGraph={{
     image: { ...imageDetails },

@@ -2,43 +2,50 @@
 import Icon from 'astro-icon';
 ---
 <div class="method-block">
-  {() => {
-    let cols = [
-      ["uil:bolt-alt", "Speed", "How quickly the client wants their website, and accordingly what tools will ensure high levels of speed."],
-      ["mdi:waves", "Efficiency", "Making sure not to waste resources, time, and/or effort, so users can get the most out of the final product."],
-      ["mdi:gavel", "Ease-of-use", "The site needs to be easy to use, easy enough users can navigate the site with ease."],
-      ["mdi:history", "Impact", "As the representation of you or your business online, the site should leave an impact that causes users to visit multiple times."],
-    ];
-    return cols.map((col) => {
-      let [icon, title, description] = col;
-      return (
-        <div class="method">
-          <div class="icon-container">
-            <Icon name={icon} />
+  <div class="content">
+    {() => {
+      let cols = [
+        ["uil:bolt-alt", "Speed", "How quickly the client wants their website, and accordingly what tools will ensure high levels of speed."],
+        ["mdi:waves", "Efficiency", "Making sure not to waste resources, time, and/or effort, so users can get the most out of the final product."],
+        ["mdi:gavel", "Ease-of-use", "The site needs to be easy to use, easy enough users can navigate the site with ease."],
+        ["mdi:history", "Impact", "As the representation of you or your business online, the site should leave an impact that causes users to visit multiple times."],
+      ];
+      return cols.map((col) => {
+        let [icon, title, description] = col;
+        return (
+          <div class="method">
+            <div class="icon-container">
+              <Icon name={icon} />
+            </div>
+            <h3>{title}</h3>
+            <p>{description}</p>
           </div>
-          <h3>{title}</h3>
-          <p>{description}</p>
-        </div>
-      );
-    })
-  }}
+        );
+      })
+    }}
+  </div>
 </div>
 
 <style lang="scss">
   .method-block {
-    @apply grid bg-gray-900 rounded-2xl p-10;
-    @apply sm:grid-cols-2 gap-12;
+    @apply bg-gray-900 sm:rounded-3xl;
+    @apply container max-w-[85ch];
+    @apply px-2 py-10 lg:px-10;
+
+    .content {
+      @apply grid sm:grid-cols-2 gap-6 lg:gap-12 max-w-full;
+    }
   }
 
   .method {
-    @apply flex flex-col items-center;
+    @apply flex flex-col items-center px-0 sm:px-2 lg:px-6;
   }
 
   .icon-container {
-    @apply bg-primary/30 p-4 inline-block rounded-full;
+    @apply bg-primary/30 p-6 inline-block rounded-full;
     @apply text-primary;
     svg {
-      @apply w-8 h-8;
+      @apply w-6 h-6;
     }
   }
 </style>

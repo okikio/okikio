@@ -3,7 +3,7 @@ import Icon from "astro-icon";
 import Anchor from "./Anchor.astro";
 import Image from "./Image.astro";
 ---
-<header class="content">
+<header class="content" role="banner">
   <div class="layout">
     <Image src="cloudinary/e_art:audrey/okikio/okiki-ojo" alt="An image of Okiki Ojo." width="450" height="350" />
     <h1 id="hello-im-okiki">Hello, I’m <strong class="text-primary">Okiki.</strong></h1>
@@ -23,13 +23,14 @@ import Image from "./Image.astro";
 <style lang="scss">
   header {
     @apply py-0 mx-auto w-full relative;
+    @apply max-w-[75ch] text-xl;
 
     .layout {
       @apply flex flex-col justify-center w-full;
       @apply relative min-h-screen;
 
       h1 {
-        @apply text-[2.8rem] sm:text-5xl md:text-7xl font-lexend font-900 mb-5;
+        @apply text-[2.8rem] sm:text-5xl md:text-7xl lg:text-8xl font-lexend font-900 mb-5;
       }
 
       h2 {
