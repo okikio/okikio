@@ -1,0 +1,50 @@
+---
+import Anchor from "./Anchor.astro";
+import Image from "./Image.astro";
+
+const { href, img } = Astro.props;
+---
+
+<div class="card">
+  <Anchor {href}>
+    <Image {...img} />
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <slot />
+    </div>
+  </Anchor>
+</div>
+
+<style lang="scss">
+  .card {
+    @apply overflow-hidden rounded-lg;
+
+    &,
+    a {
+      @apply block relative;
+    }
+
+    & :global(figure) {
+      @apply my-0;
+    }
+
+    &-content {
+      @apply absolute bottom-0 left-0 z-10;
+      @apply p-6;
+
+      :global(p) {
+        @apply my-0;
+      }
+    }
+  }
+
+  .card :global(.card-title) {
+    text-decoration: 2px solid underline;
+    text-decoration-color: transparent;
+  }
+
+  .card a:hover :global(.card-title) {
+    text-decoration-color: theme("colors.primary");
+    text-decoration-style: wavy;
+  }
+</style>

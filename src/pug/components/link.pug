@@ -1,4 +1,0 @@
-mixin link(href = "/")
-  - let attrs = /^(http|mailto)/.test(href) ? { target: "_blank", rel: "noopener" } : {};
-  a(href=href)&attributes(Object.assign(attrs, attributes))
-    block

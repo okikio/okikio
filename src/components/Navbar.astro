@@ -1,0 +1,140 @@
+---
+import { Icon } from "astro-icon";
+import Anchor from "./Anchor.astro";
+---
+<nav>
+  <div class="container">
+    <div class="logo">
+      <Anchor
+        href="/"
+        aria-label="Logo for Okiki Ojo, it's used on all social media site to identify and represent Okiki"
+      >
+        <Icon name="logo" />
+      </Anchor>
+    </div>
+    <div class="menu">
+      <div class="items">
+        <Anchor href="/#about" class="item">About</Anchor>
+        <Anchor href="/#projects" class="item">Projects</Anchor>
+        <Anchor href="/#contact" class="item">Contact</Anchor>
+        <div class="seperator"></div>
+      </div>
+      <Anchor href="https://blog.okikio.dev" class="item">Blog</Anchor>
+      <div class="seperator"></div>
+      <button type="button" class="toggle">
+        <span class="text">Menu</span>
+        <span class="dot"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<style lang="scss">
+  nav {
+    @apply fixed top-0 left-0 w-full h-16;
+    @apply z-50;
+    @apply bg-black;
+
+    @supports (backdrop-filter: blur(10px)) {
+      @apply bg-opacity-50 backdrop-blur-md;
+    }
+  }
+
+  .container {
+    @apply flex items-center px-5;
+    @apply w-full h-full max-w-screen-xl;
+  }
+
+  .logo a {
+    @apply transition-all duration-200 ease-in-out;
+    @apply px-3 py-3 border border-transparent rounded-lg;
+    @apply hover:text-primary hover:bg-primary/20;
+    @apply block;
+  }
+
+  .logo :global(svg) {
+    @apply w-6 h-6;
+  }
+
+  .menu {
+    @apply relative;
+    @apply flex flex-row justify-end;
+    @apply gap-2 items-center w-full;
+
+    .items {
+      @apply flex flex-row justify-end;
+      @apply gap-2 items-center;
+    }
+
+    .item,
+    .toggle {
+      @apply transition-all duration-200 ease-in-out;
+      @apply uppercase text-sm tracking-wide font-500 font-lexend;
+      @apply px-5 py-3 border border-transparent rounded-lg;
+      @apply no-underline;
+
+      &.active,
+      &:active,
+      &:focus,
+      &:hover {
+        @apply text-primary bg-primary/20;
+        text-decoration: 2px solid underline;
+        text-underline-offset: 0.2rem;
+        text-decoration-style: wavy;
+      }
+    }
+
+    .toggle {
+      @apply text-primary px-6;
+      @apply flex items-center gap-2;
+
+      .text,
+      .dot {
+        @apply transition-transform duration-500;
+      }
+
+      .text {
+        @apply translate-x-1.5;
+      }
+
+      .dot {
+        @apply w-3 h-3 rounded-full;
+        @apply block scale-[0.8] translate-x-1.5;
+        @apply bg-current;
+      }
+
+      &:hover {
+        .text {
+          @apply translate-x-0;
+        }
+        .dot {
+          @apply scale-[1.25];
+        }
+      }
+    }
+
+    .seperator {
+      @apply border-l-2 border-primary/30 border-solid;
+      @apply h-[1.25em];
+    }
+  }
+</style>
+
+<script type="module">
+  let nav = document.querySelector("nav");
+  let items = [...nav.querySelectorAll(".menu .item")];
+  let toggle = nav.querySelector(".toggle");
+
+  let urls = items.map((item) => new URL(item.getAttribute("href"), window.location.href).href);
+  const hashChange = ({ newURL }) => {
+    console.log(newURL, urls);
+    let index = urls.indexOf(new URL(newURL).href);
+    if (index > -1) {
+      items.forEach((item) => item.classList.remove("active"));
+      items[index].classList.add("active");
+    } 
+  };
+
+  hashChange({ newURL: window.location.href });
+  window.addEventListener('hashchange', hashChange, false);
+</script>

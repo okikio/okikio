@@ -1,14 +1,17 @@
 {
-    "compilerOptions": {
-        "moduleResolution": "node",
-        "target": "ES2021",
-        "module": "es2022",
-        "sourceMap": false,
-        "incremental": true,
-        "isolatedModules": true,
-        "esModuleInterop": true
-    },
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "module": "es2022",
+    "incremental": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+
+    "lib": ["DOM", "ES2021"],
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
 }

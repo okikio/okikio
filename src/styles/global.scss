@@ -1,0 +1,30 @@
+@import "./reset.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./base.scss";
+@import "./layout.scss";
+
+.font-fancy {
+  @apply font-["Abril_Fatface"] font-[400];
+}
+
+#skip-main {
+    transition: border 0.35s ease;
+    @apply border-2 border-primary;
+    @apply text-black bg-primary;
+    transform: translateX(-50%);
+
+    @apply absolute top-10 left-0 rounded-lg text-center mt-10 text-lg py-2 w-full;
+    @apply left-1/2 -translate-x-1/2 opacity-0 pointer-events-none;
+    max-width: theme("spacing.96");
+    z-index: 500;
+
+    &:focus,
+    &:active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}

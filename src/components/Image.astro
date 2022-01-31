@@ -1,0 +1,51 @@
+---
+const {
+  src: source = "cloudinary/okiki-ojo",
+  alt = "An image of a ...",
+  loading = "lazy",
+  class: className,
+  ...rest
+} = Astro.props;
+let src = source.replace("fetch/", "");
+
+let cloudinaryTest = /^cloudinary\//.test(src);
+let origin = `https://res.cloudinary.com/okikio-assets/image/upload/`;
+let urlParse = (filters = "w_auto") =>
+  cloudinaryTest
+    ? `${origin + "f_auto,q_auto:best/c_fit," + filters},dpr_auto/${src.replace(
+        /^cloudinary\//,
+        ""
+      )}`
+    : src;
+
+let n = 4;
+let srcset = `${urlParse(`w_auto`)}.webp 300w`;
+let sizes = `(max-width: 300px) 100vw, `;
+
+while (n <= 16) {
+  srcset += `, ${urlParse(`w_${n * 100}`)}.webp ${n * 100}w`;
+  sizes += `(max-width: ${n * 100}px) ${n * 100}px, `;
+  n += 3;
+}
+
+sizes += `100vw`;
+---
+
+<figure class={className}>
+  <img src={`${urlParse()}.webp`} {srcset} {sizes} {alt} {loading} {...rest} />
+</figure>
+
+<style lang="scss">
+  figure {
+    @apply relative block;
+    @apply bg-[#1f1f2c];
+    @apply overflow-hidden;
+    @apply w-full h-[350px];
+
+    img {
+      @apply w-full h-full;
+      @apply object-cover;
+      @apply opacity-70;
+    }
+  }
+</style>
