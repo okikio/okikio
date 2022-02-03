@@ -3,7 +3,8 @@ import { Icon } from "astro-icon";
 import Anchor from "./Anchor.astro";
 ---
 <nav>
-  <div class="container">
+  <div class="backdrop"></div>
+  <div class="container items">
     <div class="logo">
       <Anchor
         href="/"
@@ -12,20 +13,19 @@ import Anchor from "./Anchor.astro";
         <Icon name="logo" />
       </Anchor>
     </div>
+    <div class="flex-grow"></div>
     <div class="menu">
-      <div class="items">
-        <Anchor href="/#about" class="item">About</Anchor>
-        <Anchor href="/#projects" class="item">Projects</Anchor>
-        <Anchor href="/#contact" class="item">Contact</Anchor>
-        <div class="seperator"></div>
-      </div>
-      <Anchor href="https://blog.okikio.dev" class="item">Blog</Anchor>
+      <Anchor href="#about" class="item">About</Anchor>
+      <Anchor href="#projects" class="item">Projects</Anchor>
+      <Anchor href="#contact" class="item">Contact</Anchor>
       <div class="seperator"></div>
-      <button type="button" class="toggle">
-        <span class="text">Menu</span>
-        <span class="dot"></span>
-      </button>
+      <Anchor href="https://blog.okikio.dev" class="item">Blog</Anchor>
     </div>
+
+    <button type="button" class="toggle">
+      <span class="text">Menu</span>
+      <span class="dot"></span>
+    </button>
   </div>
 </nav>
 
@@ -33,10 +33,19 @@ import Anchor from "./Anchor.astro";
   nav {
     @apply fixed top-0 left-0 w-full h-16;
     @apply z-50;
-    @apply bg-black;
 
-    @supports (backdrop-filter: blur(10px)) {
-      @apply bg-opacity-50 backdrop-blur-md;
+    .backdrop {
+      @apply transition-all duration-500;
+      @apply absolute top-0 left-0 w-full h-full;
+      @apply bg-black;
+
+      @supports (backdrop-filter: blur(10px)) {
+        @apply bg-opacity-50 backdrop-blur-md;
+      }
+    }
+
+    &.open .backdrop {
+      @apply lt-sm:h-32;
     }
   }
 
@@ -45,32 +54,45 @@ import Anchor from "./Anchor.astro";
     @apply w-full h-full max-w-screen-xl;
   }
 
-  .logo a {
-    @apply transition-all duration-200 ease-in-out;
-    @apply px-3 py-3 border border-transparent rounded-lg;
-    @apply hover:text-primary hover:bg-primary/20;
-    @apply block;
+  .logo {
+    @apply z-10;
+
+    a {
+      @apply transition-all duration-200 ease-in-out;
+      @apply px-3 py-3 border border-transparent rounded-lg;
+      @apply hover:text-primary hover:bg-primary/20;
+      @apply block;
+    }
   }
 
   .logo :global(svg) {
-    @apply w-6 h-6;
+    @apply min-w-[theme("spacing.6")] w-6 h-6;
   }
 
-  .menu {
+  .items-horiz {
     @apply relative;
     @apply flex flex-row justify-end;
-    @apply gap-2 items-center w-full;
+    @apply gap-1 sm:gap-2 items-center w-full;
+  }
 
-    .items {
-      @apply flex flex-row justify-end;
-      @apply gap-2 items-center;
+  .items {
+    @apply relative;
+    @apply flex flex-row justify-end;
+    @apply gap-1 sm:gap-2 items-center w-full; 
+
+    .menu {
+      @apply transition-all duration-500;
+      @apply flex flex-row overflow-auto;
+      @apply gap-1 sm:gap-2 items-center xsm:justify-center;
+      @apply lt-sm:absolute lt-sm:top-16 lt-sm:left-0 lt-sm:w-full;
+      @apply lt-sm:h-16;
     }
 
     .item,
     .toggle {
       @apply transition-all duration-200 ease-in-out;
       @apply uppercase text-sm tracking-wide font-500 font-lexend;
-      @apply px-5 py-3 border border-transparent rounded-lg;
+      @apply px-3 py-2 sm:px-5 sm:py-3 border border-transparent rounded-lg;
       @apply no-underline;
 
       &.active,
@@ -85,8 +107,9 @@ import Anchor from "./Anchor.astro";
     }
 
     .toggle {
-      @apply text-primary px-6;
+      @apply text-primary;
       @apply flex items-center gap-2;
+      @apply sm:hidden;
 
       .text,
       .dot {
@@ -107,8 +130,9 @@ import Anchor from "./Anchor.astro";
         .text {
           @apply translate-x-0;
         }
+        
         .dot {
-          @apply scale-[1.25];
+          @apply scale-[1.25] translate-x-0;
         }
       }
     }
@@ -118,11 +142,25 @@ import Anchor from "./Anchor.astro";
       @apply h-[1.25em];
     }
   }
+
+  @screen lt-sm {
+    .menu {
+      @apply -translate-y-full opacity-0 pointer-events-none;
+      /* @apply bg-gradient-to-b from-transparent to-black/10; */
+    }
+
+    nav.open {
+      .menu {
+        @apply translate-y-0 opacity-100 pointer-events-auto;
+      }
+    }
+  }
 </style>
 
 <script type="module">
   let nav = document.querySelector("nav");
-  let items = [...nav.querySelectorAll(".menu .item")];
+  let menu = nav.querySelector(".menu");
+  let items = [...menu.querySelectorAll(".item")];
   let toggle = nav.querySelector(".toggle");
 
   let urls = items.map((item) => new URL(item.getAttribute("href"), window.location.href).href);
@@ -137,4 +175,13 @@ import Anchor from "./Anchor.astro";
 
   hashChange({ newURL: window.location.href });
   window.addEventListener('hashchange', hashChange, false);
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("open");
+    console.log("Toggle")
+    // menu.classList.toggle("hidden");
+    // toggle.classList.toggle("active");
+    // Remove the URL history entry on close, making it as if the menu was never opened.
+    // history.go(-1);
+  });
 </script>

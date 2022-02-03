@@ -4,6 +4,7 @@ import HeroBanner from "../components/HeroBanner.astro";
 import MethodBlock from "../components/MethodBlock.astro";
 import Card from "../components/Card.astro";
 import Anchor from "../components/Anchor.astro";
+import Icon from "astro-icon";
 
 // Data Fetching: List all Markdown posts in the repo.
 // const projects = Astro.fetchContent("./project/**/*.md");
@@ -16,7 +17,7 @@ import Anchor from "../components/Anchor.astro";
 <BaseLayout>
   <HeroBanner slot="hero" />
 
-  <section>
+  <section nav-section>
     <div class="content">
       <h2 id="about">About.</h2>
       <p>
@@ -33,7 +34,7 @@ import Anchor from "../components/Anchor.astro";
     </div>
 
     <div class="content">
-      <h3 id="skills">Skills</h3>
+      <h3 class="nav-item" id="skills">Skills</h3>
       <p>
         I have experience in Javascript, Typescript, CSS/Sass/SCSS, HTML, Pug,
         Node.js, Fastify, Pjax, C#, C++, and more… I prefer to learn skills as I
@@ -56,27 +57,147 @@ import Anchor from "../components/Anchor.astro";
     </div>
   </section>
 
-  <section>
+  <section nav-section>
     <div class="content">
       <h2 id="projects">Featured Projects.</h2>
     </div>
     <div class="container px-5 max-w-[105ch]">
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {() => {
-          return Array.from({ length: 6 }, () => {
-            return (
-              <Card
-                img={{
+          let externalIcon = `<svg viewBox="0 0 24 24" class="astro-6H36LA55" astro-icon="fluent:arrow-up-right-24-filled"><path fill="yellow" d="M11 3a1 1 0 1 0 0 2h6.586L3.293 19.293a1 1 0 1 0 1.414 1.414L19 6.414V13a1 1 0 1 0 2 0V4a1 1 0 0 0-1-1h-9z"></path></svg>`;
+          let projects = {
+            "bundle": {
+              image: {
                   src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
                   alt: "An image of Okiki Ojo.",
                   width: "450",
                   height: "350",
-                }}
+                },
+              description: "An online tool to quickly bundle & minify your projects, while viewing the gzipped bundle size, all running locally on your browser.",
+              link: "https://bundle.js.org",
+            },
+            
+            "joesphojo": {
+              image: {
+                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
+                  alt: "An image of Okiki Ojo.",
+                  width: "450",
+                  height: "350",
+                },
+              description: "An engineering portfolio site for a client.",
+              link: "https://josephojo.com/",
+            },
+            
+            "jabodent": {
+              image: {
+                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
+                  alt: "An image of Okiki Ojo.",
+                  width: "450",
+                  height: "350",
+                },
+              description: "A website for Jabodent Offshore Consultants.",
+              link: "https://jabodent.com",
+            },
+            
+            "reindeere": {
+              image: {
+                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
+                  alt: "An image of Okiki Ojo.",
+                  width: "450",
+                  height: "350",
+                },
+              description: "A website for a startup focused on local delivery using robots.",
+              link: "https://reindeere.ca",
+            },
+            
+            "@okikio/animate": {
+              image: {
+                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
+                  alt: "An image of Okiki Ojo.",
+                  width: "450",
+                  height: "350",
+                },
+              description: "An animation library that utilizes the Web Animation API (WAAPI) to deliver fluid animations at a semi-small size.",
+              link: "https://native.okikio.dev/animate",
+            },
+            
+            "@okikio/native": {
+              image: {
+                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
+                  alt: "An image of Okiki Ojo.",
+                  width: "450",
+                  height: "350",
+                },
+              description: "A js framework for creating coordinated web experience through composable services.",
+              link: "https://native.okikio.dev/native",
+            },
+            
+            "spring-easing": {
+              image: {
+                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
+                  alt: "An image of Okiki Ojo.",
+                  width: "450",
+                  height: "350",
+                },
+              description: "Quick and easy spring animation. Works with other animation libraries (gsap, animejs, framer motion, motion one, @okikio/animate, etc...) or the Web Animation API (WAAPI).",
+              link: "https://spring-easing.okikio.dev",
+            },
+            
+            "@okikio/sharedworker": {
+              image: {
+                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
+                  alt: "An image of Okiki Ojo.",
+                  width: "450",
+                  height: "350",
+                },
+              description: "A small mostly spec. compliant polyfill/ponyfill for SharedWorkers, it acts as a drop in replacement for normal Workers, and supports a similar API surface that matches normal Workers.",
+              link: "https://sharedworker.okikio.dev",
+            },
+            
+            "Codepen Projects": {
+              image: {
+                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
+                  alt: "An image of Okiki Ojo.",
+                  width: "450",
+                  height: "350",
+                },
+              description: "A set of small snippets, mini-projects, and experiments that I created on Codepen.",
+              link: "https://codepen.com/okikio",
+            },
+            
+            "Legacy Projects": {
+              image: {
+                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
+                  alt: "An image of Okiki Ojo.",
+                  width: "450",
+                  height: "350",
+                },
+              description: "When I first started out programming these are the projects, I worked on before I got skilled enough to work on the projects listed above. Back then I used to use the 'whitelight' as my username, 🤣.",
+              link: "https://www.khanacademy.org/profile/liteo/projects",
+            },
+            
+            ["More... " + externalIcon]: {
+              image: {
+                  width: "450",
+                  height: "350",
+                  blank: true
+                },
+              description: "Check out more Projects on Github.",
+              link: "https://www.khanacademy.org/profile/liteo/projects",
+            }
+          };
+          
+          return Object.keys(projects).map((name) => {
+            let { description, link, image } = projects[name];
+            return (
+              <Card
+                img={image}
+                href={link}
+                external={false}
               >
-                <h3 class="card-title">@okikio/sharedworker</h3>
+                <h3 class="card-title">{name}</h3>
                 <p class="card-description">
-                  A small spec. compliant polyfill for SharedWorkers, it acts as
-                  a drop in replacement for normal Workers.
+                  {description}
                 </p>
               </Card>
             );
@@ -86,27 +207,51 @@ import Anchor from "../components/Anchor.astro";
     </div>
   </section>
 
-  <section class="py-12">
+  <section nav-section class="py-12">
     <div class="content text-center">
       <h2 id="contact">Contact.</h2>
     </div>
     <div class="container px-5 max-w-[85ch]">
-      <div class="flex gap-6 justify-center">
+      <div class="flex flex-col gap-2 xsm:grid lt-sm:grid-cols-2 sm:grid-cols-4 sm:gap-6 justify-center">
         {() => {
-          return Array.from({ length: 6 }, () => {
+          let links = {
+            "LinkedIn": "https://www.linkedin.com/in/okikio",
+            "Twitter": "https://twitter.com/okikio_dev",
+            "Github": "https://github.com/okikio",
+            "Blog": "https://blog.okikio.dev",
+            "Dev.to": "https://dev.to/okikio",
+            "Hackernoon": "https://hackernoon.com/u/okikio",
+            "CSS-Tricks": "https://css-tricks.com/author/okikiojo/",
+            "Codepen": "https://codepen.io/okikio",
+            "Daily.dev": "https://app.daily.dev/okikio",
+            "Stackoverflow": "https://stackoverflow.com/users/12140185/okikio?tab=profile",
+            "Buy me a coffee": "https://www.buymeacoffee.com/okikio",
+            "Email": "mailto:hey@okikio.dev"
+          };
+
+          return Object.keys(links).map((name) => {
+            let href = links[name];
             return (
               <Anchor
                 class="px-4 py-2 focus-visible:bg-primary/20"
-                href="https://www.linkedin.com/in/okikio/"
-              >
-                LinkedIn
-              </Anchor>
+                href={href}
+              >{name}</Anchor>
             );
           });
         }}
       </div>
     </div>
   </section>
+
+  <footer slot="footer" class="flex flex-col items-center gap-2 py-5 text-center">
+    <Anchor href="#" id="back-to-top">
+      <div class="flex items-center gap-2">
+        <Icon name="fluent:arrow-up-24-filled" />
+        Back To Top
+      </div>
+    </Anchor>
+    <span>© 2021 Okiki Ojo. All rights reserved.</span>
+  </footer>
 </BaseLayout>
 
 <style lang="scss">
@@ -130,4 +275,51 @@ import Anchor from "../components/Anchor.astro";
   h6 {
     @apply font-manrope font-400;
   }
+
+  #back-to-top {
+    @apply inline-block;
+    @apply hover:ring-2 ring-primary ring-offset-2 ring-offset-black;
+    @apply bg-primary rounded-full pl-5 pr-6 py-3;
+    @apply text-black text-base font-bold hover:text-black;
+
+    [astro-icon] {
+      @apply w-5 h-5;
+    }
+  }
 </style>
+
+<script type="module">
+let sections = [...document.querySelectorAll("section[nav-section]")];
+let options = {
+  // root: document.querySelector('#scrollArea'),
+  rootMargin: '60px',
+  threshold: Array.from({ length: 101 }, (_, i) => i / 100),
+}
+
+let observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    // Each entry describes an intersection change for one observed
+    // target element:
+    //   entry.boundingClientRect
+    //   entry.intersectionRatio
+    //   entry.intersectionRect
+    //   entry.isIntersecting
+    //   entry.rootBounds
+    //   entry.target
+    //   entry.time
+    
+    if (entry.isIntersecting) {
+      let elem = entry.target;
+
+      // console.log(elem.querySelector("h2[id], h3[id]"), entry.intersectionRatio);
+      if (entry.intersectionRatio >= 0.1) {
+        // intersectionCounter++;
+        // console.log(elem.querySelector("h2[id], h3[id]"))
+        window.location.hash = elem.querySelector("h2[id], h3[id]").id;
+      }
+    }
+  });
+}, options);
+sections.forEach(elem => observer.observe(elem));
+// observer.observe(boxElement);
+</script>

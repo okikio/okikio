@@ -31,8 +31,10 @@ module.exports = {
         "lt-md": { max: "767px" },
 
         "lt-sm": { max: "639px" },
+        "xsm": "439px",
 
-        "lt-xsm": { max: "339px" },
+        "xxsm": "339px",
+        "lt-xxsm": { max: "339px" },
       },
       container: {
         center: "true",
