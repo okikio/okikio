@@ -3,4 +3,4 @@
   from = "/images/*"
   to = "https://res.cloudinary.com/okikio-assets/image/:splat"
   status = 200
-  headers = {X-Robots-Tag = ["none", "noimageindex", "noarchive"], Cache-Control = ["public", "max-age=604800", "must-revalidate"]}
+  headers = {X-Robots-Tag = ["none", "noimageindex", "noarchive"]}
