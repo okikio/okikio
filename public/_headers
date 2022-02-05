@@ -14,6 +14,7 @@
   Link: </fonts/manrope-v11-latin-ext_latin-500.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
   Link: </fonts/lexend-v14-latin-ext_latin-900.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
   Link: </fonts/lexend-v14-latin-ext_latin-500.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
+  X-Robots-Tag: index, follow, noimageindex
 
 /*.css
   Cache-Control: public, max-age=86400, immutable

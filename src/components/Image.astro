@@ -12,7 +12,9 @@ let { class, ...attrs } = figureAttrs;
 let cloudinaryTest = /^cloudinary\//.test(src);
 let fetchTest = /\/fetch\//.test(src);
 
-let origin = (!import.meta.env.DEV ? `https://okikio.dev/images/` : `https://res.cloudinary.com/okikio-assets/image/`) + (fetchTest ? "fetch/" : "upload/");
+// Netlify redirects can't handle multiple requests at once
+// !import.meta.env.DEV ? `https://okikio.dev/images/` : 
+let origin = (`https://res.cloudinary.com/okikio-assets/image/`) + (fetchTest ? "fetch/" : "upload/");
 let urlParse = (filters = "w_auto") =>
   cloudinaryTest
     ? `${origin + (fetchTest ? "" : "f_auto,q_auto:best/c_fit," + filters + ",dpr_auto/")}${src.replace(
