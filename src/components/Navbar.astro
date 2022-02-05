@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon";
 import Anchor from "./Anchor.astro";
 ---
+
 <nav>
   <div class="backdrop"></div>
   <div class="container items">
@@ -79,7 +80,7 @@ import Anchor from "./Anchor.astro";
   .items {
     @apply relative;
     @apply flex flex-row justify-end;
-    @apply gap-1 sm:gap-2 items-center w-full; 
+    @apply gap-1 sm:gap-2 items-center w-full;
 
     .menu {
       @apply transition-all duration-500;
@@ -131,7 +132,7 @@ import Anchor from "./Anchor.astro";
         .text {
           @apply translate-x-0;
         }
-        
+
         .dot {
           @apply scale-[1.25] translate-x-0;
         }

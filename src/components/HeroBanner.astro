@@ -20,8 +20,8 @@ import Image from "./Image.astro";
         height="350"
         data-nosnippet
         loading="eager"
-        figureAttrs={{ 
-          perspective: "image"
+        figureAttrs={{
+          perspective: "image",
         }}
       />
     </div>
@@ -30,10 +30,10 @@ import Image from "./Image.astro";
       <div class="social-layout" perspective="social-links">
         {() => {
           let links = {
-            "LinkedIn": ["In", "https://www.linkedin.com/in/okikio"],
-            "Twitter": ["Tw", "https://twitter.com/okikio_dev"],
-            "Github": ["Git", "https://github.com/okikio"],
-            "Email": ["@", "mailto:hey@okikio.dev"]
+            LinkedIn: ["In", "https://www.linkedin.com/in/okikio"],
+            Twitter: ["Tw", "https://twitter.com/okikio_dev"],
+            Github: ["Git", "https://github.com/okikio"],
+            Email: ["@", "mailto:hey@okikio.dev"],
           };
 
           return Object.keys(links).map((name) => {

@@ -7,7 +7,9 @@ const { href, img = {}, external } = Astro.props;
 
 <div class="card">
   <Anchor {href} {external}>
-    {!img.blank && (<Image {...img} />) || (<div class="w-full h-[350px] bg-primary/20" {...img} />)}
+    {(!img.blank && <Image {...img} />) || (
+      <div class="w-full h-[350px] bg-primary/20" {...img} />
+    )}
     <div class="card-overlay">
       <div class="overlay-blur"></div>
     </div>
@@ -35,11 +37,12 @@ const { href, img = {}, external } = Astro.props;
         @apply hidden;
       }
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         :global(p) {
           @apply text-primary;
         }
-      } 
+      }
 
       &:active {
         @apply scale-100;
