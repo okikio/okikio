@@ -51,8 +51,7 @@ let len = els.length;
 let elAttrs = els.map(el => el.getAttribute("perspective"));
 let elClientRects = generateClientRects(els);
 
-let perspectiveCatagory = (attr: string, e: MouseEvent, clientRect: Rect) => {
-  let yscale = (e.clientY / window.innerHeight) - 0.5;
+let perspectiveCatagory = (attr: string, e: MouseEvent, clientRect: Rect, yscale: number) => {
   switch (attr) {
     case "header":
       return {
@@ -91,12 +90,13 @@ rootEl?.addEventListener("mousemove", (e: MouseEvent) => {
     window.matchMedia("(pointer: coarse)").matches
   ) return;
 
+  let yscale = (e.clientY / window.innerHeight) - 0.5;
   for (let i = 0; i < len; i++) {
     let el = els[i];
     let clientRect = elClientRects[i];
     let name = elAttrs[i];
 
-    let { x, y } = perspectiveCatagory(name, e, clientRect);
+    let { x, y } = perspectiveCatagory(name, e, clientRect, yscale);
     el.style.transform = `translate(${x}, ${y})`;
   }
 }, { passive: true });
