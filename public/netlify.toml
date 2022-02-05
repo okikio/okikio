@@ -1,6 +1,0 @@
-## This rule redirects to an external API, signing requests with a secret
-[[redirects]]
-  from = "/images/*"
-  to = "https://res.cloudinary.com/okikio-assets/image/:splat"
-  status = 200
-  headers = {X-Robots-Tag = ["none", "noimageindex", "noarchive"]}
