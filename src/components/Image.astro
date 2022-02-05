@@ -14,7 +14,7 @@ let fetchTest = /\/fetch\//.test(src);
 
 // Netlify redirects can't handle multiple requests at once
 // import.meta.env.PUBLIC_DEV.toString() == "false" && /okiki\-ojo$/.test(src) ? `https://okikio.dev/images/` : 
-let origin = (`https://res.cloudinary.com/okikio-assets/image/`) + (fetchTest ? "fetch/" : "upload/");
+let origin = (/okiki\-ojo$/.test(src) ? `https://okikio.dev/images/` :`https://res.cloudinary.com/okikio-assets/image/`) + (fetchTest ? "fetch/" : "upload/");
 let urlParse = (filters = "w_auto") =>
   cloudinaryTest
     ? `${origin + (fetchTest ? "" : "f_auto,q_auto:best,c_limit," + filters + ",dpr_auto/")}${src.replace(
