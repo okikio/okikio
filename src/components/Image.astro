@@ -17,18 +17,18 @@ let fetchTest = /\/fetch\//.test(src);
 let origin = (`https://res.cloudinary.com/okikio-assets/image/`) + (fetchTest ? "fetch/" : "upload/");
 let urlParse = (filters = "w_auto") =>
   cloudinaryTest
-    ? `${origin + (fetchTest ? "" : "f_auto,q_auto:best,c_limit," + filters + ",dpr_auto/")}${src.replace(
+    ? `${origin + (fetchTest ? "" : "f_auto,q_auto:best,c_limit/" + filters + ",dpr_auto/")}${src.replace(
         /(^cloudinary\/)|fetch\//g,
         ""
       )}`
     : src;
 
 let n = 4;
-let jpg = fetchTest ? "" : ".jpg";
-let srcset = `${urlParse(`w_auto`) + jpg} 300w`;
+let imageFormat = fetchTest ? "" : ".webp";
+let srcset = `${urlParse(`w_auto`) + imageFormat} 300w`;
 let sizes = `(max-width: 300px) 300px, `;
-while (n <= 16) {
-  srcset += `, ${urlParse(`w_${n * 100}`) + jpg} ${n * 100}w`;
+while (n <= 7) {
+  srcset += `, ${urlParse(`w_${n * 100}`) + imageFormat} ${n * 100}w`;
   sizes += `(max-width: ${n * 100}px) ${n * 100}px, `;
   n += 3;
 }
