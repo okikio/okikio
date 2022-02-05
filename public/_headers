@@ -30,7 +30,7 @@
 /images/*
   Cache-Control: public, max-age=604800, must-revalidate
 
-/images/*/okikio/okiki-ojo.webp
+/images/*/okikio/okiki-ojo.jpg
   X-Robots-Tag: none, noimageindex, noarchive
 
 /favicon/*

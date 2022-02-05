@@ -13,21 +13,22 @@ let cloudinaryTest = /^cloudinary\//.test(src);
 let fetchTest = /\/fetch\//.test(src);
 
 // Netlify redirects can't handle multiple requests at once
-let origin = (!import.meta.env.DEV && /okiki\-ojo$/.test(src) ? `https://okikio.dev/images/` : `https://res.cloudinary.com/okikio-assets/image/`) + (fetchTest ? "fetch/" : "upload/");
+// import.meta.env.PUBLIC_DEV.toString() == "false" && /okiki\-ojo$/.test(src) ? `https://okikio.dev/images/` : 
+let origin = (`https://res.cloudinary.com/okikio-assets/image/`) + (fetchTest ? "fetch/" : "upload/");
 let urlParse = (filters = "w_auto") =>
   cloudinaryTest
-    ? `${origin + (fetchTest ? "" : "f_auto,q_auto:best/c_fit," + filters + ",dpr_auto/")}${src.replace(
+    ? `${origin + (fetchTest ? "" : "f_auto,q_auto:best,c_limit," + filters + ",dpr_auto/")}${src.replace(
         /(^cloudinary\/)|fetch\//g,
         ""
       )}`
     : src;
 
 let n = 4;
-let webP = fetchTest ? "" : ".webp";
-let srcset = `${urlParse(`w_auto`) + webP} 300w`;
+let jpg = fetchTest ? "" : ".jpg";
+let srcset = `${urlParse(`w_auto`) + jpg} 300w`;
 let sizes = `(max-width: 300px) 300px, `;
 while (n <= 16) {
-  srcset += `, ${urlParse(`w_${n * 100}`) + webP} ${n * 100}w`;
+  srcset += `, ${urlParse(`w_${n * 100}`) + jpg} ${n * 100}w`;
   sizes += `(max-width: ${n * 100}px) ${n * 100}px, `;
   n += 3;
 }
@@ -36,7 +37,7 @@ sizes += `100vw`;
 ---
 
 <figure class={className} {...attrs}>
-  <img src={`${urlParse()}.webp`} {srcset} {sizes} {alt} {loading} {...rest} />
+  <img src={`${urlParse()}.jpg`} {srcset} {sizes} {alt} {loading} {...rest} />
 </figure>
 
 <style lang="scss">
