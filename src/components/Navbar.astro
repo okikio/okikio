@@ -8,7 +8,8 @@ import Anchor from "./Anchor.astro";
     <div class="logo">
       <Anchor
         href="/"
-        aria-label="Logo for Okiki Ojo, it's used on all social media site to identify and represent Okiki"
+        aria-label="The logo for Okiki Ojo, it's used on all social media site to identify and represent Okiki"
+        title="Logo"
       >
         <Icon name="logo" />
       </Anchor>
@@ -145,43 +146,14 @@ import Anchor from "./Anchor.astro";
 
   @screen lt-sm {
     .menu {
-      @apply -translate-y-full opacity-0 pointer-events-none;
+      @apply -translate-y-full opacity-0 pointer-events-none invisible;
       /* @apply bg-gradient-to-b from-transparent to-black/10; */
     }
 
     nav.open {
       .menu {
-        @apply translate-y-0 opacity-100 pointer-events-auto;
+        @apply translate-y-0 opacity-100 pointer-events-auto visible;
       }
     }
   }
 </style>
-
-<script type="module">
-  let nav = document.querySelector("nav");
-  let menu = nav.querySelector(".menu");
-  let items = [...menu.querySelectorAll(".item")];
-  let toggle = nav.querySelector(".toggle");
-
-  let urls = items.map((item) => new URL(item.getAttribute("href"), window.location.href).href);
-  const hashChange = ({ newURL }) => {
-    console.log(newURL, urls);
-    let index = urls.indexOf(new URL(newURL).href);
-    if (index > -1) {
-      items.forEach((item) => item.classList.remove("active"));
-      items[index].classList.add("active");
-    } 
-  };
-
-  hashChange({ newURL: window.location.href });
-  window.addEventListener('hashchange', hashChange, false);
-
-  toggle.addEventListener("click", () => {
-    nav.classList.toggle("open");
-    console.log("Toggle")
-    // menu.classList.toggle("hidden");
-    // toggle.classList.toggle("active");
-    // Remove the URL history entry on close, making it as if the menu was never opened.
-    // history.go(-1);
-  });
-</script>

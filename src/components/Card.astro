@@ -7,7 +7,7 @@ const { href, img = {}, external } = Astro.props;
 
 <div class="card">
   <Anchor {href} {external}>
-    {!img.blank && (<Image {...img} />) || (<div class="w-[450px] h-[350px] bg-primary/20" {...img} />)}
+    {!img.blank && (<Image {...img} />) || (<div class="w-full h-[350px] bg-primary/20" {...img} />)}
     <div class="card-overlay">
       <div class="overlay-blur"></div>
     </div>
@@ -29,6 +29,12 @@ const { href, img = {}, external } = Astro.props;
     }
 
     a {
+      @apply whitespace-normal;
+
+      & > [astro-icon] {
+        @apply hidden;
+      }
+
       &:hover, &:focus {
         :global(p) {
           @apply text-primary;
@@ -41,12 +47,12 @@ const { href, img = {}, external } = Astro.props;
     }
 
     &-overlay {
-      @apply absolute inset-0 bg-black/20;
+      @apply absolute inset-0 bg-gray-900/20;
 
       .overlay-blur {
         @apply transition-opacity duration-300;
-        @apply absolute inset-0 bg-black/20 backdrop-blur-lg;
-        @apply opacity-0;
+        @apply absolute inset-0 bg-black/20 coarse:bg-[color:rgb(4_23_78/20%)] backdrop-blur-lg coarse:backdrop-blur-sm;
+        @apply fine:opacity-0;
       }
     }
 
@@ -61,19 +67,30 @@ const { href, img = {}, external } = Astro.props;
     &-content {
       @apply absolute bottom-0 left-0 z-10;
       @apply p-6;
+      @apply lt-xsm:text-base lt-sm:leading-snug;
+
+      @apply transition-transform duration-500;
+      @apply fine:translate-y-full;
 
       :global(p) {
         @apply my-0;
       }
     }
+
+    &:hover .card-content {
+      @apply translate-y-0;
+    }
   }
 
   .card :global(.card-title) {
+    @apply transition-transform duration-500;
+    @apply fine:translate-y-[-200%];
     text-decoration: 2px solid underline;
     text-decoration-color: transparent;
   }
 
   .card a:hover :global(.card-title) {
+    @apply translate-y-0;
     text-decoration-color: theme("colors.primary");
     text-decoration-style: wavy;
   }

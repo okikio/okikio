@@ -21,23 +21,34 @@ import Icon from "astro-icon";
     <div class="content">
       <h2 id="about">About.</h2>
       <p>
-        Hey, I am Okiki Ojo (pronounced O-ke-ke O-jo), I’m a student currently
-        studying Software Engineering at Ontario Tech University (formerly
-        University of Ontario Institute of Technology, UOIT). I have a passion
-        for design and development, I like to create things that don’t only look
-        good but that also function on multiple devices. I am always eager to
-        take on a challenge. I develop websites that are functional, efficient
+        Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I’m a student currently
+        studying Software Engineering at <Anchor href="https://ontariotechu.ca/">Ontario Tech University</Anchor> (formerly
+        University of Ontario Institute of Technology, UOIT). From a very young age, I've always been interested in tech, and science. Initially, I started web development out of curiosity, eventually it became a hobby, and after many hobby projects (e.g. Open Source projects; read more in <Anchor href="#projects">featured projects</Anchor>), I thought it would be cool to offer my skills to clients who want awesome web experiences, thus here we are. 
+
+        <br />
+        <br />
+        
+        I have a passion for design and development, I like to create things that don’t just look
+        good, but that also function on multiple levels. I am always eager to
+        take on a challenge, and aim to exceed in all tasks I take on. I develop websites that are functional, efficient
         and that act as an excellent representation of a person or business on
-        the digital landscape. I have a 4+ years of experience designing sites,
+        the digital landscape. I have 5+ years of experience designing sites,
         I would love to bring your digital vision to reality.
+      </p>
+    </div>
+
+    <div class="content">
+      <h3 class="nav-item" id="experience">Experience</h3>
+      <p>
+        While working on my hobby projects, I tried my hands at Open Source development. Open source development (<span class="fine:underline fine:decoration-dotted" title="Technically OSS should be OSSD as in Open Source Software Development, but tomato, tomahato (intentional)">OSS</span>), taught me quite a lot, for one it made me truly appreciate  good governance, and even better coding/documentation practices. During my adventures in OSS, I worked on many projects, ranging from <Anchor href="https://native.okikio.dev/animate">@okikio/animate</Anchor> to <Anchor href="https://bundle.js.org">bundle.js.org</Anchor> (learn more at <Anchor href="#projects">featured projects</Anchor>), wrote multiple <Anchor href="https://blog.okikio.dev/">blog posts</Anchor> and <Anchor href="https://css-tricks.com/how-i-used-the-waapi-to-build-an-animation-library/">articles</Anchor>, I even earned a position as a <Anchor href="https://twitter.com/astrodotbuild/status/1486195466085695488?s=20&t=P7aMtK25Hg0DlWpIF3PC7w">maintainer</Anchor> on the <Anchor href="https://astro.build">astro.build</Anchor> project. All the experience gained from OSS is a great asset to me, and I am very grateful for it, I aim to use this experience to build better web experiences, better UI/UX, and to find new creative ways to craft online experiences for my clients.
       </p>
     </div>
 
     <div class="content">
       <h3 class="nav-item" id="skills">Skills</h3>
       <p>
-        I have experience in Javascript, Typescript, CSS/Sass/SCSS, HTML, Pug,
-        Node.js, Fastify, Pjax, C#, C++, and more… I prefer to learn skills as I
+        I have experience in Astro, Javascript, Typescript, CSS/SASS, HTML, Pug,
+        Node.js, Fastify, Pjax, Solid.js, Svelte, C#, C++, and more… I prefer to learn skills as I
         need them, so I can focus on finding solutions to problems instead of
         trying to implement new technologies for the sake of implementing them.
       </p>
@@ -68,8 +79,8 @@ import Icon from "astro-icon";
           let projects = {
             "bundle": {
               image: {
-                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
-                  alt: "An image of Okiki Ojo.",
+                  src: "cloudinary/okikio/bundle",
+                  alt: "The banner image for 'bundle.js.org'. It has a blue box with the letter 'b' inside it, the blue box is the logo, offset by a bit, with the text 'bundle' in the center.",
                   width: "450",
                   height: "350",
                 },
@@ -79,41 +90,41 @@ import Icon from "astro-icon";
             
             "joesphojo": {
               image: {
-                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
-                  alt: "An image of Okiki Ojo.",
+                  src: "cloudinary/josephs_image",
+                  alt: "The banner image for 'josephojo.org'. It has an image of Joseph Ojo, smiling staring straight forward. He is wearing a dark gray suit with glasses.",
                   width: "450",
                   height: "350",
                 },
-              description: "An engineering portfolio site for a client.",
+              description: "An engineering portfolio site for a Joseph Ojo.",
               link: "https://josephojo.com/",
             },
             
             "jabodent": {
               image: {
-                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
-                  alt: "An image of Okiki Ojo.",
+                  src: "cloudinary/okikio/Jabodent",
+                  alt: "The banner image for 'jabodent.com'. It has the Jabodent logo offset left by a small amount, with the text 'Jabodent' in the center.",
                   width: "450",
                   height: "350",
                 },
-              description: "A website for Jabodent Offshore Consultants.",
+              description: "The website of Jabodent Offshore Consultants.",
               link: "https://jabodent.com",
             },
             
             "reindeere": {
               image: {
-                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
-                  alt: "An image of Okiki Ojo.",
+                  src: "cloudinary/fetch/https://reindeere.ca/images/banner-image.jpg",
+                  alt: "The banner image for 'reindeere.ca'. It has a cartoonified image of a reindeer offset left by a small amount, with the text 'Reindeere' in the center (note, in the banner image reindeere has an extra 'e' on the end).",
                   width: "450",
                   height: "350",
                 },
-              description: "A website for a startup focused on local delivery using robots.",
+              description: "The website for a startup focused on local delivery using robots.",
               link: "https://reindeere.ca",
             },
             
             "@okikio/animate": {
               image: {
-                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
-                  alt: "An image of Okiki Ojo.",
+                  src: "cloudinary/okikio/animate",
+                  alt: "The banner image for '@okikio/animate'. It just has the text '@okikio/animate' in the center, with '@' being blue, the rest of the text being white and the background being black.",
                   width: "450",
                   height: "350",
                 },
@@ -123,8 +134,8 @@ import Icon from "astro-icon";
             
             "@okikio/native": {
               image: {
-                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
-                  alt: "An image of Okiki Ojo.",
+                  src: "cloudinary/okikio/native",
+                  alt: "The banner image for '@okikio/native'. It just has the text '@okikio/native' in the center, with '@' being blue, the rest of the text being white and the background being black.",
                   width: "450",
                   height: "350",
                 },
@@ -134,8 +145,8 @@ import Icon from "astro-icon";
             
             "spring-easing": {
               image: {
-                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
-                  alt: "An image of Okiki Ojo.",
+                  src: "cloudinary/okikio/spring-easing",
+                  alt: "The banner image for 'spring-easing'. It just has the text 'spring-easing' in the center, with a blue dash seperating the words 'spring' and 'easing', the rest of the text being white and the background being black.",
                   width: "450",
                   height: "350",
                 },
@@ -145,34 +156,34 @@ import Icon from "astro-icon";
             
             "@okikio/sharedworker": {
               image: {
-                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
-                  alt: "An image of Okiki Ojo.",
+                  src: "cloudinary/okikio/sharedworker",
+                  alt: "The banner image for '@okikio/sharedworker'. It just has the text '@okikio/sharedworker' in the center, with '@' being blue, the rest of the text being white and the background being black.",
                   width: "450",
                   height: "350",
                 },
-              description: "A small mostly spec. compliant polyfill/ponyfill for SharedWorkers, it acts as a drop in replacement for normal Workers, and supports a similar API surface that matches normal Workers.",
+              description: "A small mostly spec. compliant polyfill/ponyfill for SharedWorkers, it acts as a drop in replacement for normal Workers.",
               link: "https://sharedworker.okikio.dev",
             },
             
             "Codepen Projects": {
               image: {
-                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
-                  alt: "An image of Okiki Ojo.",
+                  src: "cloudinary/okikio/Codepen",
+                  alt: "A banner image for 'Codepen'. It has the Codepen logo offset left by a small amount, with the text 'Codepen' in the center. The text is white and the background is black.",
                   width: "450",
                   height: "350",
                 },
-              description: "A set of small snippets, mini-projects, and experiments that I created on Codepen.",
+              description: "A set of small snippets, mini-projects and experiments, that I created on Codepen.",
               link: "https://codepen.com/okikio",
             },
             
             "Legacy Projects": {
               image: {
-                  src: "cloudinary/e_art:audrey/okikio/okiki-ojo",
-                  alt: "An image of Okiki Ojo.",
+                  src: "cloudinary/okikio/Khanacademy",
+                  alt: "A banner image for 'Khan Academy'. It has the Khan Academy logo offset left by a small amount, with the text 'Khan Academy' in the center. The text is white and the background is black. The logo is a green hexagon with a black cartoonified leaf.",
                   width: "450",
                   height: "350",
                 },
-              description: "When I first started out programming these are the projects, I worked on before I got skilled enough to work on the projects listed above. Back then I used to use the 'whitelight' as my username, 🤣.",
+              description: "When I first started out programming these are the projects I worked on before I got OSS work. Back then I used to use 'whitelight' as my username, 🤣.",
               link: "https://www.khanacademy.org/profile/liteo/projects",
             },
             
@@ -183,7 +194,7 @@ import Icon from "astro-icon";
                   blank: true
                 },
               description: "Check out more Projects on Github.",
-              link: "https://www.khanacademy.org/profile/liteo/projects",
+              link: "https://github.com/okikio",
             }
           };
           
@@ -193,7 +204,6 @@ import Icon from "astro-icon";
               <Card
                 img={image}
                 href={link}
-                external={false}
               >
                 <h3 class="card-title">{name}</h3>
                 <p class="card-description">
@@ -233,7 +243,7 @@ import Icon from "astro-icon";
             let href = links[name];
             return (
               <Anchor
-                class="px-4 py-2 focus-visible:bg-primary/20"
+                class="px-4 py-2 hover:text-primary hover:bg-primary/30 focus:bg-primary/20"
                 href={href}
               >{name}</Anchor>
             );
@@ -243,7 +253,8 @@ import Icon from "astro-icon";
     </div>
   </section>
 
-  <footer slot="footer" class="flex flex-col items-center gap-2 py-5 text-center">
+  <footer slot="footer" class="flex flex-col items-center gap-4 py-5 text-center">
+    <span class="underline underline-offset-4 max-w-[50ch] mb-10" title="This site uses Google Analytics (which adds cookies) to measure the number of users and the countries they are from. I don’t store any of your private identifiable information.">This site uses Google Analytics (which adds cookies) to measure the number of unique visitors.</span>
     <Anchor href="#" id="back-to-top">
       <div class="flex items-center gap-2">
         <Icon name="fluent:arrow-up-24-filled" />
@@ -276,10 +287,14 @@ import Icon from "astro-icon";
     @apply font-manrope font-400;
   }
 
+  p {
+    @apply lt-xsm:text-base lt-xsm:leading-relaxed;
+  }
+
   #back-to-top {
     @apply inline-block;
     @apply hover:ring-2 ring-primary ring-offset-2 ring-offset-black;
-    @apply bg-primary rounded-full pl-5 pr-6 py-3;
+    @apply bg-primary rounded-full pl-5 pr-6 py-2;
     @apply text-black text-base font-bold hover:text-black;
 
     [astro-icon] {
@@ -288,38 +303,4 @@ import Icon from "astro-icon";
   }
 </style>
 
-<script type="module">
-let sections = [...document.querySelectorAll("section[nav-section]")];
-let options = {
-  // root: document.querySelector('#scrollArea'),
-  rootMargin: '60px',
-  threshold: Array.from({ length: 101 }, (_, i) => i / 100),
-}
-
-let observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    // Each entry describes an intersection change for one observed
-    // target element:
-    //   entry.boundingClientRect
-    //   entry.intersectionRatio
-    //   entry.intersectionRect
-    //   entry.isIntersecting
-    //   entry.rootBounds
-    //   entry.target
-    //   entry.time
-    
-    if (entry.isIntersecting) {
-      let elem = entry.target;
-
-      // console.log(elem.querySelector("h2[id], h3[id]"), entry.intersectionRatio);
-      if (entry.intersectionRatio >= 0.1) {
-        // intersectionCounter++;
-        // console.log(elem.querySelector("h2[id], h3[id]"))
-        window.location.hash = elem.querySelector("h2[id], h3[id]").id;
-      }
-    }
-  });
-}, options);
-sections.forEach(elem => observer.observe(elem));
-// observer.observe(boxElement);
-</script>
+<script src={Astro.resolve("../scripts/index.ts")} type="module"></script>

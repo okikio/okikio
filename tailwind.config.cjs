@@ -11,12 +11,10 @@ module.exports = {
     extend: {
       fontFamily: {
         lexend: ["Lexend", "sans-serif"],
-        abril: ["Abril Fatface", "serif"],
         manrope: ["Manrope", "sans-serif"],
 
         sans: ["Manrope", "sans-serif"],
         serif: ["serif"],
-        title: ["Abril Fatface", "serif"],
       },
       fontWeight,
       screens: {
@@ -31,10 +29,15 @@ module.exports = {
         "lt-md": { max: "767px" },
 
         "lt-sm": { max: "639px" },
+
         "xsm": "439px",
+        "lt-xsm": { max: "439px" },
 
         "xxsm": "339px",
         "lt-xxsm": { max: "339px" },
+
+        'coarse': { 'raw': '(pointer: coarse)' },
+        'fine': { 'raw': '(pointer: fine)' },
       },
       container: {
         center: "true",

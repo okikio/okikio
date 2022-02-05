@@ -1,29 +1,32 @@
 ---
 const {
-  src: source = "cloudinary/okiki-ojo",
+  src = "cloudinary/okiki-ojo",
   alt = "An image of a ...",
   loading = "lazy",
   class: className,
+  figureAttrs = {},
   ...rest
 } = Astro.props;
-let src = source.replace("fetch/", "");
+let { class, ...attrs } = figureAttrs;
 
 let cloudinaryTest = /^cloudinary\//.test(src);
-let origin = `https://res.cloudinary.com/okikio-assets/image/upload/`;
+let fetchTest = /\/fetch\//.test(src);
+
+let origin = (import.meta.env.NODE_ENV == "production" ? `https://okikio.dev/images/` : `https://res.cloudinary.com/okikio-assets/image/`) + (fetchTest ? "fetch/" : "upload/");
 let urlParse = (filters = "w_auto") =>
   cloudinaryTest
-    ? `${origin + "f_auto,q_auto:best/c_fit," + filters},dpr_auto/${src.replace(
-        /^cloudinary\//,
+    ? `${origin + (fetchTest ? "" : "f_auto,q_auto:best/c_fit," + filters + ",dpr_auto/")}${src.replace(
+        /(^cloudinary\/)|fetch\//g,
         ""
       )}`
     : src;
 
 let n = 4;
-let srcset = `${urlParse(`w_auto`)}.webp 300w`;
-let sizes = `(max-width: 300px) 100vw, `;
-
+let webP = fetchTest ? "" : ".webp";
+let srcset = `${urlParse(`w_auto`) + webP} 300w`;
+let sizes = `(max-width: 300px) 300px, `;
 while (n <= 16) {
-  srcset += `, ${urlParse(`w_${n * 100}`)}.webp ${n * 100}w`;
+  srcset += `, ${urlParse(`w_${n * 100}`) + webP} ${n * 100}w`;
   sizes += `(max-width: ${n * 100}px) ${n * 100}px, `;
   n += 3;
 }
@@ -31,7 +34,7 @@ while (n <= 16) {
 sizes += `100vw`;
 ---
 
-<figure class={className}>
+<figure class={className} {...attrs}>
   <img src={`${urlParse()}.webp`} {srcset} {sizes} {alt} {loading} {...rest} />
 </figure>
 
@@ -44,6 +47,7 @@ sizes += `100vw`;
 
     img {
       @apply w-full h-full;
+      @apply object-center;
       @apply object-cover;
       @apply opacity-70;
     }

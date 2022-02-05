@@ -4,12 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./fonts.scss";
 @import "./base.scss";
 @import "./layout.scss";
-
-.font-fancy {
-  @apply font-["Abril_Fatface"] font-[400];
-}
 
 #skip-main {
     transition: border 0.35s ease;

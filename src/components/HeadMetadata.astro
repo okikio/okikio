@@ -3,14 +3,14 @@
 import { SEO } from "astro-seo";
 
 const {
-  title = "Okiki Ojo — Web Developer",
+  title = "Okiki Ojo — Web Developer & Designer (okikio)",
   description = "A Web Developer and Designer based in Ontario, Canada, with an eye for great design (UI) and even better user experience (UX).",
-  keywords = "Okiki Ojo, web dev, UX/UI, consistent, design, software engineer".split(
+  keywords = "Okiki Ojo, web dev, UX/UI, consistent, design, software engineer, student".split(
     ","
   ),
   img = {
     url: `/favicon/banner-image.png`,
-    alt: "Okiki Ojo's Logo",
+    alt: "The banner image for Okiki Ojo's portfolio website, it has a yellow background and with a black 'K' in the center, representing his logo.",
     width: 1200,
     height: 630,
   },
@@ -42,11 +42,11 @@ const extendMeta = {
 <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
 <link rel="manifest" href="/manifest.json" />
 
-<link rel="preconnect" href="https://fonts.gstatic.com" />
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link
-  href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Lexend:wght@300;500;600;700;900&&family=Abril+Fatface&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
   rel="stylesheet"
-/>
+/> -->
 
 <link
   rel="stylesheet"
@@ -58,7 +58,7 @@ const extendMeta = {
 <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
 <meta name="viewport" content="width=device-width" />
 <meta name="color-scheme" content="dark" />
-
+ <!-- <meta name="robots" content="index, follow, noimageindex"> -->
 <SEO
   title={/Okiki/i.test(title) ? title : title + " — Okiki Ojo"}
   {description}

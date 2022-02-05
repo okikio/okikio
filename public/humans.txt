@@ -3,10 +3,10 @@
   Contact: hey@okikio.dev
   Site: https://okikio.dev
   Twitter: @okikio_dev
-  From: Oshawa, Canada
+  From: Ontario, Canada
 
 /* SITE */
-  Last update: 2021/06/14
+  Last update: 2022/02/05
   Language: English
-  Technologies: pug, gulp, esbuild, @okikio/native, postcss, csso, autoprefixer, scss/sass, cloudinary, typescript
+  Technologies: vite, astro, scss/sass, cloudinary, typescript
   IDE: VS Code

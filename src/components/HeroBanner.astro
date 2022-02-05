@@ -4,37 +4,82 @@ import Anchor from "./Anchor.astro";
 import Image from "./Image.astro";
 ---
 
-<header class="content" role="banner">
-  <div class="layout">
-    <Image
-      src="cloudinary/e_art:audrey/okikio/okiki-ojo"
-      alt="An image of Okiki Ojo."
-      width="450"
-      height="350"
-    />
-    <h1 id="hello-im-okiki">
-      Hello, I’m <strong class="text-primary">Okiki.</strong>
-    </h1>
-    <h2>Student - Developer - Innovator</h2>
-  </div>
-
-  <div id="scroll-down">
-    <Anchor href="/#content" aria-label="Scroll down button">
-      <strong class="text">Scroll</strong>
-      <div class="icon-container">
-        <Icon name="fluent:chevron-down-24-filled" />
+<header class="content" role="banner" nav-section perspective-group>
+  <div class="container">
+    <div class="layout">
+      <div class="z-10" perspective="header">
+        <h1 id="index">
+          Hello, I’m <strong class="text-primary">Okiki.</strong>
+        </h1>
+        <h2>Student - Developer - Innovator</h2>
       </div>
-    </Anchor>
+      <Image
+        src="cloudinary/e_art:audrey/okikio/okiki-ojo"
+        alt="A black and white profile photo of Okiki Ojo, smiling, looking straight forward, behind a brick wall backdrop. He is wearing glasses, a black shirt and jacket, and wireless headphones which are hanging on his neck."
+        width="450"
+        height="350"
+        data-nosnippet
+        loading="eager"
+        figureAttrs={{ 
+          perspective: "image"
+        }}
+      />
+    </div>
+
+    <div class="social-links">
+      <div class="social-layout" perspective="social-links">
+        {() => {
+          let links = {
+            "LinkedIn": ["In", "https://www.linkedin.com/in/okikio"],
+            "Twitter": ["Tw", "https://twitter.com/okikio_dev"],
+            "Github": ["Git", "https://github.com/okikio"],
+            "Email": ["@", "mailto:hey@okikio.dev"]
+          };
+
+          return Object.keys(links).map((name) => {
+            let [shortName, href] = links[name];
+            return (
+              <Anchor
+                class="px-4 py-2 focus-visible:bg-primary/20 hover:text-primary"
+                href={href}
+              >
+                <span class="full">{name}</span>
+                <span class="short">{shortName}</span>
+              </Anchor>
+            );
+          });
+        }}
+      </div>
+    </div>
+
+    <!-- perspective="scroll-down" -->
+    <div id="scroll-down">
+      <Anchor href="/#content" aria-label="Scroll down button">
+        <strong class="text">Scroll</strong>
+        <div class="icon-container">
+          <Icon name="fluent:chevron-down-24-filled" />
+        </div>
+      </Anchor>
+    </div>
   </div>
 </header>
 
 <style lang="scss">
   header {
-    @apply py-0 mx-auto w-full relative;
-    @apply max-w-[75ch] text-xl;
+    @apply py-0 mx-auto w-full relative overflow-hidden;
+    @apply text-xl max-w-full;
+
+    & > .container {
+      @apply max-w-[85ch] overflow-visible;
+    }
+
+    [perspective] {
+      @apply translate-x-0 translate-y-0;
+      perspective: 7rem;
+    }
 
     .layout {
-      @apply flex flex-col justify-center w-full;
+      @apply flex flex-row items-center w-full;
       @apply relative min-h-screen;
 
       h1 {
@@ -56,6 +101,37 @@ import Image from "./Image.astro";
 
       :is(h1, h2) {
         @apply z-10;
+      }
+    }
+
+    .social-links {
+      @apply absolute top-1/2 right-0 -translate-y-1/2 z-10;
+      @apply lt-sm:invisible lt-sm:pointer-events-none;
+
+      .social-layout {
+        @apply flex flex-col justify-center items-end;
+
+        a {
+          @apply flex items-center text-base;
+
+          .full {
+            @apply hidden;
+          }
+
+          .short {
+            @apply block;
+          }
+
+          &:hover {
+            .full {
+              @apply block;
+            }
+
+            .short {
+              @apply hidden;
+            }
+          }
+        }
       }
     }
 

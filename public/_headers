@@ -4,41 +4,37 @@
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  Cache-Control: max-age=300, stale-while-revalidate=600, public
+  Cache-Control: max-age=300, must-revalidate, public
   Accept-CH: DPR, Viewport-Width, Width
   X-UA-Compatible: IE=edge
-  Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self'; img-src 'self' https://res.cloudinary.com https://okikio.dev data:; script-src 'self' https://res.cloudinary.com https://cdn.polyfill.io; connect-src 'self'; block-all-mixed-content; upgrade-insecure-requests; base-uri 'self'; object-src 'none'; worker-src 'self'; manifest-src 'self'; media-src 'self' https://res.cloudinary.com/; form-action 'self'; frame-ancestors 'self';
+  Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self'; img-src 'self' https://res.cloudinary.com https://okikio.dev; script-src 'self' https://cdn.polyfill.io https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com; block-all-mixed-content; upgrade-insecure-requests; base-uri 'self'; object-src 'none'; worker-src 'self'; manifest-src 'self'; media-src 'self' https://res.cloudinary.com/ https://okikio.dev; form-action 'self'; frame-ancestors 'self' https:;
   Permissions-Policy: geolocation=(), microphone=(), usb=(), sync-xhr=(self), camera=()
-  Link: </css/app.min.css>; rel=preload; as=style
-  Link: </fonts/montserrat-800-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Link: </fonts/montserrat-600-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Link: </fonts/manrope.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Link: <https://cdn.polyfill.io>; rel=preconnect; crossorigin
-  Link: <https://res.cloudinary.com>; rel=preconnect; crossorigin
 
-/css/*.css
-  Cache-Control: public, max-age=604800, stale-while-revalidate=31536000
+/
+  Link: </fonts/manrope-v11-latin-ext_latin-500.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
+  Link: </fonts/lexend-v14-latin-ext_latin-900.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
+  Link: </fonts/lexend-v14-latin-ext_latin-500.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
+
+/*.css
+  Cache-Control: public, max-age=86400, immutable
   Content-Type: text/css
 
-/js/*.js
-  Cache-Control: public, max-age=604800, stale-while-revalidate=31536000
+/*.js
+  Cache-Control: public, max-age=86400, immutable
   Content-Type: text/javascript
-
-/js/theme.min.js
-  Cache-Control: public, max-age=31536000, immutable
-
-/manifest.json
-  Cache-Control: public, max-age=604800, stale-while-revalidate=31536000
-  Content-Type: application/manifest+json
 
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
-/polyfill/*
-  Cache-Control: public, s-maxage=604800, max-age=604800, stale-while-revalidate=31536000
-
 /images/*
-  Cache-Control: public, s-maxage=604800, max-age=604800, stale-while-revalidate=31536000
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/images/*/okikio/okiki-ojo.webp
+  X-Robots-Tag: none, noimageindex, noarchive
 
 /favicon/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=31536000
+
+/manifest.json
+  Cache-Control: public, max-age=604800, must-revalidate
+  Content-Type: application/manifest+json
