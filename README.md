@@ -12,7 +12,7 @@
 
 ## About.
 
-Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I’m a student currently studying Software Engineering at [Ontario Tech University](https://ontariotechu.ca/) (formerly University of Ontario Institute of Technology, UOIT). I am always eager to take on new challenges, and aim to exceed in all tasks I take on. 
+Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I am a Software Engineering student at [Ontario Tech University](https://ontariotechu.ca/) (formerly University of Ontario Institute of Technology, UOIT), a freelance/independent web developer, an avid fan of open source, and a maintainer on @withastro. I am always eager to take on new challenges, and aim to exceed in all tasks I take on. 
 
 ### Skills
 
