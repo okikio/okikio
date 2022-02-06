@@ -26,8 +26,8 @@ let urlParse = (filters = "w_auto") =>
 let n = 4;
 let imageFormat = fetchTest ? "" : ".webp";
 let srcset = `${urlParse(`w_auto`) + imageFormat} 300w`;
-let sizes = `(max-width: 300px) 300px, `;
-while (n <= 8) {
+let sizes = `(max-width: 300px) 450px, `;
+while (n <= 12) {
   srcset += `, ${urlParse(`w_${n * 100}`) + imageFormat} ${n * 100}w`;
   sizes += `(max-width: ${n * 100}px) ${n * 100}px, `;
   n += 3;
