@@ -33,7 +33,7 @@ let navHeight = nav.getBoundingClientRect().height;
 let clientRects = generateClientRects(sections)
   .map((value, index) => ({ ...value, id: headerIds[index] }));
 
-window.addEventListener("scroll", throttle(() => {
+window.addEventListener("scroll", throttle(debounce(() => {
   let scrollTop = window.scrollY;
   for (let { id, top, height } of clientRects) {
     let offsetScrollY = scrollTop + (navHeight * 2);
@@ -42,7 +42,7 @@ window.addEventListener("scroll", throttle(() => {
       hashChange({ newURL: window.location.href });
     }
   }
-}, 50), { passive: true });
+}, 50), 300), { passive: true });
 
 let rootEl = document.querySelector("[perspective-group]");
 let els = Array.from(rootEl.querySelectorAll("[perspective]")) as HTMLElement[];
