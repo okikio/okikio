@@ -122,7 +122,7 @@ import Icon from "astro-icon";
 
             joesphojo: {
               image: {
-                src: "cloudinary/josephs_image",
+                src: "cloudinary/okikio/josephojo",
                 alt: "The banner image for 'josephojo.org'. It has an image of Joseph Ojo, smiling staring straight forward. He is wearing a dark gray suit with glasses.",
                 width: "450",
                 height: "350",
@@ -144,7 +144,7 @@ import Icon from "astro-icon";
 
             reindeere: {
               image: {
-                src: "cloudinary/fetch/https://reindeere.ca/images/banner-image.jpg",
+                src: "cloudinary/okikio/reindeere",
                 alt: "The banner image for 'reindeere.ca'. It has a cartoonified image of a reindeer offset left by a small amount, with the text 'Reindeere' in the center (note, in the banner image reindeere has an extra 'e' on the end).",
                 width: "450",
                 height: "350",
@@ -227,6 +227,7 @@ import Icon from "astro-icon";
             },
 
             ["More... " + externalIcon]: {
+              showTitle: true,
               image: {
                 width: "450",
                 height: "350",
@@ -238,9 +239,9 @@ import Icon from "astro-icon";
           };
 
           return Object.keys(projects).map((name) => {
-            let { description, link, image } = projects[name];
+            let { description, link, image, showTitle } = projects[name];
             return (
-              <Card img={image} href={link}>
+              <Card img={image} href={link} {showTitle}>
                 <h3 class="card-title">{name}</h3>
                 <p class="card-description">{description}</p>
               </Card>

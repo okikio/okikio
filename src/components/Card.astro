@@ -2,10 +2,10 @@
 import Anchor from "./Anchor.astro";
 import Image from "./Image.astro";
 
-const { href, img = {}, external } = Astro.props;
+const { href, img = {}, external, showTitle } = Astro.props;
 ---
 
-<div class="card">
+<div class={`card` + (showTitle ? " show-title" : "")}>
   <Anchor {href} {external}>
     {(!img.blank && <Image {...img} />) || (
       <div class="w-full h-[350px] bg-primary/20" {...img} />
@@ -86,14 +86,18 @@ const { href, img = {}, external } = Astro.props;
   }
 
   .card :global(.card-title) {
-    @apply transition-transform duration-500;
+    @apply transition-all duration-500;
     @apply fine:translate-y-[-200%];
     text-decoration: 2px solid underline;
     text-decoration-color: transparent;
   }
+  
+  .card:not(.show-title) :global(.card-title) {
+    @apply fine:opacity-0;
+  }
 
   .card a:hover :global(.card-title) {
-    @apply translate-y-0;
+    @apply translate-y-0 opacity-100;
     text-decoration-color: theme("colors.primary");
     text-decoration-style: wavy;
   }
