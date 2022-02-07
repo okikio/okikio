@@ -56,13 +56,13 @@ let perspectiveCatagory = (attr: string, e: MouseEvent, clientRect: Rect, yscale
     case "header":
       return {
         x: axis("max", "x", 10, -20)(e, clientRect),
-        y: `${- yscale * (clientRect.height / 2) * (1/1)}px`// `${-e.clientY / 20}px`,
+        y: `${- yscale * (clientRect.height / 2)}px`// `${-e.clientY / 20}px`,
       };
 
     case "image":
       return {
         x: axis("min", "x", 5, (clientRect.width / 6) - 40)(e, clientRect),
-        y: `calc(-50% + ${yscale * (clientRect.height / 2) * (1/3)}px)` // `${(clientRect.height)}px`,
+        y: `calc(-50% + ${yscale * (clientRect.height / 6)}px)` // `${(clientRect.height)}px`,
       };
 
     case "scroll-down":
@@ -84,13 +84,14 @@ let perspectiveCatagory = (attr: string, e: MouseEvent, clientRect: Rect, yscale
   };
 };
 
+let height = window.innerHeight;
 rootEl?.addEventListener("mousemove", (e: MouseEvent) => {
   if (
     window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
     window.matchMedia("(pointer: coarse)").matches
   ) return;
 
-  let yscale = (e.clientY / window.innerHeight) - 0.5;
+  let yscale = (e.clientY / height) - 0.5;
   for (let i = 0; i < len; i++) {
     let el = els[i];
     let clientRect = elClientRects[i];
@@ -102,6 +103,7 @@ rootEl?.addEventListener("mousemove", (e: MouseEvent) => {
 }, { passive: true });
 
 window.addEventListener("resize", debounce(() => {
+  height = window.innerHeight;
   navHeight = nav.getBoundingClientRect().height;
   elClientRects = generateClientRects(els);
   clientRects = generateClientRects(sections)

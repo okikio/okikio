@@ -9,9 +9,9 @@ import Image from "./Image.astro";
     <div class="layout">
       <div class="z-10" perspective="header">
         <h1 id="index">
-          Hello, I’m <strong class="text-primary">Okiki.</strong>
+          Hello, I am <strong class="text-primary" aria-label="Okiki Ojo">Okiki.</strong>
         </h1>
-        <h2>Student - Independent Developer - Open Source Steward</h2>
+        <h2>Student - Independent Web Developer - Open Source Steward</h2>
       </div>
       <Image
         src="cloudinary/e_art:audrey/okikio/okiki-ojo"
@@ -88,7 +88,7 @@ import Image from "./Image.astro";
 
       h2 {
         @apply text-lg sm:text-2xl font-manrope font-300;
-        @apply mt-0 leading-tight;
+        @apply mt-0 sm:leading-tight lt-xsm:max-w-[30ch];
       }
 
       figure {
