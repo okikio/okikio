@@ -24,8 +24,8 @@ article {
 
 button,
 a {
-    transition: box-shadow 0.2s ease-out;
-    @apply transition-all duration-200 ease-out;
+    // transition: box-shadow 0.2s ease-out;
+    @apply transition duration-200 ease-out;
     @apply focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-opacity-90;
     @apply ring-offset-2 ring-offset-black;
     @apply rounded-md focus:outline-none;

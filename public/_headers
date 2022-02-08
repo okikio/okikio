@@ -19,11 +19,11 @@
   X-Robots-Tag: index, follow, noimageindex
 
 /*.css
-  Cache-Control: public, max-age=86400, immutable
+  Cache-Control: public, max-age=604800, immutable
   Content-Type: text/css
 
 /*.js
-  Cache-Control: public, max-age=86400, immutable
+  Cache-Control: public, max-age=604800, immutable
   Content-Type: text/javascript
 
 /fonts/*
