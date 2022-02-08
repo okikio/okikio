@@ -93,6 +93,12 @@ import Anchor from "./Anchor.astro";
     &.open .backdrop {
       @apply lt-sm:h-32;
     }
+
+    button,
+    a {
+      transition-property: background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+      @apply duration-200 ease-in-out;
+    }
   }
 
   .container {
@@ -104,8 +110,6 @@ import Anchor from "./Anchor.astro";
     @apply z-10;
 
     a {
-      @apply transition duration-200 ease-in-out;
-    /* transition-property: background-color, color, box-shadow, transform, opacity; */
       @apply px-3 py-3 border border-transparent rounded-lg;
       @apply hover:text-primary hover:bg-primary/20;
       @apply block;
@@ -128,7 +132,7 @@ import Anchor from "./Anchor.astro";
     @apply gap-1 sm:gap-2 items-center w-full;
 
     .menu {
-      @apply transition duration-500;
+      @apply duration-500;
       @apply flex flex-row overflow-auto;
       @apply gap-1 sm:gap-2 items-center xsm:justify-center;
       @apply lt-sm:absolute lt-sm:top-16 lt-sm:left-0 lt-sm:w-full;
@@ -137,8 +141,8 @@ import Anchor from "./Anchor.astro";
 
     .item,
     .toggle {
-      @apply transition duration-200 ease-in-out;
-      @apply uppercase text-sm tracking-wide font-500 font-lexend;
+      font-family: Lexend, Helvetica, Arial, Manrope, sans-serif;
+      @apply uppercase text-sm tracking-wide font-500;
       @apply px-3 py-2 sm:px-5 sm:py-3 border border-transparent rounded-lg;
       @apply no-underline;
 
