@@ -241,8 +241,8 @@ import Icon from "astro-icon";
           return Object.keys(projects).map((name) => {
             let { description, link, image, showTitle } = projects[name];
             return (
-              <Card img={image} href={link} {showTitle}>
-                <h3 class="card-title">{name}</h3>
+              <Card img={image} href={link} {showTitle} external={false}>
+                <h3 class="card-title" set:html={name} />
                 <p class="card-description">{description}</p>
               </Card>
             );
@@ -315,7 +315,8 @@ import Icon from "astro-icon";
   </footer>
 </BaseLayout>
 
-<script src={Astro.resolve("../scripts/index.ts")} type="module" async></script>
+<!-- <script src={Astro.resolve("../scripts/index.ts")} type="module" async></script> -->
+<script async type="module" src={(await import("../scripts/index.ts?url")).default}></script>
 <script src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" async></script>
 <script src="/scripts/analytics.js" async></script>
 

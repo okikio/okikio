@@ -33,10 +33,11 @@ let navHeight = nav.getBoundingClientRect().height;
 let clientRects = generateClientRects(sections)
   .map((value, index) => ({ ...value, id: headerIds[index] }));
 
+let innerHeight = window.innerHeight;
 window.addEventListener("scroll", throttle(debounce(() => {
   let scrollTop = window.scrollY;
   for (let { id, top, height } of clientRects) {
-    let offsetScrollY = scrollTop + (navHeight * 2);
+    let offsetScrollY = scrollTop + innerHeight - navHeight; // - (navHeight * 2);
     if (offsetScrollY >= top && offsetScrollY <= top + height) {
       window.history.replaceState(null, null, "#" + id);
       hashChange({ newURL: window.location.href });

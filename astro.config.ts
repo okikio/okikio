@@ -1,38 +1,22 @@
-// Full Astro Configuration API Documentation:
-// https://docs.astro.build/reference/configuration-reference
+import { defineConfig } from 'astro/config';
 
-// @type-check enabled!
-// VSCode and other TypeScript-enabled text editors will provide auto-completion,
-// helpful tooltips, and warnings if your exported object is invalid.
-// You can disable this by removing "@ts-check" and `@type` comments below.
-import type { AstroUserConfig } from "astro";
+import svelte from '@astrojs/svelte';
+import sitemap from "@astrojs/sitemap";
 
-const config: AstroUserConfig = {
-  buildOptions: {
-    site: "https://okikio.dev",
-    sitemap: true,
+// https://astro.build/config
+export default defineConfig({
+  site: "https://okikio.dev",
+
+  // Enable Svelte to support Svelte components.
+  integrations: [ svelte(), sitemap() ],
+  markdown: {
+    remarkPlugins: ["remark-gfm", "remark-code-titles", "remark-smartypants"],
+    rehypePlugins: ["rehype-slug", ["rehype-autolink-headings", { behavior: "wrap" }]]
   },
-  renderers: ["@astrojs/renderer-svelte"],
-  markdownOptions: {
-    render: [
-      "@astrojs/markdown-remark",
-      {
-        remarkPlugins: [
-          "remark-smartypants",
-          ["remark-autolink-headings", { behavior: "wrap" }],
-        ],
-        rehypePlugins: [
-          "rehype-slug",
-          ["rehype-autolink-headings", { behavior: "wrap" }],
-        ],
-      },
-    ],
-  },
+  
   vite: {
     ssr: {
-      external: ["svgo"],
-    },
-  },
-};
-
-export default config;
+      external: ["svgo"]
+    }
+  }
+});
