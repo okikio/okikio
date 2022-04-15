@@ -6,6 +6,8 @@ import Card from "../components/Card.astro";
 import Anchor from "../components/Anchor.astro";
 import Icon from "astro-icon";
 
+import scriptURL from "../scripts/index.ts?url";
+
 // Data Fetching: List all Markdown posts in the repo.
 // const projects = Astro.fetchContent("./project/**/*.md");
 // const featuredProject = projects[0];
@@ -316,9 +318,9 @@ import Icon from "astro-icon";
 </BaseLayout>
 
 <!-- <script src={Astro.resolve("../scripts/index.ts")} type="module" async></script> -->
+<!-- <script type="module" src={scriptURL} /> -->
 
-<script type="module" src={(await import("../scripts/index.ts?url")).default}></script>
-<!-- <script type="module">import * as Index from "../scripts/index.ts"; </script>  -->
+<script>import * as Index from "../scripts/index.ts"; </script> 
 <script src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" async></script>
 <script src="/scripts/analytics.js" async></script>
 
