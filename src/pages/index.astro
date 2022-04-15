@@ -316,7 +316,9 @@ import Icon from "astro-icon";
 </BaseLayout>
 
 <!-- <script src={Astro.resolve("../scripts/index.ts")} type="module" async></script> -->
-<script async type="module" src={(await import("../scripts/index.ts?url")).default}></script>
+
+<script type="module" src={(await import("../scripts/index.ts?url")).default}></script>
+<!-- <script type="module">import * as Index from "../scripts/index.ts"; </script>  -->
 <script src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" async></script>
 <script src="/scripts/analytics.js" async></script>
 
