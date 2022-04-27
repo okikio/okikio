@@ -5,7 +5,7 @@
 
 <div style="display:flex">
 
-![A black and white profile photo of Okiki Ojo, smiling, looking straight forward, behind a brick wall backdrop. He is wearing glasses, a black shirt and jacket, and wireless headphones which are hanging on his neck.](https://okikio.dev/images/upload/f_auto,q_auto:best,c_limit/w_400,dpr_auto/e_art:audrey/okikio/okiki-ojo.jpg)
+![A black and white profile photo of Okiki Ojo, smiling, looking straight forward, behind a brick wall backdrop. He is wearing glasses, a black shirt and jacket, and wireless headphones which are hanging on his neck.](https://okikio.dev/images/upload/f_auto,q_auto:best,c_limit/w_400,dpr_auto/okikio/okiki-ojo.jpg)
   
  </div>
 
