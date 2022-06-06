@@ -30,53 +30,51 @@ const hashChange = ({ newURL }) => {
 hashChange({ newURL: window.location.href });
 
 let sections = Array.from(document.querySelectorAll("[nav-section]")) as HTMLElement[];
-let headerIds = sections.map(elem => elem.querySelector("h1[id], h2[id], h3[id]").id);
-
-let navHeight = nav.getBoundingClientRect().height;
-let clientRects = generateClientRects(sections)
-  .map((value, index) => ({ ...value, id: headerIds[index] }));
-
-let innerHeight = window.innerHeight;
 let oldHash = window.location.hash;
 let navHashes = new Map();
-items.forEach((item) => { 
-  let url = new URL(item.getAttribute("href"), window.location.href); 
+items.forEach((item) => {
+  let url = new URL(item.getAttribute("href"), window.location.href);
   navHashes.set(url.hash, item);
 });
 
-window.addEventListener("scroll", throttle(() => {
-  let scrollTop = window.scrollY;
-  for (let { id, top, height } of clientRects) {
-    let offsetScrollY = scrollTop + innerHeight - navHeight; // - (navHeight * 2);
-    if (offsetScrollY >= top && offsetScrollY <= top + height) {
+const observer = new IntersectionObserver(debounce((entries) => {
+  entries.forEach((entry) => {
+    if (entry.intersectionRatio >= 0.25) {
+      let id = entry.target.attributes["nav-section"].value;
       window.history.replaceState(null, null, "#" + id);
       navHashes.has(oldHash) && navHashes.get(oldHash).classList.remove("active");
       navHashes.has("#" + id) && navHashes.get("#" + id).classList.add("active");
-      // hashChange({ newURL: window.location.href });
       oldHash = window.location.hash;
     }
-  }
-}, 150), { passive: true });
+  });
+}, 50), {
+  threshold: Array.from({ length: 101 }, (_, x) => x / 100),
+  rootMargin: `0px 0px -100px 0px`
+});
 
-let rootEl = document.querySelector("[perspective-group]");
+for (let section of sections) {
+  observer.observe(section);
+}
+
+let rootEl = document.querySelector("[perspective-group]") as HTMLElement;
 let els = Array.from(rootEl.querySelectorAll("[perspective]")) as HTMLElement[];
 
 let len = els.length;
 let elAttrs = els.map(el => el.getAttribute("perspective"));
 let elClientRects = generateClientRects(els);
 
-let perspectiveCatagory = (attr: string, e: MouseEvent, clientRect: Rect, yscale: number) => {
+function perspectiveCatagory(attr: string, e: MouseEvent, clientRect: Rect, yscale: number) {
   switch (attr) {
     case "header":
       return {
         x: axis("max", "x", 10, -20)(e, clientRect),
-        y: `${- yscale * (clientRect.height / 2)}px`// `${-e.clientY / 20}px`,
+        y: `${- yscale * (clientRect.height / 2)}px`,
       };
 
     case "image":
       return {
         x: axis("min", "x", 5, (clientRect.width / 6) - 40)(e, clientRect),
-        y: `calc(-50% + ${yscale * (clientRect.height / 6)}px)` // `${(clientRect.height)}px`,
+        y: `calc(-50% + ${yscale * (clientRect.height / 6)}px)`,
       };
 
     case "scroll-down":
@@ -88,7 +86,7 @@ let perspectiveCatagory = (attr: string, e: MouseEvent, clientRect: Rect, yscale
     case "social-links":
       return {
         x: axis("min", "x", 10, -5)(e, clientRect),
-        y: `${- yscale * clientRect.height * 0.125}px`// `${-e.clientY / 20}px`,
+        y: `${- yscale * clientRect.height * 0.125}px`,
       };
   }
 
@@ -100,26 +98,28 @@ let perspectiveCatagory = (attr: string, e: MouseEvent, clientRect: Rect, yscale
 
 let height = window.innerHeight;
 let registered = false;
+function onMousemove(e: MouseEvent) {
+  if (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    window.matchMedia("(pointer: coarse)").matches
+  ) return;
+
+  let yscale = (e.clientY / height) - 0.5;
+  for (let i = 0; i < len; i++) {
+    let el = els[i];
+    let clientRect = elClientRects[i];
+    let name = elAttrs[i];
+
+    let { x, y } = perspectiveCatagory(name, e, clientRect, yscale);
+    el.style.transform = `translate(${x}, ${y})`;
+  }
+}
+
 function registerEvent() {
   if (!registered) {
-    rootEl?.addEventListener("mousemove", (e: MouseEvent) => {
-      if (
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-        window.matchMedia("(pointer: coarse)").matches
-      ) return;
-
-      let yscale = (e.clientY / height) - 0.5;
-      for (let i = 0; i < len; i++) {
-        let el = els[i];
-        let clientRect = elClientRects[i];
-        let name = elAttrs[i];
-
-        let { x, y } = perspectiveCatagory(name, e, clientRect, yscale);
-        el.style.transform = `translate(${x}, ${y})`;
-      }
-    }, { passive: true });
+    rootEl?.addEventListener("mousemove", onMousemove, { passive: true });
   }
-    
+
   registered = true;
 }
 
@@ -135,10 +135,7 @@ window.matchMedia("(pointer: coarse)")
 
 window.addEventListener("resize", debounce(() => {
   height = window.innerHeight;
-  navHeight = nav.getBoundingClientRect().height;
   elClientRects = generateClientRects(els);
-  clientRects = generateClientRects(sections)
-    .map((value, index) => ({ ...value, id: headerIds[index] }));
 }, 1000), { passive: true });
 
 export { };
