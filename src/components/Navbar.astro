@@ -11,23 +11,24 @@ import Anchor from "./Anchor.astro";
         href="/"
         aria-label="Okiki Ojo's logo, it's used on all social media site to identify and represent Okiki"
         title="Logo"
+        class="umami--click--logo-click"
       >
         <Icon name="logo" />
       </Anchor>
     </div>
     <div class="flex-grow"></div>
     <div class="menu px-1">
-      <Anchor href="#about" class="item">About</Anchor>
-      <Anchor href="#projects" class="item">Projects</Anchor>
-      <Anchor href="#contact" class="item">Contact</Anchor>
+      <Anchor href="#about" class="item umami--click--about-nav-link">About</Anchor>
+      <Anchor href="#projects" class="item umami--click--projects-nav-link">Projects</Anchor>
+      <Anchor href="#contact" class="item umami--click--contact-nav-link">Contact</Anchor>
       
       <div class="seperator"></div>
-      <Anchor href="https://blog.okikio.dev" class="item">Blog</Anchor>
+      <Anchor href="https://blog.okikio.dev" class="item umami--click--blog">Blog</Anchor>
       <div class="px-2 xsm:hidden"></div>
       <div class="logo xsm:hidden">
         <Anchor
           href="https://twitter.com/okikio_dev"
-          class="text-primary bg-primary/10 item"
+          class="text-primary bg-primary/10 item umami--click--twitter-profile"
           aria-label="Link to the Okiki Ojo's Twitter profile"
           title="Twitter"
           external={false}
@@ -42,7 +43,7 @@ import Anchor from "./Anchor.astro";
     <div class="logo lt-xsm:hidden">
       <Anchor
         href="https://twitter.com/okikio_dev"
-        class="text-primary bg-primary/10 item"
+        class="text-primary bg-primary/10 item umami--click--twitter-profile"
         aria-label="Link to the Okiki Ojo's Twitter profile"
         title="Twitter"
         external={false}
@@ -56,7 +57,7 @@ import Anchor from "./Anchor.astro";
     <div class="logo">
       <Anchor
         href="https://github.com/okikio"
-        class="text-primary bg-primary/10 item"
+        class="text-primary bg-primary/10 item  umami--click--github-profile"
         aria-label="Link to the Okiki Ojo's Github profile"
         title="Github"
         external={false}
@@ -68,7 +69,7 @@ import Anchor from "./Anchor.astro";
     </div>
 
     <!-- <div class="seperator sm:hidden"></div> -->
-    <button type="button" class="toggle">
+    <button type="button" class="toggle umami--click--nav-menu-toggle">
       <span class="text">Menu</span>
       <span class="dot"></span>
     </button>
@@ -81,23 +82,29 @@ import Anchor from "./Anchor.astro";
     @apply z-50;
 
     .backdrop {
-      @apply transition duration-500;
-      @apply absolute top-0 left-0 w-full h-full;
+      @apply absolute top-0 left-0 w-full;
+      @apply -translate-y-1/2 h-[200%];
       @apply bg-black;
 
       @supports (backdrop-filter: blur(10px)) {
         @apply bg-opacity-50 backdrop-blur-md;
       }
+
+      @at-root :global(.dom-loaded) nav .backdrop {
+        @apply transition duration-500;
+      }
     }
 
     &.open .backdrop {
-      @apply lt-sm:h-32;
+      @apply lt-sm:translate-y-0;
     }
 
-    button,
-    a {
-      transition-property: background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-      @apply duration-200 ease-in-out;
+    @at-root :global(.dom-loaded) nav {
+      button,
+      a {
+        transition-property: background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+        @apply duration-200 ease-in-out;
+      }
     }
   }
 
@@ -162,9 +169,12 @@ import Anchor from "./Anchor.astro";
       @apply flex items-center gap-2;
       @apply sm:hidden;
 
-      .text,
-      .dot {
-        @apply transition-transform duration-500;
+      
+      @at-root :global(.dom-loaded) nav .toggle {
+        .text,
+        .dot {
+          @apply transition-transform duration-500;
+        }
       }
 
       .text {

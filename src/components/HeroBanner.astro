@@ -2,6 +2,9 @@
 import Icon from "astro-icon";
 import Anchor from "./Anchor.astro";
 import Image from "./Image.astro";
+
+import GithubSlugger from "github-slugger";
+const slugger = new GithubSlugger();
 ---
 
 <header class="content" role="banner" nav-section perspective-group>
@@ -40,7 +43,7 @@ import Image from "./Image.astro";
             let [shortName, href] = links[name];
             return (
               <Anchor
-                class="px-4 py-2 focus-visible:bg-primary/20 hover:text-primary"
+                class={`px-4 py-2 focus-visible:bg-primary/20 hover:text-primary umami--click--${slugger.slug(name, false)}-side-social`}
                 href={href}
               >
                 <span class="full">{name}</span>
@@ -54,7 +57,7 @@ import Image from "./Image.astro";
 
     <!-- perspective="scroll-down" -->
     <div id="scroll-down">
-      <Anchor href="/#content" aria-label="Scroll down button">
+      <Anchor href="/#content" class="umami--click--scroll-down-btn" aria-label="Scroll down button">
         <strong class="text">Scroll</strong>
         <div class="icon-container">
           <Icon name="fluent:chevron-down-24-filled" />
@@ -183,8 +186,8 @@ import Image from "./Image.astro";
         :global(svg) {
           @apply w-6 h-6;
         }
-
-        :global(path) {
+        
+        @at-root :global(.dom-loaded) #scroll-down .icon-container :global(path) {
           @apply transition-colors duration-200 ease-in-out;
         }
       }

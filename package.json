@@ -15,27 +15,31 @@
     "url": "https://github.com/okikio/okikio/issues"
   },
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
+    "dev": "astro dev --experimental-integrations",
+    "start": "astro dev --experimental-integrations",
+    "build": "astro build --experimental-integrations",
+    "preview": "astro preview --experimental-integrations",
     "format": "prettier --plugin=prettier-plugin-astro -w ./**/*.astro"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^0.1.0",
-    "@astrojs/svelte": "^0.1.1",
     "@tailwindcss/typography": "^0.5.2",
-    "astro": "^1.0.0-beta.12",
+    "astro": "^1.0.0-beta.40",
+    "astro-compress": "^0.0.8",
     "astro-icon": "^0.7.1",
     "astro-seo": "^0.5.0",
-    "postcss": "^8.4.12",
+    "github-slugger": "^1.4.0",
+    "postcss": "^8.4.14",
     "prettier-plugin-astro": "^0.0.12",
     "rehype-slug": "^5.0.1",
     "remark-code-titles": "^0.1.2",
     "remark-gfm": "^3.0.1",
     "remark-smartypants": "^2.0.0",
-    "sass": "^1.50.0",
+    "sass": "^1.52.2",
     "tailwindcss": "^3.0.24",
     "tsm": "^2.2.1"
+  },
+  "dependencies": {
+    "@builder.io/partytown": "^0.6.1"
   }
 }

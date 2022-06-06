@@ -6,7 +6,8 @@ import Card from "../components/Card.astro";
 import Anchor from "../components/Anchor.astro";
 import Icon from "astro-icon";
 
-import scriptURL from "../scripts/index.ts?url";
+import GithubSlugger from "github-slugger";
+const slugger = new GithubSlugger();
 
 // Data Fetching: List all Markdown posts in the repo.
 // const projects = Astro.fetchContent("./project/**/*.md");
@@ -110,10 +111,10 @@ import scriptURL from "../scripts/index.ts?url";
         {() => {
           let externalIcon = `<svg viewBox="0 0 24 24" class="astro-6H36LA55 inline-block w-[1em] h-[1em]" astro-icon="fluent:arrow-up-right-24-filled"><path fill="yellow" d="M11 3a1 1 0 1 0 0 2h6.586L3.293 19.293a1 1 0 1 0 1.414 1.414L19 6.414V13a1 1 0 1 0 2 0V4a1 1 0 0 0-1-1h-9z"></path></svg>`;
           let projects = {
-            bundle: {
+            bundlejs: {
               image: {
                 src: "cloudinary/okikio/bundle",
-                alt: "The banner image for 'bundlejs.com'. It has a blue box with the letter 'b' inside it, the blue box is the logo, offset by a bit, with the text 'bundle' in the center.",
+                alt: "The banner image for 'bundlejs.com'. It has a blue box with the letter 'b' inside it, the blue box is the logo, offset by a bit, with the text 'bundlejs' in the center.",
                 width: "450",
                 height: "350",
               },
@@ -243,7 +244,7 @@ import scriptURL from "../scripts/index.ts?url";
           return Object.keys(projects).map((name) => {
             let { description, link, image, showTitle } = projects[name];
             return (
-              <Card img={image} href={link} {showTitle} external={false}>
+              <Card img={image} href={link} {showTitle} external={false} name={name}>
                 <h3 class="card-title" set:html={name} />
                 <p class="card-description">{description}</p>
               </Card>
@@ -285,7 +286,7 @@ import scriptURL from "../scripts/index.ts?url";
             let href = links[name];
             return (
               <Anchor
-                class="px-4 py-2 hover:text-primary hover:bg-primary/30 focus:bg-primary/20"
+                class={`px-4 py-2 hover:text-primary hover:bg-primary/30 focus:bg-primary/20 umami--click--${slugger.slug(name, false)}-contact`}
                 href={href}
               >
                 {name}
@@ -320,9 +321,7 @@ import scriptURL from "../scripts/index.ts?url";
 <!-- <script src={Astro.resolve("../scripts/index.ts")} type="module" async></script> -->
 <!-- <script type="module" src={scriptURL} /> -->
 
-<script>import * as Index from "../scripts/index.ts"; </script> 
-<script src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" async></script>
-<script src="/scripts/analytics.js" async></script>
+<script>import "../scripts/index.ts"; </script> 
 
 <style lang="scss">
   h1,

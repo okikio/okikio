@@ -1,22 +1,27 @@
 import { defineConfig } from 'astro/config';
-
-import svelte from '@astrojs/svelte';
 import sitemap from "@astrojs/sitemap";
+
+import path from 'path';
+import { partytownVite } from "@builder.io/partytown/utils";
+
+import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://okikio.dev",
-
-  // Enable Svelte to support Svelte components.
-  integrations: [ svelte(), sitemap() ],
+  integrations: [sitemap(), compress()],
   markdown: {
     remarkPlugins: ["remark-gfm", "remark-code-titles", "remark-smartypants"],
-    rehypePlugins: ["rehype-slug", ["rehype-autolink-headings", { behavior: "wrap" }]]
+    rehypePlugins: ["rehype-slug", ["rehype-autolink-headings", {
+      behavior: "wrap"
+    }]]
   },
-  
   vite: {
     ssr: {
       external: ["svgo"]
-    }
+    },
+    plugins: [partytownVite({
+      dest: path.join(__dirname, 'dist', '~partytown')
+    })]
   }
 });

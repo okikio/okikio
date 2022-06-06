@@ -2,11 +2,15 @@
 import Anchor from "./Anchor.astro";
 import Image from "./Image.astro";
 
-const { href, img = {}, external, showTitle } = Astro.props;
+import GithubSlugger from "github-slugger";
+const slugger = new GithubSlugger();
+
+const { href, img = {}, external, showTitle, name } = Astro.props;
+const slug = slugger.slug(name, false);
 ---
 
 <div class={`card` + (showTitle ? " show-title" : "")}>
-  <Anchor {href} {external}>
+  <Anchor {href} {external} class={`umami--mouseover--${slug} umami--click--${slug}`}>
     {(!img.blank && <Image {...img} />) || (
       <div class="w-full h-[350px] bg-primary/20" {...img} />
     )}
@@ -21,8 +25,11 @@ const { href, img = {}, external, showTitle } = Astro.props;
 
 <style lang="scss">
   .card {
-    @apply transition-shadow duration-300;
     @apply focus-within:ring-2 hover:ring-2 ring-white ring-offset-4 ring-offset-black;
+
+    @at-root :global(.dom-loaded) .card {
+      @apply transition-shadow duration-300;
+    }
 
     &,
     a {
@@ -53,9 +60,12 @@ const { href, img = {}, external, showTitle } = Astro.props;
       @apply absolute inset-0 bg-gray-900/0;
 
       .overlay-blur {
-        @apply transition-opacity duration-300;
         @apply absolute inset-0 bg-black/20 coarse:bg-[color:rgb(4_23_78/20%)] backdrop-blur-lg coarse:backdrop-blur-sm;
         @apply fine:opacity-0;
+
+        @at-root :global(.dom-loaded) .card .overlay-blur {
+            @apply transition-opacity duration-300;
+        }
       }
     }
 
@@ -72,8 +82,11 @@ const { href, img = {}, external, showTitle } = Astro.props;
       @apply p-6;
       @apply lt-xsm:text-base lt-sm:leading-snug;
 
-      @apply transition-transform duration-500;
       @apply fine:translate-y-full;
+
+      @at-root :global(.dom-loaded) .card .card-content {
+        @apply transition-transform duration-500;
+      }
 
       :global(p) {
         @apply my-0;
@@ -86,11 +99,14 @@ const { href, img = {}, external, showTitle } = Astro.props;
   }
 
   .card :global(.card-title) {
-    @apply transition duration-500;
-    /* transition-property: box-shadow, transform, opacity; */
     @apply fine:translate-y-[-200%];
     text-decoration: 2px solid underline;
     text-decoration-color: transparent;
+
+    @at-root :global(.dom-loaded) .card :global(.card-title) {
+      @apply transition duration-500;
+      /* transition-property: box-shadow, transform, opacity; */
+    }
   }
   
   .card:not(.show-title) :global(.card-title) {

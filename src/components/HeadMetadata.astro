@@ -1,6 +1,8 @@
 ---
 // @ts-ignore
 import { SEO } from "astro-seo";
+import { partytownSnippet } from '@builder.io/partytown/integration';
+
 import "../styles/global.scss";
 
 const {
@@ -36,14 +38,34 @@ const extendMeta = {
     { name: "twitter:description", content: description },
   ],
 };
+
+const snippetText = partytownSnippet();
 ---
+
+<!-- <script type="text/partytown" src="https://analytics.bundlejs.com/umami.js" async defer data-website-id="dd35e13d-bf45-4f58-8840-de8526733565"></script> -->
+
+<script set:html={`
+  partytown = {
+    forward: ['dataLayer.push'],
+  };
+`}></script>
+<script set:html={snippetText}></script>
+
+<script type="text/partytown" src="/scripts/independent-measure.js" async></script>
+<script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" async></script>
+<script type="text/partytown" src="/scripts/measure.js" async></script>
+
+<!-- <link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-500.woff2" type="fonts/woff2" as="font" crossorigin />
+<link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-700.woff2" type="fonts/woff2" as="font" crossorigin />
+<link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-900.woff2" type="fonts/woff2" as="font" crossorigin />
+
+<link rel="preload" href="/fonts/manrope-v11-latin-ext_latin-500.woff2" type="fonts/woff2" as="font" crossorigin />
+<link rel="preload" href="/fonts/manrope-v11-latin-ext_latin-700.woff2" type="fonts/woff2" as="font" crossorigin /> -->
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
 <link rel="manifest" href="/manifest.json" />
-
-<script src="https://analytics.bundlejs.com/umami.js" async defer data-website-id="dd35e13d-bf45-4f58-8840-de8526733565"></script>
   
 <link href="https://github.com/okikio" rel="me">
 <link rel="webmention" href="https://webmention.io/okikio.dev/webmention" />
@@ -96,8 +118,8 @@ const extendMeta = {
   extend={extendMeta}
 />
 
-<script type="application/ld+json">
-  { "@context": "https://schema.org", "@type": "WebSite", "name": "Okiki Ojo",
+<script type="application/ld+json" set:html={JSON.stringify({ 
+  "@context": "https://schema.org", "@type": "WebSite", "name": "Okiki Ojo",
   "alternateName": "okikio", "url": "https://okikio.dev/", "image":
   "https://okikio.dev/favicon/banner-image.png", 
   "description": "Portfolio for Okiki Ojo. It contains some amazing projects, and a little about him.",
@@ -117,5 +139,5 @@ const extendMeta = {
   "https://okikio.dev/favicon/android-chrome-512x512.png" } }, "copyrightYear":
   "2022", "copyrightHolder": { "@type": "Person", "name": "Okiki Ojo", "logo": {
   "@type": "ImageObject", "url":
-  "https://okikio.dev/favicon/android-chrome-512x512.png" } } }
-</script>
+  "https://okikio.dev/favicon/android-chrome-512x512.png" } } 
+  })} />

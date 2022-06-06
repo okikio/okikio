@@ -1,5 +1,8 @@
 import { throttle, debounce, generateClientRects, axis, type Rect } from "./util";
 
+const html = document.querySelector("html");
+html.classList.add("dom-loaded");
+
 let nav = document.querySelector("nav");
 let menu = nav.querySelector(".menu");
 let items = Array.from(menu.querySelectorAll(".item"));
@@ -34,16 +37,26 @@ let clientRects = generateClientRects(sections)
   .map((value, index) => ({ ...value, id: headerIds[index] }));
 
 let innerHeight = window.innerHeight;
-window.addEventListener("scroll", throttle(debounce(() => {
+let oldHash = window.location.hash;
+let navHashes = new Map();
+items.forEach((item) => { 
+  let url = new URL(item.getAttribute("href"), window.location.href); 
+  navHashes.set(url.hash, item);
+});
+
+window.addEventListener("scroll", throttle(() => {
   let scrollTop = window.scrollY;
   for (let { id, top, height } of clientRects) {
     let offsetScrollY = scrollTop + innerHeight - navHeight; // - (navHeight * 2);
     if (offsetScrollY >= top && offsetScrollY <= top + height) {
       window.history.replaceState(null, null, "#" + id);
-      hashChange({ newURL: window.location.href });
+      navHashes.get(oldHash).classList.remove("active");
+      navHashes.get("#" + id).classList.add("active");
+      // hashChange({ newURL: window.location.href });
+      oldHash = window.location.hash;
     }
   }
-}, 50), 300), { passive: true });
+}, 100), { passive: true });
 
 let rootEl = document.querySelector("[perspective-group]");
 let els = Array.from(rootEl.querySelectorAll("[perspective]")) as HTMLElement[];
@@ -86,22 +99,39 @@ let perspectiveCatagory = (attr: string, e: MouseEvent, clientRect: Rect, yscale
 };
 
 let height = window.innerHeight;
-rootEl?.addEventListener("mousemove", (e: MouseEvent) => {
-  if (
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-    window.matchMedia("(pointer: coarse)").matches
-  ) return;
+let registered = false;
+function registerEvent() {
+  if (!registered) {
+    rootEl?.addEventListener("mousemove", (e: MouseEvent) => {
+      if (
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+        window.matchMedia("(pointer: coarse)").matches
+      ) return;
 
-  let yscale = (e.clientY / height) - 0.5;
-  for (let i = 0; i < len; i++) {
-    let el = els[i];
-    let clientRect = elClientRects[i];
-    let name = elAttrs[i];
+      let yscale = (e.clientY / height) - 0.5;
+      for (let i = 0; i < len; i++) {
+        let el = els[i];
+        let clientRect = elClientRects[i];
+        let name = elAttrs[i];
 
-    let { x, y } = perspectiveCatagory(name, e, clientRect, yscale);
-    el.style.transform = `translate(${x}, ${y})`;
+        let { x, y } = perspectiveCatagory(name, e, clientRect, yscale);
+        el.style.transform = `translate(${x}, ${y})`;
+      }
+    }, { passive: true });
   }
-}, { passive: true });
+    
+  registered = true;
+}
+
+if (
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+  !window.matchMedia("(pointer: coarse)").matches
+) registerEvent();
+
+window.matchMedia("(prefers-reduced-motion: reduce)")
+  ?.addEventListener?.("change", registerEvent);
+window.matchMedia("(pointer: coarse)")
+  ?.addEventListener?.("change", registerEvent);
 
 window.addEventListener("resize", debounce(() => {
   height = window.innerHeight;
