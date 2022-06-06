@@ -50,13 +50,13 @@ window.addEventListener("scroll", throttle(() => {
     let offsetScrollY = scrollTop + innerHeight - navHeight; // - (navHeight * 2);
     if (offsetScrollY >= top && offsetScrollY <= top + height) {
       window.history.replaceState(null, null, "#" + id);
-      navHashes.get(oldHash).classList.remove("active");
-      navHashes.get("#" + id).classList.add("active");
+      navHashes.has(oldHash) && navHashes.get(oldHash).classList.remove("active");
+      navHashes.has("#" + id) && navHashes.get("#" + id).classList.add("active");
       // hashChange({ newURL: window.location.href });
       oldHash = window.location.hash;
     }
   }
-}, 100), { passive: true });
+}, 150), { passive: true });
 
 let rootEl = document.querySelector("[perspective-group]");
 let els = Array.from(rootEl.querySelectorAll("[perspective]")) as HTMLElement[];
