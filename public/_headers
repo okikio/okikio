@@ -7,7 +7,7 @@
   Cache-Control: max-age=300, must-revalidate, public
   Accept-CH: DPR, Viewport-Width, Width
   X-UA-Compatible: IE=edge
-  Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self'; img-src 'self' https://res.cloudinary.com https://okikio.dev; script-src 'self' https://cdn.polyfill.io https://www.googletagmanager.com https://*.bundlejs.com; connect-src 'self' https://www.google-analytics.com https://*.bundlejs.com; block-all-mixed-content; upgrade-insecure-requests; base-uri 'self'; object-src 'none'; worker-src 'self'; manifest-src 'self'; media-src 'self' https://res.cloudinary.com/ https://okikio.dev; form-action 'self'; frame-ancestors 'self' https:;
+  Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://res.cloudinary.com https://okikio.dev; script-src 'self' https://cdn.polyfill.io https://www.googletagmanager.com https://*.bundlejs.com https://bundlejs.com 'unsafe-inline'; connect-src 'self' https://www.google-analytics.com https://*.bundlejs.com; block-all-mixed-content; upgrade-insecure-requests; base-uri 'self'; object-src 'none'; worker-src 'self'; manifest-src 'self'; media-src 'self' https://res.cloudinary.com/ https://okikio.dev; form-action 'self'; frame-ancestors 'self' https:;
   Permissions-Policy: geolocation=(), microphone=(), usb=(), sync-xhr=(self), camera=()
 
 /
