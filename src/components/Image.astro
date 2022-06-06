@@ -7,7 +7,7 @@ const {
   figureAttrs = {},
   ...rest
 } = Astro.props;
-let { class, ...attrs } = figureAttrs;
+let { class: _class, ...attrs } = figureAttrs;
 
 let cloudinaryTest = /^cloudinary\//.test(src);
 let fetchTest = /\/fetch\//.test(src);
@@ -25,15 +25,17 @@ let urlParse = (filters = "w_auto") =>
 
 let n = 4;
 let imageFormat = fetchTest ? "" : ".webp";
-let srcset = `${urlParse(`w_auto`) + imageFormat} 300w`;
-let sizes = `(max-width: 300px) 450px, `;
-while (n <= 12) {
-  srcset += `, ${urlParse(`w_${n * 100}`) + imageFormat} ${n * 100}w`;
-  sizes += `(max-width: ${n * 100}px) ${n * 100}px, `;
-  n += 3;
+let srcset = rest.srcset ? rest.srcset : `${urlParse(`w_auto`) + imageFormat} 300w`;
+let sizes = rest.sizes ? rest.sizes : `(max-width: 300px) 450px`;
+if (!rest.srcset && !rest.sizes) {
+  while (n <= 12) {
+    if (!rest.srcset) srcset += `, ${urlParse(`w_${n * 100}`) + imageFormat} ${n * 100}w`;
+    if (!rest.sizes) sizes += `, (max-width: ${n * 100}px) ${n * 100}px`;
+    n += 3;
+  }
 }
 
-sizes += `100vw`;
+if (!rest.sizes) sizes += `, 100vw`;
 ---
 
 <figure class={className} {...attrs}>
