@@ -1,4 +1,4 @@
-Sitemap: https://okikio.dev/sitemap.xml
+Sitemap: https://okikio.dev/sitemap-index.xml
 User-agent: *
 Disallow: /images/*/okikio/okiki-ojo.jpg
 Disallow: /images/*/okikio/okiki-ojo.webp
