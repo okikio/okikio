@@ -1,8 +1,5 @@
 import { throttle, debounce, generateClientRects, axis, type Rect } from "./util";
 
-const html = document.querySelector("html");
-html.classList.add("dom-loaded");
-
 let nav = document.querySelector("nav");
 let menu = nav.querySelector(".menu");
 let items = Array.from(menu.querySelectorAll(".item"));
@@ -56,11 +53,11 @@ for (let section of sections) {
   observer.observe(section);
 }
 
-let rootEl = document.querySelector("[perspective-group]") as HTMLElement;
-let els = Array.from(rootEl.querySelectorAll("[perspective]")) as HTMLElement[];
+let rootEl = document.querySelector("[data-perspective-group]") as HTMLElement;
+let els = Array.from(rootEl.querySelectorAll("[data-perspective]")) as HTMLElement[];
 
 let len = els.length;
-let elAttrs = els.map(el => el.getAttribute("perspective"));
+let elAttrs = els.map(el => el.getAttribute("data-perspective"));
 let elClientRects = generateClientRects(els);
 
 function perspectiveCatagory(attr: string, e: MouseEvent, clientRect: Rect, yscale: number) {
@@ -137,5 +134,10 @@ window.addEventListener("resize", debounce(() => {
   height = window.innerHeight;
   elClientRects = generateClientRects(els);
 }, 1000), { passive: true });
+
+setTimeout(() => {
+  const html = document.querySelector("html");
+  html.classList.add("dom-loaded");
+}, 500);
 
 export { };

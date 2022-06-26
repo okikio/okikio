@@ -8,8 +8,11 @@
 @import "./base.scss";
 @import "./layout.scss";
 
-#skip-main {
+.dom-loaded #skip-main {
     transition: border 0.35s ease;
+}
+
+#skip-main {
     @apply border-2 border-primary;
     @apply text-black bg-primary;
     transform: translateX(-50%);
