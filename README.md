@@ -33,7 +33,7 @@ I have experience in Astro, Javascript, Typescript, CSS/SASS, HTML, Pug, Node.js
 
 | [LinkedIn](https://www.linkedin.com/in/okikio)         | [Twitter](https://twitter.com/okikio_dev) | [Reddit](https://www.reddit.com/user/okikio_dev)       | [Blog](https://blog.okikio.dev)                                              |
 | ------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| [Github](https://github.com/okikio)                    | [Dev.to](https://dev.to/okikio)           | [Hackernoon](https://hackernoon.com/u/okikio)          | [CSS-Tricks](https://css-tricks.com/author/okikiojo/)                        |
+| [GitHub](https://github.com/okikio)                    | [Dev.to](https://dev.to/okikio)           | [Hackernoon](https://hackernoon.com/u/okikio)          | [CSS-Tricks](https://css-tricks.com/author/okikiojo/)                        |
 | [Codepen](https://codepen.io/okikio)                   | [Daily.dev](https://app.daily.dev/okikio) | [Product Hunt](https://www.producthunt.com/@okiki_ojo) | [Stackoverflow](https://stackoverflow.com/users/12140185/okikio?tab=profile) |
 | [Buy me a coffee](https://www.buymeacoffee.com/okikio) | [Email](mailto:hey@okikio.dev)            |                                                        |                                                                              |
 

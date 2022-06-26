@@ -86,7 +86,7 @@ function perspectiveCatagory(attr: string, e: MouseEvent, clientRect: Rect, ysca
     case "social-links":
       return {
         x: axis("min", "x", 10, -5)(e, clientRect),
-        y: `${- yscale * clientRect.height * 0.125}px`,
+        y: `${- yscale * clientRect.height * 0.0125}px`,
       };
   }
 

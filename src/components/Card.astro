@@ -2,8 +2,8 @@
 import Anchor from "./Anchor.astro";
 import Image from "./Image.astro";
 
-import GithubSlugger from "github-slugger";
-const slugger = new GithubSlugger();
+import GitHubSlugger from "github-slugger";
+const slugger = new GitHubSlugger();
 
 const { href, img = {}, external, showTitle, name } = Astro.props;
 const slug = slugger.slug(name, false);

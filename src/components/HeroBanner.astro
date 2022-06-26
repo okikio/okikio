@@ -3,8 +3,8 @@ import Icon from "astro-icon";
 import Anchor from "./Anchor.astro";
 import Image from "./Image.astro";
 
-import GithubSlugger from "github-slugger";
-const slugger = new GithubSlugger();
+import GitHubSlugger from "github-slugger";
+const slugger = new GitHubSlugger();
 
 let src = "cloudinary/e_art:audrey/okikio/okiki-ojo";
 let cloudinaryTest = /^cloudinary\//.test(src);
@@ -58,7 +58,7 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
           let links = {
             LinkedIn: ["In", "https://www.linkedin.com/in/okikio"],
             Twitter: ["Tw", "https://twitter.com/okikio_dev"],
-            Github: ["Git", "https://github.com/okikio"],
+            GitHub: ["Git", "https://github.com/okikio"],
             Email: ["@", "mailto:hey@okikio.dev"],
           };
 
