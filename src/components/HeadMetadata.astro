@@ -44,16 +44,20 @@ const snippetText = partytownSnippet();
 
 <!-- <script type="text/partytown" src="https://analytics.bundlejs.com/umami.js" async defer data-website-id="dd35e13d-bf45-4f58-8840-de8526733565"></script> -->
 
-<script set:html={`
+<!-- <script set:html={`
   partytown = {
     forward: ['dataLayer.push'],
   };
 `}></script>
-<script set:html={snippetText}></script>
+<script set:html={snippetText}></script> -->
 
-<script type="text/partytown" src="/scripts/independent-measure.js" async></script>
+<!-- <script type="text/partytown" src="/scripts/independent-measure.js" async></script>
 <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" async></script>
-<script type="text/partytown" src="/scripts/measure.js" async></script>
+<script type="text/partytown" src="/scripts/measure.js" async></script> -->
+
+<script type="module" src="/scripts/independent-measure.js" defer></script>
+<script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" defer></script>
+<script type="module" src="/scripts/measure.js" defer></script>
 
 <!-- <link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-500.woff2" type="fonts/woff2" as="font" crossorigin />
 <link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-700.woff2" type="fonts/woff2" as="font" crossorigin />
