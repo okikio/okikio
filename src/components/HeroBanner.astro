@@ -3,8 +3,7 @@ import Icon from "astro-icon";
 import Anchor from "./Anchor.astro";
 import Image from "./Image.astro";
 
-import GitHubSlugger from "github-slugger";
-const slugger = new GitHubSlugger();
+import { slug as slugger } from "../utils/slug";
 
 let src = "cloudinary/e_art:audrey/okikio/okiki-ojo";
 let cloudinaryTest = /^cloudinary\//.test(src);
@@ -33,11 +32,11 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
         <h1 id="index">
           Hello, I am <strong class="text-primary" aria-label="Okiki Ojo">Okiki.</strong>
         </h1>
-        <h2>Student - Independent Web Developer - Open Source Steward</h2>
+        <h2>Web Developer - Open Source Steward - Student</h2>
       </div>
       <Image
         src={src}
-        alt="A black and white profile photo of Okiki Ojo, smiling, looking straight forward, behind a brick wall backdrop. He is wearing glasses, a black shirt and jacket, and wireless headphones which are hanging on his neck."
+        alt="A black and white profile photo of Okiki Ojo, smiling, looking straight forward, behind a brick wall backdrop. He is wearing glasses, a black shirt and jacket, plus some wireless headphones, which are hanging around on his neck."
         width="250"
         height="350"
         data-nosnippet
@@ -66,7 +65,7 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
             let [shortName, href] = links[name];
             return (
               <Anchor
-                class={`px-4 py-2 focus-visible:bg-primary/20 hover:text-primary umami--click--${slugger.slug(name, false)}-side-social`}
+                class={`px-4 py-2 focus-visible:bg-primary/20 hover:text-primary umami--click--${slugger(name, { lower: false })}-side-social`}
                 href={href}
               >
                 <span class="full">{name}</span>

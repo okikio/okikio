@@ -1,5 +1,5 @@
 {
-  "name": "@example/portfolio",
+  "name": "@okikio/portfolio",
   "version": "0.0.1",
   "private": true,
   "author": {
@@ -15,30 +15,24 @@
     "url": "https://github.com/okikio/okikio/issues"
   },
   "scripts": {
-    "dev": "astro dev --experimental-integrations",
-    "start": "astro dev --experimental-integrations",
-    "build": "astro build --experimental-integrations",
-    "preview": "astro preview --experimental-integrations",
-    "format": "prettier --plugin=prettier-plugin-astro -w ./**/*.astro"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^0.2.4",
-    "@tailwindcss/typography": "^0.5.2",
-    "astro": "^1.0.0-beta.62",
-    "astro-icon": "^0.7.1",
-    "astro-seo": "^0.5.0",
-    "github-slugger": "^1.4.0",
+    "@astrojs/sitemap": "^0.3.0",
+    "@tailwindcss/typography": "^0.5.4",
+    "astro": "^1.0.0-rc.3",
+    "astro-icon": "^0.7.3",
+    "astro-seo": "^0.5.1",
+    "esno": "^0.16.3",
     "postcss": "^8.4.14",
-    "prettier-plugin-astro": "^0.1.1",
     "rehype-slug": "^5.0.1",
     "remark-code-titles": "^0.1.2",
     "remark-gfm": "^3.0.1",
     "remark-smartypants": "^2.0.0",
-    "sass": "^1.53.0",
-    "tailwindcss": "^3.1.4",
-    "tsm": "^2.2.1"
-  },
-  "dependencies": {
-    "@builder.io/partytown": "^0.6.2"
+    "sass": "^1.54.0",
+    "tailwindcss": "^3.1.7"
   }
 }

@@ -2,11 +2,10 @@
 import Anchor from "./Anchor.astro";
 import Image from "./Image.astro";
 
-import GitHubSlugger from "github-slugger";
-const slugger = new GitHubSlugger();
+import { slug as slugger } from "../utils/slug";
 
 const { href, img = {}, external, showTitle, name } = Astro.props;
-const slug = slugger.slug(name, false);
+const slug = slugger(name, { lower: true });
 ---
 
 <div class={`card` + (showTitle ? " show-title" : "")}>
@@ -99,7 +98,7 @@ const slug = slugger.slug(name, false);
   }
 
   .card :global(.card-title) {
-    @apply fine:translate-y-[-200%];
+    @apply fine:translate-y-[-320%];
     text-decoration: 2px solid underline;
     text-decoration-color: transparent;
 
@@ -110,7 +109,7 @@ const slug = slugger.slug(name, false);
   }
   
   .card:not(.show-title) :global(.card-title) {
-    @apply fine:opacity-0;
+    // @apply fine:opacity-0;
   }
 
   .card a:hover :global(.card-title) {

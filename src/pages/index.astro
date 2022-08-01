@@ -6,8 +6,7 @@ import Card from "../components/Card.astro";
 import Anchor from "../components/Anchor.astro";
 import Icon from "astro-icon";
 
-import GitHubSlugger from "github-slugger";
-const slugger = new GitHubSlugger();
+import { slug as slugger } from "../utils/slug";
 
 // Data Fetching: List all Markdown posts in the repo.
 // const projects = Astro.fetchContent("./project/**/*.md");
@@ -24,10 +23,11 @@ const slugger = new GitHubSlugger();
     <div class="content">
       <h2 id="about">About.</h2>
       <p>
-        Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I’m a student currently
+        Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I’m a student
         studying Software Engineering at <Anchor href="https://ontariotechu.ca/"
           >Ontario Tech University</Anchor
-        > (formerly University of Ontario Institute of Technology, UOIT). From a
+        > (formerly University of Ontario Institute of Technology, UOIT), who is currently working as a Software Engineer Intern at <Anchor href="https://vercel.com/"
+        >Vercel</Anchor>. From a
         very young age, I've always been interested in tech, and science. Initially,
         I started web development out of curiosity, eventually it became a hobby,
         and after many hobby projects (e.g. Open Source projects; read more in <Anchor
@@ -286,7 +286,7 @@ const slugger = new GitHubSlugger();
             let href = links[name];
             return (
               <Anchor
-                class={`px-4 py-2 hover:text-primary hover:bg-primary/30 focus:bg-primary/20 umami--click--${slugger.slug(name, false)}-contact`}
+                class={`px-4 py-2 hover:text-primary hover:bg-primary/30 focus:bg-primary/20 umami--click--${slugger(name, { lower: false })}-contact`}
                 href={href}
               >
                 {name}
@@ -319,7 +319,7 @@ const slugger = new GitHubSlugger();
 </BaseLayout>
 
 <!-- <script src={Astro.resolve("../scripts/index.ts")} type="module" async></script> -->
-<!-- <script type="module" src={scriptURL} /> -->
+<!-- <script type="module" src={scriptURL} `/> -->
 
 <script>import "../scripts/index.ts"; </script> 
 

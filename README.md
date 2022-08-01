@@ -12,11 +12,11 @@
 
 ## About.
 
-Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I am a Software Engineering student at [Ontario Tech University](https://ontariotechu.ca/) (formerly University of Ontario Institute of Technology, UOIT), a freelance/independent web developer, an avid fan of open source, and a maintainer on **[@withastro](https://github.com/withastro)**. I am always eager to take on new challenges, and aim to exceed in all tasks I take on. 
+Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I'm a Software Engineering student, a web developer, an avid fan of open source, and a maintainer on **[@withastro](https://github.com/withastro)**, who is currently working as a Software Engineering Intern at [Vercel](https://vercel.com). I am always eager to take on new challenges, and aim to exceed in all tasks I take on. 
 
 ### Skills
 
-I have experience in Astro, Javascript, Typescript, CSS/SASS, HTML, Pug, Node.js, Fastify, Pjax, Solid.js, Svelte, C#, C++, and more… I prefer to learn skills as I need them, so I can focus on finding solutions to problems instead of trying to implement new technologies for the sake of implementing them.
+I have experience in Astro, Next.js, React, Javascript, Typescript, CSS/SASS, HTML, Pug, Node.js, Fastify, Pjax, Solid.js, Svelte, C#, C++, and more… All in all, I prefer to learn skills as I need them, so I can focus on finding solutions to problems.
 
 
 ## Featured Projects.
