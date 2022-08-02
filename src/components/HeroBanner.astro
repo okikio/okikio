@@ -26,10 +26,10 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
 ---
 
 <header class="content" role="banner" nav-section="index" data-perspective-group>
-  <div class="container">
+  <div class="container" id="index">
     <div class="layout">
       <div class="z-10" data-perspective="header">
-        <h1 id="index">
+        <h1>
           Hello, I am <strong class="text-primary" aria-label="Okiki Ojo">Okiki.</strong>
         </h1>
         <h2>Web Developer - Open Source Steward - Student</h2>
@@ -44,6 +44,7 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
         srcset={srcset}
         sizes={sizes}
 
+        fetchpriority="high"
         loading="eager"
         figureAttrs={{
           "data-perspective": "image",
@@ -95,7 +96,11 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
     @apply text-xl max-w-full;
 
     & > .container {
-      @apply max-w-[85ch] overflow-visible;
+      @apply overflow-visible;
+    }
+
+    &.content {
+      @apply max-w-[95ch];
     }
 
     [data-perspective] {

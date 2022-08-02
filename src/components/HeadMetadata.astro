@@ -37,27 +37,30 @@ const extendMeta = {
   ],
 };
 
+// <script type="text/partytown" src="https://analytics.bundlejs.com/umami.js" async defer data-website-id="dd35e13d-bf45-4f58-8840-de8526733565"></script>
+
+// <script set:html={`
+//   partytown = {
+//     forward: ['dataLayer.push'],
+//   };
+// `}></script>
+// <script set:html={snippetText}></script>
+
+// <script type="text/partytown" src="/scripts/independent-measure.js" async></script>
+// <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" async></script>
+// <script type="text/partytown" src="/scripts/measure.js" async></script>
+
+// <link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-500.woff2" type="fonts/woff2" as="font" crossorigin />
+// <link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-700.woff2" type="fonts/woff2" as="font" crossorigin />
+// <link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-900.woff2" type="fonts/woff2" as="font" crossorigin />
+
+// <link rel="preload" href="/fonts/manrope-v11-latin-ext_latin-500.woff2" type="fonts/woff2" as="font" crossorigin />
+// <link rel="preload" href="/fonts/manrope-v11-latin-ext_latin-700.woff2" type="fonts/woff2" as="font" crossorigin />
 ---
 
-<!-- <script type="text/partytown" src="https://analytics.bundlejs.com/umami.js" async defer data-website-id="dd35e13d-bf45-4f58-8840-de8526733565"></script> -->
-
-<!-- <script set:html={`
-  partytown = {
-    forward: ['dataLayer.push'],
-  };
-`}></script>
-<script set:html={snippetText}></script> -->
-
-<!-- <script type="text/partytown" src="/scripts/independent-measure.js" async></script>
-<script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" async></script>
-<script type="text/partytown" src="/scripts/measure.js" async></script> -->
-
-<!-- <link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-500.woff2" type="fonts/woff2" as="font" crossorigin />
-<link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-700.woff2" type="fonts/woff2" as="font" crossorigin />
-<link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-900.woff2" type="fonts/woff2" as="font" crossorigin />
-
-<link rel="preload" href="/fonts/manrope-v11-latin-ext_latin-500.woff2" type="fonts/woff2" as="font" crossorigin />
-<link rel="preload" href="/fonts/manrope-v11-latin-ext_latin-700.woff2" type="fonts/woff2" as="font" crossorigin /> -->
+<script type="module" src="/scripts/independent-measure.js" defer></script>
+<script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" defer></script>
+<script type="module" src="/scripts/measure.js" defer></script>
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
@@ -86,6 +89,7 @@ const extendMeta = {
 <meta name="viewport" content="width=device-width" />
 <meta name="color-scheme" content="dark" />
 <meta name="robots" content="index, follow, noimageindex">
+<meta name="theme-color" content="#ffff00"/>
 
 <SEO
   title={/Okiki/i.test(title) ? title : title + " — Okiki Ojo"}

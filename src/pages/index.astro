@@ -244,7 +244,12 @@ import { slug as slugger } from "../utils/slug";
           return Object.keys(projects).map((name) => {
             let { description, link, image, showTitle } = projects[name];
             return (
-              <Card img={image} href={link} {showTitle} external={false} name={name}>
+              <Card img={
+                Object.assign({
+                  loading: "lazy",
+                  fetchpriority: "low"
+                }, image)
+              } href={link} {showTitle} external={false} name={name}>
                 <h3 class="card-title" set:html={name} />
                 <p class="card-description">{description}</p>
               </Card>
