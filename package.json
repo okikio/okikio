@@ -21,9 +21,10 @@
     "preview": "astro preview"
   },
   "devDependencies": {
+    "@astrojs/partytown": "^0.1.9",
     "@astrojs/sitemap": "^0.3.0",
     "@tailwindcss/typography": "^0.5.4",
-    "astro": "^1.0.0-rc.3",
+    "astro": "^1.0.0-rc.4",
     "astro-icon": "^0.7.3",
     "astro-seo": "^0.5.1",
     "esno": "^0.16.3",
