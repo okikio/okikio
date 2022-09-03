@@ -10,10 +10,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        lexend: ["Lexend", "sans-serif"],
-        manrope: ["Manrope", "sans-serif"],
+        lexend: ["Lexend", "Lexend Deca-fallback", "sans-serif"],
+        manrope: ["Manrope", "Manrope-fallback", "sans-serif"],
 
-        sans: ["Manrope", "sans-serif"],
+        sans: ["Manrope", "Manrope-fallback", "sans-serif"],
         serif: ["serif"],
       },
       fontWeight,

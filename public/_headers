@@ -11,11 +11,8 @@
   Permissions-Policy: geolocation=(), microphone=(), usb=(), sync-xhr=(self), camera=()
 
 /
-  Link: </fonts/manrope-v11-latin-ext_latin-500.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Link: </fonts/manrope-v11-latin-ext_latin-700.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Link: </fonts/lexend-v14-latin-ext_latin-900.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Link: </fonts/lexend-v14-latin-ext_latin-700.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Link: </fonts/lexend-v14-latin-ext_latin-500.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
+  Link: </fonts/Lexend-VariableFont_wght.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
+  Link: </fonts/Manrope-VariableFont_wght.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
   X-Robots-Tag: index, follow, noimageindex
 
 /*.css

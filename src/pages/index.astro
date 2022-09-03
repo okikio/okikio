@@ -323,11 +323,6 @@ import { slug as slugger } from "../utils/slug";
   </footer>
 </BaseLayout>
 
-<!-- <script src={Astro.resolve("../scripts/index.ts")} type="module" async></script> -->
-<!-- <script type="module" src={scriptURL} `/> -->
-
-<script>import "../scripts/index.ts"; </script> 
-
 <style lang="scss">
   h1,
   h2,
@@ -365,3 +360,7 @@ import { slug as slugger } from "../utils/slug";
     }
   }
 </style>
+
+<script>
+  import "../scripts/index.ts";
+</script> 
