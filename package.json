@@ -23,13 +23,13 @@
   "devDependencies": {
     "@astrojs/sitemap": "^1.0.0",
     "@tailwindcss/typography": "^0.5.7",
-    "astro": "^1.1.5",
-    "astro-compress": "^1.0.6",
+    "astro": "^1.2.3",
+    "astro-compress": "^1.0.8",
     "astro-icon": "^0.7.3",
     "astro-seo": "^0.6.0",
     "esno": "^0.16.3",
     "postcss": "^8.4.16",
-    "sass": "^1.54.8",
+    "sass": "^1.54.9",
     "tailwindcss": "^3.1.8"
   }
 }
