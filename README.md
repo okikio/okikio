@@ -22,8 +22,8 @@ I have experience in Astro, Next.js, React, Javascript, Typescript, CSS/SASS, HT
 ## Featured Projects.
 
 
-| [bundlejs](https://bundlejs.com)                      | [joesphojo](https://josephojo.com/)                                   | [jabodent](https://jabodent.com)                      | [reindeere](https://reindeere.ca)                       |
-| ---------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------- |
+| [bundlejs](https://bundlejs.com)                     | [joesphojo](https://josephojo.com/)                                   | [jabodent](https://jabodent.com)                      | [reindeere](https://reindeere.ca)                       |
+| :--------------------------------------------------- | :-------------------------------------------------------------------- | :---------------------------------------------------- | :------------------------------------------------------ |
 | [@okikio/animate](https://native.okikio.dev/animate) | [@okikio/native](https://native.okikio.dev/native)                    | [spring-easing](https://spring-easing.okikio.dev)     | [@okikio/sharedworker](https://sharedworker.okikio.dev) |
 | [Codepen Projects](https://codepen.com/okikio)       | [Legacy Projects](https://www.khanacademy.org/profile/liteo/projects) | [More...](https://github.com/okikio?tab=repositories) |                                                         |
 
@@ -32,7 +32,7 @@ I have experience in Astro, Next.js, React, Javascript, Typescript, CSS/SASS, HT
 ## Contact.
 
 | [LinkedIn](https://www.linkedin.com/in/okikio)         | [Twitter](https://twitter.com/okikio_dev) | [Reddit](https://www.reddit.com/user/okikio_dev)       | [Blog](https://blog.okikio.dev)                                              |
-| ------------------------------------------------------ | ----------------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| :----------------------------------------------------- | :---------------------------------------- | :----------------------------------------------------- | :--------------------------------------------------------------------------- |
 | [GitHub](https://github.com/okikio)                    | [Dev.to](https://dev.to/okikio)           | [Hackernoon](https://hackernoon.com/u/okikio)          | [CSS-Tricks](https://css-tricks.com/author/okikiojo/)                        |
 | [Codepen](https://codepen.io/okikio)                   | [Daily.dev](https://app.daily.dev/okikio) | [Product Hunt](https://www.producthunt.com/@okiki_ojo) | [Stackoverflow](https://stackoverflow.com/users/12140185/okikio?tab=profile) |
 | [Buy me a coffee](https://www.buymeacoffee.com/okikio) | [Email](mailto:hey@okikio.dev)            |                                                        |                                                                              |
