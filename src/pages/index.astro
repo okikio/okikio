@@ -284,15 +284,18 @@ import { slug as slugger } from "../utils/slug";
             Stackoverflow:
               "https://stackoverflow.com/users/12140185/okikio?tab=profile",
             "Buy me a coffee": "https://www.buymeacoffee.com/okikio",
+            "Mastodon": "https://uiuxdev.social/@okikio_dev",
             Email: "mailto:hey@okikio.dev",
           };
 
           return Object.keys(links).map((name) => {
             let href = links[name];
+            let rel = name == "Mastodon" ? { rel: "me noopener" } : {};
             return (
               <Anchor
                 class={`px-4 py-2 hover:text-primary hover:bg-primary/30 focus:bg-primary/20 umami--click--${slugger(name, { lower: false })}-contact`}
                 href={href}
+                {...rel}
               >
                 {name}
               </Anchor>
