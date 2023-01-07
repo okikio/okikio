@@ -12,7 +12,7 @@ let attrs = external ? { target: "_blank", rel: "noopener" } : {};
   {...Object.assign(attrs, rest)}
 >
   <slot />
-  {external && <Icon name="fluent:arrow-up-right-24-filled" />}
+  {external && <Icon name="fluent:arrow-up-right-24-filled" optimize={false} />}
 </a>
 
 <style lang="scss">

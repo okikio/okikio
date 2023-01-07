@@ -2,22 +2,22 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/sitemap': ^1.0.0
-  '@tailwindcss/typography': ^0.5.8
-  astro: ^1.9.1
-  astro-compress: ^1.1.24
-  astro-icon: ^0.8.0
-  astro-seo: ^0.6.1
+  '@tailwindcss/typography': ^0.5.7
+  astro: ^1.2.3
+  astro-compress: ^1.0.8
+  astro-icon: ^0.7.3
+  astro-seo: ^0.6.0
   esno: ^0.16.3
-  postcss: ^8.4.21
-  sass: ^1.57.1
-  tailwindcss: ^3.2.4
+  postcss: ^8.4.16
+  sass: ^1.54.9
+  tailwindcss: ^3.1.8
 
 devDependencies:
   '@astrojs/sitemap': 1.0.0
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   astro: 1.9.1_sass@1.57.1
   astro-compress: 1.1.24
-  astro-icon: 0.8.0
+  astro-icon: 0.7.3
   astro-seo: 0.6.1
   esno: 0.16.3
   postcss: 8.4.21
@@ -804,8 +804,8 @@ packages:
       terser: 5.16.1
     dev: true
 
-  /astro-icon/0.8.0:
-    resolution: {integrity: sha512-sCzhZcl46BIyLJVg89hq5J4uQABn2psmGvK4cUaxib+M/kBI3TrPy1w3g2O5h/WcrTHLVN9LyxjgkD4lEJJFpw==}
+  /astro-icon/0.7.3:
+    resolution: {integrity: sha512-choatz5A5pKFMzmGJucvtliOxYJLUQ94bjgoGJHYLQnX7FRG+YhnONoyyapno6iVFavCIytSREOy4Vcg2wMYUA==}
     dependencies:
       node-fetch: 3.3.0
       resolve-pkg: 2.0.0
