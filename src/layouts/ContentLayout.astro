@@ -1,0 +1,47 @@
+---
+import HomepageLayout from "./HomepageLayout.astro";
+
+// Data Fetching: List all Markdown posts in the repo.
+// const projects = Astro.fetchContent("./project/**/*.md");
+// const featuredProject = projects[0];
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<HomepageLayout {...{ content: Astro.props.frontmatter }}>
+  <div class="container max-w-[65ch] mx-auto px-2 py-5 md:pt-16">
+    <slot />
+  </div>
+</HomepageLayout>
+
+<style lang="scss" is:global>
+  h1{
+    @apply text-primary;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mt-0;
+  }
+
+  h1,
+  h2 {
+    @apply font-lexend font-400;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-manrope font-400;
+  }
+
+  p {
+    @apply lt-xsm:text-base lt-xsm:leading-relaxed;
+  }
+</style>

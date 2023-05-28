@@ -1,0 +1,38 @@
+---
+import Icon from "astro-icon";
+import Anchor from "./Anchor.astro";
+---
+
+<footer
+  slot="footer"
+  class="px-4 flex flex-col items-center gap-4 py-5 text-center"
+>
+  <span
+    class="underline underline-offset-4 max-w-[50ch] mb-10"
+    title="This site uses Umami to measure the number of users and the countries they are from. I don’t store any of your private identifiable information."
+    >This site uses <Anchor href="https://umami.is">Umami</Anchor> to measure the number of unique visitors. No private identifiable information is stored.
+    </span
+  >
+  <Anchor href="#index" id="back-to-top">
+    <div class="flex items-center gap-2">
+      <Icon name="fluent:arrow-up-24-filled" optimize={false} />
+      Back To Top
+    </div>
+  </Anchor>
+  <span>© {new Date().getFullYear()} Okiki Ojo. All rights reserved. </span>
+  <span><Anchor href="./privacy">Privacy Policy</Anchor> & <Anchor href="./terms">Terms of Service</Anchor> & <Anchor href="./rss.xml" external>RSS</Anchor></span>
+</footer>
+
+
+<style lang="scss">
+  #back-to-top {
+    @apply inline-block;
+    @apply hover:ring-2 ring-primary ring-offset-2 ring-offset-black;
+    @apply bg-primary rounded-full pl-5 pr-6 py-2;
+    @apply text-black text-base font-bold hover:text-black;
+
+    [astro-icon] {
+      @apply w-5 h-5;
+    }
+  }
+</style>

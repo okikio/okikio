@@ -17,6 +17,18 @@ const {
   },
 } = Astro.props;
 
+export type Props = {
+  title?: string,
+  description?: string,
+  keywords?: string,
+  img?: {
+    url?: string,
+    alt?: string,
+    width?: number,
+    height?: number,
+  },
+}
+
 const imageDetails = {
   url: Astro.site.origin + img.url,
   secureUrl: Astro.site.origin + img.url,

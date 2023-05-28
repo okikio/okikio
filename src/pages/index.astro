@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import HomepageLayout from "../layouts/HomepageLayout.astro";
 import HeroBanner from "../components/HeroBanner.astro";
 import MethodBlock from "../components/MethodBlock.astro";
 import Card from "../components/Card.astro";
@@ -16,7 +16,7 @@ import { slug as slugger } from "../utils/slug";
 // https://docs.astro.build/core-concepts/astro-components/
 ---
 
-<BaseLayout>
+<HomepageLayout>
   <HeroBanner slot="hero" />
 
   <section nav-section="about">
@@ -306,7 +306,7 @@ import { slug as slugger } from "../utils/slug";
             Stackoverflow:
               "https://stackoverflow.com/users/12140185/okikio?tab=profile",
             "Buy me a coffee": "https://www.buymeacoffee.com/okikio",
-            "Mastodon": "https://uiuxdev.social/@okikio_dev",
+            "Bluesky (@okikio.dev)": "https://bsky.app/profile/okikio.dev",
             Email: "mailto:hey@okikio.dev",
             "@inthistweet_dev": "https://twitter.com/inthistweet_dev", 
             "@jsbundle": "https://twitter.com/jsbundle",
@@ -314,7 +314,7 @@ import { slug as slugger } from "../utils/slug";
 
           return Object.keys(links).map((name) => {
             let href = links[name];
-            let rel = name == "Mastodon" ? { rel: "me noopener" } : {};
+            let rel = name == "Bluesky" ? { rel: "me noopener" } : {};
             return (
               <Anchor
                 class={`px-4 py-2 hover:text-primary hover:bg-primary/30 focus:bg-primary/20 umami--click--${slugger(name, { lower: false })}-contact`}
@@ -329,25 +329,6 @@ import { slug as slugger } from "../utils/slug";
       </div>
     </div>
   </section>
-
-  <footer
-    slot="footer"
-    class="px-4 flex flex-col items-center gap-4 py-5 text-center"
-  >
-    <span
-      class="underline underline-offset-4 max-w-[50ch] mb-10"
-      title="This site uses Google Analytics (which adds cookies) to measure the number of users and the countries they are from. I don’t store any of your private identifiable information."
-      >This site uses Google Analytics (which adds cookies) to measure the
-      number of unique visitors.</span
-    >
-    <Anchor href="#index" id="back-to-top">
-      <div class="flex items-center gap-2">
-        <Icon name="fluent:arrow-up-24-filled" optimize={false} />
-        Back To Top
-      </div>
-    </Anchor>
-    <span>© 2022 Okiki Ojo. All rights reserved.</span>
-  </footer>
 </BaseLayout>
 
 <style lang="scss">
@@ -374,17 +355,6 @@ import { slug as slugger } from "../utils/slug";
 
   p {
     @apply lt-xsm:text-base lt-xsm:leading-relaxed;
-  }
-
-  #back-to-top {
-    @apply inline-block;
-    @apply hover:ring-2 ring-primary ring-offset-2 ring-offset-black;
-    @apply bg-primary rounded-full pl-5 pr-6 py-2;
-    @apply text-black text-base font-bold hover:text-black;
-
-    [astro-icon] {
-      @apply w-5 h-5;
-    }
   }
 </style>
 
