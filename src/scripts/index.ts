@@ -1,18 +1,18 @@
 import { throttle, debounce, generateClientRects, axis, type Rect } from "./util";
 
 let nav = document.querySelector("nav");
-let menu = nav.querySelector(".menu");
-let items = Array.from(menu.querySelectorAll(".item"));
-let toggle = nav.querySelector(".toggle");
+let menu = nav?.querySelector?.(".menu");
+let items = Array.from(menu?.querySelectorAll?.(".item") ?? []);
+let toggle = nav?.querySelector?.(".toggle");
 
 function toggleNav() {
   nav?.classList?.toggle("open");
 }
 
-toggle.addEventListener("click", toggleNav);
+toggle?.addEventListener?.("click", toggleNav);
 
 let lastHash;
-let urls = items.map((item) => new URL(item.getAttribute("href"), window.location.href).href);
+let urls = items?.map?.((item) => new URL(item?.getAttribute?.("href"), window.location.href).href);
 const hashChange = ({ newURL }) => {
   let _url = new URL(newURL);
   if (lastHash !== _url.hash) {
@@ -37,12 +37,12 @@ items.forEach((item) => {
 });
 
 const observer = new IntersectionObserver(debounce((entries) => {
-  entries.forEach((entry) => {
-    if (entry.intersectionRatio >= 0.25) {
-      let id = entry.target.attributes["nav-section"].value;
+  entries?.forEach?.((entry) => {
+    if (entry?.intersectionRatio >= 0.25) {
+      let id = entry?.target?.attributes?.["nav-section"]?.value;
       window.history.replaceState(null, null, "#" + id);
-      navHashes.has(oldHash) && navHashes.get(oldHash).classList.remove("active");
-      navHashes.has("#" + id) && navHashes.get("#" + id).classList.add("active");
+      navHashes?.has?.(oldHash) && navHashes?.get(oldHash)?.classList?.remove?.("active");
+      navHashes?.has?.("#" + id) && navHashes?.get("#" + id)?.classList?.add?.("active");
       oldHash = window.location.hash;
     }
   });
@@ -176,6 +176,9 @@ document.addEventListener("astro:page-load", () => {
   elAttrs = els?.map(el => el?.getAttribute?.("data-perspective"));
   elClientRects = generateClientRects(els) ?? [];
 
+  const html = document.querySelector("html");
+  html?.classList?.add?.("dom-loaded");
+
   if (
     !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
     !window.matchMedia("(pointer: coarse)").matches
@@ -188,11 +191,7 @@ document.addEventListener("astro:page-load", () => {
   }
 
   toggle?.addEventListener?.("click", toggleNav);
-
   hashChange({ newURL: window.location.href });
-
-  const html = document.querySelector("html");
-  html?.classList?.add?.("dom-loaded");
 })
 
 export { };
