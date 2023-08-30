@@ -1,7 +1,6 @@
 ---
-// @ts-ignore
 import { SEO } from "astro-seo";
-import "../styles/global.scss";
+import "@/styles/global.scss";
 
 const {
   title = "Okiki Ojo — Web Developer & Designer (okikio)",
@@ -30,8 +29,8 @@ export type Props = {
 }
 
 const imageDetails = {
-  url: Astro.site.origin + img.url,
-  secureUrl: Astro.site.origin + img.url,
+  url: Astro.url.origin + img.url,
+  secureUrl: Astro.url.origin + img.url,
   alt: img.alt,
   width: img.width,
   height: img.height,
@@ -62,25 +61,6 @@ const extendMeta = {
 // <script type="module" src="/scripts/independent-measure.js" defer></script>
 // <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" defer></script>
 // <script type="module" src="/scripts/measure.js" defer></script>
-
-// <link rel="preconnect" href="https://fonts.gstatic.com" />
-// <link
-//   href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
-//   rel="stylesheet"
-// /> 
-
-// <link
-//   rel="stylesheet"
-//   type="text/css"
-//   href={Astro.resolve("../styles/global.scss")}
-// /> 
-
-// <link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-500.woff2" type="fonts/woff2" as="font" crossorigin />
-// <link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-700.woff2" type="fonts/woff2" as="font" crossorigin />
-// <link rel="preload" href="/fonts/lexend-v14-latin-ext_latin-900.woff2" type="fonts/woff2" as="font" crossorigin />
-
-// <link rel="preload" href="/fonts/manrope-v11-latin-ext_latin-500.woff2" type="fonts/woff2" as="font" crossorigin />
-// <link rel="preload" href="/fonts/manrope-v11-latin-ext_latin-700.woff2" type="fonts/woff2" as="font" crossorigin />
 ---
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -112,7 +92,7 @@ const extendMeta = {
     },
     article: {
       author: "Okiki Ojo",
-      tags: [].concat(keywords).map((x) => x.trim()),
+      tags: Array.from(keywords, (x) => x.trim()),
     },
     optional: {
       description,
@@ -143,7 +123,7 @@ const extendMeta = {
   "https://www.buymeacoffee.com/okikio", "https://app.daily.dev/okikio",
   "https://css-tricks.com/author/okikiojo/", "https://hackernoon.com/u/okikio",
   "https://www.producthunt.com/@okiki_ojo",
-  "https://www.reddit.com/user/okikio_dev", "https://uiuxdev.social/@okikio_dev", "https://twitter.com/inthistweet_dev", "https://twitter.com/jsbundle" ], "about": { "@type": "Person",
+  "https://www.reddit.com/user/okikio_dev", "https://bsky.app/profile/okikio.dev", "https://twitter.com/inthistweet_dev", "https://twitter.com/jsbundle" ], "about": { "@type": "Person",
   "name": "Portfolio of Okiki Ojo" }, "mainEntity": { "@type": "Article", "@id":
   "https://okikio.dev/#content" }, "inLanguage": "en", "author": { "@type":
   "Person", "name": "Okiki Ojo" }, "publisher": { "@type": "Person", "name":

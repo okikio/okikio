@@ -1,8 +1,8 @@
 {
-    "cleanUrls": true,
-    "trailingSlash": true,
-    "github": {
-        "silent": true,
-        "autoJobCancelation": true
-    }
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "github": {
+    "silent": true,
+    "autoJobCancelation": true
+  }
 }

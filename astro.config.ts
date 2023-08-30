@@ -1,13 +1,22 @@
 import { defineConfig } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
+import autoAdapater from "astro-auto-adapter";
+import compress from "astro-compress";
 
-import compress from "astro-compress";            
-import mdx from "@astrojs/mdx";  
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://okikio.dev",
-  integrations: [sitemap(), compress({ css: false }), mdx()],
+  output: "hybrid",
+  integrations: [
+    sitemap(),
+    compress({ css: false }),
+    mdx(),
+    tailwind({ applyBaseStyles: false }),
+  ],
+  adapter: await autoAdapater(),
   vite: {
     ssr: {
       external: ["svgo"]

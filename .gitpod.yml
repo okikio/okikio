@@ -36,7 +36,6 @@ tasks:
 
 vscode:
   extensions:
-    - mikestead.dotenv
-    - christian-kohler.path-intellisense
-    - ritwickdey.LiveServer
-    - yandeu.five-server
+    - unifiedjs.vscode-mdx
+    - bradlc.vscode-tailwindcss
+    - astro-build.astro-vscode

@@ -11,8 +11,6 @@
   Permissions-Policy: geolocation=(), microphone=(), usb=(), sync-xhr=(self), camera=()
 
 /
-  Link: </fonts/Lexend-VariableFont_wght.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Link: </fonts/Manrope-VariableFont_wght.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
   X-Robots-Tag: index, follow, noimageindex
 
 /*.css

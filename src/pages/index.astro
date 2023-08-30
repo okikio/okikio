@@ -6,7 +6,7 @@ import Card from "../components/Card.astro";
 import Anchor from "../components/Anchor.astro";
 import Icon from "astro-icon";
 
-import { slug as slugger } from "../utils/slug";
+import { slug as slugger } from "@/utils/slug";
 
 // Data Fetching: List all Markdown posts in the repo.
 // const projects = Astro.fetchContent("./project/**/*.md");
@@ -14,6 +14,8 @@ import { slug as slugger } from "../utils/slug";
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
+
+export const prerender = true;
 ---
 
 <HomepageLayout>
@@ -313,7 +315,7 @@ import { slug as slugger } from "../utils/slug";
           };
 
           return Object.keys(links).map((name) => {
-            let href = links[name];
+            let href = links[name as keyof typeof links];
             let rel = name == "Bluesky" ? { rel: "me noopener" } : {};
             return (
               <Anchor
@@ -343,14 +345,14 @@ import { slug as slugger } from "../utils/slug";
 
   h1,
   h2 {
-    @apply text-primary font-lexend font-700;
+    @apply text-primary font-lexend font-[700];
   }
 
   h3,
   h4,
   h5,
   h6 {
-    @apply font-manrope font-400;
+    @apply font-manrope font-[400];
   }
 
   p {

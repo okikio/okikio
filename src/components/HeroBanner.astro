@@ -63,7 +63,7 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
           };
 
           return Object.keys(links).map((name) => {
-            let [shortName, href] = links[name];
+            let [shortName, href] = links[name as keyof typeof links];
             return (
               <Anchor
                 class={`px-4 py-2 focus-visible:bg-primary/20 hover:text-primary umami--click--${slugger(name, { lower: false })}-side-social`}
@@ -83,7 +83,7 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
       <Anchor href="/#content" class="umami--click--scroll-down-btn" aria-label="Scroll down button">
         <strong class="text">Scroll</strong>
         <div class="icon-container">
-          <Icon name="fluent:chevron-down-24-filled" optimize={false} />
+          <Icon name="fluent:chevron-down-24-filled" optimize={true} />
         </div>
       </Anchor>
     </div>
@@ -112,19 +112,19 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
       @apply flex flex-row items-center w-full;
       @apply relative min-h-screen;
 
-      h1 {
-        @apply text-[2.8rem] leading-tight sm:text-5xl md:text-7xl lg:text-8xl font-lexend font-900 mb-5;
+      :global(h1) {
+        @apply text-[2.8rem] leading-tight sm:text-5xl md:text-7xl lg:text-8xl font-lexend font-[900] mb-5;
       }
 
-      h2 {
-        @apply text-lg sm:text-2xl font-manrope font-300;
+      :global(h2) {
+        @apply text-lg sm:text-2xl font-manrope font-[300];
         @apply mt-0 sm:leading-tight lt-xsm:max-w-[30ch];
       }
 
-      figure {
+      :global(figure) {
+        @apply z-0 m-0;
         @apply absolute top-1/2 right-0;
         @apply -translate-y-1/2;
-        @apply z-0 m-0;
         @apply w-[250px] h-[350px];
         @apply sm:w-[450px] sm:h-[350px];
       }

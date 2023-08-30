@@ -2,7 +2,8 @@ import rss, { pagesGlobToRssItems } from '@astrojs/rss';
 import sanitizeHtml from 'sanitize-html';
 import type { APIContext } from 'astro';
 
-export async function get(context: APIContext) {  
+export const prerender = true;
+export async function GET(context: APIContext) {  
   return rss({
     // `<title>` field in output xml
     title: 'Okiki Ojo — Web Developer & Designer (okikio)',

@@ -1,30 +1,51 @@
-@import "./reset.scss";
+@import "@acab/reset.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "./fonts.scss";
 @import "./base.scss";
-@import "./layout.scss";
+
+@import "@fontsource-variable/manrope";
+@import "@fontsource-variable/lexend-deca";
+@import "@fontsource-variable/inter";
+
+@font-face {
+  font-family: "Lexend Deca-fallback";
+  size-adjust: 110.07000000000009%;
+  ascent-override: 92%;
+  src: local("Arial");
+}
+
+@font-face {
+  font-family: "Manrope-fallback";
+  size-adjust: 102.91000000000001%;
+  ascent-override: 110%;
+  src: local("Arial");
+}
+
+.content {
+  @apply mx-auto px-4 py-6;
+  @apply w-full max-w-[75ch];
+}
 
 .dom-loaded #skip-main {
-    transition: border 0.35s ease;
+  transition: border 0.35s ease;
 }
 
 #skip-main {
-    @apply border-2 border-primary;
-    @apply text-black bg-primary;
-    transform: translateX(-50%);
+  @apply border-2 border-primary;
+  @apply text-black bg-primary;
+  transform: translateX(-50%);
 
-    @apply absolute top-10 left-0 rounded-lg text-center mt-10 text-lg py-2 w-full;
-    @apply left-1/2 -translate-x-1/2 opacity-0 pointer-events-none;
-    max-width: theme("spacing.96");
-    z-index: 500;
+  @apply absolute top-10 left-0 rounded-lg text-center mt-10 text-lg py-2 w-full;
+  @apply left-1/2 -translate-x-1/2 opacity-0 pointer-events-none;
+  max-width: theme("spacing.96");
+  z-index: 500;
 
-    &:focus,
-    &:active {
-        opacity: 1;
-        pointer-events: auto;
-    }
+  &:focus,
+  &:active {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
