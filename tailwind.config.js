@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         lexend: ["Lexend Deca Variable", "Lexend Deca-fallback", "sans-serif"],
         manrope: ["Manrope Variable", "Manrope-fallback", "sans-serif"],
+        inter: ["Inter Variable", "Inter-fallback", "sans-serif"],
 
         sans: ["Manrope Variable", "Manrope-fallback", "sans-serif"],
         serif: ["serif"],

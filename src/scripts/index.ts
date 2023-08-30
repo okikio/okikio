@@ -5,9 +5,11 @@ let menu = nav.querySelector(".menu");
 let items = Array.from(menu.querySelectorAll(".item"));
 let toggle = nav.querySelector(".toggle");
 
-toggle.addEventListener("click", () => {
-  nav.classList.toggle("open");
-});
+function toggleNav() {
+  nav?.classList?.toggle("open");
+}
+
+toggle.addEventListener("click", toggleNav);
 
 let lastHash;
 let urls = items.map((item) => new URL(item.getAttribute("href"), window.location.href).href);
@@ -17,16 +19,16 @@ const hashChange = ({ newURL }) => {
     let href = _url.href;
     let index = urls.indexOf(href);
 
-    items.forEach((item) => item.classList.remove("active"));
-    if (index > -1) items[index].classList.add("active");
+    items?.forEach?.((item) => item?.classList.remove("active"));
+    if (index > -1) items?.[index]?.classList?.add("active");
 
-    lastHash = _url.hash;
+    lastHash = _url?.hash;
   }
 };
 
 hashChange({ newURL: window.location.href });
 
-let sections = Array.from(document.querySelectorAll("[nav-section]")) as HTMLElement[];
+let sections = Array.from(document.querySelectorAll("[nav-section]") ?? []) as HTMLElement[];
 let oldHash = window.location.hash;
 let navHashes = new Map();
 items.forEach((item) => {
@@ -113,8 +115,8 @@ function onMousemove(e: MouseEvent) {
 }
 
 function registerEvent() {
-  if (!registered) {
-    rootEl?.addEventListener("mousemove", onMousemove, { passive: true });
+  if (!registered && rootEl) {
+    rootEl?.addEventListener?.("mousemove", onMousemove, { passive: true });
   }
 
   registered = true;
@@ -132,12 +134,65 @@ window.matchMedia("(pointer: coarse)")
 
 window.addEventListener("resize", debounce(() => {
   height = window.innerHeight;
-  elClientRects = generateClientRects(els);
+
+  if (len >= 0) {
+    elClientRects = generateClientRects(els);
+  }
 }, 1000), { passive: true });
 
 setTimeout(() => {
   const html = document.querySelector("html");
   html.classList.add("dom-loaded");
 }, 500);
+
+
+document.addEventListener("astro:page-load", () => {
+  toggle?.removeEventListener?.("click", toggleNav);
+  rootEl?.removeEventListener?.("mousemove", onMousemove);
+  for (let section of sections) {
+    observer.unobserve(section);
+  }
+
+  sections = Array.from(document.querySelectorAll("[nav-section]") ?? []) as HTMLElement[];
+  registered = false;
+
+  nav = document.querySelector("nav");
+  menu = nav?.querySelector?.(".menu");
+  items = Array.from(menu?.querySelectorAll?.(".item") ?? []);
+  toggle = nav?.querySelector?.(".toggle");
+
+  urls = items?.map((item) => new URL(item?.getAttribute?.("href"), window.location.href).href) ?? [];
+  
+  navHashes.clear();
+  items?.forEach?.((item) => {
+    let url = new URL(item?.getAttribute?.("href"), window.location.href);
+    navHashes.set(url?.hash, item);
+  });
+
+  rootEl = document.querySelector("[data-perspective-group]") as HTMLElement;
+  els = Array.from(rootEl?.querySelectorAll?.("[data-perspective]") ?? []) as HTMLElement[];
+
+  len = els?.length ?? 0;
+  elAttrs = els?.map(el => el?.getAttribute?.("data-perspective"));
+  elClientRects = generateClientRects(els) ?? [];
+
+  if (
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+    !window.matchMedia("(pointer: coarse)").matches
+  ) registerEvent();
+
+  if (sections.length > 0) {
+    for (let section of sections) {
+      observer.observe(section);
+    }
+  }
+
+  toggle?.addEventListener?.("click", toggleNav);
+
+  hashChange({ newURL: window.location.href });
+
+  const html = document.querySelector("html");
+  html?.classList?.add?.("dom-loaded");
+})
 
 export { };
