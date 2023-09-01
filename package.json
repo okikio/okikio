@@ -26,7 +26,7 @@
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
     "@tailwindcss/typography": "^0.5.9",
-    "astro": "^3.0.4",
+    "astro": "^3.0.5",
     "astro-compress": "^2.0.14",
     "astro-icon": "^0.8.1",
     "astro-seo": "^0.8.0",
@@ -43,10 +43,10 @@
     "@astrojs/netlify": "^3.0.0",
     "@astrojs/node": "^6.0.0",
     "@astrojs/tailwind": "^5.0.0",
-    "@astrojs/vercel": "^4.0.1",
+    "@astrojs/vercel": "^4.0.2",
     "@fontsource-variable/inter": "^5.0.8",
     "@fontsource-variable/lexend-deca": "^5.0.8",
     "@fontsource-variable/manrope": "^5.0.8",
-    "astro-auto-adapter": "^1.0.0"
+    "astro-auto-adapter": "^2.0.1"
   }
 }
