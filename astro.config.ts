@@ -12,13 +12,14 @@ export default defineConfig({
   output: "hybrid",
   integrations: [
     sitemap(),
-    compress({ css: false }),
+    compress({ CSS: false }),
     mdx(),
     tailwind({ applyBaseStyles: false }),
   ],
   adapter: await autoAdapater(),
   vite: {
     ssr: {
+      
       external: ["svgo"]
     }
   }
