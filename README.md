@@ -30,7 +30,7 @@ I have experience in Astro, Next.js, React, Javascript, Typescript, CSS/SASS, HT
 | [GitHub](https://github.com/okikio)                    | [Dev.to](https://dev.to/okikio)           | [Hackernoon](https://hackernoon.com/u/okikio)           | [CSS-Tricks](https://css-tricks.com/author/okikiojo/)                        |
 | [Codepen](https://codepen.io/okikio)                   | [Daily.dev](https://app.daily.dev/okikio) | [Product Hunt](https://www.producthunt.com/@okiki_ojo)  | [Stackoverflow](https://stackoverflow.com/users/12140185/okikio?tab=profile) |
 | [Buy me a coffee](https://www.buymeacoffee.com/okikio) | [Email](mailto:hey@okikio.dev)            | [@inthistweet_dev](https://twitter.com/inthistweet_dev) | [@jsbundle](https://twitter.com/jsbundle)                                    |
-| [Mastodon](https://uiuxdev.social/@okikio_dev)         |                                           |                                                         |
+| <a rel="me" href="https://mastodon.social/@okikio">Mastodon</a>         |                                           |                                                         |
 
 This is licenced using [GNU General Public License v3.0 (GPLv3)](./LICENCE.md).
 
