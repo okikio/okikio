@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from 'astro-icon/components';
 import Anchor from "./Anchor.astro";
 ---
 
@@ -15,7 +15,7 @@ import Anchor from "./Anchor.astro";
   >
   <Anchor href="/#index" id="back-to-top">
     <div class="flex items-center gap-2">
-      <Icon name="fluent:arrow-up-24-filled" optimize={false} />
+      <Icon name="fluent:arrow-up-24-filled" />
       Back To Top
     </div>
   </Anchor>
@@ -31,7 +31,7 @@ import Anchor from "./Anchor.astro";
     @apply bg-primary rounded-full pl-5 pr-6 py-2;
     @apply text-black text-base font-bold hover:text-black;
 
-    [astro-icon] {
+    [data-icon] {
       @apply w-5 h-5;
     }
   }

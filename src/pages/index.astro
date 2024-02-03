@@ -4,7 +4,7 @@ import HeroBanner from "../components/HeroBanner.astro";
 import MethodBlock from "../components/MethodBlock.astro";
 import Card from "../components/Card.astro";
 import Anchor from "../components/Anchor.astro";
-import Icon from "astro-icon";
+import { Icon } from 'astro-icon/components';
 
 import { slug as slugger } from "@/utils/slug";
 
@@ -111,7 +111,7 @@ export const prerender = true;
     <div class="container px-5 max-w-[105ch]">
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {() => {
-          let externalIcon = `<svg viewBox="0 0 24 24" class="astro-6H36LA55 inline-block w-[1em] h-[1em]" astro-icon="fluent:arrow-up-right-24-filled"><path fill="yellow" d="M11 3a1 1 0 1 0 0 2h6.586L3.293 19.293a1 1 0 1 0 1.414 1.414L19 6.414V13a1 1 0 1 0 2 0V4a1 1 0 0 0-1-1h-9z"></path></svg>`;
+          let externalIcon = `<svg viewBox="0 0 24 24" class="astro-6H36LA55 inline-block w-[1em] h-[1em]" data-icon="fluent:arrow-up-right-24-filled"><path fill="yellow" d="M11 3a1 1 0 1 0 0 2h6.586L3.293 19.293a1 1 0 1 0 1.414 1.414L19 6.414V13a1 1 0 1 0 2 0V4a1 1 0 0 0-1-1h-9z"></path></svg>`;
           let projects = {
             bundlejs: {
               image: {
@@ -309,6 +309,7 @@ export const prerender = true;
               "https://stackoverflow.com/users/12140185/okikio?tab=profile",
             "Buy me a coffee": "https://www.buymeacoffee.com/okikio",
             "Bluesky (@okikio.dev)": "https://bsky.app/profile/okikio.dev",
+            "Mastodon (@okikio)": "https://mastodon.social/@okikio",
             Email: "mailto:hey@okikio.dev",
             "@inthistweet_dev": "https://twitter.com/inthistweet_dev", 
             "@jsbundle": "https://twitter.com/jsbundle",
@@ -316,7 +317,7 @@ export const prerender = true;
 
           return Object.keys(links).map((name) => {
             let href = links[name as keyof typeof links];
-            let rel = name == "Bluesky" ? { rel: "me noopener" } : {};
+            let rel = /Bluesky|Mastodon/.test(name)? { rel: "me noopener" } : {};
             return (
               <Anchor
                 class={`px-4 py-2 hover:text-primary hover:bg-primary/30 focus:bg-primary/20 umami--click--${slugger(name, { lower: false })}-contact`}

@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from 'astro-icon/components';
 ---
 
 <div class="method-block">
@@ -32,7 +32,7 @@ import Icon from "astro-icon";
         return (
           <div class="method">
             <div class="icon-container">
-              <Icon name={icon} optimize={false} />
+              <Icon name={icon} />
             </div>
             <h3>{title}</h3>
             <p>{description}</p>

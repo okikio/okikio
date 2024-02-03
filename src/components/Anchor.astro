@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from 'astro-icon/components';
 
 let { href, class: className, external, ...rest } = Astro.props;
 external = external ?? /^(http|mailto)/.test(href);
@@ -12,7 +12,7 @@ let attrs = external ? { target: "_blank", rel: "noopener" } : {};
   {...Object.assign(attrs, rest)}
 >
   <slot />
-  {external && <Icon name="fluent:arrow-up-right-24-filled" optimize={false} />}
+  {external && <Icon name="fluent:arrow-up-right-24-filled" />}
 </a>
 
 <style lang="scss">
