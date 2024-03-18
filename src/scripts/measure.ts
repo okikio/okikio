@@ -27,7 +27,13 @@ function removeTrailingSlash(url) {
   return url && url.length > 1 && url.endsWith('/') ? url.slice(0, -1) : url;
 }
 
-(window => {
+window.dataLayer = window.dataLayer || [];
+function gtag() { window.dataLayer.push(arguments); }
+gtag('js', new Date());
+gtag('config', 'G-X6V7MJKKD7');
+
+
+export const analytics = (window => {
   const apiRoute = "/take-measurement"; // "/api/collect";
 
   const {
@@ -252,4 +258,4 @@ function removeTrailingSlash(url) {
 
     update();
   }
-})(window);
+});

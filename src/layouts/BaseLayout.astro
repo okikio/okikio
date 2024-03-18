@@ -12,6 +12,11 @@ const { content } = Astro.props;
   <head>
     <HeadMetadata {...content} />
     <ViewTransitions />
+
+    <script>
+      import {analytics} from "../scripts/measure.ts"
+      analytics(window);
+    </script>
   </head>
   <body>
     <Navbar transition:persist />

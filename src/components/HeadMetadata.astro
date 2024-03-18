@@ -2,6 +2,9 @@
 import { SEO } from "astro-seo";
 import "@/styles/global.scss";
 
+import ManropeFontURL from "@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url";
+import LexendDecaFontURL from "@fontsource-variable/lexend-deca/files/lexend-deca-latin-wght-normal.woff2?url";
+
 const {
   title = "Okiki Ojo — Web Developer & Designer (okikio)",
   description = "A Web Developer and Designer based in Ontario, Canada, with an eye for great design (UI) and even better user experience (UX).",
@@ -80,6 +83,8 @@ const extendMeta = {
 <meta name="robots" content="index, follow, noimageindex">
 <meta name="theme-color" content="#ffff00"/>
 
+<link rel="preload" href={ManropeFontURL} as="font" type="font/woff2" crossorigin>
+<link rel="preload" href={LexendDecaFontURL} as="font" type="font/woff2" crossorigin>
 <SEO
   title={/Okiki/i.test(title) ? title : title + " — Okiki Ojo"}
   {description}
@@ -107,8 +112,6 @@ const extendMeta = {
   }}
   extend={extendMeta}
 />
-
-<script type="module" src="/scripts/independent-measure.js" defer></script>
 
 <script type="application/ld+json" set:html={JSON.stringify({ 
   "@context": "https://schema.org", "@type": "WebSite", "name": "Okiki Ojo",
