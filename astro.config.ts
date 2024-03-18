@@ -22,7 +22,6 @@ export default defineConfig({
   adapter: await adapter(),
   vite: {
     ssr: {
-      
       external: ["svgo"]
     }
   }

@@ -101,6 +101,7 @@ const slug = slugger(name, { lower: true });
     @apply fine:translate-y-[-320%];
     text-decoration: 2px solid underline;
     text-decoration-color: transparent;
+    text-decoration-style: wavy;
 
     @at-root :global(.dom-loaded) .card :global(.card-title) {
       @apply transition duration-500;
@@ -113,8 +114,7 @@ const slug = slugger(name, { lower: true });
   }
 
   .card a:hover :global(.card-title) {
-    @apply translate-y-0 opacity-100;
+    @apply translate-y-0 opacity-100 cursor-pointer;
     text-decoration-color: theme("colors.primary");
-    text-decoration-style: wavy;
   }
 </style>
