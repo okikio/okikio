@@ -11,7 +11,7 @@ const { content } = Astro.props;
 <html lang="en" dir="ltr">
   <head>
     <HeadMetadata {...content} />
-    <ViewTransitions />
+    <ViewTransitions fallback="swap" />
 
     <script>
       import {analytics} from "../scripts/measure.ts"
