@@ -10,7 +10,7 @@
 
 ## About.
 
-Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I'm a Software Engineering student, a web developer, an avid fan of open source, and a maintainer on **[@withastro](https://github.com/withastro)**, who is currently working as a Software Engineering at **[@vercel](https://github.com/vercel)**. I am always eager to take on new challenges, and aim to exceed in all tasks I take on.
+Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I'm a Software Engineering student, a web developer, an avid fan of open source, and a maintainer on **[@withastro](https://github.com/withastro)**, who is previously worked as a Software Engineering at **[@vercel](https://github.com/vercel)**. I am always eager to take on new challenges, and aim to exceed in all tasks I take on.
 
 ### Skills
 
