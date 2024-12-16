@@ -14,7 +14,7 @@ Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I'm a Software Engineering stud
 
 ### Skills
 
-I have experience in Astro, Next.js, React, Javascript, Typescript, CSS/SASS, HTML, Pug, Node.js, Fastify, Pjax, Solid.js, Svelte, C#, C++, and more… All in all, I prefer to learn skills as I need them, so I can focus on finding solutions to problems.
+I have experience in Astro, Next.js, React, Solid.js, Svelte, Javascript/Typescript, Deno/Node.js, C#/C/C++, Kotlin/Java, CSS/SASS, Tailwind CSS, HTML, Pug, Fastify, Pjax, and more… All in all, I prefer to learn skills as I need them, so I can focus on finding solutions to problems.
 
 ## Featured Projects.
 
@@ -34,4 +34,4 @@ I have experience in Astro, Next.js, React, Javascript, Typescript, CSS/SASS, HT
 
 This is licenced using [GNU General Public License v3.0 (GPLv3)](./LICENCE.md).
 
-**© 2023 Okiki Ojo. All rights reserved.**
+**© 2024 Okiki Ojo. All rights reserved.**
