@@ -1,9 +1,8 @@
 ---
 import { SEO } from "astro-seo";
-import "@/styles/global.scss";
+import "@/styles/global.css";
 
-import ManropeFontURL from "@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url";
-import LexendDecaFontURL from "@fontsource-variable/lexend-deca/files/lexend-deca-latin-wght-normal.woff2?url";
+import { Font } from "astro:assets";
 
 const {
   title = "Okiki Ojo — Web Developer & Designer (okikio)",
@@ -20,16 +19,16 @@ const {
 } = Astro.props;
 
 export type Props = {
-  title?: string,
-  description?: string,
-  keywords?: string,
+  title?: string;
+  description?: string;
+  keywords?: string;
   img?: {
-    url?: string,
-    alt?: string,
-    width?: number,
-    height?: number,
-  },
-}
+    url?: string;
+    alt?: string;
+    width?: number;
+    height?: number;
+  };
+};
 
 const imageDetails = {
   url: Astro.url.origin + img.url,
@@ -51,36 +50,33 @@ const extendMeta = {
   ],
 };
 
-// <script set:html={`
-//   partytown = {
-//     forward: ['dataLayer.push'],
-//   };
-// `}></script>
-// <script set:html={snippetText}></script>
-
-
-// <script type="module" src="https://www.googletagmanager.com/gtag/js?id=G-X6V7MJKKD7" defer></script>
 ---
+
+<Font cssVariable="--google-lexend-deca-black" preload />
+<Font cssVariable="--google-lexend-deca" />
+<Font cssVariable="--google-manrope" />
+<Font cssVariable="--google-inter" />
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
 <link rel="manifest" href="/manifest.json" />
-  
-<link href="https://github.com/okikio" rel="me">
+
+<link href="https://github.com/okikio" rel="me" />
 <link rel="webmention" href="https://webmention.io/okikio.dev/webmention" />
 <link rel="pingback" href="https://webmention.io/okikio.dev/xmlrpc" />
-<link rel="pingback" href="https://webmention.io/webmention?forward=https://okikio.dev/endpoint" />
+<link
+  rel="pingback"
+  href="https://webmention.io/webmention?forward=https://okikio.dev/endpoint"
+/>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width" />
 <meta name="viewport" content="width=device-width" />
 <meta name="color-scheme" content="dark" />
-<meta name="robots" content="index, follow, noimageindex">
-<meta name="theme-color" content="#ffff00"/>
+<meta name="robots" content="index, follow, noimageindex" />
+<meta name="theme-color" content="#ffff00" />
 
-<link rel="preload" href={ManropeFontURL} as="font" type="font/woff2" crossorigin>
-<link rel="preload" href={LexendDecaFontURL} as="font" type="font/woff2" crossorigin>
 <SEO
   title={/Okiki/i.test(title) ? title : title + " — Okiki Ojo"}
   {description}
@@ -92,7 +88,7 @@ const extendMeta = {
       image: imageDetails.url,
     },
     article: {
-      author: "Okiki Ojo",
+      authors: ["Okiki Ojo"],
       tags: Array.from(keywords, (x) => x.trim()),
     },
     optional: {
@@ -109,26 +105,57 @@ const extendMeta = {
   extend={extendMeta}
 />
 
-<script type="application/ld+json" set:html={JSON.stringify({ 
-  "@context": "https://schema.org", "@type": "WebSite", "name": "Okiki Ojo",
-  "alternateName": "okikio", "url": "https://okikio.dev/", "image":
-  "https://okikio.dev/favicon/banner-image.png", 
-  "description": "Portfolio for Okiki Ojo. It contains some amazing projects, and a little about him.",
-  "sameAs": [ "https://okikio.dev", "https://blog.okikio.dev/",
-  "https://hashnode.com/@okikio", "https://twitter.com/okikio_dev",
-  "https://www.linkedin.com/in/okikio/", "https://github.com/okikio",
-  "https://codepen.io/okikio", "https://dev.to/okikio",
-  "https://stackoverflow.com/users/12140185/okikio?tab=profile",
-  "https://www.buymeacoffee.com/okikio", "https://app.daily.dev/okikio",
-  "https://css-tricks.com/author/okikiojo/", "https://hackernoon.com/u/okikio",
-  "https://www.producthunt.com/@okiki_ojo",
-  "https://www.reddit.com/user/okikio_dev", "https://bsky.app/profile/okikio.dev", "https://twitter.com/inthistweet_dev", "https://twitter.com/jsbundle" ], "about": { "@type": "Person",
-  "name": "Portfolio of Okiki Ojo" }, "mainEntity": { "@type": "Article", "@id":
-  "https://okikio.dev/#content" }, "inLanguage": "en", "author": { "@type":
-  "Person", "name": "Okiki Ojo" }, "publisher": { "@type": "Person", "name":
-  "Okiki Ojo", "logo": { "@type": "ImageObject", "url":
-  "https://okikio.dev/favicon/android-chrome-512x512.png" } }, "copyrightYear":
-  "2022", "copyrightHolder": { "@type": "Person", "name": "Okiki Ojo", "logo": {
-  "@type": "ImageObject", "url":
-  "https://okikio.dev/favicon/android-chrome-512x512.png" } } 
-  })} />
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Okiki Ojo",
+    alternateName: "okikio",
+    url: "https://okikio.dev/",
+    image: "https://okikio.dev/favicon/banner-image.png",
+    description:
+      "Portfolio for Okiki Ojo. It contains some amazing projects, and a little about him.",
+    sameAs: [
+      "https://okikio.dev",
+      "https://blog.okikio.dev/",
+      "https://hashnode.com/@okikio",
+      "https://twitter.com/okikio_dev",
+      "https://www.linkedin.com/in/okikio/",
+      "https://github.com/okikio",
+      "https://codepen.io/okikio",
+      "https://dev.to/okikio",
+      "https://stackoverflow.com/users/12140185/okikio?tab=profile",
+      "https://www.buymeacoffee.com/okikio",
+      "https://app.daily.dev/okikio",
+      "https://css-tricks.com/author/okikiojo/",
+      "https://hackernoon.com/u/okikio",
+      "https://www.producthunt.com/@okiki_ojo",
+      "https://www.reddit.com/user/okikio_dev",
+      "https://bsky.app/profile/okikio.dev",
+      "https://twitter.com/inthistweet_dev",
+      "https://twitter.com/jsbundle",
+    ],
+    about: { "@type": "Person", name: "Portfolio of Okiki Ojo" },
+    mainEntity: { "@type": "Article", "@id": "https://okikio.dev/#content" },
+    inLanguage: "en",
+    author: { "@type": "Person", name: "Okiki Ojo" },
+    publisher: {
+      "@type": "Person",
+      name: "Okiki Ojo",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://okikio.dev/favicon/android-chrome-512x512.png",
+      },
+    },
+    copyrightYear: "2022",
+    copyrightHolder: {
+      "@type": "Person",
+      name: "Okiki Ojo",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://okikio.dev/favicon/android-chrome-512x512.png",
+      },
+    },
+  })}
+/>

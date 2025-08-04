@@ -15,7 +15,8 @@ let attrs = external ? { target: "_blank", rel: "noopener" } : {};
   {external && <Icon name="fluent:arrow-up-right-24-filled" />}
 </a>
 
-<style lang="scss">
+<style>
+  @reference "../styles/global.css";
   svg {
     display: inline-block;
     width: 1em;

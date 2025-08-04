@@ -1,4 +1,6 @@
 ---
+import { CldImage } from "astro-cloudinary";
+
 const {
   src = "cloudinary/okiki-ojo",
   alt = "An image of a ...",
@@ -13,8 +15,10 @@ let cloudinaryTest = /^cloudinary\//.test(src);
 let fetchTest = /\/fetch\//.test(src);
 
 // Netlify redirects can't handle multiple requests at once
-// import.meta.env.PUBLIC_DEV.toString() == "false" && /okiki\-ojo$/.test(src) ? `https://okikio.dev/images/` : 
-let origin = (`https://res.cloudinary.com/okikio-assets/image/`) + (fetchTest ? "fetch/" : "upload/");
+// import.meta.env.PUBLIC_DEV.toString() == "false" && /okiki\-ojo$/.test(src) ? `https://okikio.dev/images/` :
+let origin =
+  `https://res.cloudinary.com/okikio-assets/image/` +
+  (fetchTest ? "fetch/" : "upload/");
 let urlParse = (filters = "w_auto") =>
   cloudinaryTest
     ? `${origin + (fetchTest ? "" : "f_auto,q_auto:best,c_limit/" + filters + ",dpr_auto/")}${src.replace(
@@ -25,29 +29,49 @@ let urlParse = (filters = "w_auto") =>
 
 let n = 4;
 let imageFormat = fetchTest ? "" : ".webp";
-let srcset = rest.srcset ? rest.srcset : `${urlParse(`w_auto`) + imageFormat} 300w`;
+let srcset = rest.srcset
+  ? rest.srcset
+  : `${urlParse(`w_auto`) + imageFormat} 300w`;
 let sizes = rest.sizes ? rest.sizes : `(max-width: 300px) 450px`;
 if (!rest.srcset && !rest.sizes) {
   while (n <= 12) {
-    if (!rest.srcset) srcset += `, ${urlParse(`w_${n * 100}`) + imageFormat} ${n * 100}w`;
+    if (!rest.srcset)
+      srcset += `, ${urlParse(`w_${n * 100}`) + imageFormat} ${n * 100}w`;
     if (!rest.sizes) sizes += `, (max-width: ${n * 100}px) ${n * 100}px`;
     n += 3;
   }
 }
 
 if (!rest.sizes) sizes += `, 100vw`;
+
+const srcId = src.replace(/(^cloudinary\/)|fetch\//g, "");
 ---
 
 <figure class={className} {...attrs}>
-  <img src={`${urlParse()}.jpg`} {srcset} {sizes} {alt} {loading} {...rest} />
+  <CldImage
+    src={srcId}
+    {alt}
+    {alt}
+    {loading}
+    quality={"auto:best"}
+    dpr="auto"
+    format="auto"
+    {...rest}
+  />
+  <!-- <img src={`${urlParse()}.jpg`} {srcset} {sizes} {alt} {loading} {...rest} /> -->
+
+  <!-- class="w-full h-full object-cover object-center opacity-70" -->
 </figure>
 
-<style lang="scss">
+<style>
+  @reference "../styles/global.css";
+
   figure {
     @apply relative block;
     @apply bg-[#1f1f2c];
     @apply overflow-hidden;
-    @apply w-full h-[350px];
+    @apply w-full h-[400px];
+    @apply my-0;
 
     img {
       @apply w-full h-full;

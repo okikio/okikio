@@ -3,7 +3,7 @@ import HeadMetadata from "@/components/HeadMetadata.astro";
 import Navbar from "@/components/Navbar.astro";
 import Anchor from "@/components/Anchor.astro";
 
-import {ViewTransitions} from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 
 const { content } = Astro.props;
 ---
@@ -11,7 +11,7 @@ const { content } = Astro.props;
 <html lang="en" dir="ltr">
   <head>
     <HeadMetadata {...content} />
-    <ViewTransitions fallback="swap" />
+    <ClientRouter fallback="swap" />
   </head>
   <body>
     <Navbar transition:persist />

@@ -810,7 +810,7 @@ export function slug(input: string, options?: string | ISlugOptions): string {
   // deal with locales
   const finalMap = {
     ...characters,
-    ...locales[settings.locale],
+    ...locales[settings.locale!],
     ...settings.extends,
   };
   for (let i = 0; i < output.length; i++) {
@@ -825,7 +825,7 @@ export function slug(input: string, options?: string | ISlugOptions): string {
   if (settings.lower) output = output.toLowerCase();
 
   // convert spaces to replacement characters (and treat multiple spaces as a single space)
-  output = output.replace(/\s+/g, settings.replacement);
+  output = output.replace(/\s+/g, settings.replacement!);
 
   return output;
 }

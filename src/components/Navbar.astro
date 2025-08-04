@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 import Anchor from "./Anchor.astro";
 ---
 
@@ -18,12 +18,20 @@ import Anchor from "./Anchor.astro";
     </div>
     <div class="flex-grow"></div>
     <div class="menu px-1">
-      <Anchor href="/#about" class="item umami--click--about-nav-link">About</Anchor>
-      <Anchor href="/#projects" class="item umami--click--projects-nav-link">Projects</Anchor>
-      <Anchor href="/#contact" class="item umami--click--contact-nav-link">Contact</Anchor>
-      
+      <Anchor href="/#about" class="item umami--click--about-nav-link"
+        >About</Anchor
+      >
+      <Anchor href="/#projects" class="item umami--click--projects-nav-link"
+        >Projects</Anchor
+      >
+      <Anchor href="/#contact" class="item umami--click--contact-nav-link"
+        >Contact</Anchor
+      >
+
       <div class="seperator"></div>
-      <Anchor href="https://blog.okikio.dev" class="item umami--click--blog">Blog</Anchor>
+      <Anchor href="https://blog.okikio.dev" class="item umami--click--blog"
+        >Blog</Anchor
+      >
       <div class="px-2 xsm:hidden"></div>
       <div class="logo xsm:hidden">
         <Anchor
@@ -57,7 +65,7 @@ import Anchor from "./Anchor.astro";
     <div class="logo">
       <Anchor
         href="https://github.com/okikio"
-        class="text-primary bg-primary/10 item  umami--click--github-profile"
+        class="text-primary bg-primary/10 item umami--click--github-profile"
         aria-label="Link to the Okiki Ojo's GitHub profile"
         title="GitHub"
         external={false}
@@ -76,7 +84,9 @@ import Anchor from "./Anchor.astro";
   </div>
 </nav>
 
-<style lang="scss">
+<style>
+  @reference "../styles/global.css";
+
   nav {
     @apply fixed top-0 left-0 w-full h-16;
     @apply z-50;
@@ -87,24 +97,12 @@ import Anchor from "./Anchor.astro";
       @apply bg-black;
 
       @supports (backdrop-filter: blur(10px)) {
-        @apply bg-opacity-50 backdrop-blur-md;
-      }
-
-      @at-root :global(.dom-loaded) nav .backdrop {
-        @apply transition duration-500;
+        @apply bg-black/50 backdrop-blur-md;
       }
     }
 
     &.open .backdrop {
       @apply lt-sm:translate-y-0;
-    }
-
-    @at-root :global(.dom-loaded) nav {
-      button,
-      a {
-        transition-property: background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-        @apply duration-200 ease-in-out;
-      }
     }
   }
 
@@ -124,7 +122,7 @@ import Anchor from "./Anchor.astro";
   }
 
   .logo :global(svg) {
-    @apply min-w-[theme("spacing.6")] w-6 h-6;
+    @apply min-w-6 w-6 h-6;
   }
 
   .items-horiz {
@@ -169,14 +167,6 @@ import Anchor from "./Anchor.astro";
       @apply flex items-center gap-2;
       @apply sm:hidden;
 
-      
-      @at-root :global(.dom-loaded) nav .toggle {
-        .text,
-        .dot {
-          @apply transition-transform duration-500;
-        }
-      }
-
       .text {
         @apply translate-x-1.5;
       }
@@ -204,7 +194,27 @@ import Anchor from "./Anchor.astro";
     }
   }
 
-  @screen lt-sm {
+  :global(.dom-loaded) nav {
+    .backdrop {
+      @apply transition duration-500;
+    }
+
+    button,
+    a {
+      transition-property: background-color, border-color, text-decoration-color,
+        fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+      @apply duration-200 ease-in-out;
+    }
+
+    .toggle {
+      .text,
+      .dot {
+        @apply transition-transform duration-500;
+      }
+    }
+  }
+
+  @variant lt-sm {
     .menu {
       @apply -translate-y-full opacity-0 pointer-events-none invisible;
       /* @apply bg-gradient-to-b from-transparent to-black/10; */

@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Dark Mode Configuration */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Custom Variants for Max-Width Breakpoints */
+@custom-variant lt-2xl (@media (max-width: 1535px));
+@custom-variant lt-xl (@media (max-width: 1279px));
+@custom-variant lt-lg (@media (max-width: 1023px));
+@custom-variant lt-md (@media (max-width: 767px));
+@custom-variant lt-sm (@media (max-width: 639px));
+@custom-variant lt-xsm (@media (max-width: 439px));
+@custom-variant lt-xxsm (@media (max-width: 339px));
+
+/* Pointer-based Media Queries */
+@custom-variant coarse (@media (pointer: coarse));
+@custom-variant fine (@media (pointer: fine));
+
+@theme {
+  /* Custom Breakpoints */
+  --breakpoint-3xl: 1633px;
+  --breakpoint-1-5xl: 1333px;
+  --breakpoint-xsm: 439px;
+  --breakpoint-xxsm: 339px;
+
+  /* Colors */
+  --color-primary: #ffff00;
+}
+
+@theme inline {
+  --font-sans: var(--google-manrope);
+
+  --font-lexend-black: var(--google-lexend-deca-black);
+  --font-lexend: var(--google-lexend-deca);
+  --font-manrope: var(--google-manrope);
+  --font-inter: var(--google-inter);
+}
+
+/* Container Utility Customization */
+@utility container {
+  margin-inline: auto;
+}
+
+@import "./base.css" layer(base);

@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 import Anchor from "./Anchor.astro";
 import Image from "./Image.astro";
 
@@ -10,8 +10,10 @@ let cloudinaryTest = /^cloudinary\//.test(src);
 let fetchTest = /\/fetch\//.test(src);
 
 // Netlify redirects can't handle multiple requests at once
-// import.meta.env.PUBLIC_DEV.toString() == "false" && /okiki\-ojo$/.test(src) ? `https://okikio.dev/images/` : 
-let origin = (`https://res.cloudinary.com/okikio-assets/image/`) + (fetchTest ? "fetch/" : "upload/");
+// import.meta.env.PUBLIC_DEV.toString() == "false" && /okiki\-ojo$/.test(src) ? `https://okikio.dev/images/` :
+let origin =
+  `https://res.cloudinary.com/okikio-assets/image/` +
+  (fetchTest ? "fetch/" : "upload/");
 let urlParse = (filters = "w_auto") =>
   cloudinaryTest
     ? `${origin + (fetchTest ? "" : "f_auto,q_auto:best,c_limit/" + filters + ",dpr_auto/")}${src.replace(
@@ -25,25 +27,30 @@ let srcset = `${urlParse(`w_auto`) + imageFormat} 100w, ${urlParse(`w_250`) + im
 let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
 ---
 
-<header class="content" role="banner" nav-section="index" data-perspective-group>
+<header
+  class="content"
+  role="banner"
+  nav-section="index"
+  data-perspective-group
+>
   <div class="container" id="index">
     <div class="layout">
       <div class="z-10" data-perspective="header">
         <h1>
-          Hello, I am <strong class="text-primary" aria-label="Okiki Ojo">Okiki.</strong>
+          Hello, I am <strong class="text-primary" aria-label="Okiki Ojo"
+            >Okiki.</strong
+          >
         </h1>
-        <h2>Web Developer - Open Source Steward - Student</h2>
+        <h2>Web Developer - Open Source Steward - Curious Explorer</h2>
       </div>
       <Image
         src={src}
         alt="A black and white profile photo of Okiki Ojo, smiling, looking straight forward, behind a brick wall backdrop. He is wearing glasses, a black shirt and jacket, plus some wireless headphones, which are hanging around on his neck."
-        width="250"
-        height="350"
+        width={450}
+        height={350}
         data-nosnippet
-
         srcset={srcset}
         sizes={sizes}
-
         fetchpriority="high"
         loading="eager"
         figureAttrs={{
@@ -54,33 +61,39 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
 
     <div class="social-links">
       <div class="social-layout" data-perspective="social-links">
-        {() => {
-          let links = {
-            LinkedIn: ["In", "https://www.linkedin.com/in/okikio"],
-            Twitter: ["Tw", "https://twitter.com/okikio_dev"],
-            GitHub: ["Git", "https://github.com/okikio"],
-            Email: ["@", "mailto:hey@okikio.dev"],
-          };
+        {
+          () => {
+            let links = {
+              LinkedIn: ["In", "https://www.linkedin.com/in/okikio"],
+              Twitter: ["Tw", "https://twitter.com/okikio_dev"],
+              GitHub: ["Git", "https://github.com/okikio"],
+              Email: ["@", "mailto:hey@okikio.dev"],
+            };
 
-          return Object.keys(links).map((name) => {
-            let [shortName, href] = links[name as keyof typeof links];
-            return (
-              <Anchor
-                class={`px-4 py-2 focus-visible:bg-primary/20 hover:text-primary umami--click--${slugger(name, { lower: false })}-side-social`}
-                href={href}
-              >
-                <span class="full">{name}</span>
-                <span class="short">{shortName}</span>
-              </Anchor>
-            );
-          });
-        }}
+            return Object.keys(links).map((name) => {
+              let [shortName, href] = links[name as keyof typeof links];
+              return (
+                <Anchor
+                  class={`px-4 py-2 focus-visible:bg-primary/20 hover:text-primary umami--click--${slugger(name, { lower: false })}-side-social`}
+                  href={href}
+                >
+                  <span class="full">{name}</span>
+                  <span class="short">{shortName}</span>
+                </Anchor>
+              );
+            });
+          }
+        }
       </div>
     </div>
 
     <!-- data-perspective="scroll-down" -->
     <div id="scroll-down">
-      <Anchor href="/#content" class="umami--click--scroll-down-btn" aria-label="Scroll down button">
+      <Anchor
+        href="/#content"
+        class="umami--click--scroll-down-btn"
+        aria-label="Scroll down button"
+      >
         <strong class="text">Scroll</strong>
         <div class="icon-container">
           <Icon name="fluent:chevron-down-24-filled" />
@@ -90,7 +103,9 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
   </div>
 </header>
 
-<style lang="scss">
+<style>
+  @reference "../styles/global.css";
+
   header {
     @apply py-0 mx-auto w-full relative overflow-hidden;
     @apply text-xl max-w-full;
@@ -112,8 +127,8 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
       @apply flex flex-row items-center w-full;
       @apply relative min-h-screen;
 
-      :global(h1) {
-        @apply text-[2.8rem] leading-tight sm:text-5xl md:text-7xl lg:text-8xl font-lexend font-[900] mb-5;
+      h1 {
+        @apply text-[2.8rem] leading-tight sm:text-5xl md:text-7xl lg:text-8xl font-lexend-black font-[900] mb-5;
       }
 
       h2 {
@@ -121,7 +136,7 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
         @apply mt-0 sm:leading-tight lt-xsm:max-w-[30ch];
       }
 
-      :global(figure) {
+      figure {
         @apply z-0 m-0;
         @apply absolute top-1/2 right-0;
         @apply -translate-y-1/2;
@@ -170,13 +185,13 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
       @apply flex justify-center;
       @apply text-center;
 
-      :global(a) {
+      a {
         @apply text-inherit no-underline hover:no-underline p-2;
       }
 
       .text {
         @apply py-3 block uppercase text-sm font-lexend;
-        text-decoration: 2px underline theme("colors.primary");
+        text-decoration: 2px underline var(--color-primary);
         text-underline-offset: 0.2rem;
       }
 
@@ -213,12 +228,12 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
         :global(svg) {
           @apply w-6 h-6;
         }
-        
-        @at-root :global(.dom-loaded) #scroll-down .icon-container :global(path) {
-          @apply transition-colors duration-200 ease-in-out;
-        }
       }
     }
+  }
+
+  :global(.dom-loaded) #scroll-down .icon-container :global(path) {
+    @apply transition-colors duration-200 ease-in-out;
   }
 
   @keyframes scale {

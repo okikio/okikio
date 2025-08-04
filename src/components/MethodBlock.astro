@@ -1,49 +1,53 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 ---
 
 <div class="method-block">
   <div class="content">
-    {() => {
-      let cols = [
-        [
-          "uil:bolt-alt",
-          "Speed",
-          "How quickly do the stakeholders wants their solutions implemented, and accordingly what tools will ensure high levels of speed.",
-        ],
-        [
-          "mdi:waves",
-          "Efficiency",
-          "Making sure not to waste resources, time and/or effort, so stakeholders can get the most out of the final product.",
-        ],
-        [
-          "mdi:gavel",
-          "Ease-of-use",
-          "The solution needs to be easy to use, easy enough so stakeholders can use the solution without breaking a sweat.",
-        ],
-        [
-          "mdi:history",
-          "Impact",
-          "The solution should leave an impact, an impact large enough that stakeholders understand the what, where, why, and how's clearly.",
-        ],
-      ];
-      return cols.map((col) => {
-        let [icon, title, description] = col;
-        return (
-          <div class="method">
-            <div class="icon-container">
-              <Icon name={icon} />
+    {
+      () => {
+        let cols = [
+          [
+            "uil:bolt-alt",
+            "Speed",
+            "How quickly do users want and need the solutions to be, and accordingly what tools will ensure high levels of speed.",
+          ],
+          [
+            "mdi:waves",
+            "Efficiency",
+            "Making sure not to waste resources, time and/or effort, so users can get the most out of the final product.",
+          ],
+          [
+            "mdi:gavel",
+            "Ease-of-use",
+            "The solution needs to be easy and pleaseant to use. Users should actually enjoy the solution, it should enable user to do more, and should fit into the users workflow like a glove.",
+          ],
+          [
+            "mdi:history",
+            "Impact",
+            "The solution should leave an impact, an impact large enough that users understand the what, where, why, and how's clearly.",
+          ],
+        ];
+        return cols.map((col) => {
+          let [icon, title, description] = col;
+          return (
+            <div class="method">
+              <div class="icon-container">
+                <Icon name={icon} />
+              </div>
+              <h3>{title}</h3>
+              <p>{description}</p>
             </div>
-            <h3>{title}</h3>
-            <p>{description}</p>
-          </div>
-        );
-      });
-    }}
+          );
+        });
+      }
+    }
   </div>
 </div>
 
-<style lang="scss">
+<style>
+  @reference "../styles/global.css";
+
   .method-block {
     @apply bg-gray-900 sm:rounded-3xl;
     @apply container max-w-[85ch];
