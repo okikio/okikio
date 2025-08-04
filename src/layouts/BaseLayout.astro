@@ -11,7 +11,6 @@ const { content } = Astro.props;
 <html lang="en" dir="ltr">
   <head>
     <HeadMetadata {...content} />
-    <ClientRouter fallback="swap" />
   </head>
   <body>
     <Navbar transition:persist />
@@ -24,5 +23,7 @@ const { content } = Astro.props;
       </article>
     </main>
     <slot name="footer" />
+    
+    <ClientRouter fallback="swap" />
   </body>
 </html>

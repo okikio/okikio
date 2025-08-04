@@ -2,4 +2,3 @@ Sitemap: https://okikio.dev/sitemap-index.xml
 User-agent: *
 Disallow: /images/*/okikio/okiki-ojo.jpg
 Disallow: /images/*/okikio/okiki-ojo.webp
-Disallow: https://res.cloudinary.com/okikio-assets/image/upload/*/okiki-ojo

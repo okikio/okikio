@@ -24,17 +24,9 @@ export default defineConfig({
     fonts: [
       {
         provider: fontProviders.google(),
-        name: "Inter",
-        cssVariable: "--google-inter",
-        weights: ["100 900"],
-        fallbacks: ["Inter-fallback", "sans-serif"],
-        optimizedFallbacks: false
-      },
-      {
-        provider: fontProviders.google(),
         name: "Lexend Deca",
         cssVariable: "--google-lexend-deca",
-        weights: ["100 800"],
+        weights: ["400"],
         fallbacks: ["Lexend Deca-fallback", "sans-serif"],
         optimizedFallbacks: false
       },
@@ -50,7 +42,7 @@ export default defineConfig({
         provider: fontProviders.google(),
         name: "Manrope",
         cssVariable: "--google-manrope",
-        weights: ["200 800"],
+        weights: ["300"],
         fallbacks: ["Manrope-fallback", "sans-serif"],
         optimizedFallbacks: false
       }
