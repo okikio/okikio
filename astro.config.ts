@@ -34,7 +34,7 @@ export default defineConfig({
         provider: fontProviders.google(),
         name: "Lexend Deca",
         cssVariable: "--google-lexend-deca",
-        weights: ["100 900"],
+        weights: ["100 800"],
         fallbacks: ["Lexend Deca-fallback", "sans-serif"],
         optimizedFallbacks: false
       },
