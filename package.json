@@ -35,7 +35,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.12.8",
-    "astro-auto-adapter": "^2.3.0",
+    "astro-auto-adapter": "^2.4.0",
     "astro-icon": "^1.1.5",
     "astro-seo": "^0.8.4",
     "tailwindcss": "^4.1.11"
