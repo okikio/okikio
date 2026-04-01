@@ -15,7 +15,7 @@ Start by reviewing the current homepage implementation and the surrounding archi
 - `src/layouts/HomepageLayout.astro`
 - `src/components/HeroBanner.astro`
 - `src/components/Card.astro`
-- any directly related files in `src/components/`, `src/layouts/`, and `src/styles/`
+- `src/components/`, `src/layouts/`, and `src/styles/` when closely related files matter
 
 ## Goals
 
