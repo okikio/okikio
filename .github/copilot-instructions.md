@@ -15,6 +15,38 @@ Use it for:
 More specific instruction files may narrow or extend these defaults for a language, file pattern, project, or task type.
 When a more specific file applies, follow that file for the local task and use this file as the fallback base.
 
+## Project overview
+
+This repository is Okiki Ojo's Astro-based portfolio site.
+It is a content-forward web application built with Astro 5, Tailwind CSS, and TypeScript-flavored `.astro` components.
+
+The most important entry points are:
+- `src/pages/index.astro` for the homepage content and featured projects
+- `src/layouts/HomepageLayout.astro` and `src/layouts/BaseLayout.astro` for page framing
+- `src/components/` for reusable UI pieces such as `HeroBanner.astro`, `Card.astro`, and `Footer.astro`
+- `src/styles/` for shared styling
+- `public/` for static assets
+
+When a task is about the homepage, preserve the site's existing voice: personal, direct, polished, and portfolio-oriented.
+Do not invent professional history, project details, metrics, or brand claims that are not already grounded in the repository.
+
+## Local workflow and validation
+
+Use the repository's existing package manager and scripts:
+- install dependencies with `corepack pnpm install --frozen-lockfile`
+- build with `corepack pnpm build`
+- preview locally with `corepack pnpm preview`
+
+At the moment, `package.json` does not define dedicated lint or test scripts.
+Do not invent new validation commands unless the task explicitly adds that tooling.
+If a validation step cannot run because dependencies are missing, install the existing dependencies first and then rerun the real project command.
+
+## Change scope in this repository
+
+Prefer focused edits to the smallest set of Astro components, layouts, styles, and markdown files needed for the task.
+Reuse the existing Astro and Tailwind patterns before introducing new abstractions.
+Do not commit build artifacts or dependencies such as `node_modules/` or generated `.astro/` output.
+
 
 
 ## Core engineering stance
