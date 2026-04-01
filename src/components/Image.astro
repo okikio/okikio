@@ -51,7 +51,6 @@ const srcId = src.replace(/(^cloudinary\/)|fetch\//g, "");
   <CldImage
     src={srcId}
     {alt}
-    {alt}
     {loading}
     {sizes}
     crop="fill"
@@ -61,9 +60,6 @@ const srcId = src.replace(/(^cloudinary\/)|fetch\//g, "");
     format="auto"
     {...rest}
   />
-  <!-- <img src={`${urlParse()}.jpg`} {srcset} {sizes} {alt} {loading} {...rest} /> -->
-
-  <!-- class="w-full h-full object-cover object-center opacity-70" -->
 </figure>
 
 <style>

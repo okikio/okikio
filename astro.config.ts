@@ -1,5 +1,4 @@
 import { defineConfig, fontProviders } from 'astro/config';
-import { adapter } from "astro-auto-adapter";
 
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
@@ -15,7 +14,6 @@ export default defineConfig({
     mdx(),
     icon()
   ],
-  adapter: await adapter(),
   vite: {
     plugins: [tailwind()]
   },
