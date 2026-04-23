@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 import { SEO } from "astro-seo";
 import "@/styles/global.css";
 
@@ -54,6 +55,8 @@ const extendMeta = {
 <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
 <link rel="manifest" href="/manifest.json" />
+<Font cssVariable="--font-family-lexend" preload />
+<Font cssVariable="--font-family-manrope" preload />
 
 <link href="https://github.com/okikio" rel="me" />
 <link rel="webmention" href="https://webmention.io/okikio.dev/webmention" />
