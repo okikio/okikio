@@ -5,11 +5,12 @@
 Astro 5.18.1 is the current version used. Astro 6 is in alpha/early development. The project is well-positioned on the latest stable Astro 5.
 
 Key Astro 5 features in use:
-- Experimental fonts API (`fontProviders.google()`) for optimized font loading
-- `Font` component from `astro:assets` for preloading
 - Static prerendering (all pages use `export const prerender = true`)
 - MDX integration for legal pages
 - Sitemap and RSS integrations
+- Tailwind v4 through the Vite plugin
+
+The prior `experimental.fonts` setup depended on build-time requests to `fonts.googleapis.com`. That made deployment and sandbox builds fragile. The site now self-hosts Lexend Deca and Manrope via Fontsource instead.
 
 ## Tailwind CSS 4
 
@@ -29,7 +30,13 @@ Images are served through Cloudinary via `astro-cloudinary` (CldImage component)
 
 ## Deployment
 
-The site deploys to Vercel as static files. The `vercel.json` configures clean URLs and trailing slashes. No server-side runtime is needed.
+The site deploys to Vercel as static files. `astro.config.ts` now explicitly sets `output: "static"` and `trailingSlash: "always"` to match `vercel.json`.
+
+Host-specific behavior that used to live in Netlify-only `_headers` and `_redirects` files has been moved into `vercel.json`:
+- `/images/:path*` now rewrites to Cloudinary on Vercel
+- security headers are served by Vercel directly
+
+No server-side runtime is needed.
 
 ## Icon system
 
