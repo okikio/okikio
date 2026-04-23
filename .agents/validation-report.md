@@ -12,8 +12,8 @@
 - **Command**: `corepack pnpm build`
 - **Result**: PASS
 - **Output**: 3 pages built (index.html, privacy/index.html, terms/index.html) + rss.xml + sitemap
-- **Warning**: Google Fonts fetch fails in sandboxed environments (expected, does not affect production)
-- **Build time**: ~31 seconds
+- **Warning**: None
+- **Build time**: ~5 seconds after removing remote font fetching
 
 ## Dependency install
 
@@ -22,4 +22,13 @@
 
 ## Changes validated
 
-All changes are to content (typo fixes, metadata updates), configuration (adapter removal), and documentation (.agents/ files). No behavioral or architectural changes beyond removing the broken adapter setup.
+All changes are to deployment/configuration (`vercel.json`, `astro.config.ts`, local fonts), content/docs (README), and small markup/script alignment (`data-nav-section`).
+
+## Local smoke check
+
+- **Command**: `corepack pnpm preview --host 127.0.0.1 --port 4321`
+- **Verification**:
+  - `curl -I http://127.0.0.1:4321/` → `200 OK`
+  - `curl -I http://127.0.0.1:4321/privacy/` → `200 OK`
+  - `curl -I http://127.0.0.1:4321/terms/` → `200 OK`
+  - homepage HTML contains the expected hero heading

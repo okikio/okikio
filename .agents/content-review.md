@@ -22,6 +22,10 @@
 - `Image.astro` passed `{alt}` twice to `CldImage`. Removed the duplicate.
 - Stale commented-out `Astro.fetchContent` code removed from 3 files.
 
+## Additional content updates
+
+- `README.md` now matches the homepage more closely. It no longer says Okiki is a student, and the broken `LICENCE.md` link now points to `LICENSE`.
+
 ## Content observations (not changed)
 
 The following are observations about the site copy. They are noted here for the author's consideration rather than changed, because they involve factual claims or subjective framing:
@@ -35,8 +39,6 @@ The following are observations about the site copy. They are noted here for the 
 4. **Blog link**: The blog at `blog.okikio.dev` is referenced in the nav and contact sections. If the blog is actively maintained, consider featuring recent posts or a feed preview.
 
 5. **Hero subtitle**: "Web Developer - Open Source Steward - Curious Explorer" is clear but could be more specific about the author's current role or focus.
-
-6. **README.md**: Says "Software Engineering student" but the site says he graduated. The README should be updated to match.
 
 ## Voice and tone
 

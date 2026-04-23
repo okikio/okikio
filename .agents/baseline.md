@@ -6,7 +6,7 @@ The site failed to build because three adapter packages (`@astrojs/node@10.0.0`,
 
 ## Build status (post-fix)
 
-After removing all adapter packages (the site is fully static with all pages using `export const prerender = true`), the build succeeds cleanly. The only warning is a Google Fonts fetch failure in sandboxed environments, which does not affect production.
+After removing all adapter packages and replacing Astro's remote Google font fetching with local Fontsource assets, the build succeeds cleanly with no external font fetches.
 
 ## Validation commands
 
@@ -42,4 +42,4 @@ src/pages/rss.xml.ts  → @astrojs/rss
 3. `ProjectLayout.astro` exists but is unused by any page.
 4. The `@std/async` dependency was listed but never imported anywhere in the codebase.
 5. Several Twitter links still point to `twitter.com/okikio_dev` (still functional via redirect).
-6. `nav-section` uses a non-standard HTML attribute rather than `data-nav-section`.
+6. Netlify-specific `_headers` and `_redirects` files were still present even though the site deploys to Vercel. These were ported into `vercel.json`.
