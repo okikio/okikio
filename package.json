@@ -22,7 +22,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/cloudflare": "^12.6.8",
+    "@astrojs/cloudflare": "^13.1.10",
     "@astrojs/mdx": "^4.3.5",
     "@astrojs/netlify": "^6.5.10",
     "@astrojs/node": "^10.0.5",
