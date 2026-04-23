@@ -1,3 +1,5 @@
+import { fileURLToPath } from "node:url";
+
 import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import netlify from "@astrojs/netlify";
@@ -20,6 +22,11 @@ function isAdapterName(value: string): value is keyof typeof adapters {
 }
 
 const adapterName = process.env.ASTRO_ADAPTER;
+const output = process.env.ASTRO_OUTPUT === "server" ? "server" : "static";
+
+function resolvePackageAsset(specifier: string) {
+  return fileURLToPath(new URL(import.meta.resolve(specifier)));
+}
 
 if (adapterName && !isAdapterName(adapterName)) {
   throw new Error(
@@ -27,15 +34,18 @@ if (adapterName && !isAdapterName(adapterName)) {
   );
 }
 
-const adapter = adapterName ? adapters[adapterName] : undefined;
+if (adapterName && output !== "server") {
+  throw new Error(
+    'Set ASTRO_OUTPUT="server" when using ASTRO_ADAPTER so adapter builds stay an explicit opt-in.'
+  );
+}
+
+const adapter = adapterName && output === "server" ? adapters[adapterName] : undefined;
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://okikio.dev",
-  // Adapter builds in this repo are only used to verify Astro's font pipeline
-  // across the official server targets, so switching away from the default
-  // static output is intentional whenever ASTRO_ADAPTER is set.
-  output: adapter ? "server" : "static",
+  output,
   adapter,
   trailingSlash: "always",
   fonts: [
@@ -50,16 +60,16 @@ export default defineConfig({
             weight: 400,
             style: "normal",
             src: [
-              "./node_modules/@fontsource/lexend-deca/files/lexend-deca-latin-400-normal.woff2",
-              "./node_modules/@fontsource/lexend-deca/files/lexend-deca-latin-400-normal.woff",
+              resolvePackageAsset("@fontsource/lexend-deca/files/lexend-deca-latin-400-normal.woff2"),
+              resolvePackageAsset("@fontsource/lexend-deca/files/lexend-deca-latin-400-normal.woff"),
             ],
           },
           {
             weight: 900,
             style: "normal",
             src: [
-              "./node_modules/@fontsource/lexend-deca/files/lexend-deca-latin-900-normal.woff2",
-              "./node_modules/@fontsource/lexend-deca/files/lexend-deca-latin-900-normal.woff",
+              resolvePackageAsset("@fontsource/lexend-deca/files/lexend-deca-latin-900-normal.woff2"),
+              resolvePackageAsset("@fontsource/lexend-deca/files/lexend-deca-latin-900-normal.woff"),
             ],
           },
         ],
@@ -76,24 +86,24 @@ export default defineConfig({
             weight: 300,
             style: "normal",
             src: [
-              "./node_modules/@fontsource/manrope/files/manrope-latin-300-normal.woff2",
-              "./node_modules/@fontsource/manrope/files/manrope-latin-300-normal.woff",
+              resolvePackageAsset("@fontsource/manrope/files/manrope-latin-300-normal.woff2"),
+              resolvePackageAsset("@fontsource/manrope/files/manrope-latin-300-normal.woff"),
             ],
           },
           {
             weight: 400,
             style: "normal",
             src: [
-              "./node_modules/@fontsource/manrope/files/manrope-latin-400-normal.woff2",
-              "./node_modules/@fontsource/manrope/files/manrope-latin-400-normal.woff",
+              resolvePackageAsset("@fontsource/manrope/files/manrope-latin-400-normal.woff2"),
+              resolvePackageAsset("@fontsource/manrope/files/manrope-latin-400-normal.woff"),
             ],
           },
           {
             weight: 500,
             style: "normal",
             src: [
-              "./node_modules/@fontsource/manrope/files/manrope-latin-500-normal.woff2",
-              "./node_modules/@fontsource/manrope/files/manrope-latin-500-normal.woff",
+              resolvePackageAsset("@fontsource/manrope/files/manrope-latin-500-normal.woff2"),
+              resolvePackageAsset("@fontsource/manrope/files/manrope-latin-500-normal.woff"),
             ],
           },
         ],
