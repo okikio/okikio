@@ -1,5 +1,4 @@
 ---
-import { Font } from "astro:assets";
 import { SEO } from "astro-seo";
 import "@/styles/global.css";
 
@@ -11,7 +10,6 @@ const defaultKeywords = [
   "open source",
   "Astro maintainer",
 ];
-
 const {
   title = "Okiki Ojo — Web Developer & Designer (okikio)",
   description = "Software engineer, web developer, and open source maintainer based in Ontario, Canada.",
@@ -22,7 +20,7 @@ const {
     width: 1200,
     height: 630,
   },
-} = Astro.props;
+} = Astro.props as Props;
 
 export type Props = {
   title?: string;
@@ -61,15 +59,6 @@ const extendMeta = {
 };
 
 ---
-
-<Font
-  cssVariable="--font-family-lexend"
-  preload={[{ weight: "500" }, { weight: "700" }, { weight: "900" }]}
-/>
-<Font
-  cssVariable="--font-family-manrope"
-  preload={[{ weight: "400" }, { weight: "500" }]}
-/>
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
