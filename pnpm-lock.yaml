@@ -60,6 +60,9 @@ importers:
       astro:
         specifier: ^6.1.9
         version: 6.1.9(@netlify/blobs@10.7.4)(@types/node@25.6.0)(@vercel/functions@3.4.4)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+      astro-auto-adapter:
+        specifier: ^2.5.5
+        version: 2.5.5(38767baa1cead38a8586a7b758aa7e09)
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
@@ -2241,6 +2244,32 @@ packages:
   astring@1.9.0:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
+
+  astro-auto-adapter@2.5.5:
+    resolution: {integrity: sha512-jtWErAa9ANUV24XOSjx0yCgq8tK0Q98eiKUAu7QjL26yhhs34rMnuJNWpoqoxBUuvaHiVuqySOSJAca1RM6RcA==}
+    engines: {node: '>=22'}
+    hasBin: true
+    peerDependencies:
+      '@astrojs/cloudflare': '>=12'
+      '@astrojs/netlify': '>=6'
+      '@astrojs/node': '>=9'
+      '@astrojs/vercel': '>=8'
+      '@deno/astro-adapter': '>=0'
+      astro: '>=4'
+      astro-sst: '>=3'
+    peerDependenciesMeta:
+      '@astrojs/cloudflare':
+        optional: true
+      '@astrojs/netlify':
+        optional: true
+      '@astrojs/node':
+        optional: true
+      '@astrojs/vercel':
+        optional: true
+      '@deno/astro-adapter':
+        optional: true
+      astro-sst:
+        optional: true
 
   astro-cloudinary@1.3.4:
     resolution: {integrity: sha512-TCZRn/KS/NIb46n7CtdqYajH61lHpg95Za9aCRr7lkGRn7GrZev8S06Veg3PJtRCS6JJeVs1w9G4QxY2XIoDrQ==}
@@ -7776,6 +7805,16 @@ snapshots:
   ast-module-types@6.0.1: {}
 
   astring@1.9.0: {}
+
+  astro-auto-adapter@2.5.5(38767baa1cead38a8586a7b758aa7e09):
+    dependencies:
+      '@clack/prompts': 1.2.0
+      astro: 6.1.9(@netlify/blobs@10.7.4)(@types/node@25.6.0)(@vercel/functions@3.4.4)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3)
+    optionalDependencies:
+      '@astrojs/cloudflare': 13.2.1(@types/node@25.6.0)(astro@6.1.9(@netlify/blobs@10.7.4)(@types/node@25.6.0)(@vercel/functions@3.4.4)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))(jiti@2.6.1)(lightningcss@1.30.1)(workerd@1.20250829.0)(wrangler@4.33.2)(yaml@2.8.3)
+      '@astrojs/netlify': 7.0.8(@types/node@25.6.0)(@vercel/functions@3.4.4)(astro@6.1.9(@netlify/blobs@10.7.4)(@types/node@25.6.0)(@vercel/functions@3.4.4)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.60.2)(yaml@2.8.3)
+      '@astrojs/node': 10.0.6(astro@6.1.9(@netlify/blobs@10.7.4)(@types/node@25.6.0)(@vercel/functions@3.4.4)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrojs/vercel': 10.0.5(astro@6.1.9(@netlify/blobs@10.7.4)(@types/node@25.6.0)(@vercel/functions@3.4.4)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))(rollup@4.60.2)
 
   astro-cloudinary@1.3.4(astro@6.1.9(@netlify/blobs@10.7.4)(@types/node@25.6.0)(@vercel/functions@3.4.4)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.60.2)(typescript@5.9.3)(yaml@2.8.3))(jiti@2.6.1)(postcss@8.5.10)(typescript@5.9.3)(yaml@2.8.3):
     dependencies:
