@@ -15,18 +15,26 @@ const adapters = {
   vercel: vercel(),
 } as const;
 
-const adapterName = process.env.ASTRO_ADAPTER as keyof typeof adapters | undefined;
-const adapter = adapterName ? adapters[adapterName] : undefined;
+function isAdapterName(value: string): value is keyof typeof adapters {
+  return value in adapters;
+}
 
-if (adapterName && !adapter) {
+const adapterName = process.env.ASTRO_ADAPTER;
+
+if (adapterName && !isAdapterName(adapterName)) {
   throw new Error(
     `Unsupported ASTRO_ADAPTER "${adapterName}". Expected one of: ${Object.keys(adapters).join(", ")}`
   );
 }
 
+const adapter = adapterName ? adapters[adapterName] : undefined;
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://okikio.dev",
+  // Adapter builds in this repo are only used to verify Astro's font pipeline
+  // across the official server targets, so switching away from the default
+  // static output is intentional whenever ASTRO_ADAPTER is set.
   output: adapter ? "server" : "static",
   adapter,
   trailingSlash: "always",
