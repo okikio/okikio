@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 import cloudflare from "@astrojs/cloudflare";
@@ -25,7 +26,13 @@ const adapterName = process.env.ASTRO_ADAPTER;
 const output = process.env.ASTRO_OUTPUT === "server" ? "server" : "static";
 
 function resolvePackageAsset(specifier: string) {
-  return fileURLToPath(new URL(import.meta.resolve(specifier)));
+  const resolvedPath = fileURLToPath(new URL(import.meta.resolve(specifier)));
+
+  if (!existsSync(resolvedPath)) {
+    throw new Error(`Unable to resolve font asset: ${specifier}`);
+  }
+
+  return resolvedPath;
 }
 
 if (adapterName && !isAdapterName(adapterName)) {
