@@ -21,6 +21,12 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.5.1
         version: 3.5.1
+      '@fontsource/lexend-deca':
+        specifier: 5.2.10
+        version: 5.2.10
+      '@fontsource/manrope':
+        specifier: 5.2.8
+        version: 5.2.8
       '@iconify-json/fluent':
         specifier: ^1.2.30
         version: 1.2.30
@@ -494,6 +500,12 @@ packages:
 
   '@fastify/busboy@3.2.0':
     resolution: {integrity: sha512-m9FVDXU3GT2ITSe0UaMA5rU3QkfC/UXtCU8y0gSN/GugTqtVldOBWIB5V6V3sbmenVZUIpU6f+mPEO2+m5iTaA==}
+
+  '@fontsource/lexend-deca@5.2.10':
+    resolution: {integrity: sha512-8xa0J/pjM4ZbwEJva35UoymspFZyRBgL3M62SyDu47RSmYqE7NB73TlNLrZ9U2mFbcFoqKiXxV+ExNS/+ZtmYA==}
+
+  '@fontsource/manrope@5.2.8':
+    resolution: {integrity: sha512-gJHJmcuUk7qWcNCfcAri/DJQtXtBYqi9yKratr4jXhSo0I3xUtNNKI+igQIcw5c+m95g0vounk8ZnX/kb8o0TA==}
 
   '@iconify-json/fluent@1.2.30':
     resolution: {integrity: sha512-tR0E0As25LGV95vryo/bZbLJ3kcUiOva99MP7nB7gQV82K08zaaaSYZWcyKbLgV4BxHOfMuBgNoOvQpYqm9Oyg==}
@@ -3868,6 +3880,10 @@ snapshots:
 
   '@fastify/busboy@3.2.0':
     optional: true
+
+  '@fontsource/lexend-deca@5.2.10': {}
+
+  '@fontsource/manrope@5.2.8': {}
 
   '@iconify-json/fluent@1.2.30':
     dependencies:

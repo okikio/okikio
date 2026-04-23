@@ -1,4 +1,4 @@
-import { defineConfig, fontProviders } from 'astro/config';
+import { defineConfig } from 'astro/config';
 
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
@@ -9,6 +9,8 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   site: "https://okikio.dev",
+  output: "static",
+  trailingSlash: "always",
   integrations: [
     sitemap(),
     mdx(),
@@ -16,34 +18,5 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwind()]
-  },
-
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.google(),
-        name: "Lexend Deca",
-        cssVariable: "--google-lexend-deca",
-        weights: ["400"],
-        fallbacks: ["Lexend Deca-fallback", "sans-serif"],
-        optimizedFallbacks: false
-      },
-      {
-        provider: fontProviders.google(),
-        name: "Lexend Deca",
-        cssVariable: "--google-lexend-deca-black",
-        weights: ["900"],
-        fallbacks: ["Lexend Deca Black-fallback", "sans-serif"],
-        optimizedFallbacks: false
-      },
-      {
-        provider: fontProviders.google(),
-        name: "Manrope",
-        cssVariable: "--google-manrope",
-        weights: ["300"],
-        fallbacks: ["Manrope-fallback", "sans-serif"],
-        optimizedFallbacks: false
-      }
-    ]
   }
 });

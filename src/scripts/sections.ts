@@ -14,7 +14,7 @@ const observerHandler = {
     const visibleEntry = entries.find(entry => entry.intersectionRatio >= 0.25);
     if (!visibleEntry) return;
 
-    const sectionId = visibleEntry.target.getAttribute('nav-section');
+    const sectionId = visibleEntry.target.getAttribute('data-nav-section');
     if (!sectionId) return;
 
     observerHandler.isUpdating = true;
@@ -31,7 +31,7 @@ const observerHandler = {
  * Creates disposable section intersection observer
  */
 export function createSectionObserver(onHashChange: (hash: string) => void): Controller | null {
-  const sections = document.querySelectorAll<HTMLElement>('[nav-section]');
+  const sections = document.querySelectorAll<HTMLElement>('[data-nav-section]');
   if (sections.length <= 0) return null;
 
   observerHandler.onHashChange = onHashChange;
@@ -43,7 +43,7 @@ export function createSectionObserver(onHashChange: (hash: string) => void): Con
 
   return {
     start() {
-      const sections = document.querySelectorAll<HTMLElement>('[nav-section]');
+      const sections = document.querySelectorAll<HTMLElement>('[data-nav-section]');
       if (sections.length <= 0) return null;
 
       sections.forEach(section => observer.observe(section));

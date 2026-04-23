@@ -9,8 +9,6 @@ let src = "cloudinary/okikio/okiki-ojo";
 let cloudinaryTest = /^cloudinary\//.test(src);
 let fetchTest = /\/fetch\//.test(src);
 
-// Netlify redirects can't handle multiple requests at once
-// import.meta.env.PUBLIC_DEV.toString() == "false" && /okiki\-ojo$/.test(src) ? `https://okikio.dev/images/` :
 let origin =
   `https://res.cloudinary.com/okikio-assets/image/` +
   (fetchTest ? "fetch/" : "upload/");
@@ -30,7 +28,7 @@ let sizes = `(max-width: 600px) 250px, (max-width: 1024px) 450px`;
 <header
   class="content"
   role="banner"
-  nav-section="index"
+  data-nav-section="index"
   data-perspective-group
 >
   <div class="container" id="index">

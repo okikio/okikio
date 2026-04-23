@@ -1,3 +1,8 @@
+@import "@fontsource/lexend-deca/400.css";
+@import "@fontsource/lexend-deca/900.css";
+@import "@fontsource/manrope/300.css";
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/500.css";
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -29,11 +34,10 @@
 }
 
 @theme inline {
-  --font-sans: var(--google-manrope);
-
-  --font-lexend-black: var(--google-lexend-deca-black);
-  --font-lexend: var(--google-lexend-deca);
-  --font-manrope: var(--google-manrope);
+  --font-sans: "Manrope", "Manrope-fallback", sans-serif;
+  --font-lexend-black: "Lexend Deca", "Lexend Deca Black-fallback", sans-serif;
+  --font-lexend: "Lexend Deca", "Lexend Deca-fallback", sans-serif;
+  --font-manrope: "Manrope", "Manrope-fallback", sans-serif;
 }
 
 /* Container Utility Customization */
