@@ -8,6 +8,8 @@ import { defineConfig, fontProviders } from "astro/config";
 // https://astro.build/config
 export default defineConfig({
   site: "https://okikio.dev",
+  // Keep the site static by default, but let astro-auto-adapter promote the
+  // output mode when the deployment environment requires a server adapter.
   output: output(),
   trailingSlash: "always",
   integrations: [
