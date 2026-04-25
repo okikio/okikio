@@ -1,12 +1,5 @@
 ---
 import HomepageLayout from "./HomepageLayout.astro";
-
-// Data Fetching: List all Markdown posts in the repo.
-// const projects = Astro.fetchContent("./project/**/*.md");
-// const featuredProject = projects[0];
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
 ---
 
 <HomepageLayout {...{ content: Astro.props.frontmatter }}>

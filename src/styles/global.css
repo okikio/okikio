@@ -29,11 +29,10 @@
 }
 
 @theme inline {
-  --font-sans: var(--google-manrope);
-
-  --font-lexend-black: var(--google-lexend-deca-black);
-  --font-lexend: var(--google-lexend-deca);
-  --font-manrope: var(--google-manrope);
+  --font-sans: var(--font-family-manrope);
+  --font-lexend-black: var(--font-family-lexend);
+  --font-lexend: var(--font-family-lexend);
+  --font-manrope: var(--font-family-manrope);
 }
 
 /* Container Utility Customization */

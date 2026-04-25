@@ -11,46 +11,46 @@ const observerHandler = {
   handleEvent(this: IntersectionObserver, entries: IntersectionObserverEntry[]) {
     if (observerHandler.isUpdating) return;
 
-    const visibleEntry = entries.find(entry => entry.intersectionRatio >= 0.25);
+    const visibleEntry = entries.find((entry) => entry.intersectionRatio >= 0.25);
     if (!visibleEntry) return;
 
-    const sectionId = visibleEntry.target.getAttribute('nav-section');
+    const sectionId = visibleEntry.target.getAttribute("data-nav-section");
     if (!sectionId) return;
 
     observerHandler.isUpdating = true;
     requestAnimationFrame(() => {
       const newHash = `#${sectionId}`;
-      window.history.replaceState(null, '', newHash);
+      window.history.replaceState(null, "", newHash);
       observerHandler.onHashChange?.(newHash);
       observerHandler.isUpdating = false;
     });
-  }
+  },
 };
 
 /**
  * Creates disposable section intersection observer
  */
 export function createSectionObserver(onHashChange: (hash: string) => void): Controller | null {
-  const sections = document.querySelectorAll<HTMLElement>('[nav-section]');
+  const sections = document.querySelectorAll<HTMLElement>("[data-nav-section]");
   if (sections.length <= 0) return null;
 
   observerHandler.onHashChange = onHashChange;
 
   const observer = new IntersectionObserver(observerHandler.handleEvent, {
     threshold: [0.25],
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: "0px 0px -100px 0px",
   });
 
   return {
     start() {
-      const sections = document.querySelectorAll<HTMLElement>('[nav-section]');
+      const sections = document.querySelectorAll<HTMLElement>("[data-nav-section]");
       if (sections.length <= 0) return null;
 
-      sections.forEach(section => observer.observe(section));
+      sections.forEach((section) => observer.observe(section));
     },
 
     [Symbol.dispose]() {
-      sections.forEach(section => observer.unobserve(section));
-    }
+      sections.forEach((section) => observer.unobserve(section));
+    },
   };
 }

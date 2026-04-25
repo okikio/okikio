@@ -6,7 +6,7 @@
   From: Ontario, Canada
 
 /* SITE */
-  Last update: 2022/09/03
+  Last update: 2026/04/25
   Language: English
-  Technologies: vite, astro, scss/sass, cloudinary, typescript
+  Technologies: astro, tailwind css, vite, cloudinary, typescript
   IDE: VS Code
