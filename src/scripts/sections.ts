@@ -44,7 +44,7 @@ export function createSectionObserver(onHashChange: (hash: string) => void): Con
   return {
     start() {
       const sections = document.querySelectorAll<HTMLElement>("[data-nav-section]");
-      if (sections.length <= 0) return null;
+      if (sections.length <= 0) return;
 
       sections.forEach((section) => observer.observe(section));
     },
