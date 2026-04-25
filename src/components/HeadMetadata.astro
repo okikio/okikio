@@ -3,12 +3,19 @@ import { Font } from "astro:assets";
 import { SEO } from "astro-seo";
 import "@/styles/global.css";
 
+const defaultKeywords = [
+  "Okiki Ojo",
+  "web developer",
+  "design",
+  "software engineer",
+  "open source",
+  "Astro maintainer",
+];
+
 const {
   title = "Okiki Ojo — Web Developer & Designer (okikio)",
   description = "Software engineer, web developer, and open source maintainer based in Ontario, Canada.",
-  keywords = "Okiki Ojo, web developer, design, software engineer, open source, Astro maintainer".split(
-    ","
-  ),
+  keywords = defaultKeywords,
   img = {
     url: `/favicon/banner-image.png`,
     alt: "The banner image for Okiki Ojo's portfolio website, it has a yellow background and with a black 'K' in the center, representing his logo.",
@@ -20,7 +27,7 @@ const {
 export type Props = {
   title?: string;
   description?: string;
-  keywords?: string;
+  keywords?: string | string[];
   img?: {
     url?: string;
     alt?: string;
@@ -28,6 +35,10 @@ export type Props = {
     height?: number;
   };
 };
+
+const keywordTags = (Array.isArray(keywords) ? keywords : keywords.split(","))
+  .map((keyword) => keyword.trim())
+  .filter(Boolean);
 
 const imageDetails = {
   url: Astro.url.origin + img.url,
@@ -92,7 +103,7 @@ const extendMeta = {
     },
     article: {
       authors: ["Okiki Ojo"],
-      tags: Array.from(keywords, (x) => x.trim()),
+      tags: keywordTags,
     },
     optional: {
       description,
