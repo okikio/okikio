@@ -12,10 +12,6 @@
       "source": "/(.*)",
       "headers": [
         {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         },
@@ -29,7 +25,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; font-src 'self' data:; style-src 'self' 'unsafe-inline'; img-src 'self' https://res.cloudinary.com https://okikio.dev data:; script-src 'self' https://www.googletagmanager.com https://*.bundlejs.com https://bundlejs.com 'unsafe-inline'; connect-src 'self' https://www.google-analytics.com https://bundlejs.com https://*.bundlejs.com; block-all-mixed-content; upgrade-insecure-requests; base-uri 'self'; object-src 'none'; worker-src 'self'; manifest-src 'self'; media-src 'self' https://res.cloudinary.com https://okikio.dev; form-action 'self'; frame-ancestors 'none';"
+          "value": "default-src 'self'; font-src 'self' data:; style-src 'self' 'unsafe-inline'; img-src 'self' https://res.cloudinary.com https://okikio.dev data:; script-src 'self' https://www.googletagmanager.com https://*.bundlejs.com https://bundlejs.com 'unsafe-inline'; connect-src 'self' https://www.google-analytics.com https://bundlejs.com https://*.bundlejs.com; block-all-mixed-content; upgrade-insecure-requests; base-uri 'self'; object-src 'none'; worker-src 'self'; manifest-src 'self'; media-src 'self' https://res.cloudinary.com https://okikio.dev; form-action 'self'; frame-ancestors 'self' https:;"
         }
       ]
     }
