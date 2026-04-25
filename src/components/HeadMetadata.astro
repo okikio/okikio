@@ -1,13 +1,12 @@
 ---
+import { Font } from "astro:assets";
 import { SEO } from "astro-seo";
 import "@/styles/global.css";
 
-import { Font } from "astro:assets";
-
 const {
   title = "Okiki Ojo — Web Developer & Designer (okikio)",
-  description = "A Web Developer and Designer based in Ontario, Canada, with an eye for great design (UI) and even better user experience (UX).",
-  keywords = "Okiki Ojo, web dev, UX/UI, consistent, design, software engineer, student".split(
+  description = "Software engineer, web developer, and open source maintainer based in Ontario, Canada.",
+  keywords = "Okiki Ojo, web developer, design, software engineer, open source, Astro maintainer".split(
     ","
   ),
   img = {
@@ -52,9 +51,14 @@ const extendMeta = {
 
 ---
 
-<Font cssVariable="--google-lexend-deca-black" preload />
-<Font cssVariable="--google-manrope" preload />
-<Font cssVariable="--google-lexend-deca" preload />
+<Font
+  cssVariable="--font-family-lexend"
+  preload={[{ weight: "500" }, { weight: "700" }, { weight: "900" }]}
+/>
+<Font
+  cssVariable="--font-family-manrope"
+  preload={[{ weight: "400" }, { weight: "500" }]}
+/>
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
@@ -147,7 +151,7 @@ const extendMeta = {
         url: "https://okikio.dev/favicon/android-chrome-512x512.png",
       },
     },
-    copyrightYear: "2022",
+    copyrightYear: new Date().getFullYear().toString(),
     copyrightHolder: {
       "@type": "Person",
       name: "Okiki Ojo",

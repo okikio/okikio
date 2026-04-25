@@ -1,51 +1,79 @@
-import { defineConfig, fontProviders } from 'astro/config';
-import { adapter } from "astro-auto-adapter";
-
-import sitemap from "@astrojs/sitemap";
-import icon from "astro-icon";
-
-import tailwind from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import tailwind from "@tailwindcss/vite";
+import icon from "astro-icon";
+import { adapter, output } from "astro-auto-adapter";
+import { defineConfig, fontProviders } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://okikio.dev",
+  output: output(),
+  trailingSlash: "always",
   integrations: [
     sitemap(),
     mdx(),
-    icon()
+    icon(),
   ],
   adapter: await adapter(),
   vite: {
-    plugins: [tailwind()]
+    plugins: [tailwind()],
   },
-
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.google(),
-        name: "Lexend Deca",
-        cssVariable: "--google-lexend-deca",
-        weights: ["400"],
-        fallbacks: ["Lexend Deca-fallback", "sans-serif"],
-        optimizedFallbacks: false
+  fonts: [
+    {
+      name: "Lexend Deca",
+      cssVariable: "--font-family-lexend",
+      provider: fontProviders.local(),
+      fallbacks: ["Lexend Deca-fallback", "sans-serif"],
+      options: {
+        variants: [
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/lexend-deca-latin-400-normal.woff2"],
+          },
+          {
+            weight: 500,
+            style: "normal",
+            src: ["./src/assets/fonts/lexend-deca-latin-500-normal.woff2"],
+          },
+          {
+            weight: 700,
+            style: "normal",
+            src: ["./src/assets/fonts/lexend-deca-latin-700-normal.woff2"],
+          },
+          {
+            weight: 900,
+            style: "normal",
+            src: ["./src/assets/fonts/lexend-deca-latin-900-normal.woff2"],
+          },
+        ],
       },
-      {
-        provider: fontProviders.google(),
-        name: "Lexend Deca",
-        cssVariable: "--google-lexend-deca-black",
-        weights: ["900"],
-        fallbacks: ["Lexend Deca Black-fallback", "sans-serif"],
-        optimizedFallbacks: false
+    },
+    {
+      name: "Manrope",
+      cssVariable: "--font-family-manrope",
+      provider: fontProviders.local(),
+      fallbacks: ["Manrope-fallback", "sans-serif"],
+      options: {
+        variants: [
+          {
+            weight: 300,
+            style: "normal",
+            src: ["./src/assets/fonts/manrope-latin-300-normal.woff2"],
+          },
+          {
+            weight: 400,
+            style: "normal",
+            src: ["./src/assets/fonts/manrope-latin-400-normal.woff2"],
+          },
+          {
+            weight: 500,
+            style: "normal",
+            src: ["./src/assets/fonts/manrope-latin-500-normal.woff2"],
+          },
+        ],
       },
-      {
-        provider: fontProviders.google(),
-        name: "Manrope",
-        cssVariable: "--google-manrope",
-        weights: ["300"],
-        fallbacks: ["Manrope-fallback", "sans-serif"],
-        optimizedFallbacks: false
-      }
-    ]
-  }
+    },
+  ],
 });

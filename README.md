@@ -10,7 +10,7 @@
 
 ## About.
 
-Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I'm a Software Engineer, a web developer, an avid fan of open source, and a maintainer on **[@withastro](https://github.com/withastro)**, who has previously worked as a Software Engineering at **[@vercel](https://github.com/vercel)**. I am always eager to take on new challenges, and aim to exceed in all tasks I take on.
+Hey, I am Okiki Ojo (pronounced O-key-key O-jo), I'm a software engineer, a web developer, an avid fan of open source, and a maintainer on **[@withastro](https://github.com/withastro)**, who has previously worked as a Software Engineer at **[@vercel](https://github.com/vercel)**. I am always eager to take on new challenges, and aim to exceed in all tasks I take on.
 
 ### Skills
 
@@ -32,6 +32,6 @@ I have experience in Astro, Next.js, React, Solid.js, Svelte, Javascript/Typescr
 | [Buy me a coffee](https://www.buymeacoffee.com/okikio) | [Email](mailto:hey@okikio.dev)            | [@inthistweet_dev](https://twitter.com/inthistweet_dev) | [@jsbundle](https://twitter.com/jsbundle)                                    |
 | <a rel="me" href="https://mastodon.social/@okikio">Mastodon</a>         |                                           |                                                         |
 
-This is licenced using [GNU General Public License v3.0 (GPLv3)](./LICENCE.md).
+This is licensed using [GNU General Public License v3.0 (GPLv3)](./LICENSE).
 
 **© 2024 Okiki Ojo. All rights reserved.**

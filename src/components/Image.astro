@@ -14,8 +14,6 @@ let { class: _class, ...attrs } = figureAttrs;
 let cloudinaryTest = /^cloudinary\//.test(src);
 let fetchTest = /\/fetch\//.test(src);
 
-// Netlify redirects can't handle multiple requests at once
-// import.meta.env.PUBLIC_DEV.toString() == "false" && /okiki\-ojo$/.test(src) ? `https://okikio.dev/images/` :
 let origin =
   `https://res.cloudinary.com/okikio-assets/image/` +
   (fetchTest ? "fetch/" : "upload/");
@@ -50,7 +48,6 @@ const srcId = src.replace(/(^cloudinary\/)|fetch\//g, "");
 <figure class={className} {...attrs}>
   <CldImage
     src={srcId}
-    {alt}
     {alt}
     {loading}
     {sizes}
