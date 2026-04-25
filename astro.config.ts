@@ -25,57 +25,20 @@ export default defineConfig({
     {
       name: "Lexend Deca",
       cssVariable: "--font-family-lexend",
-      provider: fontProviders.local(),
+      provider: fontProviders.google(),
       fallbacks: ["Lexend Deca-fallback", "sans-serif"],
-      options: {
-        variants: [
-          {
-            weight: 400,
-            style: "normal",
-            src: ["./src/assets/fonts/lexend-deca-latin-400-normal.woff2"],
-          },
-          {
-            weight: 500,
-            style: "normal",
-            src: ["./src/assets/fonts/lexend-deca-latin-500-normal.woff2"],
-          },
-          {
-            weight: 700,
-            style: "normal",
-            src: ["./src/assets/fonts/lexend-deca-latin-700-normal.woff2"],
-          },
-          {
-            weight: 900,
-            style: "normal",
-            src: ["./src/assets/fonts/lexend-deca-latin-900-normal.woff2"],
-          },
-        ],
-      },
+      weights: [400, 500, 700, 900],
+      styles: ["normal"],
+      subsets: ["latin"],
     },
     {
       name: "Manrope",
       cssVariable: "--font-family-manrope",
-      provider: fontProviders.local(),
+      provider: fontProviders.google(),
       fallbacks: ["Manrope-fallback", "sans-serif"],
-      options: {
-        variants: [
-          {
-            weight: 300,
-            style: "normal",
-            src: ["./src/assets/fonts/manrope-latin-300-normal.woff2"],
-          },
-          {
-            weight: 400,
-            style: "normal",
-            src: ["./src/assets/fonts/manrope-latin-400-normal.woff2"],
-          },
-          {
-            weight: 500,
-            style: "normal",
-            src: ["./src/assets/fonts/manrope-latin-500-normal.woff2"],
-          },
-        ],
-      },
+      weights: [300, 400, 500],
+      styles: ["normal"],
+      subsets: ["latin"],
     },
   ],
 });
