@@ -32,8 +32,6 @@
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/vercel": "^10.0.5",
-    "@fontsource/lexend-deca": "5.2.10",
-    "@fontsource/manrope": "5.2.8",
     "@iconify-json/fluent": "^1.2.30",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/uil": "^1.2.3",

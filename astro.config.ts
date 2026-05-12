@@ -10,12 +10,12 @@ export default defineConfig({
   site: "https://okikio.dev",
   output: output(),
   adapter: await adapter(),
-  trailingSlash: "always",
+  trailingSlash: "ignore",
   fonts: [
     {
       name: "Lexend Deca",
       cssVariable: "--font-family-lexend",
-      provider: fontProviders.fontsource(),
+      provider: fontProviders.google(),
       weights: [400, 900],
       styles: ["normal"],
       subsets: ["latin"],
@@ -24,7 +24,7 @@ export default defineConfig({
     {
       name: "Manrope",
       cssVariable: "--font-family-manrope",
-      provider: fontProviders.fontsource(),
+      provider: fontProviders.google(),
       weights: [300, 400, 500],
       styles: ["normal"],
       subsets: ["latin"],
