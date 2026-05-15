@@ -13,7 +13,7 @@
   "github": "https://github.com/okikio/okikio/",
   "license": "AGPL-3.0-only",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=24"
   },
   "bugs": {
     "url": "https://github.com/okikio/okikio/issues"
@@ -25,19 +25,19 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/cloudflare": "^13.5.0",
-    "@astrojs/mdx": "^5.0.4",
-    "@astrojs/netlify": "^7.0.8",
-    "@astrojs/node": "^10.1.0",
+    "@astrojs/cloudflare": "^13.5.1",
+    "@astrojs/mdx": "^5.0.6",
+    "@astrojs/netlify": "^7.0.9",
+    "@astrojs/node": "^10.1.1",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/vercel": "^10.0.6",
+    "@astrojs/vercel": "^10.0.7",
     "@iconify-json/fluent": "^1.2.47",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/uil": "^1.2.3",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.3.1",
+    "astro": "^6.3.3",
     "astro-auto-adapter": "^2.5.5",
     "astro-icon": "^1.1.5",
     "astro-seo": "^1.1.0",
