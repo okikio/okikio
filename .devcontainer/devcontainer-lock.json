@@ -14,11 +14,6 @@
       "version": "2.0.0",
       "resolved": "ghcr.io/devcontainers/features/node@sha256:fedd4c11f7adfb64283b578dddc7da906728daa25fa293351c9d913231acf12f",
       "integrity": "sha256:fedd4c11f7adfb64283b578dddc7da906728daa25fa293351c9d913231acf12f"
-    },
-    "ghcr.io/joshuanianji/devcontainer-features/mount-pnpm-store:1": {
-      "version": "1.0.2",
-      "resolved": "ghcr.io/joshuanianji/devcontainer-features/mount-pnpm-store@sha256:32f78bc711aecc2b1479143a4412461b4075c61f0d4776e74265890099a3c7f6",
-      "integrity": "sha256:32f78bc711aecc2b1479143a4412461b4075c61f0d4776e74265890099a3c7f6"
     }
   }
 }

@@ -12,7 +12,6 @@
 			"moby": "true"
 		},
 		"ghcr.io/devcontainers/features/node:2": {},
-		"ghcr.io/joshuanianji/devcontainer-features/mount-pnpm-store:1": {},
 		"ghcr.io/devcontainers-extra/features/mise:1": {}
 	}
 
