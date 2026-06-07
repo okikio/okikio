@@ -145,3 +145,4 @@ coverage/
 .vercel
 .netlify
 .astro
+.pnpm-store
