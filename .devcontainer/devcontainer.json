@@ -11,7 +11,7 @@
 			"enableNonRootDocker": "true",
 			"moby": "true"
 		},
-		"ghcr.io/devcontainers/features/node:2": {},
+		"ghcr.io/devcontainers/features/node:": {},
 		"ghcr.io/devcontainers-extra/features/mise:1": {}
 	}
 
