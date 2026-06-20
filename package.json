@@ -27,7 +27,7 @@
   "devDependencies": {
     "@astrojs/cloudflare": "^13.5.1",
     "@astrojs/mdx": "^5.0.6",
-    "@astrojs/netlify": "^7.0.9",
+    "@astrojs/netlify": "^7.0.13",
     "@astrojs/node": "^10.1.1",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
