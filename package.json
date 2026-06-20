@@ -37,7 +37,7 @@
     "@iconify-json/uil": "^1.2.3",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.3.3",
+    "astro": "^6.4.6",
     "astro-auto-adapter": "^2.5.5",
     "astro-icon": "^1.1.5",
     "astro-seo": "^1.1.0",
